@@ -104,7 +104,11 @@ const events: DetailItem[] = [
 const detailCollections = [traits, familyCurses, locationModifiers, minions, religions, heroTasks, religiousTasks, rulerActions, events];
 const allDetails = detailCollections.flat();
 const referenceNames = Array.from(new Set([...powers.map((p) => p.name), ...initialAbilities.map(([n]) => n), ...allDetails.map((d) => d.name)])).sort((a, b) => b.length - a.length);
-function anchorFor(name: string) { return `entry-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`; }
+function anchorFor(name: string) {
+  if (name === "Vile Curse：第二次使用") return "entry-vile-curse-second-use";
+  if (name === "Vile Curse：第三次使用") return "entry-vile-curse-third-use";
+  return `entry-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+}
 function refFor(name: string) {
   const power = powers.find((item) => item.name === name);
   if (power) return { name, image: power.icon, meta: `封印 ${power.seal} · 消耗 ${power.cost}`, text: power.effect, href: `#${anchorFor(name)}` };
