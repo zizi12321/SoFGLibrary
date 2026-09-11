@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "next/image": fileURLToPath(new URL("./pages/NextImage.tsx", import.meta.url)),
+      "next/image": fileURLToPath(new URL("./static-pages/NextImage.tsx", import.meta.url)),
     },
   },
   build: {

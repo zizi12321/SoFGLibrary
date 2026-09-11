@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown, CircleDot, Eye, PanelLeftClose, PanelLeftOpen, Shield } from "lucide-react";
+import MobileReferenceDialog from "./MobileReferenceDialog";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -97,7 +98,6 @@ const events: DetailItem[] = [
   { name: "Matured Rift", image: "void_rupture_fullimage.png", text: "Hungry Rift 达到 300% 并转化为 World Rupture 时显示的结果事件。" },
   { name: "Seekers of the New World", image: "void_HO.png", id: "seekers-event", text: "本局第一次由宗教任务开启 Hungry Rift 时显示，记录教团开始以新世界教义协助 Living Void。" },
   { name: "Vacuum Collapse", image: "god_background.png", id: "vacuum-collapse-event", text: "每局第一次由 Vacuum Collapse 吞噬人类聚居地时显示；不附加代码之外的额外效果。" },
-  { name: "A Glimpse Of The Greater Things", meta: "事件定义存在 · 触发概率 0", text: "这是一段尚未启用的 Agent 梦境事件：原本会在第 375 回合前、Agent 执行 Lore 挑战时触发一次。侍奉其他神祇时会损失 10 点当前挑战进度；侍奉 Ophanim 时则获得持续 999 回合的 +1 Lore。由于事件文件把触发概率设为 0，正常游戏中不会随机出现。" },
 ];
 
 
@@ -115,10 +115,23 @@ function refFor(name: string) {
   return { name, image: detail.image ?? detail.images?.[0], meta: detail.meta ?? (detail.seal !== undefined ? `封印 ${detail.seal}` : "机制说明"), text: detail.text, href: `#${detail.id ? `entry-${detail.id}` : anchorFor(name)}` };
 }
 function CrossReference({ name, href, meta, text, image }: { name: string; href?: string; meta?: string; text?: string; image?: string }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const reference = refFor(name);
   if (!reference && !text) return <>{name}</>;
   const resolved = { name, href: href ?? reference?.href ?? "#", meta: meta ?? reference?.meta ?? "机制说明", text: text ?? reference?.text ?? "", image: image ?? reference?.image };
-  return <a className="cross-reference" href={resolved.href}><span className="cross-label">{name}</span><span className="cross-popover" role="tooltip">{resolved.image && <span className="cross-image"><Image src={`/living-void/${resolved.image}`} alt="" fill sizes="72px" /></span>}<span className="cross-copy"><small>{resolved.meta}</small><b>{resolved.name}</b><span>{resolved.text}</span><em>点击跳转至详情</em></span></span></a>;
+  const imageSrc = resolved.image ? `/living-void/${resolved.image}` : undefined;
+  return <>
+    <a className="cross-reference" href={resolved.href} onClick={(event) => {
+      if (window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+        event.preventDefault();
+        setMobileOpen(true);
+      }
+    }}>
+      <span className="cross-label">{name}</span>
+      <span className="cross-popover" role="tooltip">{imageSrc && <span className="cross-image"><Image src={imageSrc} alt="" fill sizes="72px" /></span>}<span className="cross-copy"><small>{resolved.meta}</small><b>{resolved.name}</b><span>{resolved.text}</span><em>点击跳转至详情</em></span></span>
+    </a>
+    <MobileReferenceDialog open={mobileOpen} onClose={() => setMobileOpen(false)} name={resolved.name} meta={resolved.meta} text={resolved.text} href={resolved.href} imageSrc={imageSrc} />
+  </>;
 }
 function RichText({ text, exclude }: { text: string; exclude?: string }) {
   const names = referenceNames.filter((name) => name !== exclude);

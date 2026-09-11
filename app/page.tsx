@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LivingVoidArchive from "./LivingVoidArchive";
+import MobileReferenceDialog from "./MobileReferenceDialog";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -333,6 +334,7 @@ function CrossReference({
   text?: string;
   image?: string;
 }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const reference = getReference(name);
   if (!reference && !text) return <>{name}</>;
   const resolved = {
@@ -342,19 +344,32 @@ function CrossReference({
     text: text ?? reference?.text ?? "",
     image: image ?? reference?.image,
   };
+  const imageSrc = resolved.image ? `/kishi/${resolved.image}` : undefined;
   return (
-    <a className="cross-reference" href={resolved.href}>
-      <span className="cross-label">{name}</span>
-      <span className="cross-popover" role="tooltip">
-        {resolved.image && <span className="cross-image"><Image src={`/kishi/${resolved.image}`} alt="" fill sizes="72px" /></span>}
-        <span className="cross-copy">
-          <small>{resolved.meta}</small>
-          <b>{resolved.name}</b>
-          <span>{resolved.text}</span>
-          <em>点击跳转至详情</em>
+    <>
+      <a
+        className="cross-reference"
+        href={resolved.href}
+        onClick={(event) => {
+          if (window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+            event.preventDefault();
+            setMobileOpen(true);
+          }
+        }}
+      >
+        <span className="cross-label">{name}</span>
+        <span className="cross-popover" role="tooltip">
+          {imageSrc && <span className="cross-image"><Image src={imageSrc} alt="" fill sizes="72px" /></span>}
+          <span className="cross-copy">
+            <small>{resolved.meta}</small>
+            <b>{resolved.name}</b>
+            <span>{resolved.text}</span>
+            <em>点击跳转至详情</em>
+          </span>
         </span>
-      </span>
-    </a>
+      </a>
+      <MobileReferenceDialog open={mobileOpen} onClose={() => setMobileOpen(false)} name={resolved.name} meta={resolved.meta} text={resolved.text} href={resolved.href} imageSrc={imageSrc} />
+    </>
   );
 }
 function RichText({ text, exclude }: { text: string; exclude?: string }) {
