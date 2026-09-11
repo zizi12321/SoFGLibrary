@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LivingVoidArchive from "./LivingVoidArchive";
+import ChandalorArchive from "./ChandalorArchive";
 import MobileReferenceDialog from "./MobileReferenceDialog";
 import {
   ArrowDown,
@@ -466,7 +467,7 @@ const bloodSources = [
   "正式开始前会清除历史模拟阶段意外积累的血污。",
 ];
 
-type GodChoice = "kishi" | "living-void";
+type GodChoice = "kishi" | "living-void" | "chandalor";
 
 export default function GodArchive() {
   const [god, setGod] = useState<GodChoice>("kishi");
@@ -474,7 +475,9 @@ export default function GodArchive() {
     setGod(nextGod);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
-  return god === "living-void" ? <LivingVoidArchive onGodChange={switchGod} /> : <KishiArchive onGodChange={switchGod} />;
+  if (god === "living-void") return <LivingVoidArchive onGodChange={switchGod} />;
+  if (god === "chandalor") return <ChandalorArchive onGodChange={switchGod} />;
+  return <KishiArchive onGodChange={switchGod} />;
 }
 
 function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }) {
@@ -536,6 +539,7 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
               <select value="kishi" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇">
                 <option value="kishi">KISHI</option>
                 <option value="living-void">LIVING VOID</option>
+                <option value="chandalor">CHANDALOR</option>
               </select>
               <small>神祇资料库</small>
             </label>
