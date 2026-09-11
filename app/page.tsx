@@ -1,12 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LivingVoidArchive from "./LivingVoidArchive";
 import ChandalorArchive from "./ChandalorArchive";
+import SheWhoWillFeastArchive from "./SheWhoWillFeastArchive";
+import IasturArchive from "./IasturArchive";
+import VinervaArchive from "./VinervaArchive";
+import GodIndex from "./GodIndex";
 import MobileReferenceDialog from "./MobileReferenceDialog";
 import {
   ArrowDown,
@@ -467,14 +471,24 @@ const bloodSources = [
   "正式开始前会清除历史模拟阶段意外积累的血污。",
 ];
 
-type GodChoice = "kishi" | "living-void" | "chandalor";
+type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor";
 
 export default function GodArchive() {
-  const [god, setGod] = useState<GodChoice>("kishi");
+  const [god, setGod] = useState<GodChoice>("index");
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("god") as GodChoice | null;
+    if (requested && ["she-who-will-feast", "iastur", "vinerva", "kishi", "living-void", "chandalor"].includes(requested)) setGod(requested);
+  }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
+    const url = nextGod === "index" ? window.location.pathname : `${window.location.pathname}?god=${nextGod}`;
+    window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
+  if (god === "index") return <GodIndex onSelect={switchGod} />;
+  if (god === "she-who-will-feast") return <SheWhoWillFeastArchive onGodChange={switchGod} />;
+  if (god === "iastur") return <IasturArchive onGodChange={switchGod} />;
+  if (god === "vinerva") return <VinervaArchive onGodChange={switchGod} />;
   if (god === "living-void") return <LivingVoidArchive onGodChange={switchGod} />;
   if (god === "chandalor") return <ChandalorArchive onGodChange={switchGod} />;
   return <KishiArchive onGodChange={switchGod} />;
@@ -536,11 +550,7 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
           <div className="sidebar-brand god-switcher">
             <span className="brand-mark"><Droplets size={17} /></span>
             <label>
-              <select value="kishi" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇">
-                <option value="kishi">KISHI</option>
-                <option value="living-void">LIVING VOID</option>
-                <option value="chandalor">CHANDALOR</option>
-              </select>
+              <select value="kishi" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇"><option value="she-who-will-feast">SHE WHO WILL FEAST</option><option value="iastur">IASTUR</option><option value="vinerva">VINERVA</option><option value="kishi">KISHI</option><option value="living-void">LIVING VOID</option><option value="chandalor">CHANDALOR</option></select>
               <small>神祇资料库</small>
             </label>
           </div>
@@ -548,7 +558,7 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
             {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
         </div>
-        <nav className="sidebar-nav" aria-label="页面目录">
+        <button className="sidebar-index-link" type="button" onClick={() => onGodChange("index")}>← 返回神祇索引</button><nav className="sidebar-nav" aria-label="页面目录">
           <a href="#top"><span>00</span><b>概览</b></a>
           <a href="#loop"><span>01</span><b>基础信息与核心玩法</b></a>
           <a href="#seals"><span>02</span><b>封印与 Agent 上限</b></a>
@@ -577,7 +587,7 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
           <Image src="/kishi/god_background.jpg" alt="" fill priority sizes="100vw" />
         </div>
         <div className="hero-copy">
-          <p className="eyebrow"><span>神祇档案 01</span><span>God of Bloodshed</span></p>
+          <p className="eyebrow"><span>神祇档案 04</span><span>God of Bloodshed</span></p>
           <div className="hero-title-wrap">
             <h1>
               <span className="title-mask"><span className="hero-line">Kishi, the Jagged Tide</span></span>

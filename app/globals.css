@@ -702,15 +702,15 @@ footer { grid-template-columns: 1fr; text-align: left; }
 }
 .records-section .expandable-table,
 .records-section .powers-table { grid-template-columns: 1fr; }
-@container records (min-width: 720px) {
+@container records (min-width: 600px) {
   .records-section .expandable-table,
   .records-section .powers-table { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@container records (min-width: 1100px) {
+@container records (min-width: 1200px) {
   .records-section .expandable-table,
   .records-section .powers-table { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-@container records (min-width: 1480px) {
+@container records (min-width: 1700px) {
   .records-section .expandable-table,
   .records-section .powers-table { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
@@ -974,4 +974,87 @@ footer { grid-template-columns: 1fr; text-align: left; }
 .base-game-entry .summary-seal,
 .base-game-entry .expanded-meta {
   color: #92969d;
+}
+
+/* She Who Will Feast archive theme */
+.feast-theme {
+  --blood: #9d493e;
+  --blood-dark: #4a221e;
+  --acid: #ddb09a;
+}
+.feast-theme .hero-backdrop { opacity: .27; filter: saturate(.74) contrast(1.18); }
+.feast-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.9) 43%, rgba(70,31,25,.34) 100%); }
+.feast-theme .portrait-frame img,
+.feast-theme .summary-image img,
+.feast-theme .cross-image img { object-fit: contain; }
+.feast-theme .task-stat-line { border-left-color: var(--blood); }
+.feast-theme .hero-title-wrap h1 { font-size: clamp(2.25rem, 4.1vw, 4.35rem); }
+@media (max-width: 760px) {
+  .feast-theme .hero-title-wrap h1 { font-size: clamp(1.5rem, 6.4vw, 2.2rem); }
+}
+/* Shared archive index navigation */
+.sidebar-index-link {
+  width: 100%;
+  min-height: 34px;
+  margin-top: 10px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #121110;
+  color: #aaa39a;
+  text-align: left;
+  font: 600 11px var(--font-geist-sans);
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.sidebar-index-link:hover, .sidebar-index-link:focus-visible { color: #fff; border-color: var(--blood); background: #191614; outline: none; }
+.sidebar-hidden .sidebar-index-link { display: none; }
+
+/* Iastur archive theme */
+.iastur-theme { --blood: #8d639f; --blood-dark: #3a2544; --acid: #d0acd9; }
+.iastur-theme .hero-backdrop { opacity: .25; filter: saturate(.63) contrast(1.2); }
+.iastur-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.9) 43%, rgba(60,35,68,.36) 100%); }
+.iastur-theme .portrait-frame img, .iastur-theme .summary-image img, .iastur-theme .cross-image img { object-fit: contain; }
+.iastur-theme .task-stat-line { border-left-color: var(--blood); }
+.iastur-theme .hero-title-wrap h1 { font-size: clamp(2.05rem, 3.65vw, 3.8rem); }
+
+/* Vinerva archive theme */
+.vinerva-theme { --blood: #668d62; --blood-dark: #263c29; --acid: #c4d48d; }
+.vinerva-theme .hero-backdrop { opacity: .29; filter: saturate(.72) contrast(1.12); }
+.vinerva-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.88) 43%, rgba(40,63,34,.30) 100%); }
+.vinerva-theme .portrait-frame img, .vinerva-theme .summary-image img, .vinerva-theme .cross-image img { object-fit: contain; }
+.vinerva-theme .task-stat-line { border-left-color: var(--blood); }
+
+/* God archive index */
+.archive-index { min-height: 100vh; padding: clamp(32px,5vw,76px); background: radial-gradient(circle at 82% 4%,rgba(117,82,93,.14),transparent 31%),#0a0909; color:#e9e3d8; }
+.index-header { max-width: 1120px; margin: 0 auto 36px; }
+.index-brand { display:flex; align-items:center; gap:10px; color:#918b83; font:600 11px var(--font-geist-mono); letter-spacing:.09em; text-transform:uppercase; }
+.index-header>p { margin:32px 0 5px; color:#a75b58; font:650 11px var(--font-geist-mono); letter-spacing:.14em; }
+.index-header h1 { margin:0; font-size:clamp(2rem,4vw,3.8rem); line-height:1; letter-spacing:-.045em; }
+.index-intro { max-width:780px; display:grid; grid-template-columns:auto 1fr; gap:11px; margin-top:22px; color:#a9a29a; font-size:14px; line-height:1.7; }
+.index-intro svg { margin-top:3px; color:#a75b58; }
+.god-index-grid { max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:12px; }
+.god-index-card { position:relative; min-width:0; min-height:164px; display:grid; grid-template-columns:28px 132px minmax(0,1fr) 24px; align-items:center; gap:18px; padding:16px 18px; border:1px solid #302d2a; border-radius:10px; background:#11100f; color:inherit; text-align:left; cursor:pointer; transition:transform .2s ease,border-color .2s ease,background .2s ease; }
+.god-index-card:hover,.god-index-card:focus-visible { transform:translateY(-2px); border-color:#76504d; background:#161312; outline:none; }
+.god-index-number { align-self:start; color:#6f6962; font:650 10px var(--font-geist-mono); }
+.god-index-image { position:relative; width:132px; aspect-ratio:1; overflow:hidden; background:#090909; }
+.god-index-image img { object-fit:contain; }
+.god-index-copy { min-width:0; display:flex; flex-direction:column; gap:7px; }
+.god-index-copy small { color:#a75b58; font:650 10px var(--font-geist-mono); letter-spacing:.1em; }
+.god-index-copy b { font-size:clamp(18px,2vw,25px); line-height:1.15; }
+.god-index-copy span { color:#b0aaa2; font-size:13px; line-height:1.5; }
+.god-index-copy em { color:#77716b; font:normal 11px var(--font-geist-mono); }
+.god-index-arrow { color:#77716b; }
+.index-footer { max-width:1120px; margin:24px auto 0; padding-top:18px; border-top:1px solid #2a2825; color:#77716b; font-size:12px; }
+@media (min-width: 1000px) { .god-index-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width: 760px) {
+  .sidebar-index-link { min-height:30px; margin-top:6px; padding:0 5px; font-size:9px; }
+  .iastur-theme .hero-title-wrap h1 { font-size:clamp(1.35rem,5.8vw,2rem); }
+  .archive-index { padding:24px 14px; }
+  .index-header { margin-bottom:24px; }
+  .god-index-card { min-height:124px; grid-template-columns:18px 84px minmax(0,1fr) 16px; gap:10px; padding:12px 10px; }
+  .god-index-image { width:84px; }
+  .god-index-copy b { font-size:16px; }
+  .god-index-copy span { font-size:11px; }
+  .god-index-copy em { font-size:9px; }
 }

@@ -7,7 +7,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Shadows of Forbidden Gods · 神祇资料库",
-  description: "Kishi 与 The Living Void 的中文互动机制资料库",
+  description: "She Who Will Feast、Iastur、Kishi、The Living Void 与 Chandalor 的中文互动机制资料库",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
