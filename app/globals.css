@@ -782,3 +782,11 @@ footer { grid-template-columns: 1fr; text-align: left; }
   .god-switcher select { font-size: 12px; }
   .sidebar-head { padding-bottom: 8px; }
 }
+/* Kishi hero backdrop visibility */
+.site-shell:not(.void-theme) .hero-backdrop {
+  opacity: .2;
+  filter: saturate(.58) contrast(1.18);
+}
+.site-shell:not(.void-theme) .hero-backdrop::after {
+  background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.89) 45%, rgba(49,12,10,.4) 100%);
+}

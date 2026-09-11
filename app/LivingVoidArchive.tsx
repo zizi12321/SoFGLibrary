@@ -64,12 +64,10 @@ const locations: DetailItem[] = [
 const items: DetailItem[] = [
   { name: "Voidstone", image: "void_stone.png", text: "不可丢弃的邪恶物品，是一枚微型 Living Void 门户。可提高 Supplicant 的 Lore，作为 Warp Light 与 Shattered Light 的条件，并提供 Something from Nothing 与 Plant Voidstone 两项仪式。" },
 ];
-const itemRituals: DetailItem[] = [
+const challenges: DetailItem[] = [
   { name: "Something from Nothing", image: "void_stone_heal.png", meta: "Other", statLine: "复杂度 1　暴露度 0　威胁度 0　经验 3（标准难度）", text: "消耗一枚 Voidstone，使 Agent 恢复 2 HP，并让其所有现存随从各恢复 2 HP，均不超过最大值。" },
   { name: "Plant Voidstone", image: "void_stone.png", meta: "Intrigue", statLine: "复杂度 25　暴露度 0　威胁度 0　经验 42（标准难度）", text: "消耗一枚 Voidstone，在当地建立 Hidden Voidstone；完成时获得 5 Profile 与 4 Menace。要求位于渗透度至少 50% 的人类聚居地，且当地没有 Hidden Voidstone 或 Hungry Rift。" },
-];
 
-const challenges: DetailItem[] = [
   { name: "Nothing from Something", image: "void_stone_get.png", meta: "Other", statLine: "复杂度 1　暴露度 0　威胁度 0　经验 3（标准难度）", text: "在 Great Wound 或 World Rupture 牺牲 2 HP，获得一枚 Voidstone。只有当前 HP 大于 2 时才可执行。" },
   { seal: 4, name: "Expand Rift", image: "void_rift_expand.png", meta: "Lore", statLine: "复杂度 25　暴露度 0　威胁度 0　经验 42（标准难度）", text: "使当地 Hungry Rift 增加 40%。完成时基础增加 5 Profile 与 8 Menace；地点 Shadow 会使两者最多降低 35%，最终取整。" },
   { name: "Pillage Anchor", image: "void_towerraid.png", meta: "Might", statLine: "复杂度 20 + 地点安全 × 5　暴露度 0　威胁度 0　经验 36 起（标准难度）", text: "夺走 Reality Anchor 的全部维护资金，并造成 Agent 当前 Might × 100 Gold 的设施损伤，使其停止压制裂隙；完成时增加 6 Profile 与 12 Menace。" },
@@ -99,17 +97,11 @@ const events: DetailItem[] = [
   { name: "Matured Rift", image: "void_rupture_fullimage.png", text: "Hungry Rift 达到 300% 并转化为 World Rupture 时显示的结果事件。" },
   { name: "Seekers of the New World", image: "void_HO.png", id: "seekers-event", text: "本局第一次由宗教任务开启 Hungry Rift 时显示，记录教团开始以新世界教义协助 Living Void。" },
   { name: "Vacuum Collapse", image: "god_background.png", id: "vacuum-collapse-event", text: "每局第一次由 Vacuum Collapse 吞噬人类聚居地时显示；不附加代码之外的额外效果。" },
+  { name: "A Glimpse Of The Greater Things", meta: "事件定义存在 · 触发概率 0", text: "这是一段尚未启用的 Agent 梦境事件：原本会在第 375 回合前、Agent 执行 Lore 挑战时触发一次。侍奉其他神祇时会损失 10 点当前挑战进度；侍奉 Ophanim 时则获得持续 999 回合的 +1 Lore。由于事件文件把触发概率设为 0，正常游戏中不会随机出现。" },
 ];
 
-const errors: DetailItem[] = [
-  { name: "Vacuum Collapse 的返还描述不符", text: "说明写成每个释放 Living Void 的地点返还 1 神力；代码实际在施放后把神力归零，再按 Great Wound 与 World Rupture 的数量各返还 1 点，与本次吞噬了多少地点无关。" },
-  { name: "Vacuum Collapse 的幸存者范围较宽", text: "说明称只有己方 Agent 与 Chosen One 能存活；代码实际上放过所有 isCommandable() 为真的单位，因此可控制的非 Agent 单位也可能幸存。" },
-  { name: "Reality Anchor 等额维修异常", text: "英雄或统治者投入的 Gold 恰好等于设施 damage 时，receiveFunds 会把这笔钱加入维护资金，却不会清除 damage，导致等额维修失败。" },
-  { name: "Reality Anchor 状态显示可能被覆盖", text: "setCharge 先把黑暗势力中的设施设为停用强度，随后又可能被资金状态覆盖。裂隙压制逻辑仍明确排除黑暗势力设施，但界面显示的 charge 可能与“永久停用”说明不一致。" },
-  { name: "未使用的旧版代码仍留在 DLL", text: "多个名称带 DEP 的旧神力、地点修正和人物特质，以及独立的 Ch_Rift_GainLore，没有被当前 God setup 或任何地点构造器注册。它们不会列入正式玩法条目。" },
-];
 
-const detailCollections = [traits, locationModifiers, locations, items, itemRituals, challenges, heroTasks, religions, religiousTasks, rulerActions, events, errors];
+const detailCollections = [traits, locationModifiers, locations, items, challenges, heroTasks, religions, religiousTasks, rulerActions, events];
 const allDetails = detailCollections.flat();
 const referenceNames = Array.from(new Set([...powers.map((p) => p.name), ...initialAbilities.map(([n]) => n), ...allDetails.map((d) => d.name)])).sort((a, b) => b.length - a.length);
 function anchorFor(name: string) { return `entry-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`; }
@@ -180,7 +172,7 @@ export default function LivingVoidArchive({ onGodChange }: { onGodChange: (god: 
     gsap.from(".hero-portrait", { scale: 1.06, opacity: 0, duration: 1.35, ease: "power3.out" });
     gsap.utils.toArray<HTMLElement>(".reveal-image").forEach((element) => gsap.fromTo(element, { scale: 1.08, opacity: .2 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: element, start: "top 92%", end: "bottom 58%", scrub: .8 } }));
   }, { scope: root });
-  const nav = [["00", "top", "概览"], ["01", "loop", "基础信息与核心玩法"], ["02", "seals", "封印与 Agent 上限"], ["03", "powers", "神力"], ["04", "agent", "初始 Agent 能力"], ["05", "traits", "人物特质"], ["06", "location-modifiers", "地点修正"], ["07", "locations", "地点与设施"], ["08", "items", "物品"], ["09", "item-rituals", "物品仪式"], ["10", "religion", "宗教与教义"], ["11", "religious-tasks", "宗教任务"], ["12", "hero-tasks", "英雄任务"], ["13", "challenges", "挑战"], ["14", "ruler-actions", "统治者行动"], ["15", "events", "事件"], ["16", "errors", "错误记录"]];
+  const nav = [["00", "top", "概览"], ["01", "loop", "基础信息与核心玩法"], ["02", "seals", "封印与 Agent 上限"], ["03", "powers", "神力"], ["04", "agent", "初始 Agent 能力"], ["05", "traits", "人物特质"], ["06", "location-modifiers", "地点修正"], ["07", "locations", "地点与设施"], ["08", "items", "物品"], ["09", "religion", "宗教与教义"], ["10", "religious-tasks", "宗教任务"], ["11", "hero-tasks", "英雄任务"], ["12", "challenges", "挑战"], ["13", "ruler-actions", "统治者行动"], ["14", "events", "事件"]];
   return <main ref={root} className={`site-shell void-theme ${sidebarHidden ? "sidebar-hidden" : ""}`} onClickCapture={(event) => { const anchor = (event.target as HTMLElement).closest('a[href^="#entry-"]'); if (anchor) setOpenEntries((current) => new Set(current).add(anchor.getAttribute("href")!.slice(1))); }}>
     <aside className="sidebar"><div className="sidebar-head"><div className="sidebar-brand god-switcher"><span className="brand-mark"><CircleDot size={17} /></span><label><select value="living-void" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇"><option value="kishi">KISHI</option><option value="living-void">LIVING VOID</option></select><small>神祇资料库</small></label></div><button className="sidebar-toggle" type="button" onClick={() => setSidebarHidden((value) => !value)} aria-label={sidebarHidden ? "展开侧边栏" : "暂时隐藏侧边栏"} title={sidebarHidden ? "展开侧边栏" : "暂时隐藏侧边栏"}>{sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}</button></div><nav className="sidebar-nav" aria-label="页面目录">{nav.map(([index, id, label]) => <a href={`#${id}`} key={id}><span>{index}</span><b>{label}</b></a>)}</nav><div className="sidebar-bulk"><button type="button" onClick={() => setOpenEntries(new Set(allExpandableIds))}>全部展开</button><button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button></div><p className="sidebar-note">悬浮带下划线的名称可查看说明，点击可跳转至详情。</p></aside>
     <div className="content-shell">
@@ -199,14 +191,12 @@ export default function LivingVoidArchive({ onGodChange }: { onGodChange: (god: 
       <RecordSection id="location-modifiers" index="06" title="地点修正"><DetailGrid items={locationModifiers} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
       <RecordSection id="locations" index="07" title="地点与设施"><DetailGrid items={locations} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
       <RecordSection id="items" index="08" title="物品"><DetailGrid items={items} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="item-rituals" index="09" title="物品仪式"><DetailGrid items={itemRituals} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="religion" index="10" title="宗教与教义"><DetailGrid items={religions} media={false} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="religious-tasks" index="11" title="宗教任务"><DetailGrid items={religiousTasks} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="hero-tasks" index="12" title="英雄任务"><DetailGrid items={heroTasks} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="challenges" index="13" title="挑战"><DetailGrid items={challenges} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="ruler-actions" index="14" title="统治者行动"><DetailGrid items={rulerActions} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="events" index="15" title="事件"><DetailGrid items={events} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="errors" index="16" title="错误记录"><DetailGrid items={errors} media={false} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
+      <RecordSection id="religion" index="09" title="宗教与教义"><DetailGrid items={religions} media={false} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
+      <RecordSection id="religious-tasks" index="10" title="宗教任务"><DetailGrid items={religiousTasks} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
+      <RecordSection id="hero-tasks" index="11" title="英雄任务"><DetailGrid items={heroTasks} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
+      <RecordSection id="challenges" index="12" title="挑战"><DetailGrid items={challenges} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
+      <RecordSection id="ruler-actions" index="13" title="统治者行动"><DetailGrid items={rulerActions} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
+      <RecordSection id="events" index="14" title="事件"><DetailGrid items={events} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
       <footer><div><CircleDot size={20} />The Living Void</div><p>基于 Living Void 2.0 模组 DLL、事件定义与原始美术素材整理。</p><span>Shadows of Forbidden Gods · Mod Archive</span></footer>
     </div>
   </main>;
