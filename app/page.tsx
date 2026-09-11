@@ -612,14 +612,14 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
             <ol className="core-sequence">
               <li><span>01</span><p>诱导英雄杀人，或让人类统治者主动宣战。</p></li>
               <li><span>02</span><p>相关人物获得 <CrossReference name="Bloodstain" />。</p></li>
-              <li><span>03</span><p>消费 Bloodstain 使用强化能力，已消费的层数转化为 <CrossReference name="Soul-Scar" />。</p></li>
+              <li><span>03</span><p>消费 <CrossReference name="Bloodstain" /> 使用强化能力，已消费的层数转化为 <CrossReference name="Soul-Scar" />。</p></li>
               <li><span>04</span><p>使用 <CrossReference name="Engulfing Tide" /> 将历史杀戮量足够高的人物转化为 <CrossReference name="Demon of the Tide" />。</p></li>
               <li><span>05</span><p>摧毁所在地并建立 <CrossReference name="Demonic Nexus" />。</p></li>
               <li><span>06</span><p>据点每回合产生 <CrossReference name="Demonic Energy" />，并通过 <CrossReference name="Distill Demonic Horde" /> 生成 <CrossReference name="Rampaging Demons" />。</p></li>
             </ol>
 
             <div className="overview-subsection">
-              <h3>Bloodstain 的主要获得方式</h3>
+              <h3><CrossReference name="Bloodstain" /> 的主要获得方式</h3>
               <div className="blood-stages" aria-label="Bloodstained Lands 的五个显示等级">
                 {["property_bloodstain_hex.png", "property_bloodstain_hex2.png", "property_bloodstain_hex3.png", "property_bloodstain_hex4.png", "property_bloodstain_hex5.png"].map((file, index) => (
                   <span key={file}>
@@ -630,16 +630,16 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
               </div>
               <ul className="source-list">
                 <li>非玩家控制人物杀死有灵魂的人。</li>
-                <li>杀人者通常继承死者已有的 Bloodstain 与 Soul-Scar。</li>
+                <li>杀人者通常继承死者已有的 <CrossReference name="Bloodstain" /> 与 <CrossReference name="Soul-Scar" />。</li>
                 <li>人类国家主动宣战时，进攻方统治者获得一层。</li>
                 <li>初始 Agent 的 <CrossReference name="Soldier Worship" /> 会给三名随机英雄各一层。</li>
-                <li>正式开始前会清除历史模拟阶段意外积累的 Bloodstain。</li>
+                <li>正式开始前会清除历史模拟阶段意外积累的 <CrossReference name="Bloodstain" />。</li>
               </ul>
             </div>
 
             <div className="overview-subsection">
-              <h3>Bloodstain 与 Soul-Scar</h3>
-              <p>消耗 Bloodstain 时，会生成同等数量的 Soul-Scar。因此早期使用 <CrossReference name="Echoes of Shadow" />、<CrossReference name="Crimson Haze" /> 等能力，不会降低 <CrossReference name="Engulfing Tide" /> 所要求的历史总杀戮量。</p>
+              <h3><CrossReference name="Bloodstain" /> 与 <CrossReference name="Soul-Scar" /></h3>
+              <p>消耗 <CrossReference name="Bloodstain" /> 时，会生成同等数量的 <CrossReference name="Soul-Scar" />。因此早期使用 <CrossReference name="Echoes of Shadow" />、<CrossReference name="Crimson Haze" /> 等能力，不会降低 <CrossReference name="Engulfing Tide" /> 所要求的历史总杀戮量。</p>
             </div>
           </article>
 

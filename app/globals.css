@@ -949,3 +949,29 @@ footer { grid-template-columns: 1fr; text-align: left; }
 @media (max-width: 760px) {
   .chandalor-theme .hero-title-wrap h1 { font-size: clamp(1.55rem, 6.8vw, 2.35rem); }
 }
+
+/* Reliable collapsed rows and base-game references */
+.expandable-row:not(.is-open) .expandable-content {
+  display: none;
+}
+.base-game-entry {
+  border-color: #45484d;
+  background: #121315;
+}
+.base-game-entry .expandable-summary {
+  background: #1a1b1e;
+}
+.base-game-entry .expandable-summary:hover,
+.base-game-entry .expandable-summary:focus-visible {
+  background: #202226;
+}
+.base-game-entry.is-open .expandable-inner {
+  background: #141518;
+}
+.base-game-entry .summary-name {
+  color: #c2c5ca;
+}
+.base-game-entry .summary-seal,
+.base-game-entry .expanded-meta {
+  color: #92969d;
+}
