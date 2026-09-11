@@ -6,8 +6,8 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kishi · 血潮档案",
-  description: "Kishi, the Jagged Tide 的中文互动机制档案",
+  title: "Shadows of Forbidden Gods · 神祇资料库",
+  description: "Kishi 与 The Living Void 的中文互动机制资料库",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
