@@ -618,7 +618,7 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
 
         <div className="overview-layout">
           <article className="overview-main">
-            <h3>核心玩法循环</h3>
+            <h3>核心玩法</h3>
             <ol className="core-sequence">
               <li><span>01</span><p>诱导英雄杀人，或让人类统治者主动宣战。</p></li>
               <li><span>02</span><p>相关人物获得 <CrossReference name="Bloodstain" />。</p></li>
@@ -650,7 +650,15 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
             <div className="overview-subsection">
               <h3><CrossReference name="Bloodstain" /> 与 <CrossReference name="Soul-Scar" /></h3>
               <p>消耗 <CrossReference name="Bloodstain" /> 时，会生成同等数量的 <CrossReference name="Soul-Scar" />。因此早期使用 <CrossReference name="Echoes of Shadow" />、<CrossReference name="Crimson Haze" /> 等能力，不会降低 <CrossReference name="Engulfing Tide" /> 所要求的历史总杀戮量。</p>
+
+              <div className="omen-info">
+                <h3>Violent Omens</h3>
+                <p>Kishi 会把英雄死亡带来的常规恐慌清零，改为每回合显示 Violent Omens。</p>
+                <code>30 × 当前回合 ÷ 360</code>
+                <p>第 360 回合为 30；第 500 回合约为 41.67。源码虽然计算了 30 的封顶值，但没有把封顶结果写回。</p>
+              </div>
             </div>
+
           </article>
 
           <aside className="basic-facts">
@@ -663,11 +671,9 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
               <div><dt>初始 Agent 上限</dt><dd>2</dd></div>
               <div><dt>最终 Agent 上限</dt><dd>6</dd></div>
             </dl>
-            <div className="omen-info">
-              <h3>Violent Omens</h3>
-              <p>Kishi 会把英雄死亡带来的常规恐慌清零，改为每回合显示 Violent Omens。</p>
-              <code>30 × 当前回合 ÷ 360</code>
-              <p>第 360 回合为 30；第 500 回合约为 41.67。源码虽然计算了 30 的封顶值，但没有把封顶结果写回。</p>
+            <div className="special-victory">
+              <h3>特殊胜利</h3>
+              <p>无</p>
             </div>
           </aside>
         </div>
