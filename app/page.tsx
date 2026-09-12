@@ -10,6 +10,7 @@ import ChandalorArchive from "./ChandalorArchive";
 import SheWhoWillFeastArchive from "./SheWhoWillFeastArchive";
 import IasturArchive from "./IasturArchive";
 import VinervaArchive from "./VinervaArchive";
+import { BrokenMakerArchive, MammonArchive, OphanimArchive } from "./BaseGodArchive";
 import GodIndex from "./GodIndex";
 import MobileReferenceDialog from "./MobileReferenceDialog";
 import {
@@ -163,7 +164,7 @@ const heroTasks: DetailItem[] = [
   {
     name: "Purge Hateful Spirit",
     meta: "Other",
-    statLine: "复杂度 3　暴露度 30　威胁度 65　经验 8（标准难度）",
+    statLine: "复杂度 3　暴露度 30　危险 65　经验 8（标准难度）",
     preferenceText: "厌恶或极端厌恶 Discord 会提高英雄执行任务的意愿；喜欢或极端喜欢 Discord 则会降低意愿。任务位于英雄故乡或亲属统治地，以及 Hateful Spirit 强度较高时，也会更有吸引力。Chosen One 与已经极端喜欢 Combat、同时极端厌恶 Cooperation 的英雄会受到 −200 的执行倾向修正。",
     text: "英雄移除所在地的 Hateful Spirit。Chosen One 不受性格扭曲；其他英雄净化成功后会极端喜欢 Combat、极端厌恶 Cooperation，除非已经拥有其中一项极端偏好。",
   },
@@ -174,8 +175,8 @@ const challenges: DetailItem[] = [
     seal: 9,
     name: "Distill Demonic Horde",
     meta: "Lore+Command",
-    statLine: "复杂度 50　暴露度 25　威胁度 25　经验 72（标准难度）",
-    text: "暴露度与威胁度实际读取 Demonic Nexus 当前的 Menace，建立时为 25，之后会随据点 Menace 一起变化。最多消耗 100 Demonic Energy，生成 HP 等于消耗量的 Rampaging Demons；新军队每增加 4 HP，Demonic Nexus 的 Menace 增加 1。",
+    statLine: "复杂度 50　暴露度 25　危险 25　经验 72（标准难度）",
+    text: "暴露度与危险实际读取 Demonic Nexus 当前的 Menace，建立时为 25，之后会随据点 Menace 一起变化。最多消耗 100 Demonic Energy，生成 HP 等于消耗量的 Rampaging Demons；新军队每增加 4 HP，Demonic Nexus 的 Menace 增加 1。",
   },
 ];
 
@@ -304,7 +305,17 @@ const extraReferences: DetailItem[] = [
 ];
 
 const allDetailItems = [...traits, ...locationModifiers, ...locations, ...minions, ...autonomousUnits, ...armies, ...religions, ...heroTasks, ...challenges, ...extraReferences];
-const referenceNames = Array.from(new Set([...powers.map((item) => item.name), ...initialAbilities.map(([name]) => name), ...allDetailItems.map((item) => item.name)])).sort((a, b) => b.length - a.length);
+function disambiguateDetailIds(items: Array<{ name: string; id?: string }>, reserved: string[]) {
+  const seen = new Map<string, number>();
+  reserved.forEach(name => seen.set(anchorFor(name), 1));
+  items.forEach(item => {
+    const base = item.id ? "entry-" + item.id : anchorFor(item.name);
+    const count = seen.get(base) ?? 0;
+    if (count > 0 && !item.id) item.id = base.replace(/^entry-/, "") + "-" + (count + 1);
+    seen.set(base, count + 1);
+  });
+}
+disambiguateDetailIds(allDetailItems, [...powers.map(item => item.name), ...initialAbilities.map(([name]) => name)]);const referenceNames = Array.from(new Set([...powers.map((item) => item.name), ...initialAbilities.map(([name]) => name), ...allDetailItems.map((item) => item.name)])).sort((a, b) => b.length - a.length);
 
 function anchorFor(name: string) {
   return `entry-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
@@ -471,13 +482,13 @@ const bloodSources = [
   "正式开始前会清除历史模拟阶段意外积累的血污。",
 ];
 
-type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor";
+type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "kishi" | "living-void" | "chandalor";
 
 export default function GodArchive() {
   const [god, setGod] = useState<GodChoice>("index");
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("god") as GodChoice | null;
-    if (requested && ["she-who-will-feast", "iastur", "vinerva", "kishi", "living-void", "chandalor"].includes(requested)) setGod(requested);
+    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "kishi", "living-void", "chandalor"].includes(requested)) setGod(requested);
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
@@ -489,6 +500,9 @@ export default function GodArchive() {
   if (god === "she-who-will-feast") return <SheWhoWillFeastArchive onGodChange={switchGod} />;
   if (god === "iastur") return <IasturArchive onGodChange={switchGod} />;
   if (god === "vinerva") return <VinervaArchive onGodChange={switchGod} />;
+  if (god === "ophanim") return <OphanimArchive onGodChange={switchGod} />;
+  if (god === "mammon") return <MammonArchive onGodChange={switchGod} />;
+  if (god === "broken-maker") return <BrokenMakerArchive onGodChange={switchGod} />;
   if (god === "living-void") return <LivingVoidArchive onGodChange={switchGod} />;
   if (god === "chandalor") return <ChandalorArchive onGodChange={switchGod} />;
   return <KishiArchive onGodChange={switchGod} />;
@@ -550,7 +564,7 @@ function KishiArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }
           <div className="sidebar-brand god-switcher">
             <span className="brand-mark"><Droplets size={17} /></span>
             <label>
-              <select value="kishi" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇"><option value="she-who-will-feast">SHE WHO WILL FEAST</option><option value="iastur">IASTUR</option><option value="vinerva">VINERVA</option><option value="kishi">KISHI</option><option value="living-void">LIVING VOID</option><option value="chandalor">CHANDALOR</option></select>
+              <select value="kishi" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇"><option value="she-who-will-feast">SHE WHO WILL FEAST</option><option value="iastur">IASTUR</option><option value="vinerva">VINERVA</option><option value="ophanim">OPHANIM</option><option value="mammon">MAMMON</option><option value="broken-maker">THE BROKEN MAKER</option><option value="kishi">KISHI</option><option value="living-void">LIVING VOID</option><option value="chandalor">CHANDALOR</option></select>
               <small>神祇资料库</small>
             </label>
           </div>

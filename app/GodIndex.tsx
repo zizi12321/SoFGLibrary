@@ -3,11 +3,14 @@
 import Image from "next/image";
 import { ArrowUpRight, BookOpen, CircleDot } from "lucide-react";
 
-type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor";
+type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "kishi" | "living-void" | "chandalor";
 const gods = [
   { id: "she-who-will-feast", name: "She Who Will Feast", type: "游戏本体", image: "/she-who-will-feast/portrait.png", focus: "渗透、Shadow 扩散与苏醒军队", awaken: "375" },
   { id: "iastur", name: "Iastur, The Laughing King", type: "游戏本体", image: "/iastur/portrait.png", focus: "Laughing Tome、Madness 与性格操纵", awaken: "360" },
   { id: "vinerva", name: "Vinerva", type: "游戏本体", image: "/vinerva/portrait.png", focus: "森林之心、诱惑馈赠与自然军势", awaken: "420" },
+  { id: "ophanim", name: "Ophanim, The Divine Beyond", type: "游戏本体", image: "/ophanim/portrait.png", focus: "Faith、Doubt 与神权国家", awaken: "400" },
+  { id: "mammon", name: "Mammon, Wealth of Man, Spirit of the Mountain", type: "游戏本体", image: "/mammon/portrait.png", focus: "贸易网络、Greed/Decadence 与吞噬", awaken: "800" },
+  { id: "broken-maker", name: "The Broken Maker", type: "游戏本体", image: "/broken-maker/portrait.png", focus: "家族诅咒、世代轮回与借用神力", awaken: "300" },
   { id: "kishi", name: "Kishi", type: "模组神祇", image: "/kishi/god_portrait.png", focus: "Bloodstain、Soul-Scar 与恶魔浪潮", awaken: "360" },
   { id: "living-void", name: "Living Void", type: "模组神祇", image: "/living-void/god_portrait.png", focus: "虚空侵蚀、真空异常与世界坍缩", awaken: "400" },
   { id: "chandalor", name: "Chandalor, the Cursed Bloom", type: "模组神祇", image: "/chandalor/god_portrait.png", focus: "婚姻网络、家族诅咒与精神干扰", awaken: "375" },

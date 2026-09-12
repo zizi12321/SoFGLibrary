@@ -1060,4 +1060,19 @@ footer { grid-template-columns: 1fr; text-align: left; }
   .god-index-copy b { font-size:16px; }
   .god-index-copy span { font-size:11px; }
   .god-index-copy em { font-size:9px; }
-}
+}/* Base-game elder god archive themes */
+.ophanim-theme { --blood: #c7a85e; --blood-dark: #4a3a1b; --acid: #f2df9b; }
+.ophanim-theme .hero-backdrop { opacity: .27; filter: saturate(.7) contrast(1.14); }
+.ophanim-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.9) 43%, rgba(86,71,27,.30) 100%); }
+.ophanim-theme .portrait-frame img, .ophanim-theme .summary-image img, .ophanim-theme .cross-image img { object-fit: contain; }
+.ophanim-theme .task-stat-line { border-left-color: var(--blood); }
+.mammon-theme { --blood: #b78237; --blood-dark: #4b3014; --acid: #e5bf73; }
+.mammon-theme .hero-backdrop { opacity: .28; filter: saturate(.78) contrast(1.16); }
+.mammon-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.9) 43%, rgba(96,57,16,.32) 100%); }
+.mammon-theme .portrait-frame img, .mammon-theme .summary-image img, .mammon-theme .cross-image img { object-fit: contain; }
+.mammon-theme .task-stat-line { border-left-color: var(--blood); }
+.broken-maker-theme { --blood: #82739a; --blood-dark: #312840; --acid: #cdbde1; }
+.broken-maker-theme .hero-backdrop { opacity: .26; filter: saturate(.65) contrast(1.2); }
+.broken-maker-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.9) 43%, rgba(55,39,76,.34) 100%); }
+.broken-maker-theme .portrait-frame img, .broken-maker-theme .summary-image img, .broken-maker-theme .cross-image img { object-fit: contain; }
+.broken-maker-theme .task-stat-line { border-left-color: var(--blood); }
