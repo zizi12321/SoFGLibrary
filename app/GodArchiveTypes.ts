@@ -46,9 +46,25 @@ function normalizeLocationModifiers(config: GodConfig) {
   }));
 }
 
+function normalizeSectionOrder(config: GodConfig) {
+  const preferredOrder = ["units", "challenges", "hero-tasks"];
+  const firstPreferredIndex = config.sections.findIndex(section => preferredOrder.includes(section.id));
+  if (firstPreferredIndex < 0) return;
+  const preferredSections = preferredOrder
+    .map(id => config.sections.find(section => section.id === id))
+    .filter((section): section is SectionConfig => Boolean(section));
+  const remainingSections = config.sections.filter(section => !preferredOrder.includes(section.id));
+  const before = config.sections
+    .slice(0, firstPreferredIndex)
+    .filter(section => !preferredOrder.includes(section.id));
+  const after = remainingSections.filter(section => !before.includes(section));
+  config.sections = [...before, ...preferredSections, ...after];
+}
+
 export function prepareGodConfig(config: GodConfig) {
   normalizeTaskTags(config);
   normalizeLocationModifiers(config);
+  normalizeSectionOrder(config);
   disambiguateConfigEntries(config);
   return config;
 }

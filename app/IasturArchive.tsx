@@ -77,11 +77,12 @@ return {
   maxTurns: "常规 500 回合", awaken: "第 360 回合", panic: "75%", finalAgents: "6", progressLabel: "回合", unlockMethod: "常规回合解锁", powerRecovery: "Tome 状态会覆盖本体恢复：Bound/Asleep 为 0.5 倍，UnBound 或地点修正影响凡人时为 1.5 倍。",
   core: [
   "Supplicant 开局携带 <CrossReference name=\"Laughing Tome\" />，并依靠 <CrossReference name=\"Protector of the Tome\" /> 获得战斗加成。",
-  "用 <CrossReference name=\"Place Tome\" /> 把书放进人类聚居地，让 <CrossReference修正的人类聚 name=\"Laughing King's Tome\" /> 持续累积 <CrossReference name=\"Madness\" />。",
+  "用 <CrossReference name=\"Place Tome\" /> 把书放进人类聚居地，让 <CrossReference name=\"Laughing King's Tome\" /> 持续累积 <CrossReference name=\"Madness\" />。",
   "根据 Tome 的状态改变神力恢复，再用喜好与厌恶神力重写英雄和统治者的决策。",
   "英雄可能用 <CrossReference name=\"Bind Tome\" /> 封印书；抢回后执行 <CrossReference name=\"Unbind Tome\" />，或从 Elder Tomb 使用 <CrossReference name=\"Summon Tome\" />。",
   "第 5 封印的 <CrossReference name=\"Everyone Shall Play\" /> 让 Madness 波及邻城；第 7 封印用 <CrossReference name=\"Hysterical Tome\" /> 留下额外污染源。",
   "苏醒后由携书 Agent 在 Elder Tomb 引导 <CrossReference name=\"Waves of Madness\" />，使有效英雄与统治者陷入疯狂。",  ],
+  overviewExtra: { title: "Madness 与 Tome 状态", text: "<CrossReference name=\"Madness\" /> 由地点上的 Tome、<CrossReference name=\"Maddening Tongues\" /> 和 <CrossReference name=\"Everyone Shall Play\" /> 等机制累积；超过 100 后会增加当地 Unrest，并逐步侵蚀统治者的 Sanity，达到 300 时触发一次 <CrossReference name=\"Madness Crisis\" />，留下长期效果并回落到 150。Tome 处于 Bound、Asleep、UnBound 或作为地点修正影响凡人时，会改变 Iastur 的神力恢复倍率。" },
   seals: seals.map(item => ({ seal: item.seal, progress: item.turn, agents: item.agents, reward: item.reward ? item.reward.split("、") : [] })),
   powers,
   supplicant: { image: "supplicant.png", stats: "Might 2　Lore 2　Intrigue 4　Command 3", abilities: supplicantAbilities.map(([name, text]) => ({ name, text })) },

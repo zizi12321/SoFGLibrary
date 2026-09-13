@@ -24,7 +24,9 @@ function entryFor(config: GodConfig, name: string) {
 }
 function imageFor(config: GodConfig, image?: string) {
  const cacheBust = config.id === "deaths-games" ? "?v=2" : "";
- return image ? "./" + config.assetDir + "/" + image + cacheBust : undefined;
+ if (!image) return undefined;
+ if (image.startsWith("./") || image.startsWith("/")) return image;
+ return "./" + config.assetDir + "/" + image + cacheBust;
 }
 
 function CrossReference({ config, name, href, meta, text, image }: { config: GodConfig; name: string; href?: string; meta?: string; text?: string; image?: string }) {
@@ -47,13 +49,13 @@ function renderPlain(config: GodConfig, text: string, exclude?: string): ReactNo
  return text.split(pattern).map((part, index) => names.includes(part) ? <CrossReference key={part + "-" + index} config={config} name={part} /> : part);
 }
 function RichText({ config, text, exclude }: { config: GodConfig; text: string; exclude?: string }) {
- const marker = /<CrossReference name="([^"]+)"(?: href="([^"]+)")?(?: meta="([^"]+)")?\s*\/>/g;
+ const marker = /<CrossReference name="([^"]+)"(?: href="([^"]+)")?(?: meta="([^"]+)")?(?: text="([^"]+)")?(?: image="([^"]+)")?\s*\/>/g;
  const nodes: ReactNode[] = [];
  let cursor = 0;
  let match: RegExpExecArray | null;
  while ((match = marker.exec(text))) {
    if (match.index > cursor) nodes.push(...renderPlain(config, text.slice(cursor, match.index), exclude));
-   nodes.push(<CrossReference key={"marker-" + match.index} config={config} name={match[1]} href={match[2]} meta={match[3]} />);
+   nodes.push(<CrossReference key={"marker-" + match.index} config={config} name={match[1]} href={match[2]} meta={match[3]} text={match[4]} image={match[5]} />);
    cursor = marker.lastIndex;
  }
  if (cursor < text.length) nodes.push(...renderPlain(config, text.slice(cursor), exclude));

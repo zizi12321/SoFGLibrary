@@ -76,6 +76,7 @@ return {
   "在高 Shadow 区域使用 <CrossReference name=\"Dangers in the Dark\" /> 提高英雄任务风险，并用 <CrossReference name=\"Fleeting Servant\" /> 把英雄引到无关地点。",
   "用 <CrossReference name=\"Cloud Senses\" /> 打退关键任务进度；用 <CrossReference name=\"Split Shadow\" /> 从英雄身上制造额外可控 Agent。",
   "第 375 回合苏醒后，直接控制 <CrossReference name=\"She Who Will Feast\" /> 军队，摧毁已经被战争、瘟疫或饥荒削弱的国家。",  ],
+  overviewExtra: { title: "Shadow 与黑暗扩张", text: "<CrossReference name=\"Shadow\" /> 通过 Enshadow 挑战、<CrossReference name=\"The Dying Light\" />、<CrossReference name=\"Serpent's Coils\" /> 以及相邻地点的传播逐步累积。地点 Shadow 超过 50% 后，<CrossReference name=\"Shadow Agent\" /> 才能在当地安全行动；<CrossReference name=\"Dangers in the Dark\" /> 也要求这一阈值。Shadow 达到 100% 后地点完全 Enshadowed，并计入 She Who Will Feast 的征服进度。" },
   seals: seals.map(item => ({ seal: item.seal, progress: item.turn, agents: item.agents, reward: item.reward ? item.reward.split("、") : [] })),
   powers,
   supplicant: { image: "supplicant.png", stats: "Might 2　Lore 2　Intrigue 4　Command 3", abilities: supplicantAbilities.map(([name, text]) => ({ name, text })) },
