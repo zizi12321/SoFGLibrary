@@ -1,20 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import { useRef, useState, type ReactNode } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronDown, CircleDot, Eye, PanelLeftClose, PanelLeftOpen, Shield } from "lucide-react";
-import MobileReferenceDialog from "./MobileReferenceDialog";
-import { GodMark } from "../components/GodMark";
+import { GodArchive } from "./BaseGodArchive";
+import { prepareGodConfig } from "./GodArchiveTypes";
+import type { ArchiveGodChoice, DetailItem, GodConfig, Relation } from "./GodArchiveTypes";
+function anchorFor(name: string) { return "entry-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/, ""); }
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "cordyceps" | "kishi" | "living-void" | "chandalor";
-type Relation = { name: string; href: string; meta?: string; text?: string; image?: string };
-type DetailItem = { name: string; text: string; image?: string; images?: string[]; seal?: number; meta?: string; statLine?: string; location?: string; preferenceText?: string; id?: string; baseGame?: boolean };
-
+const config: GodConfig = (() => {
 const seals = [
   { seal: 0, turn: 0, agents: 2, reward: "Sense Loneliness、Move On、Growing Bond" },
   { seal: 1, turn: 12, agents: 2, reward: "Ceremony、Forgive and Forget" },
@@ -45,7 +37,7 @@ const powers = [
   { seal: 9, name: "Stand in Awe", cost: 0, icon: "power_standinawe.png", effect: "被动苏醒效果：从 Elder Tomb 开始产生 Chandalor's Awe，并以每回合一层相邻地点的速度向外传播。受影响的非黑暗人类或精灵聚居地失去 0.75 Prosperity 与 10 Security。", limit: "随第 9 封印与苏醒自动生效，不能主动施放。Dark Empire 不受经济和安全惩罚。" },
 ];
 
-const initialAbilities: [string, string][] = [
+const supplicantAbilities: [string, string][] = [
   ["Enchanting Presence", "把 Supplicant 的 Menace 变化压到极低，使其实际始终保持最低 Menace。"],
   ["Beguiler", "每逢 5 的倍数回合，若有空随从槽，就在第一个空位免费补入一名本体 Sellsword。"],
   ["Flowered Death", "Supplicant 死亡时在所在地留下 100 点 Mystifying Petals；若当地已经存在同类修正则不重复生成。苏醒前不会自行传播。"],
@@ -70,18 +62,18 @@ const familyCurses: DetailItem[] = [
 ];
 
 const locationModifiers: DetailItem[] = [
-  { seal: 1, name: "Ceremonial Plaza", image: "power_ceremony.png", text: "由 Ceremony 建立，初始强度 100，每回合自然下降 1。英雄可在这里执行 Wedding Ceremony，当地统治者也能举办婚礼；每次消耗 50 点强度，城市沦为废墟时消失。" },
-  { name: "Mystifying Petals", image: "power_standinawe.png", text: "由 Flowered Death 在 Supplicant 死亡地点留下。苏醒前不扩散；在非黑暗的人类或精灵聚居地造成每回合 −0.5 Prosperity 与 −5 Security，并会在城市成为废墟后保留。" },
-  { seal: 9, name: "Chandalor's Awe", image: "power_standinawe.png", text: "苏醒后从 Elder Tomb 开始，每一处修正只在创建后的下一回合向全部相邻地点复制一次，因此波纹每回合向外推进一层。在非黑暗的人类或精灵聚居地造成每回合 −0.75 Prosperity 与 −10 Security。" },
-  { name: "Wicked Curse: Failing Crops", image: "ch_witchcurse.png", text: "由 Holy: Wicked Curse 随机产生，约持续 50 回合；当地粮食产出只剩正常值的 25%。有 Farms 时抽中权重从 10 提高到 50。" },
-  { name: "Wicked Curse: Misfortune", image: "ch_witchcurse.png", text: "由 Holy: Wicked Curse 随机产生，约持续 50 回合；每回合施加 −0.5 Prosperity。城市地点抽中权重从 10 提高到 50。" },
-  { name: "Wicked Curse: Obedience", image: "ch_witchcurse.png", text: "由 Holy: Wicked Curse 随机产生，约持续 50 回合；当地 Security −4。基础权重为 10，并按未渗透比例降低，最低为 1，因此渗透越高越不容易抽中。" },
-  { name: "Wicked Curse: Unburied Dead", image: "ch_witchcurse.png", text: "由 Holy: Wicked Curse 随机产生，约持续 50 回合；每回合增加 2.5 Death，结束时再增加 10 Plague。有 Catacombs 时抽中权重从 10 提高到 50。" },
-  { name: "Wicked Curse: Outbreak of Anger", image: "ch_witchcurse.png", text: "由 Holy: Wicked Curse 随机产生，约持续 50 回合；每回合同时增加 3 Unrest 与 3 Political Agitation。城市地点抽中权重从 10 提高到 50。" },
+  { seal: 1, name: "Ceremonial Plaza", image: "power_ceremony.png", initialValue: "强度 100。", modifierChange: { natural: "每回合自然下降 1。", external: "由 Ceremony 建立；每次 Wedding Ceremony 消耗 50 点强度，城市沦为废墟时消失。" }, text: "英雄可在这里执行 Wedding Ceremony，当地统治者也能举办婚礼。" },
+  { name: "Mystifying Petals", image: "power_standinawe.png", initialValue: "", modifierChange: { natural: "", external: "" }, text: "由 Flowered Death 在 Supplicant 死亡地点留下。" },
+  { seal: 9, name: "Chandalor's Awe", image: "power_standinawe.png", initialValue: "", modifierChange: { natural: "", external: "" }, text: "由 Stand in Awe 在苏醒后从 Elder Tomb 开始建立；每个已有修正会在创建后的下一回合向相邻地点复制一次。受影响的非黑暗人类或精灵聚居地会失去 Prosperity 与 Security。" },
+  { name: "Wicked Curse: Failing Crops", image: "ch_witchcurse.png", initialValue: "强度 100。", modifierChange: { natural: "每回合衰减 2，约 50 回合后移除。", external: "由 Holy: Wicked Curse 随机产生；有 Farms 时抽中权重从 10 提高到 50。" }, text: "当地粮食产出只剩正常值的 25%。" },
+  { name: "Wicked Curse: Misfortune", image: "ch_witchcurse.png", initialValue: "强度 100。", modifierChange: { natural: "每回合衰减 2，约 50 回合后移除。", external: "由 Holy: Wicked Curse 随机产生；城市地点抽中权重从 10 提高到 50。" }, text: "造成 Prosperity 惩罚。" },
+  { name: "Wicked Curse: Obedience", image: "ch_witchcurse.png", initialValue: "强度 100。", modifierChange: { natural: "每回合衰减 2，约 50 回合后移除。", external: "由 Holy: Wicked Curse 随机产生；基础权重为 10，并按未渗透比例降低，最低为 1。" }, text: "当地 Security −4。" },
+  { name: "Wicked Curse: Unburied Dead", image: "ch_witchcurse.png", initialValue: "强度 100。", modifierChange: { natural: "每回合衰减 2，约 50 回合后移除；结束时增加 10 Plague。", external: "由 Holy: Wicked Curse 随机产生；有 Catacombs 时抽中权重从 10 提高到 50。" }, text: "造成 Death，并在结束时造成 Plague。" },
+  { name: "Wicked Curse: Outbreak of Anger", image: "ch_witchcurse.png", initialValue: "强度 100。", modifierChange: { natural: "每回合衰减 2，约 50 回合后移除。", external: "由 Holy: Wicked Curse 随机产生；每回合增加 3 Unrest 与 3 Political Agitation；城市地点抽中权重从 10 提高到 50。" }, text: "造成 Unrest 与 Political Agitation。" },
 ];
 
 const minions: DetailItem[] = [
-  { name: "Sellsword", baseGame: true, text: "本体随从。攻击 2、防御 2、生命 2，占用 1 Command；通常购买价格为 15 Gold。Beguiler 每 5 回合检查一次 Supplicant 的随从槽，并免费把一名 Sellsword 放进第一个空位，因此此处不会支付金币。" },
+  { name: "Sellsword", baseGame: true, stats: "HP 2；Attack 2；Defence 2；Command 1", text: "本体随从。通常购买价格 15 Gold；Beguiler 每 5 回合检查一次 Supplicant 的随从槽，并免费把一名 Sellsword 放进第一个空位，因此此处不会支付金币。" },
 ];
 
 const religions: DetailItem[] = [
@@ -89,61 +81,20 @@ const religions: DetailItem[] = [
 ];
 
 const heroTasks: DetailItem[] = [
-  { name: "Wedding Ceremony", id: "hero-wedding", image: "power_ceremony.png", location: "有 Ceremonial Plaza 的聚居地。", meta: "Other", statLine: "Complexity: 3　Profile: 200　Menace: 0　XP: 8", preferenceText: "没有性格喜好或厌恶标签。代码按人际关系计算吸引力：有合适对象时给 +60 或 +120；但“双方相爱”的分支误读了发起者自己的极端喜欢列表，实际只要英雄极端喜欢一名未婚、不同家族的对象，就很容易得到 +120。", text: "未婚英雄在 Ceremonial Plaza 举办婚礼，与其极端喜欢的未婚、不同家族人物建立配偶关系，并消耗广场 50 点强度。文本声称对方也必须喜欢英雄，但源码的极端喜欢判断并未可靠验证对方态度。" },
+  { name: "Wedding Ceremony", id: "hero-wedding", image: "power_ceremony.png", location: "有 Ceremonial Plaza 的聚居地。", meta: "Other", statLine: "Complexity: 3　Profile: 200　Menace: 0　XP: 8", positiveTags: "无", negativeTags: "无", text: "未婚英雄在 Ceremonial Plaza 举办婚礼，与其极端喜欢的未婚、不同家族人物建立配偶关系，并消耗广场 50 点强度。文本声称对方也必须喜欢英雄，但源码的极端喜欢判断并未可靠验证对方态度。" },
 ];
 
 const religiousTasks: DetailItem[] = [
-  { name: "Holy: Wicked Curse", image: "ch_witchcurse.png", location: "任意非 Dark Empire 的人类聚居地。", meta: "Lore", statLine: "Complexity: 50　Profile: 100　Menace: 0　XP: 72", preferenceText: "喜欢或极端喜欢 Religion、Cruelty 会提高执行意愿，厌恶这两项则会降低；Wicked Curses 教义处于 −1 时另加 75。", text: "Witches Holy Order 的成员在任意人类聚居地施加一种随机地点诅咒，完成时增加 5 Profile 与 8 Menace。地点不能已有 Wicked Curse，Dark Empire 统治地不可选。五种结果均以 100 点强度开始、每回合衰减 2，约持续 50 回合。" },
+  { name: "Holy: Wicked Curse", image: "ch_witchcurse.png", location: "任意非 Dark Empire 的人类聚居地。", meta: "Lore", statLine: "Complexity: 50　Profile: 100　Menace: 0　XP: 72", positiveTags: "Religion、Cruelty", negativeTags: "无", text: "Witches Holy Order 的成员在任意人类聚居地施加一种随机地点诅咒，完成时增加 5 Profile 与 8 Menace。地点不能已有 Wicked Curse，Dark Empire 统治地不可选。五种结果均以 100 点强度开始、每回合衰减 2，约持续 50 回合。" },
 ];
 
 const rulerActions: DetailItem[] = [
-  { name: "Wedding Ceremony", id: "ruler-wedding", image: "power_ceremony.png", location: "有 Ceremonial Plaza 的聚居地。", text: "当地未婚统治者花费 3 回合，在所在地的 Ceremonial Plaza 与其极端喜欢的未婚、不同家族人物结婚，并消耗 50 点广场强度。行动没有正面性格标签，负面标签为 Gold：厌恶 Gold 的统治者更愿意执行，喜欢 Gold 的统治者更不愿意。关系判断与英雄版共享同一处互相喜欢判定问题。" },
+  { name: "Wedding Ceremony", id: "ruler-wedding", image: "power_ceremony.png", location: "有 Ceremonial Plaza 的聚居地。", time: "3 回合", positiveTags: "无", negativeTags: "Gold", text: "当地未婚统治者在所在地的 Ceremonial Plaza 与其极端喜欢的未婚、不同家族人物结婚，并消耗 50 点广场强度。关系判断与英雄版共享同一处互相喜欢判定问题。" },
 ];
 
 const events: DetailItem[] = [
   { name: "Wicked Curses 觉醒", id: "wicked-curses-event", image: "curse_activateHO.png", text: "本局第一次有女巫在 Wicked Curses 教义处于 Elder 影响时进行回合结算，会显示此事件，告知女巫教团已经开始把诅咒传播到人类聚居地；事件本身不再附加额外数值效果。" },
 ];
-
-const detailCollections = [traits, familyCurses, locationModifiers, minions, religions, heroTasks, religiousTasks, rulerActions, events];
-const allDetails = detailCollections.flat();
-function disambiguateDetailIds(items: Array<{ name: string; id?: string }>, reserved: string[]) {
- const seen = new Map<string, number>();
- reserved.forEach(name => seen.set(anchorFor(name), 1));
- items.forEach(item => { const base = item.id ? "entry-" + item.id : anchorFor(item.name); const count = seen.get(base) ?? 0; if (count > 0 && !item.id) item.id = base.replace(/^entry-/, "") + "-" + (count + 1); seen.set(base, count + 1); });
-}
-disambiguateDetailIds(allDetails, [...powers.map(item => item.name), ...initialAbilities.map(item => item[0])]);
-const referenceAliases: Record<string, string> = { "Vile Curse 使用上限 2 次": "Vile Curse", "Vile Curse 使用上限 3 次": "Vile Curse" };
-const referenceNames = Array.from(new Set([...powers.map((p) => p.name), ...initialAbilities.map(([n]) => n), ...allDetails.map((d) => d.name)])).sort((a, b) => b.length - a.length);
-function anchorFor(name: string) {
-  return `entry-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
-}
-function refFor(name: string) {
-  const lookupName = referenceAliases[name] ?? name;
-  const power = powers.find((item) => item.name === lookupName);
-  if (power) return { name: lookupName, image: power.icon, meta: `封印 ${power.seal} · 消耗 ${power.cost}`, text: power.effect, href: `#${anchorFor(lookupName)}` };
-  const ability = initialAbilities.find(([n]) => n === name);
-  if (ability) return { name, image: "supplicant.png", meta: "初始 Agent 能力", text: ability[1], href: `#${anchorFor(name)}` };
-  const detail = allDetails.find((item) => item.name === name);
-  if (!detail) return null;
-  return { name, image: detail.image ?? detail.images?.[0], meta: detail.meta ?? (detail.seal !== undefined ? `封印 ${detail.seal}` : "机制说明"), text: detail.text, href: `#${detail.id ? `entry-${detail.id}` : anchorFor(name)}` };
-}
-function CrossReference({ name, href, meta, text, image }: { name: string; href?: string; meta?: string; text?: string; image?: string }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const reference = refFor(name);
-  if (!reference && !text) return <>{name}</>;
-  const resolved = { name, href: href ?? reference?.href ?? "#", meta: meta ?? reference?.meta ?? "机制说明", text: text ?? reference?.text ?? "", image: image ?? reference?.image };
-  const imageSrc = resolved.image ? `./chandalor/${resolved.image}` : undefined;
-  return <><a className="cross-reference" href={resolved.href} onClick={(event) => { if (window.matchMedia("(hover: none), (pointer: coarse)").matches) { event.preventDefault(); setMobileOpen(true); } }}><span className="cross-label">{name}</span><span className="cross-popover" role="tooltip">{imageSrc && <span className="cross-image"><Image src={imageSrc} alt="" fill sizes="72px" /></span>}<span className="cross-copy"><small>{resolved.meta}</small><b>{resolved.name}</b><span>{resolved.text}</span><em>点击跳转至详情</em></span></span></a><MobileReferenceDialog open={mobileOpen} onClose={() => setMobileOpen(false)} name={resolved.name} meta={resolved.meta} text={resolved.text} href={resolved.href} imageSrc={imageSrc} /></>;
-}
-function RichText({ text, exclude }: { text: string; exclude?: string }) {
-  const names = referenceNames.filter((name) => name !== exclude);
-  const escaped = names.map((name) => name.replace(/[-/^$*+?.()|[\]{}]/g, "\\$&"));
-  const parts = escaped.length ? text.split(new RegExp(`(${escaped.join("|")})`, "g")) : [text];
-  return <>{parts.map((part, index) => names.includes(part) ? <CrossReference name={part} key={`${part}-${index}`} /> : part)}</>;
-}
-function ExpandableRow({ entryId, name, seal, cost, image, baseGame = false, open, onToggle, children }: { entryId: string; name: string; seal?: number; cost?: number; image?: string; baseGame?: boolean; open: boolean; onToggle: (id: string) => void; children: ReactNode }) {
-  return <article className={`expandable-row ${baseGame ? "base-game-entry" : ""} ${open ? "is-open" : ""}`} id={entryId}><button className="expandable-summary" type="button" onClick={() => onToggle(entryId)} aria-expanded={open}>{seal !== undefined && <span className="summary-seal">{seal}</span>}{image && <span className="summary-image"><Image src={`./chandalor/${image}`} alt="" fill sizes="56px" /></span>}<span className="summary-name">{name}</span><ChevronDown className="summary-chevron" size={16} />{cost !== undefined && <span className="summary-cost"><small>消耗</small>{cost}</span>}</button><div className="expandable-content"><div className="expandable-inner">{children}</div></div></article>;
-}
 
 const relations: Record<string, { sources?: Relation[]; effects?: Relation[] }> = {
   "Growing Bond Mark": { sources: [{ name: "Growing Bond", href: "#entry-growing-bond" }] },
@@ -171,38 +122,38 @@ const powerEffects: Record<string, Relation[]> = {
   "Curse of Obsession": [{ name: "Curse of Obsession 家族诅咒", href: "#entry-family-curse-obsession" }, { name: "Obsession", href: "#entry-obsession" }],
   "Stand in Awe": [{ name: "Chandalor's Awe", href: "#entry-chandalor-s-awe" }],
 };
-function RelationGroup({ title, items }: { title: string; items?: Relation[] }) { if (!items?.length) return null; return <div className="relation-group"><b>{title}</b><div>{items.map((item) => <CrossReference key={`${title}-${item.href}`} {...item} />)}</div></div>; }
-function DetailGrid({ items, openEntries, onToggle, media = true }: { items: DetailItem[]; openEntries: Set<string>; onToggle: (id: string) => void; media?: boolean }) {
-  return <div className="expandable-table">{items.map((item) => { const entryId = item.id ? `entry-${item.id}` : anchorFor(item.name); const rel = relations[item.id ?? item.name]; return <ExpandableRow key={entryId} entryId={entryId} name={item.name} seal={item.seal} image={media ? item.image ?? item.images?.[0] : undefined} baseGame={item.baseGame} open={openEntries.has(entryId)} onToggle={onToggle}>{item.meta && <div className="expanded-meta">{item.meta}</div>}{item.location && <div className="task-location"><b>执行地点</b><RichText text={item.location} exclude={item.name} /></div>}{item.statLine && <div className="task-stat-line">{item.statLine}</div>}<p><RichText text={item.text} exclude={item.name} /></p>{item.preferenceText && <div className="preference-note"><b>执行倾向</b><p><RichText text={item.preferenceText} exclude={item.name} /></p></div>}<RelationGroup title="来源" items={rel?.sources} /><RelationGroup title="造成的效果" items={rel?.effects} /></ExpandableRow>; })}</div>;
-}
-function RecordSection({ id, index, title, children }: { id: string; index: string; title: string; children: ReactNode }) { return <section id={id} className="section records-section"><div className="plain-heading"><p className="section-index">{index} / {title}</p><h2>{title}</h2></div>{children}</section>; }
+const configRelations: Record<string, { sources?: Relation[]; effects?: Relation[] }> = Object.fromEntries(Array.from(new Set([...Object.keys(relations), ...Object.keys(powerEffects)])).map(name => [name, { ...(relations[name] ?? {}), effects: [...(relations[name]?.effects ?? []), ...(powerEffects[name] ?? [])] }]));
+return {
+  id: "chandalor", name: "Chandalor, the Cursed Bloom", number: "06", theme: "chandalor-theme", assetDir: "chandalor", background: "god_main.png", portrait: "god_portrait.png",
+  flavour: "",
+  caption: "婚姻网络、家族诅咒与精神干扰",
+  maxTurns: "常规 500 回合", awaken: "第 375 回合", panic: "50%", finalAgents: "5", progressLabel: "回合", unlockMethod: "常规回合解锁", powerRecovery: "0.035 ×（已破封印数 + 1）× 难度缩放。",
+  core: [
+  "用 <CrossReference name=\"Sense Loneliness\" /> 找出未婚英雄和统治者。",
+  "用 <CrossReference name=\"Growing Bond\" /> 提高两人的相互好感。",
+  "建立 <CrossReference name=\"Ceremonial Plaza\" />，让英雄或统治者举办 <CrossReference name=\"Wedding Ceremony\" />，把两个家族连接起来。",
+  "用 <CrossReference name=\"Vile Curse\" /> 和三种专属诅咒削弱关键家族。",
+  "沿婚姻施放 <CrossReference name=\"Blood Bond\" />，把一个家族的诅咒复制给配偶家族。",
+  "后期用 <CrossReference name=\"Rapture\" /> 按家族诅咒数打断英雄与统治者，同时让 <CrossReference name=\"Chandalor's Awe\" /> 向全图扩散。",  ],
+  seals: seals.map(item => ({ seal: item.seal, progress: item.turn, agents: item.agents, reward: item.reward ? item.reward.split("、") : [] })),
+  powers,
+  supplicant: { image: "supplicant.png", stats: "Might 2　Lore 2　Intrigue 4　Command 3", abilities: supplicantAbilities.map(([name, text]) => ({ name, text })) },
+  sections: [
+  { id: "traits", title: "人物特质", media: true, items: traits },
+  { id: "familyCurses", title: "家族诅咒", media: true, items: familyCurses },
+  { id: "location-modifiers", title: "地点修正", media: true, items: locationModifiers },
+  { id: "minions", title: "随从", media: true, items: minions },
+  { id: "religions", title: "宗教与教义", media: true, items: religions },
+  { id: "religious-tasks", title: "宗教任务", media: true, items: religiousTasks },
+  { id: "hero-tasks", title: "英雄任务", media: true, items: heroTasks },
+  { id: "ruler-actions", title: "统治者行动", media: true, items: rulerActions },
+  { id: "events", title: "事件", media: true, items: events },  ],
+  relations: configRelations,
+};
+})();
 
-export default function ChandalorArchive({ onGodChange }: { onGodChange: (god: GodChoice) => void }) {
-  const root = useRef<HTMLElement>(null);
-  const [sidebarHidden, setSidebarHidden] = useState(false);
-  const [openEntries, setOpenEntries] = useState<Set<string>>(new Set());
-  const allExpandableIds = [...powers.map((power) => anchorFor(power.name)), anchorFor("Supplicant"), ...detailCollections.flat().map((item) => item.id ? `entry-${item.id}` : anchorFor(item.name))];
-  const toggleEntry = (id: string) => setOpenEntries((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
-  useGSAP(() => { if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; gsap.from(".hero-line", { yPercent: 115, duration: 1.05, ease: "power4.out" }); gsap.from(".hero-portrait", { scale: 1.06, opacity: 0, duration: 1.35, ease: "power3.out" }); gsap.utils.toArray<HTMLElement>(".reveal-image").forEach((element) => gsap.fromTo(element, { scale: 1.08, opacity: .2 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: element, start: "top 92%", end: "bottom 58%", scrub: .8 } })); }, { scope: root });
-  const nav = [["00", "top", "概览"], ["01", "loop", "基础信息与核心玩法"], ["02", "seals", "封印与 Agent 上限"], ["03", "powers", "神力"], ["04", "agent", "初始 Agent 能力"], ["05", "traits", "人物特质"], ["06", "family-curses", "家族诅咒"], ["07", "location-modifiers", "地点修正"], ["08", "minions", "随从"], ["09", "religion", "宗教与教义"], ["10", "religious-tasks", "宗教任务"], ["11", "hero-tasks", "英雄任务"], ["12", "ruler-actions", "统治者行动"], ["13", "events", "事件"]];
-  return <main ref={root} className={`site-shell chandalor-theme ${sidebarHidden ? "sidebar-hidden" : ""}`} onClickCapture={(event) => { const anchor = (event.target as HTMLElement).closest('a[href^="#entry-"]'); if (anchor) setOpenEntries((current) => new Set(current).add(anchor.getAttribute("href")!.slice(1))); }}>
-    <aside className="sidebar"><div className="sidebar-head"><div className="sidebar-brand god-switcher"><span className="brand-mark"><GodMark god="chandalor" /></span><label><select value="chandalor" onChange={(event) => onGodChange(event.target.value as GodChoice)} aria-label="切换神祇"><option value="she-who-will-feast">SHE WHO WILL FEAST</option><option value="iastur">IASTUR</option><option value="vinerva">VINERVA</option><option value="ophanim">OPHANIM</option><option value="mammon">MAMMON</option><option value="broken-maker">THE BROKEN MAKER</option><option value="evil-beneath">THE EVIL BENEATH</option><option value="deaths-games">DEATH'S GAMES</option><option value="cordyceps">CORDYCEPS</option><option value="kishi">KISHI</option><option value="living-void">LIVING VOID</option><option value="chandalor">CHANDALOR</option></select><small>神祇资料库</small></label></div><button className="sidebar-toggle" type="button" onClick={() => setSidebarHidden((value) => !value)} aria-label={sidebarHidden ? "展开侧边栏" : "暂时隐藏侧边栏"} title={sidebarHidden ? "展开侧边栏" : "暂时隐藏侧边栏"}>{sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}</button></div><button className="sidebar-index-link" type="button" onClick={() => onGodChange("index")}>← 返回神祇索引</button><nav className="sidebar-nav" aria-label="页面目录">{nav.map(([index, id, label]) => <a href={`#${id}`} key={id}><span>{index}</span><b>{label}</b></a>)}</nav><div className="sidebar-bulk"><button type="button" onClick={() => setOpenEntries(new Set(allExpandableIds))}>全部展开</button><button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button></div><p className="sidebar-note">悬浮带下划线的名称可查看说明，点击可跳转至详情。</p></aside>
-    <div className="content-shell">
-      <header id="top" className="hero"><div className="hero-backdrop"><Image src="./chandalor/god_main.png" alt="" fill priority sizes="100vw" /></div><div className="hero-copy"><p className="eyebrow"><span>神祇档案 06</span><span>Cursed Bloom God</span></p><div className="hero-title-wrap"><h1><span className="title-mask"><span className="hero-line">Chandalor, the Cursed Bloom</span></span></h1></div><div className="hero-facts"><div><b>375</b><span>回合苏醒</span></div><div><b>5</b><span>最终 Agent 上限</span></div><div><b>50%</b><span>苏醒时世界恐慌</span></div></div></div><div className="hero-art"><div className="portrait-frame hero-portrait reveal-image"><Image src="./chandalor/god_portrait.png" alt="Chandalor 神祇立绘" fill priority sizes="(max-width: 900px) 100vw, 46vw" /></div></div></header>
-      <section id="loop" className="section overview-section"><div className="section-heading"><p className="section-index">01 / 基础信息与核心玩法</p><h2>基础信息与核心玩法</h2></div><div className="overview-layout"><article className="overview-main"><h3>核心玩法</h3><ol className="core-sequence"><li><span>01</span><p>用 <CrossReference name="Sense Loneliness" /> 找出未婚英雄和统治者。</p></li><li><span>02</span><p>用 <CrossReference name="Growing Bond" /> 提高两人的相互好感。</p></li><li><span>03</span><p>建立 <CrossReference name="Ceremonial Plaza" />，让英雄或统治者举办 <CrossReference name="Wedding Ceremony" href="#entry-hero-wedding" meta="英雄任务" />，把两个家族连接起来。</p></li><li><span>04</span><p>用 <CrossReference name="Vile Curse" /> 和三种专属诅咒削弱关键家族。</p></li><li><span>05</span><p>沿婚姻施放 <CrossReference name="Blood Bond" />，把一个家族的全部诅咒复制给配偶家族。</p></li><li><span>06</span><p>后期用 <CrossReference name="Rapture" /> 按家族诅咒数打断英雄与统治者，同时让 <CrossReference name="Chandalor's Awe" /> 向全图扩散。</p></li></ol><div className="overview-subsection"><h3>婚姻与诅咒传播</h3><ul className="source-list"><li><CrossReference name="Growing Bond" /> 每次完整施放让两人对彼此的个人态度各提高一级。</li><li><CrossReference name="Wedding Ceremony" href="#entry-hero-wedding" meta="英雄任务" /> 会把不同 House 的两人正式设为配偶，每次消耗 <CrossReference name="Ceremonial Plaza" /> 50 点强度。</li><li><CrossReference name="Blood Bond" /> 只单向复制：从被选中人物的 House 复制到其配偶的 House；需要时可反向再施放。</li><li><CrossReference name="Vile Curse" /> 最多使用三次，三种专属家族诅咒则各只能施放一次。</li><li>诅咒存放在 House 上，新成员会按家族状态获得对应人物特质。</li></ul></div></article><aside className="basic-facts"><h3>基础信息</h3><dl><div><dt>封印解锁方式</dt><dd>常规回合解锁</dd></div><div><dt>最大回合数</dt><dd>常规 500 回合</dd></div><div><dt>苏醒回合</dt><dd>第 375 回合</dd></div><div><dt>苏醒时世界恐慌</dt><dd>50%</dd></div><div><dt>初始 Agent 上限</dt><dd>2</dd></div><div><dt>最终 Agent 上限</dt><dd>5</dd></div></dl><div className="special-victory"><h3>特殊胜利</h3><p>无</p></div></aside></div></section>
-      <section id="seals" className="section seals-section"><div className="section-heading row-heading"><div><p className="section-index">02 / 封印进度</p><h2>封印、解锁回合与 Agent 上限</h2></div></div><div className="seal-table"><div className="seal-head"><span>封印</span><span>回合</span><span>Agent</span><span>神力/恢复</span><span>本阶段内容</span></div>{seals.map((item) => <div className="seal-row" key={item.seal}><span className="seal-number">{item.seal}</span><span className="turn">{item.turn}</span><span className="agent-count">{item.agents}</span><span className="power-gain">{`${item.seal + 1} / ${(0.035 * (item.seal + 1)).toFixed(3)}`}</span><span className="seal-reward">{item.reward ? item.reward.split("、").map((reward, index) => <span className="seal-reference-item" key={reward}>{reward === "苏醒" ? reward : <CrossReference name={reward} />}{index < item.reward.split("、").length - 1 && <i>、</i>}</span>) : null}</span></div>)}</div><div className="seal-formula"><b>神力恢复公式</b><code>0.035 ×（已破封印数 + 1）× 难度缩放</code><span>表中按难度缩放为 1 计算。Chandalor 没有覆写本体神力恢复规则。</span></div></section>
-      <section id="powers" className="section powers-section records-section"><div className="powers-intro plain-heading"><p className="section-index">03 / 神力</p><h2>神力</h2><div className="power-legend"><span><Eye size={16} />效果</span><span><Shield size={16} />限制</span></div></div><div className="expandable-table powers-table">{powers.map((power) => { const id=anchorFor(power.name); return <ExpandableRow key={id} entryId={id} name={power.name} seal={power.seal} cost={power.cost} image={power.icon} open={openEntries.has(id)} onToggle={toggleEntry}><div className="expanded-section"><h4>具体效果</h4><p><RichText text={power.effect} exclude={power.name} /></p></div><div className="expanded-section"><h4>释放限制</h4><p><RichText text={power.limit} exclude={power.name} /></p></div><RelationGroup title="造成的效果" items={powerEffects[power.name]} /></ExpandableRow>; })}</div></section>
-      <section id="agent" className="section records-section agent-record"><div className="plain-heading"><p className="section-index">04 / 初始 Agent 能力</p><h2>初始 Agent 能力</h2></div><div className="expandable-table"><ExpandableRow entryId={anchorFor("Supplicant")} name="Supplicant" image="supplicant.png" open={openEntries.has(anchorFor("Supplicant"))} onToggle={toggleEntry}><p className="agent-stat-line"><b>基础属性：</b>Might 2　Command 3　Intrigue 4　Lore 2　初始技能点 1　初始经验距离升级差 1 点</p><div className="ability-list">{initialAbilities.map(([name, text], index) => <div className="ability" id={anchorFor(name)} key={name}><span>{String(index+1).padStart(2,"0")}</span><div><h4>{name}</h4><p><RichText text={text} exclude={name} /></p></div></div>)}</div></ExpandableRow></div></section>
-      <RecordSection id="traits" index="05" title="人物特质"><DetailGrid items={traits} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="family-curses" index="06" title="家族诅咒"><DetailGrid items={familyCurses} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="location-modifiers" index="07" title="地点修正"><DetailGrid items={locationModifiers} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="minions" index="08" title="随从"><DetailGrid items={minions} media={false} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="religion" index="09" title="宗教与教义"><DetailGrid items={religions} media={false} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="religious-tasks" index="10" title="宗教任务"><DetailGrid items={religiousTasks} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="hero-tasks" index="11" title="英雄任务"><DetailGrid items={heroTasks} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="ruler-actions" index="12" title="统治者行动"><DetailGrid items={rulerActions} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <RecordSection id="events" index="13" title="事件"><DetailGrid items={events} openEntries={openEntries} onToggle={toggleEntry} /></RecordSection>
-      <footer><div><CircleDot size={20} />Chandalor, the Cursed Bloom</div><p>基于 Chandalor 2.0 模组 DLL、事件定义与原始美术素材整理。</p><span>Shadows of Forbidden Gods · Mod Archive</span></footer>
-    </div>
-  </main>;
+const preparedConfig = prepareGodConfig(config);
+
+export default function chandalorArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
+  return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }

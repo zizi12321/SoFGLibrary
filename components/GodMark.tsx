@@ -2,6 +2,7 @@ import {
   BookText,
   Bug,
   CircleDashed,
+  Crown,
   Droplets,
   Heart,
   Infinity,
@@ -9,6 +10,7 @@ import {
   Mountain,
   PlayingCardsFan,
   Sparkle,
+  Trophy,
   Sprout,
   Utensils,
   Worm,
@@ -24,7 +26,7 @@ type GodMarkId =
   | "evil-beneath"
   | "deaths-games"
   | "cordyceps"
-  | "kishi"
+  | "ixthus" | "kishi"
   | "living-void"
   | "chandalor";
 
@@ -38,6 +40,7 @@ const marks = {
   "evil-beneath": LayersArrowDown,
   "deaths-games": PlayingCardsFan,
   cordyceps: Bug,
+  ixthus: Trophy,
   kishi: Droplets,
   "living-void": CircleDashed,
   chandalor: Heart,
