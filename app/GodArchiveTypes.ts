@@ -10,7 +10,7 @@ export type SupplicantConfig = { name?: string; image?: string; stats: string; a
 export type GodConfig = {
   id: "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor"; name: string; number: string; theme: string; assetDir: string; background: string; portrait: string;
   flavour: string; caption: string; maxTurns: string; awaken: string; panic: string; finalAgents: string; progressLabel: string; unlockMethod?: string; dlc?: string; powerRecovery: string; supplicant?: SupplicantConfig;
-  core: string[]; overviewExtra?: { title: string; text: string }; specialVictory?: string; seals: SealItem[]; powers: PowerItem[]; drawCards?: SectionConfig; sections: SectionConfig[];
+  core: string[]; overviewExtra?: { title: string; text: string }; specialVictory?: string; seals: SealItem[]; powers: PowerItem[]; drawPowers?: PowerItem[]; drawCards?: SectionConfig; sections: SectionConfig[];
   relations?: Record<string, { sources?: Relation[]; effects?: Relation[] }>;
 };
 
@@ -23,7 +23,7 @@ function anchorFor(name: string) {
 
 function disambiguateConfigEntries(config: GodConfig) {
   const seen = new Map<string, number>();
-  [...config.powers, ...(config.supplicant?.abilities ?? []), ...(config.drawCards?.items ?? []), ...config.sections.flatMap(section => section.items)].forEach(item => {
+  [...config.powers, ...(config.drawPowers ?? []), ...(config.supplicant?.abilities ?? []), ...(config.drawCards?.items ?? []), ...config.sections.flatMap(section => section.items)].forEach(item => {
     const base = item.id ? "entry-" + item.id : anchorFor(item.name);
     const count = seen.get(base) ?? 0;
     if (count > 0 && !item.id) item.id = base.replace(/^entry-/, "") + "-" + (count + 1);

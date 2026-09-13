@@ -5,7 +5,7 @@ import { D, O, prepareGodConfig } from "./GodArchiveTypes";
 import type { ArchiveGodChoice, GodConfig } from "./GodArchiveTypes";
 
 const config: GodConfig = {
- id: "cordyceps", name: "Cordyceps Hive Mind", number: "09", theme: "cordyceps-theme", assetDir: "cordyceps", background: "god_background.jpg", portrait: "god_portrait.png", 
+ id: "cordyceps", name: "Cordyceps Hive Mind", number: "08", theme: "cordyceps-theme", assetDir: "cordyceps", background: "god_background.jpg", portrait: "god_portrait.png", 
  flavour: "Cordyceps Hive Mind 是由真菌孢子连接成的虫群意识：先感染人物与人口，再让成熟感染体变成 Hive 或 Drone，把被麻痹的人口收割成 Larval Mass，最终释放 Vespidic Swarm。",
  caption: "感染、Hive、Larval Mass 与虫群军队", maxTurns: "常规 500 回合", awaken: "Larval Mass 收集量达到 200", panic: "25%", finalAgents: "5", progressLabel: "Larval Mass", unlockMethod: "通过感染人口并由 Drone 带回 Hive，积累 Larval Mass", powerRecovery: "神力上限 = 已破封印数 + 1；神力恢复 = 0.035 × 神力上限 × 难度缩放。",
  core: [

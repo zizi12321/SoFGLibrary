@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowUpRight, BookOpen, CircleDot } from "lucide-react";
 
-type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "kishi" | "living-void" | "chandalor";
+type GodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "cordyceps" | "deaths-games" | "ixthus" | "kishi" | "living-void" | "chandalor";
 const gods = [
   { id: "she-who-will-feast", name: "She Who Will Feast", type: "游戏本体", image: "./she-who-will-feast/portrait.png", focus: "渗透、Shadow 扩散与苏醒军队" },
   { id: "iastur", name: "Iastur, The Laughing King", type: "游戏本体", image: "./iastur/portrait.png", focus: "Laughing Tome、Madness 与性格操纵" },
@@ -12,8 +12,8 @@ const gods = [
   { id: "mammon", name: "Mammon, Wealth of Man, Spirit of the Mountain", type: "游戏本体", image: "./mammon/portrait.png", focus: "贸易网络、Greed/Decadence 与吞噬" },
   { id: "broken-maker", name: "The Broken Maker", type: "游戏本体", image: "./broken-maker/portrait.png", focus: "家族诅咒、世代轮回与借用神力" },
   { id: "evil-beneath", name: "The Evil Beneath", type: "游戏本体", image: "./evil-beneath/portrait.png", focus: "地下触手、吞食、地下意识与地表决战" },
-  { id: "deaths-games", name: "Death's Games", type: "游戏本体", image: "./deaths-games/godCardsTMP.png", focus: "抽卡、概率与一次性干预" },
   { id: "cordyceps", name: "Cordyceps Hive Mind", type: "游戏本体", image: "./cordyceps/god_portrait.png", focus: "感染、Hive、Larval Mass 与虫群军队" },
+  { id: "deaths-games", name: "Death's Games", type: "游戏本体", image: "./deaths-games/godCardsTMP.png", focus: "抽卡、概率与一次性干预" },
   { id: "ixthus", name: "Ixthus, King of Cups", type: "模组神祇", image: "./ixthus/kingOfCups_Portrait.png", focus: "Holy Grail、永生、英雄与统治者的死亡" },
   { id: "kishi", name: "Kishi", type: "模组神祇", image: "./kishi/god_portrait.png", focus: "Bloodstain、Soul-Scar 与恶魔浪潮" },
   { id: "living-void", name: "Living Void", type: "模组神祇", image: "./living-void/god_portrait.png", focus: "虚空侵蚀、真空异常与世界坍缩" },
