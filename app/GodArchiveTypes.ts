@@ -1,18 +1,21 @@
 import type { ReactNode } from "react";
 
-export type ArchiveGodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "kishi" | "living-void" | "chandalor";
+export type ArchiveGodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia";
 export type Relation = { name: string; href: string; meta?: string; text?: string; image?: string };
+export type ArchivePageChoice = ArchiveGodChoice | "base-location-modifiers";
 export type DetailItem = { name: string; text: string; image?: string; images?: string[]; seal?: number; meta?: string; statLine?: string; location?: string; limit?: string; id?: string; baseGame?: boolean; time?: string; stats?: string; abilities?: DetailItem[]; positiveTags?: string; negativeTags?: string; initialValue?: string; modifierChange?: { natural: string; external: string } };
-export type PowerItem = { name: string; seal: number; cost: string | number; icon?: string; effect: string; limit: string; id?: string };
-export type SealItem = { seal: number; progress: number; agents: number; reward: string[] };
+export type PowerItem = { name: string; seal: number; cost: string | number; icon?: string; images?: string[]; effect: string; limit: string; id?: string };
+export type SealItem = { seal: number; progress: number; progressText?: string; agents: number; reward: string[]; powerRecovery?: string };
 export type SectionConfig = { id: string; title: string; items: DetailItem[]; media?: boolean; icon?: ReactNode };
 export type SupplicantConfig = { name?: string; image?: string; stats: string; abilities: DetailItem[] };
 export type GodConfig = {
-  id: "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor"; name: string; number: string; theme: string; assetDir: string; background: string; portrait: string;
+  id: "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia"; name: string; number: string; theme: string; assetDir: string; background: string; portrait: string;
   flavour: string; caption: string; maxTurns: string; awaken: string; panic: string; finalAgents: string; progressLabel: string; unlockMethod?: string; dlc?: string; powerRecovery: string; supplicant?: SupplicantConfig;
   core: string[]; overviewExtra?: { title: string; text: string }; specialVictory?: string; seals: SealItem[]; powers: PowerItem[]; drawPowers?: PowerItem[]; drawCards?: SectionConfig; sections: SectionConfig[];
   relations?: Record<string, { sources?: Relation[]; effects?: Relation[] }>;
 };
+
+export type ArchiveRecordConfig = Pick<GodConfig, "assetDir" | "powers" | "drawPowers" | "drawCards" | "supplicant" | "sections" | "relations"> & { id: string; autoLink?: boolean };
 
 export const O = (name: string, seal: number, cost: string | number, effect: string, limit: string, icon?: string): PowerItem => ({ name, seal, cost, effect, limit, icon });
 export const D = (name: string, text: string, extra: Partial<DetailItem> = {}): DetailItem => ({ name, text, ...extra });

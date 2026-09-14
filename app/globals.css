@@ -1000,6 +1000,11 @@ footer { grid-template-columns: 1fr; text-align: left; }
 .feast-theme .summary-image img,
 .feast-theme .cross-image img { object-fit: contain; }
 .feast-theme .task-location { margin: 0 0 10px; color: #d8d1c6; font-size: 12px; line-height: 1.55; }
+.feast-theme .cross-popover { display: none; }
+.feast-theme .cross-reference:hover .cross-popover,
+.feast-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.feast-theme .overview-subsection p { white-space: pre-line; }
+.feast-theme .detail-stat-line, .feast-theme .task-stat-line { overflow-wrap: anywhere; }
 .task-location > b { margin-right: 8px; color: var(--blood); font: 650 10px var(--font-geist-mono); letter-spacing: .04em; }
 .task-stat-line { border-left-color: var(--blood); }
 .feast-theme .hero-title-wrap h1 { font-size: clamp(2.25rem, 4.1vw, 4.35rem); }
@@ -1030,6 +1035,11 @@ footer { grid-template-columns: 1fr; text-align: left; }
 .iastur-theme .hero-backdrop::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(9,9,9,.9) 43%, rgba(60,35,68,.36) 100%); }
 .iastur-theme .portrait-frame img, .iastur-theme .summary-image img, .iastur-theme .cross-image img { object-fit: contain; }
 .iastur-theme .task-location { margin: 0 0 10px; color: #d8d1c6; font-size: 12px; line-height: 1.55; }
+.iastur-theme .cross-popover { display: none; }
+.iastur-theme .cross-reference:hover .cross-popover,
+.iastur-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.iastur-theme .overview-subsection p { white-space: pre-line; }
+.iastur-theme .detail-stat-line, .iastur-theme .task-stat-line { overflow-wrap: anywhere; }
 .task-location > b { margin-right: 8px; color: var(--blood); font: 650 10px var(--font-geist-mono); letter-spacing: .04em; }
 .task-stat-line { border-left-color: var(--blood); }
 .iastur-theme .hero-title-wrap h1 { font-size: clamp(2.05rem, 3.65vw, 3.8rem); }
@@ -1136,4 +1146,92 @@ footer { grid-template-columns: 1fr; text-align: left; }
 .cordyceps-theme .hero-portrait::before { border: 0; box-shadow: none; }
 
 .ixthus-theme .hero-portrait img { object-fit: contain; object-position: center; }
+.cordyceps-theme .hero-portrait img { object-fit: contain; object-position: center; }
+.cordyceps-theme .cross-popover { display: none; }
+.cordyceps-theme .cross-reference:hover .cross-popover,
+.cordyceps-theme .cross-reference:focus-visible .cross-popover { display: grid; }
 .ixthus-theme .hero-portrait::before { border: 0; box-shadow: none; }
+
+.broken-maker-theme .cross-popover { display: none; }
+.broken-maker-theme .cross-reference:hover .cross-popover,
+.broken-maker-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.broken-maker-theme .overview-subsection p,
+.broken-maker-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+.broken-maker-theme .detail-stat-line,
+.broken-maker-theme .task-stat-line { overflow-wrap: anywhere; }
+.broken-maker-theme .hero-portrait img { object-fit: contain; object-position: center; }
+.broken-maker-theme .seal-reward { min-width: 0; height: auto; min-height: 82px; flex-wrap: wrap; padding-top: 14px; padding-bottom: 14px; gap: 8px 14px; }
+.broken-maker-theme .seal-reference-item { min-width: 0; max-width: 100%; flex-wrap: wrap; }
+.broken-maker-theme .seal-reference-item .cross-label { white-space: normal; overflow-wrap: anywhere; }
+
+.mammon-theme .cross-popover { display: none; }
+.mammon-theme .cross-reference:hover .cross-popover,
+.mammon-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.mammon-theme .overview-subsection p,
+.mammon-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+.mammon-theme .detail-stat-line,
+.mammon-theme .task-stat-line { overflow-wrap: anywhere; }
+.mammon-theme .hero-portrait img { object-fit: contain; object-position: center; }
+
+.ophanim-theme .cross-popover { display: none; }
+.ophanim-theme .cross-reference:hover .cross-popover,
+.ophanim-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.ophanim-theme .overview-subsection p,
+.ophanim-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+.ophanim-theme .detail-stat-line,
+.ophanim-theme .task-stat-line { overflow-wrap: anywhere; }
+.ophanim-theme .hero-portrait img { object-fit: contain; object-position: center; }
+
+.vinerva-theme .cross-popover { display: none; }
+.vinerva-theme .cross-reference:hover .cross-popover,
+.vinerva-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.vinerva-theme .overview-subsection p,
+.vinerva-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+.vinerva-theme .detail-stat-line,
+.vinerva-theme .task-stat-line { overflow-wrap: anywhere; }
+.vinerva-theme .hero-portrait img { object-fit: contain; object-position: center; }
+
+.modifier-library-link { display: flex; align-items: center; gap: 18px; width: 100%; padding: 28px; border: 1px solid var(--line, #353530); background: #141513; color: inherit; text-align: left; cursor: pointer; }
+.modifier-library-link span { flex: 1; font-size: 20px; }
+.modifier-library-link:hover, .modifier-library-link:focus-visible { background: #20221f; }
+.modifier-library-header { padding: 64px 40px 32px; border-bottom: 1px solid var(--line, #353530); }
+.modifier-library-header h1 { font-size: clamp(28px, 4vw, 56px); margin-bottom: 18px; }
+.modifier-library-header p { color: #aaa89d; }
+.base-modifiers-theme .content-shell { min-width: 0; }
+.base-modifiers-theme .sidebar-nav { overflow-y: auto; min-height: 0; }
+.base-modifiers-theme .summary-image img, .base-modifiers-theme .cross-image img { object-fit: contain; }
+.base-modifiers-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+.base-modifiers-theme .cross-popover { display: none; }
+.base-modifiers-theme .cross-reference:hover .cross-popover,
+.base-modifiers-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+@media (max-width: 760px) {
+  .modifier-library-header { padding: 32px 20px; }
+}
+
+/* Audited mod archives share the established responsive record layout. */
+.escamrak-theme { --blood: #a76465; --blood-dark: #61373f; }
+.adolia-theme { --blood: #9087ba; --blood-dark: #494064; }
+:is(.escamrak-theme, .adolia-theme, .evil-beneath-theme, .death-games-theme, .ixthus-theme, .kishi-theme, .living-void-theme, .chandalor-theme) .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+:is(.escamrak-theme, .adolia-theme) .hero-portrait img { object-fit: contain; object-position: center; }
+:is(.escamrak-theme, .adolia-theme) .content-shell { min-width: 0; }
+:is(.escamrak-theme, .adolia-theme) .cross-popover { display: none; }
+:is(.escamrak-theme, .adolia-theme) .cross-reference:hover .cross-popover,
+:is(.escamrak-theme, .adolia-theme) .cross-reference:focus-visible .cross-popover { display: grid; }
+.ability-icon { width: 44px; height: 44px; object-fit: contain; margin-block: 8px; }
+
+.power-image-variants { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 12px; }
+.power-image-variants img { width: 56px; height: 56px; object-fit: contain; }
+
+.void-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+
+:is(.evil-beneath-theme, .death-games-theme, .ixthus-theme, .kishi-theme, .void-theme, .chandalor-theme) .cross-popover { display: none; }
+:is(.evil-beneath-theme, .death-games-theme, .ixthus-theme, .kishi-theme, .void-theme, .chandalor-theme) .cross-reference:hover .cross-popover,
+:is(.evil-beneath-theme, .death-games-theme, .ixthus-theme, .kishi-theme, .void-theme, .chandalor-theme) .cross-reference:focus-visible .cross-popover { display: grid; }
+
+:is(.escamrak-theme, .adolia-theme, .evil-beneath-theme, .death-games-theme, .ixthus-theme, .kishi-theme, .void-theme, .chandalor-theme) .basic-facts dl > div { grid-template-columns: 7em minmax(0, 1fr); gap: 12px; }
+:is(.escamrak-theme, .adolia-theme, .evil-beneath-theme, .death-games-theme, .ixthus-theme, .kishi-theme, .void-theme, .chandalor-theme) .basic-facts dd { overflow-wrap: anywhere; line-height: 1.6; }
+:is(.escamrak-theme, .adolia-theme) .portrait-frame { border: 0; box-shadow: none; }
+
+.adolia-theme .hero-title-wrap h1 { white-space: normal; overflow-wrap: anywhere; line-height: 1.05; font-size: clamp(2.2rem, 3.7vw, 4rem); }
+:is(.escamrak-theme, .adolia-theme) .portrait-frame::before { border: 0; box-shadow: none; }
+@media (max-width: 760px) { .adolia-theme .hero-title-wrap h1 { font-size: clamp(1.55rem, 6.8vw, 2.35rem); } }

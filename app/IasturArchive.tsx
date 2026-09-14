@@ -1,104 +1,693 @@
 "use client";
 
 import { GodArchive } from "./BaseGodArchive";
-import { prepareGodConfig } from "./GodArchiveTypes";
-import type { ArchiveGodChoice, DetailItem, GodConfig, Relation } from "./GodArchiveTypes";
-function anchorFor(name: string) { return "entry-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/, ""); }
+import { prepareGodConfig, type ArchiveGodChoice, type GodConfig } from "./GodArchiveTypes";
 
-
-const config: GodConfig = (() => {
-const seals = [
-  { seal: 0, turn: 0, agents: 2, reward: "Let's see what this game brings" }, { seal: 1, turn: 12, agents: 2, reward: "" },
-  { seal: 2, turn: 24, agents: 3, reward: "The Devil Finds Work..." }, { seal: 3, turn: 44, agents: 3, reward: "...For Idle Hands、It's All Just a Game" },
-  { seal: 4, turn: 72, agents: 4, reward: "Stories Told In Dreams、Fascinate" }, { seal: 5, turn: 108, agents: 4, reward: "Everyone Shall Play" },
-  { seal: 6, turn: 152, agents: 4, reward: "Incoherent Thoughts" }, { seal: 7, turn: 204, agents: 5, reward: "Hysterical Tome" },
-  { seal: 8, turn: 264, agents: 5, reward: "" }, { seal: 9, turn: 360, agents: 6, reward: "Warp Reality、苏醒" },
-];
-const powers = [
-  { seal: 0, name: "Let's see what this game brings", cost: "动态", icon: "power-game.png", effect: "直接渗透目标聚居地内一个尚未渗透且允许渗透的设施；若有多个合法设施，选择列表中的最后一个。消耗会随破封数量增加：0–2 封为 1，3–4 封为 2，5–6 封为 3，7–8 封为 4，9 封为 5。", limit: "目标必须是当前渗透进度恰好为 0 的聚居地，并至少有一个可渗透设施。" },
-  { seal: 2, name: "The Devil Finds Work...", cost: 1, icon: "power-preference.png", effect: "从全部普通性格标签与敌对势力标签中选择一项，让目标新增一项普通厌恶。它会改变英雄选择任务、攻击目标和承担风险的意愿。", limit: "可选择非 Chosen One 的英雄；统治者必须已经疯狂。目标的普通厌恶与极端厌恶合计必须少于 5。" },
-  { seal: 3, name: "...For Idle Hands", cost: 1, icon: "power-preference.png", effect: "从全部普通性格标签与敌对势力标签中选择一项，让目标新增一项普通喜好，用来推动其偏向对应任务或行为。", limit: "可选择非 Chosen One 的英雄；统治者必须已经疯狂。目标的普通喜好与极端喜好合计必须少于 7。" },
-  { seal: 3, name: "It's All Just a Game", cost: 3, icon: "power-just-a-game.png", effect: "立即令一名正在攻击其他单位的英雄损失 14 Sanity，最低降至 0。达到 0 后会由本体疯狂系统处理其精神崩溃。", limit: "目标必须是正在前往攻击另一单位的英雄；代码没有额外排除 Chosen One。" },
-  { seal: 4, name: "Stories Told In Dreams", cost: 3, icon: "madness.png", effect: "立即给目标地点增加 50 点 Madness，可直接越过 100 点的统治者精神侵蚀阈值，或推动地点接近 300 点危机。", limit: "只能选择人类聚居地。" },
-  { seal: 4, name: "Fascinate", cost: 3, icon: "power-fascinate.png", effect: "把目标所有普通喜好转为极端喜好，并把所有普通厌恶转为极端厌恶；原有极端倾向保留。此后其任务与攻击决策会更强烈地受性格驱动。", limit: "目标必须是携带 Laughing Tome 的人物，可以是英雄或统治者；无论 Tome 是否已被封印都可施放。" },
-  { seal: 5, name: "Everyone Shall Play", cost: 0, icon: "laughing-tome.png", effect: "被动强化 Laughing Tome。未封印的 Tome 被非玩家人物携带时，每回合给其所在地增加 3 Madness；Tome 作为地点修正时，除当地每回合增加 3 Madness 外，还会给相邻每个人类聚居地增加 1 Madness。", limit: "被动神力，解锁后自动生效，不会出现在主动施法列表中。" },
-  { seal: 6, name: "Incoherent Thoughts", cost: 3, icon: "power-incoherent.png", effect: "取消目标当前挑战，并令其陷入 3 回合 Disrupted，在此期间无法采取行动。", limit: "只能选择正在执行挑战的单位，不能选择 Chosen One。" },
-  { seal: 7, name: "Hysterical Tome", cost: 5, icon: "hysterical-tome.png", effect: "把作为地点修正的 Laughing Tome 移到另一处人类聚居地，并在原地点留下 100 点 Hysterical Tome。优先从比原地点距离 Elder Tomb 更远的城市随机选择；若没有，再从全部人类聚居地随机选择。", limit: "只能选择当前存在 Laughing King's Tome 地点修正的地点。" },
-  { seal: 9, name: "Warp Reality", cost: 1, icon: "arcane-fortress.png", effect: "给 Elder Tomb 增加 25 点 Arcane Fortress，最高 100。该修正每回合衰减 2，因此一次施放可提供约 13 回合的魔法防护。", limit: "只能对 Elder Tomb 施放。" },
-];
-const supplicantAbilities: [string, string][] = [
-  ["Protector of the Tome", "Supplicant 携带 Laughing Tome 时获得 +2 Might 与 +2 Defence；书离开物品栏后加成消失。"],
-  ["Maddening Tongues", "Supplicant 位于人类聚居地时，每回合给当地增加 1 Madness。"],
-  ["Favourite Toy", "每局一次：Supplicant 死亡后会在 Elder Tomb 等待复活，并把 Profile 与 Menace 重置到最低值；其全部物品和随从会丢失，正在追杀他的单位也会停止。"],
-];
-const items: DetailItem[] = [
-  { name: "Laughing Tome", image: "laughing-tome.png", text: "开局位于 Supplicant 第一个物品槽。玩家 Agent 携带时不会受精神伤害；非玩家控制的英雄或统治者携带未封印版本时，代码实际每回合损失 1 Sanity。持有者发疯、死亡或失去英雄/统治者身份后，Tome 会转化为所在地的 Laughing King's Tome 修正。Tome 正在影响凡人时，Iastur 的神力恢复从常规值的 0.5 倍提高到 1.5 倍。" },
-  { name: "Laughing Tome (Bound)", image: "bound-tome.png", text: "英雄完成 Bind Tome 后获得的封印状态。它停止造成 Sanity 与 Madness，但能在未渗透的 Library 执行 Weaken Iastur。非玩家持有超过 27 回合后，书会逃走并在所在地变为休眠修正；玩家 Agent 抢到后可以执行 Unbind Tome。" },
-];
-const locationModifiers: DetailItem[] = [
-  { name: "Laughing King's Tome", image: "laughing-tome.png", initialValue: "", modifierChange: { natural: "", external: "" }, text: "由 Place Tome、未封印 Tome 的持有者发疯或死亡产生；英雄可以在这里 Bind Tome。它会在符合条件的地点持续造成 Madness。" },
-  { name: "Laughing King's Tome (Asleep)", image: "laughing-tome.png", initialValue: "", modifierChange: { natural: "", external: "" }, text: "Bound Tome 被持有过久或被 Weaken Iastur 消耗后留下的休眠状态，不再传播 Madness。玩家 Agent 可用 Collect Tome 取回，也可从 Elder Tomb 使用 Summon Tome。" },
-  { seal: 7, name: "Hysterical Tome", id: "hysterical-tome-modifier", image: "hysterical-tome.png", initialValue: "", modifierChange: { natural: "", external: "" }, text: "由同名神力留在旧地点；它会在当地持续造成 Madness，英雄可执行 Dispel Hysterical Tome 清除。" },
-  { name: "Madness", image: "madness.png", baseGame: true, modifierChange: { natural: "", external: "<CrossReference name=\"Stories Told In Dreams\" /> 一次性增加 50。\n<CrossReference name=\"Laughing King's Tome\" /> 与 <CrossReference name=\"Hysterical Tome\" href=\"#entry-hysterical-tome-modifier\" /> 在人类聚居地每回合各增加 3。\n<CrossReference name=\"Maddening Tongues\" /> 在人类聚居地每回合增加 1。\n<CrossReference name=\"Everyone Shall Play\" /> 使未封印 Tome 被非玩家人物携带时每回合额外增加 3，并使 <CrossReference name=\"Laughing King's Tome\" /> 向相邻人类聚居地每回合增加 1。\n<CrossReference name=\"Cure Madness\" /> 完成时减少 25。" }, text: "游戏本体地点修正。每 1 点强度造成 −0.003 Prosperity；超过 100 后增加 Unrest，并逐步侵蚀当地统治者的 Sanity。Madness 达到 300 时触发一次随机 <CrossReference name=\"Madness Crisis\" />，留下六种长期效果之一，然后强度回落到 150。" },
-  { seal: 9, name: "Iastur's Soul", image: "iastur-soul.png", initialValue: "", modifierChange: { natural: "", external: "" }, text: "苏醒后出现在 Elder Tomb，并提供 Waves of Madness。" },
-  { seal: 9, name: "Arcane Fortress", image: "arcane-fortress.png", baseGame: true, initialValue: "Warp Reality 每次增加 25；最高 100。", modifierChange: { natural: "每回合衰减 2。", external: "由 Warp Reality 在 Elder Tomb 创建或补充" }, text: "游戏本体防御修正，可吸收敌对法师的魔法攻击。" },
-];
-const madnessEffects: DetailItem[] = [
-  { name: "Madness Effect: Catatonia", image: "madness.png", baseGame: true, text: "Madness Crisis 的六种随机结果之一。当地 −0.75 Prosperity、−10 Security，并固定减少 50 点食物产出。" },
-  { name: "Madness Effect: Masochism", image: "madness.png", baseGame: true, text: "非玩家控制且不是 Chosen One 的英雄停留当地时，每回合增加 5% Shadow。" },
-  { name: "Madness Effect: Fascination", image: "madness.png", baseGame: true, text: "每逢 10 的倍数回合为玩家恢复 1 点神力，不超过当前上限。" },
-  { name: "Madness Effect: Psychotics", image: "madness.png", baseGame: true, text: "出现时立刻把当地人口降至原来的 75%（最低 1），增加 100 Death；持续提供 −2 Security。" },
-  { name: "Madness Effect: Hypochondria", image: "madness.png", baseGame: true, text: "出现时建立 50 Quarantine 与 100 Plague Immunity，并持续造成 −0.65 Prosperity。" },
-  { name: "Madness Effect: Paranoid Delusions", image: "madness.png", baseGame: true, text: "出现时建立 50 Banditry，持续提供 +5 Security；当地所有非 Chosen One 英雄每回合增加 5% Shadow，包括玩家 Agent。" },
-];
-const challenges: DetailItem[] = [
-  { name: "Place Tome", image: "laughing-tome.png", location: "携带未封印 Laughing Tome 的 Agent 当前所在地点；源码未限制为人类聚居地。", meta: "Other", statLine: "Complexity: 1　Profile: 0　Menace: 0　XP: 3", text: "携带未封印 Laughing Tome 的 Agent 把书放到所在地，生成 Laughing King's Tome。完成时额外获得 5 Profile 与 10 Menace。" },
-  { name: "Collect Tome", image: "laughing-tome.png", location: "Laughing King's Tome (Asleep) 所在地点。", meta: "Other", statLine: "Complexity: 1　Profile: 0　Menace: 0　XP: 3", text: "从 Laughing King's Tome (Asleep) 所在地取回一册未封印 Laughing Tome，并移除世界上其余 Tome 状态。完成时增加 3 Profile 与 10 Menace。" },
-  { name: "Summon Tome", image: "laughing-tome.png", location: "Elder Tomb。", meta: "Other", statLine: "Complexity: 1　Profile: 0　Menace: 0　XP: 3", text: "在 Elder Tomb 召回遗失、休眠或被非玩家人物持有的未封印 Tome。有人正在 Bind Tome 时不能开始；若英雄已经持有 Bound Tome，任务会失败并提示必须盗取或杀死持有者。完成取回时增加 3 Profile 与 10 Menace。" },
-  { name: "Unbind Tome", image: "bound-tome.png", location: "携带 Laughing Tome (Bound) 的玩家 Agent 当前所在地点。", meta: "Lore", statLine: "Complexity: 50　Profile: 0　Menace: 0　XP: 72", text: "玩家 Agent 携带 Bound Tome 时解除封印，使其重新传播 Madness。完成时增加 3 Profile 与 5 Menace。" },
-  { seal: 9, name: "Waves of Madness", image: "iastur-soul.png", location: "Elder Tomb。", meta: "Lore", statLine: "Complexity: 50　Profile: 1000　Menace: 25　Danger: 160　XP: 72", text: "在 Elder Tomb 持续引导，要求执行者携带未封印 Laughing Tome。完成后按到施法者的距离排序，使最近约 5% 的未疯狂英雄与统治者直接降到 0 Sanity 并发疯；不影响玩家单位、由游戏系统控制且不能作为普通玩家单位操纵的特殊自主单位（例如 Ghast、Cave Spider、Vampire、Orc Upstart、Deep One）与已疯狂人物。完成时增加 40 Profile 与 40 Menace。" },
-];
-const heroTasks: DetailItem[] = [
-  { name: "Bind Tome", image: "bound-tome.png", location: "有 Laughing King's Tome 的地点。", meta: "Other", statLine: "Complexity: 5　Profile: Madness ÷ 1.25　Menace: Madness ÷ 1.5　XP: 12", positiveTags: "无", negativeTags: "Madness", text: "英雄在 Laughing King's Tome 所在地封印并拾取它，得到 Laughing Tome (Bound)，停止该地点继续传播 Madness。" },
-  { name: "Weaken Iastur", image: "bound-tome.png", location: "尚未渗透的 Library。", meta: "Lore", statLine: "Complexity: 5　Profile: 1000　Menace: 150　XP: 12", positiveTags: "无", negativeTags: "Madness", text: "消耗英雄携带的 Bound Tome。若 Iastur 当前神力高于上限一半，则把神力清零；否则所有玩家可控制 Agent 各增加 5 Profile 与 5 Menace。之后在英雄所在地留下 Laughing King's Tome (Asleep) 修正。" },
-  { name: "Dispel Hysterical Tome", image: "hysterical-tome.png", location: "有 Hysterical Tome 修正的地点。", meta: "Lore", statLine: "Complexity: 10　Profile: 50　Menace: 50　XP: 21", positiveTags: "无", negativeTags: "Madness", text: "移除所在地的一项 Hysterical Tome，停止其继续增加 Madness。完成时额外增加 5 Profile。" },
-  { name: "Cure Madness", image: "madness.png", location: "有 Madness 居地。", meta: "Lore", baseGame: true, statLine: "Complexity: 25　Profile: 当前 Madness　Menace: 当前 Madness ÷ 2　XP: 42", positiveTags: "无", negativeTags: "Disease、Madness", text: "把所在地 Madness 降低 25 点。完成时额外增加 3 Profile；地点越疯狂，任务展示的 Profile 与 Menace越高。" },
-];
-const events: DetailItem[] = [{ name: "Madness Crisis", image: "madness.png", baseGame: true, text: "任一人类聚居地的 Madness 达到 300 时触发。Madness 立即降回 150，并在 Catatonia、Masochism、Fascination、Psychotics、Hypochondria、Paranoid Delusions 中等概率选择一种长期地点效果；同一地点已经有 Madness Effect 时不会再次生成。" }];
-
-const relations:Record<string,{sources?:Relation[];effects?:Relation[]}>={"Laughing King's Tome":{sources:[{name:"Place Tome",href:"#entry-place-tome"}],effects:[{name:"Bind Tome",href:"#entry-bind-tome"}]},"Laughing King's Tome (Asleep)":{sources:[{name:"Weaken Iastur",href:"#entry-weaken-iastur"}],effects:[{name:"Collect Tome",href:"#entry-collect-tome"}]},"Hysterical Tome":{sources:[{name:"Hysterical Tome",href:"#entry-hysterical-tome",meta:"封印 7 · 神力"}],effects:[{name:"Dispel Hysterical Tome",href:"#entry-dispel-hysterical-tome"}]},"Iastur's Soul":{sources:[{name:"第 9 封印苏醒",href:"#seals",meta:"第 360 回合"}],effects:[{name:"Waves of Madness",href:"#entry-waves-of-madness"}]},"Arcane Fortress":{sources:[{name:"Warp Reality",href:"#entry-warp-reality"}]},"Madness Crisis":{sources:[{name:"Madness",href:"#entry-madness"}],effects:madnessEffects.map(x=>({name:x.name,href:`#${anchorFor(x.name)}`}))}};
-for(const effect of madnessEffects)relations[effect.name]={sources:[{name:"Madness Crisis",href:"#entry-madness-crisis"}]};
-const powerEffects:Record<string,Relation[]>={"Let's see what this game brings":[{name:"Infiltration",href:"#loop",meta:"本体渗透系统"}],"Stories Told In Dreams":[{name:"Madness",href:"#entry-madness"}],"Everyone Shall Play":[{name:"Laughing Tome",href:"#entry-laughing-tome"},{name:"Laughing King's Tome",href:"#entry-laughing-king-s-tome"}],"Hysterical Tome":[{name:"Hysterical Tome",href:"#entry-hysterical-tome-modifier",meta:"地点修正"}],"Warp Reality":[{name:"Arcane Fortress",href:"#entry-arcane-fortress"}]};
-const configRelations: Record<string, { sources?: Relation[]; effects?: Relation[] }> = Object.fromEntries(Array.from(new Set([...Object.keys(relations), ...Object.keys(powerEffects)])).map(name => [name, { ...(relations[name] ?? {}), effects: [...(relations[name]?.effects ?? []), ...(powerEffects[name] ?? [])] }]));
-return {
-  id: "iastur", name: "Iastur, The Laughing King", number: "02", theme: "iastur-theme", assetDir: "iastur", background: "background.png", portrait: "portrait.png",
-  flavour: "",
-  caption: "Laughing Tome、Madness 与性格操纵",
-  maxTurns: "常规 500 回合", awaken: "第 360 回合", panic: "75%", finalAgents: "6", progressLabel: "回合", unlockMethod: "常规回合解锁", powerRecovery: "Tome 状态会覆盖本体恢复：Bound/Asleep 为 0.5 倍，UnBound 或地点修正影响凡人时为 1.5 倍。",
-  core: [
-  "Supplicant 开局携带 <CrossReference name=\"Laughing Tome\" />，并依靠 <CrossReference name=\"Protector of the Tome\" /> 获得战斗加成。",
-  "用 <CrossReference name=\"Place Tome\" /> 把书放进人类聚居地，让 <CrossReference name=\"Laughing King's Tome\" /> 持续累积 <CrossReference name=\"Madness\" />。",
-  "根据 Tome 的状态改变神力恢复，再用喜好与厌恶神力重写英雄和统治者的决策。",
-  "英雄可能用 <CrossReference name=\"Bind Tome\" /> 封印书；抢回后执行 <CrossReference name=\"Unbind Tome\" />，或从 Elder Tomb 使用 <CrossReference name=\"Summon Tome\" />。",
-  "第 5 封印的 <CrossReference name=\"Everyone Shall Play\" /> 让 Madness 波及邻城；第 7 封印用 <CrossReference name=\"Hysterical Tome\" /> 留下额外污染源。",
-  "苏醒后由携书 Agent 在 Elder Tomb 引导 <CrossReference name=\"Waves of Madness\" />，使有效英雄与统治者陷入疯狂。",  ],
-  overviewExtra: { title: "Madness 与 Tome 状态", text: "<CrossReference name=\"Madness\" /> 由地点上的 Tome、<CrossReference name=\"Maddening Tongues\" /> 和 <CrossReference name=\"Everyone Shall Play\" /> 等机制累积；超过 100 后会增加当地 Unrest，并逐步侵蚀统治者的 Sanity，达到 300 时触发一次 <CrossReference name=\"Madness Crisis\" />，留下长期效果并回落到 150。Tome 处于 Bound、Asleep、UnBound 或作为地点修正影响凡人时，会改变 Iastur 的神力恢复倍率。" },
-  seals: seals.map(item => ({ seal: item.seal, progress: item.turn, agents: item.agents, reward: item.reward ? item.reward.split("、") : [] })),
-  powers,
-  supplicant: { image: "supplicant.png", stats: "Might 2　Lore 2　Intrigue 4　Command 3", abilities: supplicantAbilities.map(([name, text]) => ({ name, text })) },
-  sections: [
-  { id: "items", title: "物品", media: true, items: items },
-  { id: "location-modifiers", title: "地点修正", media: true, items: locationModifiers },
-  { id: "madness-effects", title: "疯狂危机效果", media: true, items: madnessEffects },
-  { id: "challenges", title: "挑战", media: true, items: challenges },
-  { id: "hero-tasks", title: "英雄任务", media: true, items: heroTasks },
-  { id: "events", title: "事件", media: true, items: events },  ],
-  relations: configRelations,
+const config: GodConfig = {
+  "id": "iastur",
+  "name": "Iastur, The Laughing King",
+  "number": "02",
+  "theme": "iastur-theme",
+  "assetDir": "iastur",
+  "background": "background.png",
+  "portrait": "portrait.png",
+  "flavour": "",
+  "caption": "Laughing Tome、Madness 与性格操纵",
+  "maxTurns": "500 回合",
+  "awaken": "第 360 回合",
+  "panic": "75%",
+  "finalAgents": "6",
+  "progressLabel": "回合",
+  "unlockMethod": "常规回合解锁",
+  "powerRecovery": "神力上限＝已破封印数 + 1。每回合恢复 0.035 × 神力上限 × 难度系数 × Tome 倍率；表中左、右恢复值分别为倍率 0.5 与 1.5，难度系数取 1。未封印书由非玩家人物或统治者持有，或 Laughing King's Tome 位于人类 Society 的人类聚居地时，倍率为 1.5；否则为 0.5。只有 Hysterical Tome 不会提高倍率。",
+  "core": [
+    "Supplicant 开局携带 <CrossReference name=\"Laughing Tome\" />；用 <CrossReference name=\"Place Tome\" /> 将其放到人类聚居地，或交给非玩家人物阅读，让书在外发挥作用并提高神力恢复。",
+    "在书所在地完成 <CrossReference name=\"Drive Word of Mouth\" />，或施放 <CrossReference name=\"Stories Told In Dreams\" />，提高 <CrossReference name=\"Madness\" />。",
+    "用 <CrossReference name=\"The Devil Finds Work...\" /> 和 <CrossReference name=\"...For Idle Hands\" /> 调整人物喜恶；目标携书时还能用 <CrossReference name=\"Fascinate\" /> 将普通倾向强化为极端倾向。",
+    "英雄开始 <CrossReference name=\"Bind Tome\" /> 后，可用 <CrossReference name=\"Incoherent Thoughts\" /> 中断；第 7 封印后也可用 <CrossReference name=\"Hysterical Tome\" /> 移走真本并留下副本。封印书需夺回并 <CrossReference name=\"Unbind Tome\" />；休眠书可 <CrossReference name=\"Collect Tome\" /> 或 <CrossReference name=\"Summon Tome\" />。",
+    "第 5 封印的 <CrossReference name=\"Everyone Shall Play\" /> 扩大书的影响；把神力用于部署新污染点，不必让全部 Agent 围着一本书行动。",
+    "第 360 回合苏醒后，携未封印书在 Elder Tomb 完成 <CrossReference name=\"Waves of Madness\" />，反复使更多人物发疯；用 <CrossReference name=\"Warp Reality\" /> 防护引导者。"
+  ],
+  "overviewExtra": {
+    "title": "Madness 与 Tome 状态",
+    "text": "<CrossReference name=\"Madness\" /> 由地点上的 Tome、<CrossReference name=\"Maddening Tongues\" /> 和 <CrossReference name=\"Everyone Shall Play\" /> 等机制累积；超过 100 后会增加当地 Unrest，并逐步侵蚀统治者的 Sanity。人类聚居地达到 300 且没有长期疯狂效果时，触发一次 <CrossReference name=\"Madness Crisis\" /> 并留下长期效果；强度回落到 150。\n\nTome 处于 Bound、Asleep、Unbound 或作为地点修正影响凡人时，会改变神力恢复倍率。只有未封印书由非玩家人物持有，或活跃真本位于人类 Society 的人类聚居地时，倍率为 1.5；其余情况为 0.5。"
+  },
+  "seals": [
+    {
+      "seal": 0,
+      "progress": 0,
+      "agents": 2,
+      "reward": [
+        "Let's see what this game brings"
+      ],
+      "powerRecovery": "1 / 0.0175–0.0525"
+    },
+    {
+      "seal": 1,
+      "progress": 12,
+      "agents": 2,
+      "reward": [],
+      "powerRecovery": "2 / 0.0350–0.1050"
+    },
+    {
+      "seal": 2,
+      "progress": 24,
+      "agents": 3,
+      "reward": [
+        "The Devil Finds Work..."
+      ],
+      "powerRecovery": "3 / 0.0525–0.1575"
+    },
+    {
+      "seal": 3,
+      "progress": 44,
+      "agents": 3,
+      "reward": [
+        "...For Idle Hands",
+        "It's All Just a Game"
+      ],
+      "powerRecovery": "4 / 0.0700–0.2100"
+    },
+    {
+      "seal": 4,
+      "progress": 72,
+      "agents": 4,
+      "reward": [
+        "Stories Told In Dreams",
+        "Fascinate"
+      ],
+      "powerRecovery": "5 / 0.0875–0.2625"
+    },
+    {
+      "seal": 5,
+      "progress": 108,
+      "agents": 4,
+      "reward": [
+        "Everyone Shall Play"
+      ],
+      "powerRecovery": "6 / 0.1050–0.3150"
+    },
+    {
+      "seal": 6,
+      "progress": 152,
+      "agents": 4,
+      "reward": [
+        "Incoherent Thoughts"
+      ],
+      "powerRecovery": "7 / 0.1225–0.3675"
+    },
+    {
+      "seal": 7,
+      "progress": 204,
+      "agents": 5,
+      "reward": [
+        "Hysterical Tome"
+      ],
+      "powerRecovery": "8 / 0.1400–0.4200"
+    },
+    {
+      "seal": 8,
+      "progress": 264,
+      "agents": 5,
+      "reward": [],
+      "powerRecovery": "9 / 0.1575–0.4725"
+    },
+    {
+      "seal": 9,
+      "progress": 360,
+      "agents": 6,
+      "reward": [
+        "Warp Reality",
+        "苏醒"
+      ],
+      "powerRecovery": "10 / 0.1750–0.5250"
+    }
+  ],
+  "powers": [
+    {
+      "seal": 0,
+      "name": "Let's see what this game brings",
+      "cost": "动态",
+      "icon": "power-game.png",
+      "effect": "直接渗透目标聚居地内一个尚未渗透且允许渗透的设施；若有多个合法设施，选择列表中的最后一个。消耗会随破封数量增加：0–2 封为 1，3–4 封为 2，5–6 封为 3，7–8 封为 4，9 封为 5。",
+      "limit": "目标必须是当前渗透进度恰好为 0 的聚居地，并至少有一个可渗透设施。"
+    },
+    {
+      "seal": 2,
+      "name": "The Devil Finds Work...",
+      "cost": 1,
+      "icon": "power-preference.png",
+      "effect": "从全部普通性格标签与敌对势力标签中选择一项，让目标新增一项普通厌恶。它会改变英雄选择任务、攻击目标和承担风险的意愿。",
+      "limit": "目标可以是无 Chosen One 特质的人物单位，包括我方 Agent；或已经疯狂且无 Chosen One 特质的当地统治者。普通厌恶与极端厌恶合计必须少于 5。"
+    },
+    {
+      "seal": 3,
+      "name": "...For Idle Hands",
+      "cost": 1,
+      "icon": "power-preference.png",
+      "effect": "从全部普通性格标签与敌对势力标签中选择一项，让目标新增一项普通喜好，用来推动其偏向对应任务或行为。",
+      "limit": "目标可以是无 Chosen One 特质的人物单位，包括我方 Agent；或已经疯狂且无 Chosen One 特质的当地统治者。普通喜好与极端喜好合计必须少于 7。"
+    },
+    {
+      "seal": 3,
+      "name": "It's All Just a Game",
+      "cost": 3,
+      "icon": "power-just-a-game.png",
+      "effect": "目标 Sanity −14，最低为 0；由后续人物更新处理精神崩溃，不会在施放时直接取消追击。",
+      "limit": "目标必须是正在追击另一单位的人物单位；不限定为英雄，也没有排除 Chosen One。"
+    },
+    {
+      "seal": 4,
+      "name": "Stories Told In Dreams",
+      "cost": 3,
+      "icon": "madness.png",
+      "effect": "立即给目标地点增加 50 点 Madness，可直接越过 100 点的统治者精神侵蚀阈值，或推动地点接近 300 点危机。",
+      "limit": "只能选择人类聚居地。"
+    },
+    {
+      "seal": 4,
+      "name": "Fascinate",
+      "cost": 3,
+      "icon": "power-fascinate.png",
+      "effect": "把目标全部普通喜好移入极端喜好、普通厌恶移入极端厌恶，并清空原有普通列表；保留已有极端倾向。",
+      "limit": "目标必须是携带 Laughing Tome 或 Laughing Tome (Bound) 的人物单位或当地统治者；没有排除我方 Agent 或 Chosen One。"
+    },
+    {
+      "seal": 5,
+      "name": "Everyone Shall Play",
+      "cost": 0,
+      "icon": "laughing-tome.png",
+      "effect": "被动强化 Laughing Tome。未封印的 Tome 被非玩家人物携带时，每回合给其所在地增加 3 Madness；Tome 作为地点修正时，除当地每回合增加 3 Madness 外，还会给相邻每个人类聚居地增加 1 Madness。",
+      "limit": "被动神力，解锁后自动生效，不会出现在主动施法列表中。"
+    },
+    {
+      "seal": 6,
+      "name": "Incoherent Thoughts",
+      "cost": 3,
+      "icon": "power-incoherent.png",
+      "effect": "取消目标当前挑战，并令其陷入 3 回合 Disrupted，在此期间无法采取行动。",
+      "limit": "目标必须是正在执行挑战或英雄任务、且无 Chosen One 特质的人物单位；不接受普通军队。"
+    },
+    {
+      "seal": 7,
+      "name": "Hysterical Tome",
+      "cost": 5,
+      "icon": "hysterical-tome.png",
+      "effect": "移走 <CrossReference name=\"Laughing King's Tome\" />，在旧地点留下 <CrossReference name=\"Hysterical Tome\" href=\"#entry-hysterical-tome-modifier\" />。优先从“到旧书所在地的步数，大于旧书所在地到 Elder Tomb 的步数”的人类聚居地中随机选择新地点；没有候选时，改从全部人类聚居地随机选择，可能选回原地。",
+      "limit": "只能选择当前存在 Laughing King's Tome 地点修正的地点。"
+    },
+    {
+      "seal": 9,
+      "name": "Warp Reality",
+      "cost": 1,
+      "icon": "arcane-fortress.png",
+      "effect": "在 Elder Tomb 创建或补充 Arcane Fortress，每次 +25，最高 100，用来吸收敌方法师的魔法攻击。",
+      "limit": "只能对 Elder Tomb 施放。"
+    }
+  ],
+  "supplicant": {
+    "image": "supplicant.png",
+    "stats": "Might 2（携书时 4）　Lore 2　Intrigue 4　Command 3　HP 5",
+    "abilities": [
+      {
+        "name": "Protector of the Tome",
+        "text": "携带 Laughing Tome 或 Laughing Tome (Bound) 时，Might +2、Defence +2；失去书后加成消失。"
+      },
+      {
+        "name": "Maddening Tongues",
+        "text": "位于人类聚居地时，每回合使当地 Madness +1。"
+      },
+      {
+        "name": "Favourite Toy",
+        "text": "每局一次。死亡后在 Elder Tomb 等待下一次地点更新，以 1 HP 复活；Profile 和 Menace 重置至各自最低值，全部物品和随从丢失，正在追杀他的单位取消追击。使用后名称变为 Favourite Toy (USED)。"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "items",
+      "title": "物品",
+      "media": true,
+      "items": [
+        {
+          "name": "Laughing Tome",
+          "image": "laughing-tome.png",
+          "text": "开局位于 Supplicant 的第一个物品槽，可提供 Place Tome。被我方可控人物携带时不损伤精神，也不因此提高神力恢复；由非玩家人物阅读时，实际每回合 Sanity −1。\n携书者死亡、达到最高疯狂等级、失去人物单位与统治者身份，或因阅读而耗尽 Sanity 后，书会转为所在地的 Laughing King's Tome。书的物品提示写“每两回合”，但实际按每回合执行。"
+        },
+        {
+          "name": "Laughing Tome (Bound)",
+          "image": "bound-tome.png",
+          "text": "Bind Tome 产生的封印书，停止阅读造成的 Sanity 与 Madness 影响；持有英雄可在未渗透的 Library 执行 Weaken Iastur。非玩家人物持有并累计经过 28 次更新后，书离手并转为 Laughing King's Tome (Asleep)。我方携带时不累计这项计时，可通过 Unbind Tome 解除封印。\n封印状态不会阻止 Protector of the Tome 或 Fascinate 生效；持有者死亡等失控情况仍可使它重新成为活跃的地点修正。"
+        }
+      ]
+    },
+    {
+      "id": "location-modifiers",
+      "title": "地点修正",
+      "media": true,
+      "items": [
+        {
+          "name": "Laughing King's Tome",
+          "image": "laughing-tome.png",
+          "initialValue": "",
+          "modifierChange": {
+            "natural": "",
+            "external": ""
+          },
+          "text": "在人类聚居地持续增加 Madness；提供 Drive Word of Mouth 与 Bind Tome。第 5 封印后，还会影响相邻人类聚居地。放在非人类聚居地时不会产生这项持续扩散。"
+        },
+        {
+          "name": "Laughing King's Tome (Asleep)",
+          "image": "laughing-tome.png",
+          "initialValue": "",
+          "modifierChange": {
+            "natural": "",
+            "external": ""
+          },
+          "text": "书的休眠地点状态，不再传播 Madness；提供 Collect Tome，也可从 Elder Tomb 使用 Summon Tome 取回。"
+        },
+        {
+          "seal": 7,
+          "name": "Hysterical Tome",
+          "id": "hysterical-tome-modifier",
+          "image": "hysterical-tome.png",
+          "initialValue": "",
+          "modifierChange": {
+            "natural": "",
+            "external": ""
+          },
+          "text": "真本移走后留下的副本，在人类聚居地持续增加 Madness；不享受 Everyone Shall Play 的相邻传播，也不能单独提高神力恢复。英雄可用 Dispel Hysterical Tome 清除。"
+        },
+        {
+          "name": "Madness",
+          "image": "madness.png",
+          "baseGame": true,
+          "modifierChange": {
+            "natural": "",
+            "external": "<CrossReference name=\"Stories Told In Dreams\" /> 一次性增加 50。\n<CrossReference name=\"Laughing King's Tome\" /> 与 <CrossReference name=\"Hysterical Tome\" href=\"#entry-hysterical-tome-modifier\" /> 在人类聚居地每回合各增加 3。\n<CrossReference name=\"Maddening Tongues\" /> 在人类聚居地每回合增加 1。\n<CrossReference name=\"Everyone Shall Play\" /> 使非玩家人物携带的未封印书每回合为所在地增加 3，并使活跃地点真本向每个相邻人类聚居地每回合增加 1。\n<CrossReference name=\"Drive Word of Mouth\" /> 完成时增加 25。\n<CrossReference name=\"A peaceful village shaken by a senseless tragedy\" /> 的 It all makes sense... 选项增加 75。"
+          },
+          "text": "每 1 点强度造成 −0.003 Prosperity；超过 100 后增加 Unrest，并逐步侵蚀当地统治者的 Sanity。达到 300 时强度回落到 150；若当地是人类聚居地且尚无 Madness Effect，则触发 Madness Crisis，等概率留下六种长期效果之一。",
+          "initialValue": ""
+        },
+        {
+          "seal": 9,
+          "name": "Iastur",
+          "image": "iastur-soul.png",
+          "initialValue": "",
+          "modifierChange": {
+            "natural": "",
+            "external": ""
+          },
+          "text": "苏醒后的灵魂，游戏实际地点修正名称为 Iastur。出现在 Elder Tomb，供携带未封印 Laughing Tome 的 Agent 执行 Waves of Madness。现行生成逻辑只提供此挑战，不提供旧的 Bind Iastur。",
+          "id": "iastur-s-soul"
+        },
+        {
+          "seal": 9,
+          "name": "Arcane Fortress",
+          "image": "arcane-fortress.png",
+          "baseGame": true,
+          "initialValue": "Warp Reality 新建时为 25。",
+          "modifierChange": {
+            "natural": "每回合强度 −2。",
+            "external": "Warp Reality 每次增加 25，最高 100。"
+          },
+          "text": "保护地点免受敌对法师的魔法攻击；地点沦为废墟后仍保留。"
+        }
+      ]
+    },
+    {
+      "id": "madness-effects",
+      "title": "疯狂危机效果",
+      "media": true,
+      "items": [
+        {
+          "name": "Madness Effect: Catatonia",
+          "image": "madness-effect.png",
+          "baseGame": true,
+          "text": "Madness Crisis 的六种随机结果之一。当地 −0.75 Prosperity、−10 Security，并固定减少 50 点食物产出。"
+        },
+        {
+          "name": "Madness Effect: Masochism",
+          "image": "madness-effect.png",
+          "baseGame": true,
+          "text": "非玩家控制且不是 Chosen One 的英雄停留当地时，每回合增加 5% Shadow。"
+        },
+        {
+          "name": "Madness Effect: Fascination",
+          "image": "madness-effect.png",
+          "baseGame": true,
+          "text": "每逢 10 的倍数回合为玩家恢复 1 点神力，不超过当前上限。"
+        },
+        {
+          "name": "Madness Effect: Psychotics",
+          "image": "madness-effect.png",
+          "baseGame": true,
+          "text": "出现时立刻把当地人口降至原来的 75%（最低 1），增加 100 Death；持续提供 −2 Security。"
+        },
+        {
+          "name": "Madness Effect: Hypochondria",
+          "image": "madness-effect.png",
+          "baseGame": true,
+          "text": "出现时建立 50 Quarantine 与 100 Plague Immunity，并持续造成 −0.65 Prosperity。"
+        },
+        {
+          "name": "Madness Effect: Paranoid Delusions",
+          "image": "madness-effect.png",
+          "baseGame": true,
+          "text": "出现时添加 Banditry；持续提供 Security +5。当地除 Chosen One 外的人物单位每回合个人 Shadow +5 个百分点，最高 100%，包括我方 Agent。"
+        }
+      ]
+    },
+    {
+      "id": "challenges",
+      "title": "挑战",
+      "media": true,
+      "items": [
+        {
+          "name": "Place Tome",
+          "image": "laughing-tome.png",
+          "location": "携带未封印 Laughing Tome 的 Agent 所在地点；不要求聚居地，但持续扩散只在人类聚居地生效。",
+          "meta": "Other",
+          "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+          "text": "携带未封印 Laughing Tome 的 Agent 把书放到所在地，生成 Laughing King's Tome。完成时额外获得 5 Profile 与 10 Menace。"
+        },
+        {
+          "name": "Drive Word of Mouth",
+          "image": "madness.png",
+          "location": "有 <CrossReference name=\"Laughing King's Tome\" /> 的地点。",
+          "meta": "Lore",
+          "statLine": "Complexity: 25　Profile: 当前 Madness　Menace: 当前 Madness ÷ 2　XP: 42",
+          "text": "完成时使当地 Madness +25，执行者 Profile +10、Menace +10。"
+        },
+        {
+          "name": "Collect Tome",
+          "image": "laughing-tome.png",
+          "location": "Laughing King's Tome (Asleep) 所在地点。",
+          "meta": "Other",
+          "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+          "text": "取回未封印 Laughing Tome，并清除其他真本物品、活跃地点真本和休眠真本；不清除 Hysterical Tome 副本。完成时 Profile +3、Menace +10。"
+        },
+        {
+          "name": "Summon Tome",
+          "image": "laughing-tome.png",
+          "location": "Elder Tomb。",
+          "meta": "Other",
+          "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+          "text": "召回遗失、休眠或被非玩家人物持有的未封印书。有人正在 Bind Tome 时不能开始；若非玩家英雄或统治者持有封印书，召回会失败，需要夺回或等待其使用、离手。完成取回时 Profile +3、Menace +10。"
+        },
+        {
+          "name": "Unbind Tome",
+          "image": "bound-tome.png",
+          "location": "携带 Laughing Tome (Bound) 的玩家 Agent 当前所在地点。",
+          "meta": "Lore",
+          "statLine": "Complexity: 50　Profile: 0　Menace: 0　XP: 72",
+          "text": "玩家 Agent 携带 Bound Tome 时解除封印，使其重新传播 Madness。完成时增加 3 Profile 与 5 Menace。"
+        },
+        {
+          "seal": 9,
+          "name": "Waves of Madness",
+          "image": "laughing-tome.png",
+          "location": "Elder Tomb 的 <CrossReference name=\"Iastur\" href=\"#entry-iastur-s-soul\" /> 修正处；执行者须携带未封印 Laughing Tome。",
+          "meta": "Lore",
+          "statLine": "Complexity: 50　Profile: 1000　Menace: 25　XP: 72",
+          "text": "完成一次引导后，将仍存活、未疯狂且不受玩家控制的有效人物按到引导者的平面距离排序。设人数为 N，取第 floor(N×5%)+1 人的距离为界，将该距离以内的所有人 Sanity 设为 0 并触发疯狂；距离并列者全部计入，因此不一定恰好影响 5%。\n包括符合条件的英雄和统治者；排除我方可控人物及 Ghast、Cave Spider 等特殊自主人物。代码不排除 Chosen One。可重复执行，已经疯狂的人不再占据下一次的名单。\n开始引导时增加 Profile 40、Menace 40；160 是敌方法师选择反制目标时使用的引导威胁参数。可以用 Warp Reality 提供防护。"
+        }
+      ]
+    },
+    {
+      "id": "hero-tasks",
+      "title": "英雄任务",
+      "media": true,
+      "items": [
+        {
+          "name": "Bind Tome",
+          "image": "bound-tome.png",
+          "location": "有 Laughing King's Tome 的地点。",
+          "meta": "Other",
+          "statLine": "Complexity: 5　Profile: Madness ÷ 1.25（其他地点 50）　Menace: Madness ÷ 1.5（其他地点 60）　XP: 12",
+          "positiveTags": "无",
+          "negativeTags": "Madness",
+          "text": "封印并拾取真本，获得 Laughing Tome (Bound)，停止活跃真本的持续扩散。仅在人类 Society 的人类聚居地，Profile 与 Menace 才按 Madness 计算；其他地点分别固定为 50、60。"
+        },
+        {
+          "name": "Weaken Iastur",
+          "image": "bound-tome.png",
+          "location": "尚未渗透的 Library。",
+          "meta": "Lore",
+          "statLine": "Complexity: 5　Profile: 1000　Menace: 150　XP: 12",
+          "positiveTags": "无",
+          "negativeTags": "Madness",
+          "text": "消耗封印书。若当前神力 >floor(神力上限÷2)，则神力清零；否则我方所有可控人物单位各增加 Profile 5、Menace 5。之后在执行者所在地留下 Laughing King's Tome (Asleep)。上限为奇数时，比较阈值先向下取整。"
+        },
+        {
+          "name": "Dispel Hysterical Tome",
+          "image": "hysterical-tome.png",
+          "location": "有 <CrossReference name=\"Hysterical Tome\" href=\"#entry-hysterical-tome-modifier\" /> 的地点。",
+          "meta": "Lore",
+          "statLine": "Complexity: 10　Profile: 50　Menace: 50　XP: 21",
+          "positiveTags": "无",
+          "negativeTags": "Madness",
+          "text": "移除所在地的一项 Hysterical Tome，停止其继续增加 Madness。完成时额外增加 5 Profile。"
+        }
+      ]
+    },
+    {
+      "id": "religion",
+      "title": "宗教与教义",
+      "items": [
+        {
+          "name": "Maddening Insight",
+          "text": "已有 Holy Order 会加入的专属教义，不会另建独立教团。等级范围 0 至 −1；0 时无效果。\n−1 时，该信仰的聚居地每有一名不受玩家控制的人物单位正在学习 Arcane Secret，每回合使该学习者 Sanity −1，并使当地统治者 Sanity −1，仅在各自 Sanity >0 时扣除。多名学习者分别触发，统治者可能同回合损失多点。"
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "title": "事件",
+      "media": true,
+      "items": [
+        {
+          "name": "Madness Crisis",
+          "image": "madness.png",
+          "baseGame": true,
+          "text": "任一人类聚居地的 Madness 达到 300 时触发。Madness 立即降回 150，并在 Catatonia、Masochism、Fascination、Psychotics、Hypochondria、Paranoid Delusions 中等概率选择一种长期地点效果；同一地点已经有 Madness Effect 时不会再次生成。"
+        },
+        {
+          "name": "Story time",
+          "text": "Agent 在 Hysterical Tome 副本所在地点执行四种基础属性对应的任务，途中事件计时到达要求；同地有非 Chosen One、厌恶 Madness 的英雄时可触发，概率参数为 0.5。\nSend trouble：英雄 Menace +9，Agent Menace +3。\nLead astray：英雄 Disrupted 3 回合，Agent Menace +3。\nLeave to quest：不产生额外人物效果。三个选项均重置途中事件计时。\n事件原文中的人称代词随人物变化。次数条件与选项更新使用的计数变量不一致，不能保证按设计在五次后停止。事件定义未指定图片。"
+        },
+        {
+          "name": "A peaceful village shaken by a senseless tragedy",
+          "image": "event-shaken-village.jpg",
+          "baseGame": true,
+          "text": "本体移动事件。地点须有农场，Madness 在 50 与 250 之间，或当地统治者 Shadow 在 25% 与 68% 之间（没有统治者时读取地图格子的黑暗程度）；Devastation 与 Plague 均为 0，且此前未记录这起事件。概率参数为 0.01。\nA sign of dark times：当地 Shadow +33 个百分点。\nIt all makes sense...：当地 Madness +75，仅此神祇可以选择。\n完成选项后记录当前回合，阻止后续通常再次触发。"
+        }
+      ]
+    }
+  ],
+  "relations": {
+    "Laughing King's Tome": {
+      "sources": [
+        {
+          "name": "Place Tome",
+          "href": "#entry-place-tome"
+        },
+        {
+          "name": "Laughing Tome",
+          "href": "#entry-laughing-tome"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Madness",
+          "href": "#entry-madness"
+        },
+        {
+          "name": "Drive Word of Mouth",
+          "href": "#entry-drive-word-of-mouth"
+        },
+        {
+          "name": "Bind Tome",
+          "href": "#entry-bind-tome"
+        }
+      ]
+    },
+    "Laughing King's Tome (Asleep)": {
+      "sources": [
+        {
+          "name": "Weaken Iastur",
+          "href": "#entry-weaken-iastur"
+        },
+        {
+          "name": "Laughing Tome (Bound)",
+          "href": "#entry-laughing-tome-bound"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Collect Tome",
+          "href": "#entry-collect-tome"
+        },
+        {
+          "name": "Summon Tome",
+          "href": "#entry-summon-tome"
+        }
+      ]
+    },
+    "Hysterical Tome": {
+      "effects": [
+        {
+          "name": "Hysterical Tome",
+          "href": "#entry-hysterical-tome-modifier",
+          "meta": "地点修正"
+        }
+      ]
+    },
+    "hysterical-tome-modifier": {
+      "sources": [
+        {
+          "name": "Hysterical Tome",
+          "href": "#entry-hysterical-tome",
+          "meta": "神力"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Madness",
+          "href": "#entry-madness"
+        },
+        {
+          "name": "Dispel Hysterical Tome",
+          "href": "#entry-dispel-hysterical-tome"
+        }
+      ]
+    },
+    "iastur-s-soul": {
+      "sources": [
+        {
+          "name": "第 9 封印苏醒",
+          "href": "#seals"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Waves of Madness",
+          "href": "#entry-waves-of-madness"
+        }
+      ]
+    },
+    "Warp Reality": {
+      "effects": [
+        {
+          "name": "Arcane Fortress",
+          "href": "#entry-arcane-fortress"
+        }
+      ]
+    },
+    "Arcane Fortress": {
+      "sources": [
+        {
+          "name": "Warp Reality",
+          "href": "#entry-warp-reality"
+        }
+      ]
+    },
+    "Stories Told In Dreams": {
+      "effects": [
+        {
+          "name": "Madness",
+          "href": "#entry-madness"
+        }
+      ]
+    },
+    "Madness Crisis": {
+      "sources": [
+        {
+          "name": "Madness",
+          "href": "#entry-madness"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Madness Effect: Catatonia",
+          "href": "#entry-madness-effect-catatonia"
+        },
+        {
+          "name": "Madness Effect: Masochism",
+          "href": "#entry-madness-effect-masochism"
+        },
+        {
+          "name": "Madness Effect: Fascination",
+          "href": "#entry-madness-effect-fascination"
+        },
+        {
+          "name": "Madness Effect: Psychotics",
+          "href": "#entry-madness-effect-psychotics"
+        },
+        {
+          "name": "Madness Effect: Hypochondria",
+          "href": "#entry-madness-effect-hypochondria"
+        },
+        {
+          "name": "Madness Effect: Paranoid Delusions",
+          "href": "#entry-madness-effect-paranoid-delusions"
+        }
+      ]
+    },
+    "Madness Effect: Catatonia": {
+      "sources": [
+        {
+          "name": "Madness Crisis",
+          "href": "#entry-madness-crisis"
+        }
+      ]
+    },
+    "Madness Effect: Masochism": {
+      "sources": [
+        {
+          "name": "Madness Crisis",
+          "href": "#entry-madness-crisis"
+        }
+      ]
+    },
+    "Madness Effect: Fascination": {
+      "sources": [
+        {
+          "name": "Madness Crisis",
+          "href": "#entry-madness-crisis"
+        }
+      ]
+    },
+    "Madness Effect: Psychotics": {
+      "sources": [
+        {
+          "name": "Madness Crisis",
+          "href": "#entry-madness-crisis"
+        }
+      ]
+    },
+    "Madness Effect: Hypochondria": {
+      "sources": [
+        {
+          "name": "Madness Crisis",
+          "href": "#entry-madness-crisis"
+        }
+      ]
+    },
+    "Madness Effect: Paranoid Delusions": {
+      "sources": [
+        {
+          "name": "Madness Crisis",
+          "href": "#entry-madness-crisis"
+        }
+      ]
+    }
+  },
+  "specialVictory": "无"
 };
-})();
 
 const preparedConfig = prepareGodConfig(config);
 
-export default function iasturArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
+export default function IasturArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
   return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }

@@ -1,5 +1,7 @@
 import {
   BookText,
+  Dna,
+  Brain,
   Bug,
   CircleDashed,
   Crown,
@@ -28,7 +30,9 @@ type GodMarkId =
   | "cordyceps"
   | "ixthus" | "kishi"
   | "living-void"
-  | "chandalor";
+  | "chandalor"
+  | "escamrak"
+  | "adolia";
 
 const marks = {
   "she-who-will-feast": Worm,
@@ -44,6 +48,8 @@ const marks = {
   kishi: Droplets,
   "living-void": CircleDashed,
   chandalor: Heart,
+  escamrak: Dna,
+  adolia: Brain,
 } as const;
 
 export function GodMark({ god, size = 17 }: { god: GodMarkId; size?: number }) {

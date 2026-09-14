@@ -14,24 +14,32 @@ import DeathsGamesArchive from "./DeathsGamesArchive";
 import CordycepsArchive from "./CordycepsArchive";
 import IxthusArchive from "./IxthusArchive";
 import KishiArchive from "./KishiArchive";
+import EscamrakArchive from "./EscamrakArchive";
+import AdoliaArchive from "./AdoliaArchive";
 import GodIndex from "./GodIndex";
-import type { ArchiveGodChoice } from "./GodArchiveTypes";
+import BaseLocationModifiersArchive from "./BaseLocationModifiersArchive";
+import type { ArchivePageChoice } from "./GodArchiveTypes";
 
-type GodChoice = ArchiveGodChoice;
+type GodChoice = ArchivePageChoice;
 
 export default function GodArchive() {
   const [god, setGod] = useState<GodChoice>("index");
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("page") === "base-location-modifiers") {
+      setGod("base-location-modifiers");
+      return;
+    }
     const requested = new URLSearchParams(window.location.search).get("god") as GodChoice | null;
-    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor"].includes(requested)) setGod(requested);
+    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia"].includes(requested)) setGod(requested);
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
-    const url = nextGod === "index" ? window.location.pathname : `${window.location.pathname}?god=${nextGod}`;
+    const url = nextGod === "index" ? window.location.pathname : nextGod === "base-location-modifiers" ? `${window.location.pathname}?page=base-location-modifiers` : `${window.location.pathname}?god=${nextGod}`;
     window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
   if (god === "index") return <GodIndex onSelect={switchGod} />;
+  if (god === "base-location-modifiers") return <BaseLocationModifiersArchive onReturn={() => switchGod("index")} />;
   if (god === "she-who-will-feast") return <SheWhoWillFeastArchive onGodChange={switchGod} />;
   if (god === "iastur") return <IasturArchive onGodChange={switchGod} />;
   if (god === "vinerva") return <VinervaArchive onGodChange={switchGod} />;
@@ -45,5 +53,7 @@ export default function GodArchive() {
   if (god === "kishi") return <KishiArchive onGodChange={switchGod} />;
   if (god === "living-void") return <LivingVoidArchive onGodChange={switchGod} />;
   if (god === "chandalor") return <ChandalorArchive onGodChange={switchGod} />;
+  if (god === "escamrak") return <EscamrakArchive onGodChange={switchGod} />;
+  if (god === "adolia") return <AdoliaArchive onGodChange={switchGod} />;
   return <GodIndex onSelect={switchGod} />;
 }

@@ -1,63 +1,1050 @@
 "use client";
 
 import { GodArchive } from "./BaseGodArchive";
-import { D, O, prepareGodConfig } from "./GodArchiveTypes";
-import type { ArchiveGodChoice, GodConfig } from "./GodArchiveTypes";
+import { prepareGodConfig, type ArchiveGodChoice, type GodConfig } from "./GodArchiveTypes";
 
 const config: GodConfig = {
- id: "ophanim", name: "Ophanim, The Divine Beyond", number: "04", theme: "ophanim-theme", assetDir: "ophanim", background: "background.png", portrait: "portrait.png", 
- flavour: "Ophanim 是披着神圣光辉的完美主义神祇。它用 Faith 把恐惧中的人类纳入秩序，再把 Faith 推到极限，将城市改造成没有自由意志的神权机器。",
- caption: "Faith、Doubt 与神权国家", maxTurns: "常规 500 回合", awaken: "第 400 回合", panic: "75%", finalAgents: "5", progressLabel: "回合", unlockMethod: "常规回合解锁",
- powerRecovery: "常规恢复：0.035 ×（已破封印数 + 1）× 难度缩放；Sap Lifeforce 处于 −1 / −2 时，源码额外增加 0.02 / 0.04 神力每回合（即参数增益 +2% / +4%）。神力未满时，每座对应神庙还会使所在城市每回合减少 2 / 4 人口。",
- core: [
-  "用 <CrossReference name=\"Start Faith\" /> 在有渗透的城市建立 <CrossReference name=\"Ophanim's Faith\" />，并利用阴影、邻近 Faith 与恐慌让信仰扩张。",
-  "让 Faith 超过 150% 后用 <CrossReference name=\"Theocracy\" /> 接管国家；受控国家会让 Faith 增长更快，并可被组织成对外发动战争的工具。",
-  "Faith 达到 300% 会把城市变成完美神权城市，压制自由意志和动乱；但邻近的低 Faith 人口会看见这种变化并积累 <CrossReference name=\"Ophanim's Doubt\" />。",
-  "用 <CrossReference name=\"Root out Doubters\" />、<CrossReference name=\"Sectarian Violence\" /> 或 Holy Order 的 <CrossReference name=\"Holy: Inquisition\" /> 清除 Doubt；放任 Doubt 达到 100% 会向邻地蔓延。",
-  "用 <CrossReference name=\"Crusade\" />、<CrossReference name=\"Empower Slaves\" /> 和 <CrossReference name=\"Perfect Servant\" /> 把完美城市与 Faith 转化成军力和新 Agent。",
- ],
- overviewExtra: { title: "Faith 与 Doubt 的循环", text: "Faith 会降低所在地 Shadow，并从阴影带来的 Menace、邻近 Faith 和神权控制中获得增长；Ruler Awareness、Doubters 和低 Faith 邻城会拖慢它。高 Faith 城市让相邻低 Faith 人口看到自己的未来，逐步生成 Doubt；Doubt 降低 Faith，达到 100% 后向邻地传播。" },
- seals: [
-  { seal: 0, progress: 0, agents: 1, reward: ["Start Faith", "Sleepless Labour"] }, { seal: 1, progress: 35, agents: 2, reward: ["Peace and Order", "Swift of Foot"] },
-  { seal: 2, progress: 70, agents: 2, reward: ["Theocracy", "Declare Heretic"] }, { seal: 3, progress: 105, agents: 3, reward: ["Call to Serve", "Excise Doubt"] },
-  { seal: 4, progress: 140, agents: 4, reward: ["Crusade"] }, { seal: 5, progress: 210, agents: 5, reward: ["Empower Slaves"] },
-  { seal: 6, progress: 280, agents: 5, reward: ["Perfect Servant"] }, { seal: 7, progress: 400, agents: 5, reward: ["Smite", "苏醒"] },
- ],
- powers: [
-  O("Start Faith", 0, 0, "在有渗透的人类聚居地建立 1% Ophanim's Faith。Faith 会在回合结算中继续增长，并开始影响当地 Shadow 与安全。", "必须是人类聚居地，且渗透度大于 0%。", "start-faith.png"),
-  O("Sleepless Labour", 0, 1, "让一名正在执行数值型挑战的己方 Agent 立即获得 20 点进度，但承受 2 HP 伤害；升级回合会正常治疗。", "目标必须正在执行有明确进度的挑战，不能用于休息、无限期任务或引导型法术；Agent HP 必须大于 2。", "sleepless-labour.png"),
-  O("Peace and Order", 1, 2, "让已有 Faith 增加 50%，同时最多修复 40% Devastation。它用战争后的秩序恢复把人口重新纳入 Ophanim 的信仰。", "地点必须已有 Ophanim's Faith，且 Devastation 大于 20%。", "peace-and-order.png"),
-  O("Swift of Foot", 1, 1, "让一个已经移动过的己方 Agent 再移动一次。", "目标必须是本回合已经移动过的己方 Agent。", "swift-of-foot.png"),
-  O("Theocracy", 2, 0, "让 Faithful 在城市中起事并接管国家。Faith 低于 100% 的地点会反对；接管后 Faith 增长更快，并会增加 20% 临时世界恐慌。", "目标是 Faith 超过 150% 的人类或精灵城市，且其国家尚未被 Ophanim 接管；不能目标为 The Alliance。", "theocracy.png"),
-  O("Declare Heretic", 2, 1, "杀死带有 Infamous 的 Agent，移除当地及邻近城市统治者的 Awareness，并清除目标地点的 Doubt；同时减半临时世界恐慌。", "目标必须是 Infamous Agent，且目标或相邻地点存在 Awareness 大于 0 的统治者。", "declare-heretic.png"),
-  O("Call to Serve", 3, 3, "在 Ophanim Holy Order 的城市中召集一名 Acolyte。新 Acolyte 可以建造 Temple，并按照教义自动执行宗教任务。", "必须目标为拥有 Ophanim Holy Order 且仍有 recruitment point 的人类聚居地。", "call-to-serve.png"),
-  O("Excise Doubt", 3, 0, "命令一个受控国家的军队夷平 Faith 超过 150% 的目标城市，以彻底移除 Doubt。代价是牺牲整座城市的人口和领地。", "目标必须是 Ophanim 控制国家中 Faith 超过 150% 的人类城市，并且有可用、没有当前请求的军队。", "excise-doubt.png"),
-  O("Crusade", 4, 0, "让所有已经转化为 Ophanim 神权国家的社会向目标国家宣战；已经在战争中的国家不会重复宣战。", "必须目标为一个社会。", "crusade.png"),
-  O("Empower Slaves", 5, 2, "治疗一支来自完美城市的 Ophanim 人类军队，恢复其缺失 HP 的 50%。", "目标必须是来自已完美城市的军队。", "unit_ophanim.png"),
-  O("Perfect Servant", 6, 4, "把完美城市中的英雄直接接管为 Agent。它消耗 recruitment point，并把英雄纳入 Ophanim 的 Agent 名额。", "目标必须是完美城市中的英雄，需要 recruitment point 和空余 Agent 位。", "perfect-servant.png"),
-  O("Smite", 7, 7, "从天空降下 Holy Fire，彻底摧毁目标城市，并可能连带摧毁三格内的其他地点。", "可以对任意地点施放。", "smite.png"),
- ],
- supplicant: { image: "ophanim-supplicant.png", stats: "Might 2，Lore 2，Intrigue 4，Command 3。", abilities: [D("Duality（shadow / faith）", "完成 Infiltrate 时交替产生两种结果：一回合给当地增加 30% Shadow，下一回合给 Ophanim's Faith 增加 20%；之后继续交替。"), D("Leader of the Faith", "与 Ophanim's Faith 同处一地时，每回合额外推动 Faith 增长 2%。"), D("Inquisitor", "与 Ophanim's Doubt 同处一地时，每回合降低 Doubt 3%，抵消其通常增长后的净变化约为 −1%；代价是每回合损失 1 人口，人口耗尽会毁灭城市。")] },
- sections: [
-  { id: "traits", title: "人物特质", items: [D("Preacher", "完成 Infiltrate 时自动建立或强化 Ophanim's Faith，初始增加 20% Faith。")] },
-  { id: "location-modifiers", title: "地点修正", items: [D("Shadow", "Shadow 是地点的黑暗侵蚀度，范围为 0–100%。达到 100% 时地点完全 Enshadowed，计入征服区域与胜利进度；当地贵族会获得 Shadow，并不再为威胁进行防御。Shadow 会按地点的流动规则向相邻地点传播，也会逐步传给当地统治者；非 Chosen One Agent 在当地休息时，其个人 Shadow 会向地点值靠拢。\n\nShadow 会提升 <CrossReference name=\"Ophanim's Faith\" />；反过来，Ophanim's Faith 也会降低当地 Shadow。", { id: "shadow-modifier", image: "power-shadow.png", baseGame: true, modifierChange: { natural: "每回合从符合地点 Shadow 流动规则的相邻高 Shadow 地点传播。\n传播量受相邻地点 Shadow、Ward、Infiltration 和难度影响。\n最终限制在 0–100%。", external: "<CrossReference name=\"Duality（shadow / faith）\" /> 的 Shadow 结果在完成 Infiltrate 时增加 30% Shadow。\n<CrossReference name=\"Ophanim's Faith\" /> 每回合按 Faith/500 减少当地 Shadow。" } }), D("Ophanim's Faith", "人口逐渐信仰 Ophanim，强度范围为 0–300%。Faith 会降低当地 Shadow，并在达到 300% 时把城市转化为 Perfect City；未被 Ophanim 接管的地点在达到 300% 时还会触发 Ophanim Crisis。它还会降低当地 Security；代码中的变化为整数值 −(50 + Faith) / 100。", { image: "start-faith.png", modifierChange: { natural: "<CrossReference name=\"Shadow\" /> 超过 10% 时每回合 +4。\n若上项不成立，但相邻地点有 Shadow ≥ 25% 且其 Shadow 流动策略为 FULL_FLOW，则每回合 +2。\n若前两项均不成立，但世界平均 Shadow > 10%，则每回合 +1。\n相邻存在 Faith 时每回合 +1。\n当地存在 <CrossReference name=\"Ophanim's Doubt\" /> 时，每回合 −Doubt/30。\n社会被 Ophanim 控制时每回合 +3。\n社会未被 Ophanim 控制且当地有统治者时，每回合 −5 × 统治者 Awareness。\nFaith > 100% 时，符合条件的相邻人类地点会按随机判定建立 1% Faith：其统治者 Awareness < 50%、当地尚无 Faith，且 random ×（1 − 邻地 Shadow）< 0.1。", external: "<CrossReference name=\"Start Faith\" /> 创建时增加 1%。\n<CrossReference name=\"Peace and Order\" /> 增加 50%。\n<CrossReference name=\"Preacher\" /> 完成 Infiltrate 时创建或增加 20%。\n<CrossReference name=\"Duality（shadow / faith）\" /> 交替到 Faith 结果时创建或增加 20%。\n<CrossReference name=\"Leader of the Faith\" /> 与 Faith 同地时每回合增加 2%。\n<CrossReference name=\"Sectarian Violence\" /> 完成时使 Faith 减少与清除的 Doubt 相同的数值。" } }), D("Ophanim's Doubt", "Doubt 是对 Ophanim 完美秩序的怀疑，范围为 0–300%。它会抵消 Faith；强度超过 100% 后，会向相邻且 Faith 低于 295% 且尚无 Doubt 的地点传播 1 点。Doubt 本身不会触发普通地点危机。", { image: "ophanim-doubt.png", modifierChange: { natural: "当相邻地点的最高 Faith 高于本地 Faith，且本地没有 Doubt、Faith 低于 295% 时，差值的一半会按 2% × 难度增长系数累积到全局 Doubt 阈值。\n全局累积达到随机 0.5–1.5 的阈值后，本地生成 1 点 Doubt。\nDoubt 强度超过 100% 后，每回合向相邻且 Faith 低于 295%、尚无 Doubt 的地点传播 1 点。\n若当地没有 Faith，Doubt 强度会归零。", external: "未被 Ophanim 控制且有统治者时，每回合按统治者 Awareness +5。\n被 Ophanim 控制时，每回合受到 Perfect Thought −25。\n<CrossReference name=\"Inquisitor\" /> 同地时每回合 −3，但会消耗 1 人口。\n<CrossReference name=\"Root out Doubters\" /> 最多减少 60。\n<CrossReference name=\"Sectarian Violence\" /> 最多减少 40，并按清除量减少 Faith。\n<CrossReference name=\"Holy: Inquisition\" /> 最多减少 50。\n<CrossReference name=\"Declare Heretic\" /> 清除目标地点全部 Doubt。\n<CrossReference name=\"Excise Doubt\" /> 命令军队夷平地点，连同 Doubt 一起移除。" } }), D("Festering Doubt", "Paranoid Society 延迟出现的 Doubt 状态。它不是普通 Doubt，而是一个 5 回合倒计时；倒计时结束后转化为 Ophanim's Doubt，并保留当前强度。", { image: "ophanim-doubt.png", initialValue: "创建时强度 1，持续 5 回合。", modifierChange: { natural: "每回合倒计时 −1；归零后移除自身并创建等强度的 Ophanim's Doubt。", external: "<CrossReference name=\"Paranoid Society\" /> 处于负向等级，且两层连接范围内有 Ophanim Temple 时，原本由 Faith 差值产生的 Doubt 会先变成 Festering Doubt。对应 Temple 同时按教义等级降低 Prosperity，默认负向 1 级时为 −15%。" } }), D("Perfect City", "Faith 达到 300% 后，游戏把城市标记为 Ophanim 完美化：当地 Shadow、统治者 Shadow 与 Awareness 清零，Unrest 每回合受到 Ophanim's Perfection 的 −25 影响，原有 Holy Order 被替换为 Ophanimic Faith，并成为 Ophanim Army 与 Perfect Servant 的来源。", { image: "perfect-city.png", modifierChange: { natural: "", external: "" } })] },
-  { id: "locations", title: "地点与设施", items: [D("Ophanim's Holy Order", "Ophanim 开局在 the Elder Tomb 建立 Holy Order，实际名称为 Ophanimic Faith。它不使用普通外交，能建立 Temple、召集 Acolyte，并通过教义把 Faith 变成社会控制力。", { image: "holy-ophanim.png" }), D("Ophanim Theocracy", "Theocracy 接管后形成的国家形态。Faith 增长更快，可以接受 Crusade 命令，并将完美城市的军队变成 Ophanim 的战争工具。", { image: "theocracy.png" })] },
-  { id: "units", title: "特殊人物与自主单位", items: [D("Ophanite Acolyte", "Call to Serve 召集的宗教 Agent，可以建造 Temple，并根据 Ophanim 教义自动执行宗教任务。", { image: "ophanim-supplicant.png", stats: "Might 1–3，Lore 2–3，Intrigue 1–3，Command 2–3。" }), D("Perfect Servant", "来自 Perfect City 的英雄型 Agent；它不是独立兵种，而是通过 Perfect Servant 神力把原英雄转化为玩家 Agent。转化代码只把该英雄标记为 corrupted、加入 Agent 列表并清除当前任务，没有写入固定属性改动。", { id: "perfect-servant-unit", image: "perfect-servant.png", stats: "继承转化前英雄的 Might、Lore、Intrigue、Command。" })] },
-  { id: "armies", title: "军队", items: [D("Ophanim Army", "这是 Ophanim 控制城市拥有的普通人类军队，不是独立的特殊兵种。Empower Slaves 可以治疗它；Crusade 会让 Ophanim 控制的国家主动对外宣战，Excise Doubt 也会调用没有任务的军队夷平目标地点。", { image: "unit_ophanim.png", stats: "HP：动态。上限 = 所属人类城市 Prosperity × Population × 1.25；Ophanim 控制加成为 25%，每回合按所属城市状态重算。没有独立的 Attack、Defence 或 Command 数值；战斗伤害以当前 HP 为基础，战场 Command 优势由参战 UA/军队领导者的 Command 提供。" })] },
-  { id: "religion", title: "宗教与教义", items: [D("Ophanim's Faith", "该 Holy Order 开局预设 Temple Builders 与 Preachers 为正向，Alignment 为 −3，并插入三项特殊教义：Paranoid Society、Sap Lifeforce、Inquisitors。它信仰玩家神祇，不能使用普通外交。", { id: "ophanim-faith-religion" }), D("Paranoid Society", "影响 Faith 与 Doubt 的传播逻辑；当状态为负时，Temple 附近更容易把新 Doubt 延迟为 Festering Doubt。"), D("Sap Lifeforce", "源码状态为 −1 或 −2 时，每回合神力恢复分别额外增加 0.02 或 0.04；只要神力未满，每座对应神庙的城市每回合减少 2 或 4 人口，人口不足 2 时城市会直接陷入废墟。"), D("Inquisitors", "决定 Holy: Inquisition 是否可用；Elder 对齐状态允许 Acolyte 以宗教任务清除 Doubt，但会制造人口损失与 Death。", { meta: "宗教任务：Holy: Inquisition" })] },
-  { id: "religious-tasks", title: "宗教任务", items: [D("Holy: Inquisition", "Ophanim Holy Order 成员可最多降低 50 Doubt；每清除 4 点 Doubt 会损失约 1 人口并增加 Death。", { location: "Ophanim Holy Order 的 Temple 所在人类聚居地。", meta: "Lore / Command", statLine: "Complexity: 20　Profile: 50　Menace: 0　XP: 36", positiveTags: "Religion", negativeTags: "无", image: "call-to-serve.png" })] },
-  { id: "challenges", title: "挑战", items: [D("Root out Doubters", "在 Ophanim 控制的社会中把 Doubt 降低最多 60%，但每清除 5 点 Doubt 会损失约 1 人口，并增加 Death。完成时额外增加 5 Menace。", { location: "Ophanim 控制社会内、存在 Doubt 的人类聚居地。", meta: "Command", statLine: "Complexity: 25　Profile: 50　Menace: 50　XP: 42", image: "excise-doubt.png" }), D("Sectarian Violence", "在 Ophanim 未控制的社会中把 Doubt 降低最多 40%，同时减少同量 Faith，按比例增加 Unrest 和 Death；完成时增加 15 Menace、10 Profile。", { location: "Ophanim 尚未控制、存在 Doubt 的人类聚居地。", meta: "Intrigue", statLine: "Complexity: 50　Profile: 50　Menace: 50　XP: 72", image: "theocracy.png" })] }
- ],
- relations: {
-  "Shadow": { sources: [{ name: "Duality（shadow / faith）", href: "#entry-duality-shadow-faith", meta: "初始 Agent 特质" }], effects: [{ name: "Ophanim's Faith", href: "#entry-ophanim-s-faith", meta: "地点修正" }] },
-  "Ophanim's Faith": { sources: [{ name: "Start Faith", href: "#entry-start-faith", meta: "神力" }, { name: "Peace and Order", href: "#entry-peace-and-order", meta: "神力" }, { name: "Preacher", href: "#entry-preacher", meta: "人物特质" }, { name: "Duality（shadow / faith）", href: "#entry-duality-shadow-faith", meta: "初始 Agent 特质" }, { name: "Leader of the Faith", href: "#entry-leader-of-the-faith", meta: "初始 Agent 特质" }, { name: "Theocracy", href: "#entry-theocracy", meta: "神力" }, { name: "Shadow", href: "#entry-shadow-modifier", meta: "地点修正" }, { name: "Ophanim's Doubt", href: "#entry-ophanim-s-doubt", meta: "地点修正" }], effects: [{ name: "Shadow", href: "#entry-shadow-modifier", meta: "地点修正" }, { name: "Perfect City", href: "#entry-perfect-city", meta: "地点修正" }, { name: "Ophanim's Doubt", href: "#entry-ophanim-s-doubt", meta: "地点修正" }] },
-  "Ophanim's Doubt": { sources: [{ name: "Ophanim's Faith", href: "#entry-ophanim-s-faith", meta: "地点修正" }, { name: "Festering Doubt", href: "#entry-festering-doubt", meta: "地点修正" }], effects: [{ name: "Root out Doubters", href: "#entry-root-out-doubters", meta: "挑战" }, { name: "Sectarian Violence", href: "#entry-sectarian-violence", meta: "挑战" }, { name: "Holy: Inquisition", href: "#entry-holy-inquisition", meta: "宗教任务" }, { name: "Declare Heretic", href: "#entry-declare-heretic", meta: "神力" }, { name: "Excise Doubt", href: "#entry-excise-doubt", meta: "神力" }] },
-  "Festering Doubt": { sources: [{ name: "Paranoid Society", href: "#entry-paranoid-society", meta: "宗教教义" }], effects: [{ name: "Ophanim's Doubt", href: "#entry-ophanim-s-doubt", meta: "地点修正" }] },
-  "Perfect City": { sources: [{ name: "Ophanim's Faith", href: "#entry-ophanim-s-faith", meta: "地点修正" }], effects: [{ name: "Ophanim Army", href: "#entry-ophanim-army", meta: "军队" }, { name: "Perfect Servant", href: "#entry-perfect-servant", meta: "神力" }] },
-  "Ophanim Army": { sources: [{ name: "Perfect City", href: "#entry-perfect-city", meta: "地点修正" }], effects: [{ name: "Empower Slaves", href: "#entry-empower-slaves", meta: "神力" }, { name: "Excise Doubt", href: "#entry-excise-doubt", meta: "神力" }] },
- },
+  "id": "ophanim",
+  "name": "Ophanim, The Divine Beyond",
+  "number": "04",
+  "theme": "ophanim-theme",
+  "assetDir": "ophanim",
+  "background": "background.png",
+  "portrait": "portrait.png",
+  "flavour": "",
+  "caption": "Faith、Doubt 与神权国家",
+  "maxTurns": "500 回合",
+  "awaken": "第 400 回合",
+  "panic": "75%",
+  "finalAgents": "5",
+  "progressLabel": "回合",
+  "unlockMethod": "常规回合解锁",
+  "powerRecovery": "神力上限＝已破封印数 + 1；基础每回合恢复 0.035 × 神力上限 × 难度恢复系数²。Sap Life Force 在 −1／−2 时额外恢复固定 0.02／0.04；不按神庙数量累乘。表中按难度系数 1、教义中立列示。",
+  "core": [
+    "用 <CrossReference name=\"Start Faith\" /> 在已渗透的人类聚居地建立 <CrossReference name=\"Ophanim's Faith\" />；Supplicant 的 <CrossReference name=\"Duality（shadow / faith）\" /> 在完成渗透时交替增加 Shadow 和 Faith。",
+    "当城市或国家首都 Faith 达到 150，用 <CrossReference name=\"Theocracy\" /> 建立 <CrossReference name=\"Ophanim Theocracy\" />；首都与其他城市的 Faith 决定内战分裂。",
+    "Faith 达到完美化阈值后触发 <CrossReference name=\"Perfection Achieved\" />，形成 <CrossReference name=\"Perfect City\" />；这与国家是否已经神权化是两种不同状态。",
+    "低 Faith 地点可能因高 Faith 邻地出现 <CrossReference name=\"Ophanim's Doubt\" />。用 <CrossReference name=\"Root out Doubters\" />、<CrossReference name=\"Sectarian Violence\" />、<CrossReference name=\"Holy: Inquisition\" /> 或 <CrossReference name=\"Excise Doubt\" /> 处理。",
+    "用 <CrossReference name=\"Call to Serve\" /> 为 <CrossReference name=\"Ophanimic Faith\" /> 召集 <CrossReference name=\"Ophanite Acolyte\" />；<CrossReference name=\"Crusade\" /> 指挥神权国家战争，<CrossReference name=\"Empower Slaves\" /> 治疗完美城市军队，<CrossReference name=\"Perfect Servant\" /> 接管家乡已经完美化的英雄。"
+  ],
+  "overviewExtra": {
+    "title": "Faith、Doubt 与完美化",
+    "text": "Shadow 会促进 Faith，而 Faith 反过来压低 Shadow。统治者 Awareness 会抑制未神权化国家中的 Faith。\n\n国家神权化提供 Faith 每回合 +3、军队 HP 上限 +25%，并使受控人口计入相应胜利进度；城市完美化则将当地与统治者 Shadow、统治者 Awareness 归零，压低 Unrest 和 Doubt。完美化状态会在 Faith 后来下降时继续保留。"
+  },
+  "seals": [
+    {
+      "seal": 0,
+      "progress": 0,
+      "agents": 1,
+      "reward": [
+        "Start Faith",
+        "Sleepless Labour"
+      ],
+      "powerRecovery": "1 / 0.035"
+    },
+    {
+      "seal": 1,
+      "progress": 35,
+      "agents": 2,
+      "reward": [
+        "Peace and Order",
+        "Swift of Foot"
+      ],
+      "powerRecovery": "2 / 0.07"
+    },
+    {
+      "seal": 2,
+      "progress": 70,
+      "agents": 2,
+      "reward": [
+        "Theocracy",
+        "Declare Heretic"
+      ],
+      "powerRecovery": "3 / 0.105"
+    },
+    {
+      "seal": 3,
+      "progress": 105,
+      "agents": 3,
+      "reward": [
+        "Call to Serve",
+        "Excise Doubt"
+      ],
+      "powerRecovery": "4 / 0.14"
+    },
+    {
+      "seal": 4,
+      "progress": 140,
+      "agents": 4,
+      "reward": [
+        "Crusade"
+      ],
+      "powerRecovery": "5 / 0.175"
+    },
+    {
+      "seal": 5,
+      "progress": 210,
+      "agents": 5,
+      "reward": [
+        "Empower Slaves"
+      ],
+      "powerRecovery": "6 / 0.21"
+    },
+    {
+      "seal": 6,
+      "progress": 280,
+      "agents": 5,
+      "reward": [
+        "Perfect Servant"
+      ],
+      "powerRecovery": "7 / 0.245"
+    },
+    {
+      "seal": 7,
+      "progress": 400,
+      "agents": 5,
+      "reward": [
+        "Smite",
+        "苏醒"
+      ],
+      "powerRecovery": "8 / 0.28"
+    }
+  ],
+  "powers": [
+    {
+      "name": "Start Faith",
+      "seal": 0,
+      "cost": 0,
+      "effect": "在目标创建强度 1 的 Ophanim's Faith。",
+      "limit": "人类聚居地，渗透度大于 0，且没有 Ophanim's Faith。",
+      "icon": "start-faith.png"
+    },
+    {
+      "name": "Sleepless Labour",
+      "seal": 0,
+      "cost": 1,
+      "effect": "使目标正在执行的挑战进度立即增加 20，并扣除 2 HP。只增加进度，不直接调用挑战完成效果。",
+      "limit": "目标必须正在执行有明确进度的挑战，不能用于休息、无限期任务或引导型法术；Agent HP 必须大于 2。",
+      "icon": "sleepless-labour.png"
+    },
+    {
+      "name": "Peace and Order",
+      "seal": 1,
+      "cost": 2,
+      "effect": "当地 Ophanim's Faith 增加 50，Devastation 减少最多 40。Faith 的这次增加不立即封顶，之后在其回合更新中限制到 300。",
+      "limit": "已有 Ophanim's Faith 的人类聚居地，Devastation 至少 20。",
+      "icon": "peace-and-order.png"
+    },
+    {
+      "name": "Swift of Foot",
+      "seal": 1,
+      "cost": 1,
+      "effect": "把目标本回合已用移动次数减 1；若正在前往某地点，会立即推进一次该移动任务。",
+      "limit": "目标必须是本回合已经移动过的己方 Agent。",
+      "icon": "swift-of-foot.png"
+    },
+    {
+      "name": "Theocracy",
+      "seal": 2,
+      "cost": 0,
+      "effect": "若首都 Faith 至少 100，原国家转为 Ophanim Theocracy，不足 100 Faith 的城市可能分裂反对；否则由 Faith 至少 100 的城市发起分裂，施放地点所在国家转为神权国家。内战分裂名单实际只统计普通 City。\n控制方临时世界恐慌增加 20 个百分点；其人类聚居地改信 Ophanimic Faith，移除不属于该教团的 Temple 和教团总部。不会直接使所有城市完美化。",
+      "limit": "人类或精灵国家的城市或首都，Faith 至少 150；国家不能已经是 Ophanim Theocracy、Dark Empire 或 The Alliance。",
+      "icon": "theocracy.png"
+    },
+    {
+      "name": "Declare Heretic",
+      "seal": 2,
+      "cost": 1,
+      "effect": "触发 Infamous 的死亡效果，清零当地及相邻地点统治者的 Awareness，移除当地 Ophanim's Doubt，并杀死目标。最后把临时世界恐慌的变化量除以 2；保留 Festering Doubt。",
+      "limit": "拥有 Infamous 的可控制 Agent，所在地或相邻地点至少有一名 Awareness >0 的统治者。",
+      "icon": "declare-heretic.png"
+    },
+    {
+      "name": "Call to Serve",
+      "seal": 3,
+      "cost": 3,
+      "effect": "消耗一次招募额度，创建一名 Ophanite Acolyte。它由宗教 AI 自主行动，不直接加入玩家 Agent 名册，也不检查空余 Agent 位。",
+      "limit": "采用 Ophanimic Faith 的人类聚居地，且玩家至少还有一次招募额度；不要求当地已有 Temple。",
+      "icon": "call-to-serve.png"
+    },
+    {
+      "name": "Excise Doubt",
+      "seal": 3,
+      "cost": 0,
+      "effect": "从所有 Ophanim Theocracy 的闲置人类军队中，选择 floor(当前 HP ÷（2 + 到目标的路径距离）) 最高的一支，命令其前往夷平目标。可以调用其他神权国家的军队，不要求与目标同国。\n没有闲置军队时只显示无法执行的提示；施放本身不会立刻摧毁地点或删除 Doubt。",
+      "limit": "存在 Ophanim's Doubt 的人类聚居地，所属国家为 Ophanim Theocracy 或 Dark Empire。不要求 Faith 超过 150。",
+      "icon": "excise-doubt.png"
+    },
+    {
+      "name": "Crusade",
+      "seal": 4,
+      "cost": 0,
+      "effect": "所有 Ophanim Theocracy 向目标所属势力宣战。只跳过已经与该目标交战的国家；正在进行其他战争并不阻止宣战。",
+      "limit": "目标地点须属于某势力，不能是 Ophanim Theocracy、黑暗公共阵营或中立公共阵营。",
+      "icon": "crusade.png"
+    },
+    {
+      "name": "Empower Slaves",
+      "seal": 5,
+      "cost": 2,
+      "effect": "将目标当前 HP 设为 floor((当前 HP + 最大 HP) ÷ 2)，相当于恢复缺失 HP 的一半并向下取整。",
+      "limit": "家乡为 Perfect City 的人类军队；不要求它当前就在家乡，也不检查是否受伤。",
+      "icon": "unit_ophanim.png"
+    },
+    {
+      "name": "Perfect Servant",
+      "seal": 6,
+      "cost": 4,
+      "effect": "将原英雄标记为可控制，加入玩家 Agent 名册，消耗一次招募额度并清除其当前任务。基础属性、HP、装备和原有特质不被神力重写。",
+      "limit": "尚未被控制、没有 Chosen One 特质的英雄；家乡必须是 Perfect City。需要一次招募额度与空余 Agent 位，不要求英雄当前位于家乡。",
+      "icon": "perfect-servant.png"
+    },
+    {
+      "name": "Smite",
+      "seal": 7,
+      "cost": 7,
+      "effect": "按目标坐标扫描地表地图：平面坐标距离小于 2 的地块必定命中，距离至少 2 且小于 3 的地块各有 50% 概率命中。受击地点的单位各损失 floor(最大 HP/2)，HP 不足者死亡；聚居地执行毁灭处理。\n每个命中地块获得 floor(65 + 0–24 随机整数 − 5 × 距离) 的火山损伤；距离至少 1 的命中地块还有 2/3 概率变为山地。实际只扫描地表层；选择地下地点时也按其 x/y 坐标打击地表，并不打击地下目标。",
+      "limit": "可以对任意地点施放。",
+      "icon": "smite.png"
+    }
+  ],
+  "supplicant": {
+    "image": "ophanim-supplicant.png",
+    "stats": "Might 2　Lore 2　Intrigue 4　Command 3　HP 5 / 5",
+    "abilities": [
+      {
+        "name": "Duality（shadow / faith）",
+        "text": "在人类聚居地完成 Infiltrate 后交替触发：第一次增加 30 个百分点 Shadow，下一次创建或增加 20 Faith，此后按完成次数交替。Shadow 上限 100%，Faith 结果上限 300。"
+      },
+      {
+        "name": "Leader of the Faith",
+        "text": "每回合为同地点已有的 Ophanim's Faith 增加 2；没有 Faith 时不会创建。"
+      },
+      {
+        "name": "Inquisitor",
+        "text": "同地点为人类聚居地且 Ophanim's Doubt 至少 1 时，每回合减少 3 Doubt，并损失 1 人口；人口降至 0 或以下，聚居地毁灭。净变化还取决于当地自然增长、Awareness 与完美化，不固定为 −1。"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "traits",
+      "title": "人物特质",
+      "items": [
+        {
+          "name": "Infamous",
+          "text": "Declare Heretic 会主动结算此特质：其他可控制 Agent 必须同时满足 Profile 与 Menace 均小于牺牲者对应数值的一半，才能把自身这两项各减半。临时世界恐慌变化量减少 牺牲者 Menace/300，下限 −0.5；Declare Heretic 随后还会将该变化量再除以 2。",
+          "baseGame": true
+        }
+      ]
+    },
+    {
+      "id": "location-modifiers",
+      "title": "地点修正",
+      "items": [
+        {
+          "name": "Shadow",
+          "text": "Shadow 是地点的黑暗侵蚀度，范围为 0–100%。达到 100% 时地点完全 Enshadowed，计入征服区域与胜利进度；当地贵族会获得 Shadow，并不再为威胁进行防御。Shadow 会按地点的流动规则向相邻地点传播，也会逐步传给当地统治者；非 Chosen One Agent 在当地休息时，其个人 Shadow 会向地点值靠拢。\n\nShadow 会提升 <CrossReference name=\"Ophanim's Faith\" />；反过来，Ophanim's Faith 也会降低当地 Shadow。",
+          "id": "shadow-modifier",
+          "image": "power-shadow.png",
+          "baseGame": true,
+          "modifierChange": {
+            "natural": "每回合从符合地点 Shadow 流动规则的相邻高 Shadow 地点传播。\n传播量受相邻地点 Shadow、Ward、Infiltration 和难度影响。\n最终限制在 0–100%。",
+            "external": "<CrossReference name=\"Duality（shadow / faith）\" /> 完成渗透并轮到 Shadow 结果时增加 30 个百分点，上限 100%。\n<CrossReference name=\"Ophanim's Faith\" /> 每回合减少 Faith/500 的 Shadow 内部值，最低 0；换算为界面百分比是 Faith/5 个百分点。\n<CrossReference name=\"Perfect City\" /> 每回合将当地 Shadow 设为 0。\n<CrossReference name=\"A peaceful village shaken by a senseless tragedy\" /> 的 A sign of dark times 选项增加 33 个百分点。"
+          },
+          "initialValue": ""
+        },
+        {
+          "name": "Ophanim's Faith",
+          "text": "影响人类聚居地的信仰强度，压低当地 Shadow；Security 减少 floor((50 + Faith)/100)，例如 Faith 为 50／150／250 时分别减少 1／2／3。\n回合更新时 Faith 超过 299 就归为 300；尚未完美化的聚居地触发 Perfection Achieved。直接增加可在更新前暂时超过 300。它不会直接读取世界恐慌作为增长来源。",
+          "image": "start-faith.png",
+          "modifierChange": {
+            "natural": "当地 Shadow >10% 时每回合 +4；否则，相邻有 Shadow ≥25% 且允许 FULL_FLOW 的聚居地时 +2；再否则，世界平均 Shadow >10% 时 +1。这三项互斥。\n至少一个相邻地点已有 Faith 时，每回合 +1；不按相邻地点数量累加。\n所属国家为 Ophanim Theocracy 时每回合 +3；否则当地统治者每 1% Awareness 使 Faith 每回合 −0.05。\n每项当地 Ophanim's Doubt 使 Faith 每回合 −Doubt/30。\nFaith >100 时，向相邻尚无 Faith、有统治者且 Awareness <50% 的人类聚居地尝试传播；每回合每个符合条件地点成功概率为 min(100%，0.1/(1−邻地Shadow))，Shadow 内部值为 0–1。成功创建强度 1。\n地点不再是人类聚居地时移除；耗尽后也移除。",
+            "external": "<CrossReference name=\"Start Faith\" /> 创建强度 1。\n<CrossReference name=\"Peace and Order\" /> 增加 50。\n<CrossReference name=\"Duality（shadow / faith）\" /> 轮到 Faith 结果时创建或增加 20，上限 300。\n<CrossReference name=\"Leader of the Faith\" /> 同地时每回合 +2。\n<CrossReference name=\"Ophanimic Totem\" /> 每枚每回合增加 2 × 同地可控制 Agent 数。\n<CrossReference name=\"Sectarian Violence\" /> 减少 min(40，清除前 Doubt)。\n<CrossReference name=\"Ophanim Theocracy\" /> 从其他势力夺取地点时，若无 Faith 则创建 50；已有 Faith 不增加。其前哨站发展为聚居地时创建 200 Faith。\n<CrossReference name=\"Holy site discovered in %HEX_NAME\" /> 的 Begin the dig 增加 10。\n<CrossReference name=\"Holy site of %HEX_NAME\" href=\"#entry-holy-site-depth-1\" /> 的 Give back graciously 增加 10。\n<CrossReference name=\"Holy site of %HEX_NAME\" href=\"#entry-holy-site-depth-2\" /> 的 The excavation proceeds 增加 10。\n<CrossReference name=\"Holy site of %HEX_NAME\" href=\"#entry-holy-site-depth-3\" /> 的 They shall all see 增加 30。\n<CrossReference name=\"The holy relic of %HEX_NAME\" /> 的 Brought to light 增加 50。\n<CrossReference name=\"A peaceful village shaken by a senseless tragedy\" /> 的 They need to believe 增加 75。"
+          },
+          "initialValue": "Start Faith 创建时为 1；其他来源分别按各自规则创建。"
+        },
+        {
+          "name": "Ophanim's Doubt",
+          "text": "每项使当地 Ophanim's Faith 每回合减少 Doubt/30。强度超过 100 后会传播，回合更新时最高归为 300。它提供 Root out Doubters、Sectarian Violence 和 Holy: Inquisition。国家神权化和城市完美化对它的影响不同。",
+          "image": "ophanim-doubt.png",
+          "modifierChange": {
+            "natural": "未完美化的人类聚居地每回合 +2；若统治者所属国家未神权化，再按每 1% Awareness 增加 0.05。\nPerfect City 每回合 −25，代替上述自然增长；国家仅神权化时不会得到 −25。\n本地已有 Faith <295、没有 Doubt、且相邻最高 Faith 更高时，全局累积值增加（相邻最高Faith−本地Faith）×0.0001×难度增长系数。超过随机阈值 [0.5,1.5) 后，在当前地点创建 1 Doubt，并清零累积值、重抽阈值。\n强度 >100 时，每回合向相邻已有 Faith <295 且没有 Doubt 的地点各创建 1；不提高已有 Doubt。\n当地没有 Faith 时强度归零；不再是人类聚居地时移除。",
+            "external": "<CrossReference name=\"Festering Doubt\" /> 倒计时结束，创建与自身强度相同的 Doubt。\n<CrossReference name=\"Inquisitor\" /> 同地且 Doubt 至少 1 时，每回合 −3，人口 −1。\n<CrossReference name=\"Root out Doubters\" /> 最多减少 60。\n<CrossReference name=\"Sectarian Violence\" /> 最多减少 40。\n<CrossReference name=\"Holy: Inquisition\" /> 最多减少 50。\n<CrossReference name=\"Declare Heretic\" /> 移除目标所在地 Doubt，不移除 Festering Doubt。\n<CrossReference name=\"Ophanim Theocracy\" /> 从其他势力夺取地点时移除该地 Doubt。\n<CrossReference name=\"Holy site of %HEX_NAME\" href=\"#entry-holy-site-depth-1\" /> 的 Give back graciously 减少 5。\n<CrossReference name=\"Holy site of %HEX_NAME\" href=\"#entry-holy-site-depth-3\" /> 的 They shall all see 减少 20。\n<CrossReference name=\"The holy relic of %HEX_NAME\" /> 的 Brought to light 减少 25。\n<CrossReference name=\"The doubtful swarm the holy site\" /> 的 Let them see 减少 15；Words of wisdom 减少 25。"
+          },
+          "initialValue": ""
+        },
+        {
+          "name": "Festering Doubt",
+          "text": "Paranoid Society 为 −1，且当地或两步连接范围内存在 Ophanimic Faith 的 Temple 时，由相邻 Faith 差值触发的新 Doubt 会先显示为 5 回合倒计时。倒计时结束后替换为强度 1 的 Ophanim's Doubt。\n此修正本身的 Prosperity 影响参数为 0。Paranoid Society 使 Temple 的 Prosperity 修正降低 0.15。不能阻止相邻 Doubt 的直接传播。",
+          "image": "ophanim-doubt.png",
+          "initialValue": "",
+          "modifierChange": {
+            "natural": "",
+            "external": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "locations",
+      "title": "地点与设施",
+      "items": [
+        {
+          "name": "Temple",
+          "text": "Holy: Build Temple 建立的教团设施。Ophanimic Faith 的 Temple 为 Paranoid Society 提供两步范围的预警，并承受其 Prosperity 代价；Sap Life Force 也在该设施的回合处理中选择一地扣除人口。Temple 本身不会自动创建 Ophanim's Faith 地点修正。",
+          "image": "temple.png",
+          "baseGame": true
+        },
+        {
+          "name": "Ancient Ruins",
+          "text": "提供 Explore Ruins 的本体设施。Ophanim 的专属圣地探索链可在满足其入口条件的遗迹中出现；通常探索深度 0–5，对应 0–100%。",
+          "image": "ancient-ruins.png",
+          "baseGame": true
+        }
+      ]
+    },
+    {
+      "id": "states",
+      "title": "国家与城市",
+      "items": [
+        {
+          "name": "Ophanim Theocracy",
+          "text": "Theocracy 设立的神权国家，独立于 Perfect City。其地点 Faith 每回合 +3，统治者 Awareness 不再抑制 Faith；其人类军队 HP 上限获得 25% 加成。受控人口计入神权国家的胜利进度。\nCrusade 可令其宣战。夺取其他势力地点时删除当地 Doubt，若无 Faith 则建立强度 50；由所属前哨站发展出的新聚居地获得强度 200 Faith。",
+          "image": "theocracy.png",
+          "meta": "国家状态"
+        },
+        {
+          "name": "Perfect City",
+          "text": "Perfection Achieved 将人类聚居地标记为完美化，不创建独立地点修正。每回合当地 Shadow、统治者 Shadow 与 Awareness 归零，Unrest −25，Doubt −25，并维持 Ophanimic Faith 为当地教团。\nFaith 下降不会撤销这个标记。可成为 Empower Slaves 和 Perfect Servant 的家乡条件；它本身不提供国家军队 +25% HP，也不会自动将整个国家变成 Ophanim Theocracy。",
+          "image": "perfect-city.png",
+          "meta": "城市状态"
+        }
+      ]
+    },
+    {
+      "id": "items",
+      "title": "物品",
+      "items": [
+        {
+          "name": "Ophanimic Totem",
+          "text": "每枚由持有者所在地结算：若当地已经有 Ophanim's Faith，每回合增加 2 × 同地点可控制 Agent 的数量；持有者可控制时也计入。没有 Faith 不会创建，多枚独立生效。通过 The holy relic of %HEX_NAME 的 Brought to light 选项获得。",
+          "image": "ophanimic-totem.png"
+        }
+      ]
+    },
+    {
+      "id": "units",
+      "title": "特殊人物与自主单位",
+      "items": [
+        {
+          "name": "Ophanite Acolyte",
+          "text": "Call to Serve 创建的自主宗教人物，使用本体 Acolyte 类。普通教团自动招募 Acolyte 的流程对 Ophanimic Faith 禁用。头像依人物生成，此处展示宗教肖像图池中的一种。",
+          "image": "acolyte-example.png",
+          "stats": "Might 1–3　Lore 2–3　Intrigue 1–3　Command 2–3　HP 5 / 5",
+          "baseGame": true,
+          "abilities": [
+            {
+              "name": "Religious Tasks",
+              "text": "按教义偏好自主执行宗教任务，包括 Holy: Build Temple；Inquisitors 为 −1 后可以执行 Holy: Inquisition。"
+            },
+            {
+              "name": "Not Holy Task",
+              "text": "非宗教任务通常有 −50 动机；招募随从、升级、休息和仪式等例外不受这条惩罚。"
+            }
+          ]
+        },
+        {
+          "name": "Perfect Servant",
+          "text": "Perfect Servant 神力直接接管原英雄，不生成独立兵种。头像、装备、随从、特质和固定能力均继承原人物；神力不额外增加属性或固定能力。",
+          "id": "perfect-servant-unit",
+          "stats": "Might 继承　Lore 继承　Intrigue 继承　Command 继承　HP／最大 HP 继承"
+        }
+      ]
+    },
+    {
+      "id": "armies",
+      "title": "军队",
+      "items": [
+        {
+          "name": "Ophanim Army",
+          "text": "使用本体人类军队类，实际名称为 Army of 加家乡名称。家乡完美化、所属国家属于黑暗阵营且没有人物领军时使用 Ophanim 军队外观。\n国家神权化提供 25% HP 加成。家乡每项 Military Fervour 还会再乘（1 + min(100,强度)/100）并取整。Empower Slaves 只要求家乡完美化；Crusade 指挥国家宣战，Excise Doubt 调用闲置军队。",
+          "image": "unit_ophanim.png",
+          "stats": "HP 上限：先取 floor(家乡 Prosperity × Population)，神权国家再乘 1.25 并向下取整；每回合重算。",
+          "baseGame": true
+        }
+      ]
+    },
+    {
+      "id": "religion",
+      "title": "宗教与教义",
+      "items": [
+        {
+          "name": "Ophanimic Faith",
+          "text": "开局在 the Elder Tomb 所在地建立的 Holy Order，Supplicant 被指定为先知。Alignment 初始 −3，Temple Builders 与 Preachers 初始 +1；另加入 Paranoid Society、Sap Life Force、Inquisitors，初始均为 0。\n不能使用普通外交，也不会按普通教团的资金流程自动招募 Acolyte；Call to Serve 消耗玩家招募额度补充人手。",
+          "id": "ophanim-faith-religion"
+        },
+        {
+          "name": "Paranoid Society",
+          "text": "可取 0／−1。−1 时，Ophanimic Faith 的 Temple 两步范围内，由 Faith 高低差新生的 Doubt 延迟 5 回合，表现为 Festering Doubt；不会延迟相邻 Doubt 的直接传播。每座对应 Temple 使所在地点 Prosperity 的计算值减少 0.15。"
+        },
+        {
+          "name": "Sap Life Force",
+          "text": "可取 0／−1／−2。−1／−2 时全局每回合额外恢复 0.02／0.04 Power，与神庙数量无关。\n神力未满时，每回合最多由一座 Temple 的所在地承担 2／4 人口损失；同一教义对象记录本回合已执行，后续神庙不再扣人口。人口低于 2 时聚居地毁灭。神力满时不扣人口，神力增益计算本身不要求存在神庙。"
+        },
+        {
+          "name": "Inquisitors",
+          "text": "可取 0／−1。−1 时允许 Ophanimic Faith 的成员执行 Holy: Inquisition，并为该任务增加 125 动机；清除 Doubt 的数量不随教义等级另行放大。",
+          "meta": "宗教任务：Holy: Inquisition"
+        }
+      ]
+    },
+    {
+      "id": "religious-tasks",
+      "title": "宗教任务",
+      "items": [
+        {
+          "name": "Holy: Inquisition",
+          "text": "执行者必须属于 Ophanimic Faith，且 Inquisitors 为 −1。清除 X＝min(50，当地 Doubt)，损失 floor(X/4) 人口，增加 X Death；人口归零则毁灭聚居地。完成时 Menace +10。",
+          "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在地点；不要求 Temple 或当地已经属于 Ophanimic Faith。",
+          "meta": "Command",
+          "statLine": "Complexity: 20　Profile: 50　Menace: 0　XP: 36",
+          "positiveTags": "Religion",
+          "negativeTags": "无",
+          "image": "call-to-serve.png"
+        },
+        {
+          "name": "Holy: Build Temple",
+          "text": "建立 Temple，或替换现有异教 Temple。花费教团建庙资金；可控制执行者可以用个人 Gold 补足。成本为 50 ×（该教团现有 Temple 数 +1）。完成时当地渗透度 >50% 或执行者可控制，则新 Temple 已被渗透。",
+          "baseGame": true,
+          "image": "temple.png",
+          "location": "采用执行者所属 Holy Order 的人类聚居地；不能已有同教团 Temple，无可替换 Temple 时设施数须小于 4。",
+          "meta": "Command",
+          "statLine": "Complexity: 20　Profile: 60　Menace: 0　XP: 36",
+          "positiveTags": "Religion、Cooperation",
+          "negativeTags": "无"
+        }
+      ]
+    },
+    {
+      "id": "challenges",
+      "title": "挑战",
+      "items": [
+        {
+          "name": "Root out Doubters",
+          "text": "清除 X＝min(60，当地 Doubt)。若是人类聚居地，损失 floor(X/5) 人口，增加 X Death；人口低于 0 时毁灭聚居地。完成时 Menace +5。",
+          "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在的人类国家地点，国家为 Ophanim Theocracy 或 Dark Empire。",
+          "meta": "Command",
+          "statLine": "Complexity: 25　Profile: 50　Menace: 50　XP: 42",
+          "image": "excise-doubt.png"
+        },
+        {
+          "name": "Sectarian Violence",
+          "text": "清除 X＝min(40，当地 Doubt)，同时 Faith −X、Unrest +X/3。若是人类聚居地，再损失 floor(X/5) 人口、增加 X Death；人口归零则毁灭聚居地。完成时 Menace +15、Profile +10。",
+          "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在的人类国家地点，国家既不是 Ophanim Theocracy 也不是 Dark Empire，且 Faith ≥Doubt。",
+          "meta": "Intrigue",
+          "statLine": "Complexity: 50　Profile: 50　Menace: 50　XP: 72",
+          "image": "theocracy.png"
+        },
+        {
+          "name": "Explore Ruins",
+          "text": "本体中立挑战，玩家 Agent 与符合条件的英雄均可执行。玩家完成后按条件选择探索事件；Ophanim 的圣地事件链从这里进入。非玩家英雄使用通用探索结果。",
+          "baseGame": true,
+          "image": "explore-ruins.png",
+          "location": "<CrossReference name=\"Ancient Ruins\" /> 所在地点。",
+          "meta": "Other · 中立挑战",
+          "statLine": "Complexity: 7　Profile: 50　Menace: 0　XP: 16"
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "title": "事件",
+      "items": [
+        {
+          "name": "Perfection Achieved",
+          "text": "Ophanim's Faith 回合更新时超过 299，且人类聚居地尚未完美化时触发。两个选项都会建立 Perfect City 状态；View the perfection [PAN TO LOCATION] 另外将视角移到地点。",
+          "image": "event-perfection.jpg"
+        },
+        {
+          "name": "Holy site discovered in %HEX_NAME",
+          "text": "Explore Ruins 的专属入口：尚未分配事件链、探索深度为 0，所在地是人类城市或小型聚居地（不包括矮人城市与前哨站），且不是 Arctic、Snow、Dry Cold 或 Tundra。与其他符合条件的探索入口竞争，不保证每处遗迹都出现。\nBegin the dig：探索深度 +1，Faith +10；将此地分配为后续圣地事件链。事件标题中的 %HEX_NAME 会替换为地点名。",
+          "image": "event-holy-site.jpg"
+        },
+        {
+          "name": "Holy site of %HEX_NAME",
+          "text": "圣地事件链，探索深度 1。\nGold for the cause：探索深度 +1，执行者 Gold +25。\nGive back graciously：要求至少 25 Gold；消耗 25 Gold，探索深度 +1，Faith +10，已有 Doubt −5。",
+          "id": "holy-site-depth-1",
+          "image": "event-holy-site.jpg"
+        },
+        {
+          "name": "Holy site of %HEX_NAME",
+          "text": "圣地事件链，探索深度 2。The excavation proceeds：探索深度 +1，Faith +10。",
+          "id": "holy-site-depth-2",
+          "image": "event-holy-site.jpg"
+        },
+        {
+          "name": "Holy site of %HEX_NAME",
+          "text": "圣地事件链，探索深度 3。They shall all see：探索深度 +1，Faith +30，已有 Doubt −20。",
+          "id": "holy-site-depth-3",
+          "image": "event-holy-site.jpg"
+        },
+        {
+          "name": "The holy relic of %HEX_NAME",
+          "text": "圣地事件链，探索深度 4。Brought to light：探索深度 +1，获得 Ophanimic Totem，Faith +50，已有 Doubt −25。",
+          "image": "event-holy-site.jpg"
+        },
+        {
+          "name": "The doubtful swarm the holy site",
+          "text": "圣地事件链在探索深度 1–3、当地已有 Doubt、全局尚未处理本事件时可出现；选择权重为 2，同阶段主事件为 1，只有两者符合时本事件概率为 2/3。\nLet them see：Doubt −15，执行者 Menace +4，保持当前探索深度。\nTurn them away：探索深度 +1，Menace +4。\nWords of wisdom：要求 Power >0，消耗 1 Power，探索深度 +1，Doubt −25。任一选项都会记录全局已处理。",
+          "image": "event-holy-site.jpg"
+        },
+        {
+          "name": "A peaceful village shaken by a senseless tragedy",
+          "text": "本体共享移动事件，包含 Ophanim 专属选项。地点有 Farms，没有 Devastation 或 Plague，并满足 50<Madness<250，或 25%<统治者 Shadow<68%；无统治者时后项使用地图格黑暗值。全局标记尚未记录时以 1% 概率触发。\nA sign of dark times：地点 Shadow +33 个百分点。\nThey need to believe：Ophanim 专属，Faith +75；没有 Faith 时创建。任一选项记录事件，通常不再触发。",
+          "image": "event-shaken-village.jpg",
+          "baseGame": true
+        }
+      ]
+    }
+  ],
+  "relations": {
+    "Shadow": {
+      "sources": [
+        {
+          "name": "Duality（shadow / faith）",
+          "href": "#entry-duality-shadow-faith"
+        },
+        {
+          "name": "A peaceful village shaken by a senseless tragedy",
+          "href": "#entry-a-peaceful-village-shaken-by-a-senseless-tragedy"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "Ophanim's Faith": {
+      "sources": [
+        {
+          "name": "Start Faith",
+          "href": "#entry-start-faith"
+        },
+        {
+          "name": "Peace and Order",
+          "href": "#entry-peace-and-order"
+        },
+        {
+          "name": "Duality（shadow / faith）",
+          "href": "#entry-duality-shadow-faith"
+        },
+        {
+          "name": "Leader of the Faith",
+          "href": "#entry-leader-of-the-faith"
+        },
+        {
+          "name": "Ophanimic Totem",
+          "href": "#entry-ophanimic-totem"
+        },
+        {
+          "name": "Ophanim Theocracy",
+          "href": "#entry-ophanim-theocracy"
+        },
+        {
+          "name": "Holy site discovered in %HEX_NAME",
+          "href": "#entry-holy-site-discovered-in-hex-name"
+        },
+        {
+          "name": "Holy site of %HEX_NAME",
+          "href": "#entry-holy-site-depth-1"
+        },
+        {
+          "name": "Holy site of %HEX_NAME",
+          "href": "#entry-holy-site-depth-2"
+        },
+        {
+          "name": "Holy site of %HEX_NAME",
+          "href": "#entry-holy-site-depth-3"
+        },
+        {
+          "name": "The holy relic of %HEX_NAME",
+          "href": "#entry-the-holy-relic-of-hex-name"
+        },
+        {
+          "name": "A peaceful village shaken by a senseless tragedy",
+          "href": "#entry-a-peaceful-village-shaken-by-a-senseless-tragedy"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Shadow",
+          "href": "#entry-shadow-modifier"
+        },
+        {
+          "name": "Theocracy",
+          "href": "#entry-theocracy"
+        },
+        {
+          "name": "Perfection Achieved",
+          "href": "#entry-perfection-achieved"
+        },
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "Ophanim's Doubt": {
+      "sources": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        },
+        {
+          "name": "Festering Doubt",
+          "href": "#entry-festering-doubt"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Root out Doubters",
+          "href": "#entry-root-out-doubters"
+        },
+        {
+          "name": "Sectarian Violence",
+          "href": "#entry-sectarian-violence"
+        },
+        {
+          "name": "Holy: Inquisition",
+          "href": "#entry-holy-inquisition"
+        },
+        {
+          "name": "Excise Doubt",
+          "href": "#entry-excise-doubt"
+        }
+      ]
+    },
+    "Festering Doubt": {
+      "sources": [
+        {
+          "name": "Paranoid Society",
+          "href": "#entry-paranoid-society"
+        },
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "Perfect City": {
+      "sources": [
+        {
+          "name": "Perfection Achieved",
+          "href": "#entry-perfection-achieved"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Empower Slaves",
+          "href": "#entry-empower-slaves"
+        },
+        {
+          "name": "Perfect Servant",
+          "href": "#entry-perfect-servant"
+        }
+      ]
+    },
+    "Ophanim Theocracy": {
+      "sources": [
+        {
+          "name": "Theocracy",
+          "href": "#entry-theocracy"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Crusade",
+          "href": "#entry-crusade"
+        },
+        {
+          "name": "Ophanim Army",
+          "href": "#entry-ophanim-army"
+        },
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "Ophanim Army": {
+      "sources": [
+        {
+          "name": "Ophanim Theocracy",
+          "href": "#entry-ophanim-theocracy"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Empower Slaves",
+          "href": "#entry-empower-slaves"
+        },
+        {
+          "name": "Excise Doubt",
+          "href": "#entry-excise-doubt"
+        }
+      ]
+    },
+    "Ophanite Acolyte": {
+      "sources": [
+        {
+          "name": "Call to Serve",
+          "href": "#entry-call-to-serve"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Holy: Build Temple",
+          "href": "#entry-holy-build-temple"
+        },
+        {
+          "name": "Holy: Inquisition",
+          "href": "#entry-holy-inquisition"
+        }
+      ]
+    },
+    "perfect-servant-unit": {
+      "sources": [
+        {
+          "name": "Perfect Servant",
+          "href": "#entry-perfect-servant"
+        }
+      ],
+      "effects": []
+    },
+    "Ophanimic Totem": {
+      "sources": [
+        {
+          "name": "The holy relic of %HEX_NAME",
+          "href": "#entry-the-holy-relic-of-hex-name"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "Temple": {
+      "sources": [
+        {
+          "name": "Holy: Build Temple",
+          "href": "#entry-holy-build-temple"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Paranoid Society",
+          "href": "#entry-paranoid-society"
+        },
+        {
+          "name": "Sap Life Force",
+          "href": "#entry-sap-life-force"
+        }
+      ]
+    },
+    "Ancient Ruins": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ]
+    },
+    "Inquisitors": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Holy: Inquisition",
+          "href": "#entry-holy-inquisition"
+        }
+      ]
+    },
+    "Paranoid Society": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Festering Doubt",
+          "href": "#entry-festering-doubt"
+        }
+      ]
+    },
+    "Start Faith": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "Peace and Order": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "Theocracy": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Ophanim Theocracy",
+          "href": "#entry-ophanim-theocracy"
+        }
+      ]
+    },
+    "Call to Serve": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Ophanite Acolyte",
+          "href": "#entry-ophanite-acolyte"
+        }
+      ]
+    },
+    "Perfect Servant": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Perfect Servant",
+          "href": "#entry-perfect-servant-unit"
+        }
+      ]
+    },
+    "Declare Heretic": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Infamous",
+          "href": "#entry-infamous"
+        },
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "Excise Doubt": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Ophanim Army",
+          "href": "#entry-ophanim-army"
+        }
+      ]
+    },
+    "Empower Slaves": {
+      "sources": [],
+      "effects": [
+        {
+          "name": "Ophanim Army",
+          "href": "#entry-ophanim-army"
+        }
+      ]
+    },
+    "Root out Doubters": {
+      "sources": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "Sectarian Violence": {
+      "sources": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        },
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "Holy: Inquisition": {
+      "sources": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "Holy: Build Temple": {
+      "sources": [
+        {
+          "name": "Ophanite Acolyte",
+          "href": "#entry-ophanite-acolyte"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Temple",
+          "href": "#entry-temple"
+        }
+      ]
+    },
+    "Perfection Achieved": {
+      "sources": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Perfect City",
+          "href": "#entry-perfect-city"
+        }
+      ]
+    },
+    "Holy site discovered in %HEX_NAME": {
+      "sources": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "The holy relic of %HEX_NAME": {
+      "sources": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        },
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        },
+        {
+          "name": "Ophanimic Totem",
+          "href": "#entry-ophanimic-totem"
+        }
+      ]
+    },
+    "The doubtful swarm the holy site": {
+      "sources": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "holy-site-depth-1": {
+      "sources": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        },
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    },
+    "holy-site-depth-2": {
+      "sources": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        }
+      ]
+    },
+    "holy-site-depth-3": {
+      "sources": [
+        {
+          "name": "Explore Ruins",
+          "href": "#entry-explore-ruins"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Ophanim's Faith",
+          "href": "#entry-ophanim-s-faith"
+        },
+        {
+          "name": "Ophanim's Doubt",
+          "href": "#entry-ophanim-s-doubt"
+        }
+      ]
+    }
+  },
+  "specialVictory": "无"
 };
+
 const preparedConfig = prepareGodConfig(config);
+
 export default function OphanimArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
- return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
+  return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }
