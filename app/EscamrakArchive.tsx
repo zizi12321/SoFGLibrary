@@ -19,8 +19,8 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "传播积分",
   "unlockMethod": "传播 Fleshcrafting 知识；最后一道封印通过建造神体解锁",
-  "powerRecovery": "每回合恢复 0.035 × 神力上限 × 难度恢复系数²；表中按系数 1 列示。",
-  "specialVictory": "无",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
     "用 <CrossReference name=\"Emerging Secrets\" /> 产生 <CrossReference name=\"Escamrak Secret\" />，通过 <CrossReference name=\"Learn Escamrak Secret\" /> 与 <CrossReference name=\"Study Fleshcrafting\" /> 提高魔法等级。",
     "通过 <CrossReference name=\"Teach Fleshcrafting\" /> 使人口开始实践 <CrossReference name=\"Fleshcrafters\" />；新传播的人口计入封印积分。",
@@ -30,31 +30,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "",
-    "text": "Supplicant 开局从四项特殊能力中选择一项，并掌握一级 Mastery of Fleshcrafting。没有专属 Holy Order；普通教团与 Witches Holy Order 加入 Revelry of the Body 教义。"
+    "text": "Supplicant 开局从四项特殊能力中选择一项，并掌握一级 Mastery of Fleshcrafting。",
+    "playStyle": "通过传播和学习 Fleshcrafting 培育人口、法师与活体聚居地，再把这些积累汇集成神体。苏醒后的身体可以重建，经营重点从知识传播逐渐转向实体扩张。"
   },
-  "supplicant": {
-    "name": "Supplicant",
-    "image": "Supplicant.png",
-    "stats": "Might 2；Lore 2；Intrigue 4；Command 3；HP 5",
-    "abilities": [
-      {
-        "name": "Tough Scales",
-        "text": "Might +1，Defence +2。"
-      },
-      {
-        "name": "Denser Brain Matter",
-        "text": "Lore +1。计时从 15 开始，每次归零后的下一次结算增加 1 层 <CrossReference name=\"Fleshcrafting Knowledge\" />，然后重置为 15；知识上限为 6。"
-      },
-      {
-        "name": "Chameleon Skin",
-        "text": "Intrigue +1，提供 <CrossReference name=\"Camouflage\" />。"
-      },
-      {
-        "name": "Pheromonal Confidence",
-        "text": "Command +1；同地其他己方 Agent 执行挑战时，每回合额外增加 2 进度。"
-      }
-    ]
-  },
+  "specialVictory": "无",
+  "specialFailure": "无。Escamrak 的军队身体被摧毁后可以重建；仍受回合上限等通用失败条件约束。",
   "seals": [
     {
       "seal": 0,
@@ -63,7 +43,7 @@ const config: GodConfig = {
       "reward": [
         "Emerging Secrets"
       ],
-      "powerRecovery": "神力上限 1；每回合恢复 0.035 × 难度恢复系数"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -72,14 +52,14 @@ const config: GodConfig = {
       "reward": [
         "Temptations of Flesh"
       ],
-      "powerRecovery": "神力上限 2；每回合恢复 0.07 × 难度恢复系数"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
       "progress": 60,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "神力上限 3；每回合恢复 0.105 × 难度恢复系数"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -88,7 +68,7 @@ const config: GodConfig = {
       "reward": [
         "Endless Regrowth"
       ],
-      "powerRecovery": "神力上限 4；每回合恢复 0.14 × 难度恢复系数"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -97,14 +77,14 @@ const config: GodConfig = {
       "reward": [
         "Distribute Knowledge"
       ],
-      "powerRecovery": "神力上限 5；每回合恢复 0.175 × 难度恢复系数"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
       "progress": 325,
       "agents": 4,
       "reward": [],
-      "powerRecovery": "神力上限 6；每回合恢复 0.21 × 难度恢复系数"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -113,14 +93,14 @@ const config: GodConfig = {
       "reward": [
         "Rampage"
       ],
-      "powerRecovery": "神力上限 7；每回合恢复 0.245 × 难度恢复系数"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
       "progress": 575,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "神力上限 8；每回合恢复 0.28 × 难度恢复系数"
+      "powerRecovery": "8/0.28"
     },
     {
       "seal": 8,
@@ -130,7 +110,7 @@ const config: GodConfig = {
         "Merge and Grow",
         "Escamrak's Body"
       ],
-      "powerRecovery": "神力上限 9；每回合恢复 0.315 × 难度恢复系数"
+      "powerRecovery": "9/0.315"
     },
     {
       "seal": 9,
@@ -139,7 +119,7 @@ const config: GodConfig = {
       "reward": [
         "建造神体至 300；苏醒"
       ],
-      "powerRecovery": "神力上限 10；每回合恢复 0.35 × 难度恢复系数",
+      "powerRecovery": "10/0.35",
       "progressText": "神体 300"
     }
   ],
@@ -193,6 +173,29 @@ const config: GodConfig = {
       "limit": "Escamrak 尚无肉身；目标为三级 Mastery of Fleshcrafting 人物或统治者，或 Living Settlement。"
     }
   ],
+  "supplicant": {
+    "name": "Supplicant",
+    "image": "Supplicant.png",
+    "stats": "Might 2；Lore 2；Intrigue 4；Command 3；HP 5",
+    "abilities": [
+      {
+        "name": "Tough Scales",
+        "text": "Might +1，Defence +2。"
+      },
+      {
+        "name": "Denser Brain Matter",
+        "text": "Lore +1。计时从 15 开始，每次归零后的下一次结算增加 1 层 <CrossReference name=\"Fleshcrafting Knowledge\" />，然后重置为 15；知识上限为 6。"
+      },
+      {
+        "name": "Chameleon Skin",
+        "text": "Intrigue +1，提供 <CrossReference name=\"Camouflage\" />。"
+      },
+      {
+        "name": "Pheromonal Confidence",
+        "text": "Command +1；同地其他己方 Agent 执行挑战时，每回合额外增加 2 进度。"
+      }
+    ]
+  },
   "sections": [
     {
       "id": "spells",
@@ -1073,12 +1076,19 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "media": false,
       "items": [
         {
           "name": "Revelry of the Body",
-          "text": "只有 0 与 −1 两档。处于 −1 时，侍僧获得 Endless Regrowth 并知晓 Fleshcrafting；每座 Temple 在当地存在 Death 时，每回合消耗 10 Death、增加 1 Madness，且人口未达上限时增加 1 人口。\n抵消 Safety in Ignorance 对销毁 Arcane Secret 和 Escamrak Secret 的相应执行意愿加成。"
+          "text": "",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "Acolyte 获得 Endless Regrowth 并知晓 Fleshcrafting。每座 Temple 在当地存在 Death 时，每回合消耗 10 Death、增加 1 Madness；人口未达上限时增加 1 人口。\n抵消 Safety in Ignorance 对销毁 Arcane Secret 和 Escamrak Secret 的相应执行意愿加成。"
+            }
+          ]
         }
       ]
     },
@@ -1109,97 +1119,201 @@ const config: GodConfig = {
           "name": "The Second Awakening",
           "id": "flesh-fleshgod-awakening2",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 2 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 2 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "Our flesh never dies.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Third Awakening",
           "id": "flesh-fleshgod-awakening3",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 3 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 3 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Fourth Awakening",
           "id": "flesh-fleshgod-awakening4",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 4 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 4 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Fifth Awakening",
           "id": "flesh-fleshgod-awakening5",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 5 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 5 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Sixth Awakening",
           "id": "flesh-fleshgod-awakening6",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 6 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 6 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Seventh Awakening",
           "id": "flesh-fleshgod-awakening7",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 7 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 7 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Eighth Awakening",
           "id": "flesh-fleshgod-awakening8",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 8 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 8 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Ninth Awakening",
           "id": "flesh-fleshgod-awakening9",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 9 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 9 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We are inevitable.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Last Awakening",
           "id": "flesh-fleshgod-awakening-silly1",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 10 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 10 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "We never end.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Final Awakening",
           "id": "flesh-fleshgod-awakening-silly2",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 11 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 11 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "Our will be done.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Ultimate Awakening",
           "id": "flesh-fleshgod-awakening-silly3",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 12 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 12 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "All will be us.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "The Truly Last Awakening",
           "id": "flesh-fleshgod-awakening-silly4",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 13 次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 13 次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "Another assault.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "Yet Another Awakening",
           "id": "flesh-fleshgod-awakening-silly5",
           "image": "flesh_awakeningart.png",
-          "text": "模组事件。在第 14 次及以后每次建成神体时由代码直接触发，确认后继续游戏，没有额外数值效果。"
+          "text": "模组事件。在第 14 次及以后每次建成神体时由代码直接触发。",
+          "eventOptions": [
+            {
+              "name": "Another assault.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "Living Settlement",
           "id": "flesh-livingcity-encroached",
           "image": "flesh_city_event.png",
-          "text": "模组事件。<CrossReference name=\"Living Terrain\" href=\"#entry-living-terrain-modifier\" /> 完成对人类聚居地的转化时触发。可确认或将镜头移到该地点，没有额外数值效果。"
+          "text": "模组事件。<CrossReference name=\"Living Terrain\" href=\"#entry-living-terrain-modifier\" /> 完成对人类聚居地的转化时触发。",
+          "eventOptions": [
+            {
+              "name": "They are ours.",
+              "text": "无效果。"
+            },
+            {
+              "name": "Witness our flesh. [PAN TO LOCATION]",
+              "text": "将视角移到目标地点。"
+            }
+          ]
         },
         {
           "name": "Revelry of the Body",
           "id": "flesh-ho-triggered",
           "image": "flesh_HO_event.png",
-          "text": "模组事件。首次启用 <CrossReference name=\"Revelry of the Body\" /> 的有效档位时触发，没有额外数值效果。"
+          "text": "模组事件。首次启用 <CrossReference name=\"Revelry of the Body\" /> 的有效档位时触发。",
+          "eventOptions": [
+            {
+              "name": "What new horrors will we birth?",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "Living Settlement",
           "id": "flesh-livingcity",
           "image": "flesh_city_event.png",
-          "text": "模组事件。<CrossReference name=\"Fleshcrafters\" /> 达到 300 并形成 <CrossReference name=\"Living Settlement\" /> 时触发。可确认或将镜头移到该地点，没有额外数值效果。"
+          "text": "模组事件。<CrossReference name=\"Fleshcrafters\" /> 达到 300 并形成 <CrossReference name=\"Living Settlement\" /> 时触发。",
+          "eventOptions": [
+            {
+              "name": "The city breathes.",
+              "text": "无效果。"
+            },
+            {
+              "name": "The city grows eyes. [PAN TO LOCATION]",
+              "text": "将视角移到目标地点。"
+            }
+          ]
         }
       ]
     }

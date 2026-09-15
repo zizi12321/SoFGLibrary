@@ -19,7 +19,8 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "神力上限＝已破封印数 + 1；每回合恢复＝0.035 × 神力上限 × 难度恢复系数²。表中按系数 1 列示。Eternity 重置本世封印进度与已破封印数。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。\nEternity 重置本世封印进度与已破封印数。",
   "core": [
     "开局没有初始 Agent。对有家族的单位施加 <CrossReference name=\"Maker's Curse: Sword\" />、<CrossReference name=\"Maker's Curse: Eye\" />、<CrossReference name=\"Maker's Curse: Midnight\" /> 或 <CrossReference name=\"Maker's Curse: Traitor\" />，为其整个 House 留下诅咒。",
     "培养 Sword、Eye 与 Midnight，再用 <CrossReference name=\"Create Agent\" /> 或 <CrossReference name=\"Create Agent Masterfully\" /> 将现有英雄、宗教人物转为 <CrossReference name=\"Cursed Agent\" />，获得属性和对应 Blessing。",
@@ -30,9 +31,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "Eternity 的世代更替",
-    "text": "四种家族诅咒分别每世可施放一次，Create Agent Masterfully 每世可使用一次；House 及其剩余诅咒可延续到后代。Eternity 以 50 轮年度模拟推进世界：每轮人物年龄 +1，地图回合计数额外 +52，并执行一次正常回合更新。结束后重新开始计算本世封印进度。\n睡眠清理可控制单位和邪恶 Agent、旧 Elder Tomb，并恢复多种社会与地点状态。Buried Power 保留；Cult in Waiting 随其所绑定的聚居地存续。已招募的独特 Agent 会休整一世，在再下一世返回招募池。\nThe Broken Maker 没有 Holy Order。"
+    "text": "四种家族诅咒分别每世可施放一次，Create Agent Masterfully 每世可使用一次；House 及其剩余诅咒可延续到后代。Eternity 以 50 轮年度模拟推进世界：每轮人物年龄 +1，地图回合计数额外 +52，并执行一次正常回合更新。结束后重新开始计算本世封印进度。\n睡眠清理可控制单位和邪恶 Agent、旧 Elder Tomb，并恢复多种社会与地点状态。Buried Power 保留；Cult in Waiting 随其所绑定的聚居地存续。已招募的独特 Agent 会休整一世，在再下一世返回招募池。",
+    "playStyle": "以家族和世代为经营尺度，先培育诅咒，再把合适的人物转为 Agent。能跨世代保留部分布置，并通过 Eternity 重组世界，适合长期培养和反复规划。"
   },
   "specialVictory": "无",
+  "specialFailure": "开局启用无尽模式，免除最大回合数带来的失败。存在 Elder Tomb 时，英雄完成 Reforge the Seals 或 Chosen One 完成 Fulfil the Prophecy 仍会导致失败。",
   "seals": [
     {
       "seal": 0,
@@ -47,7 +50,7 @@ const config: GodConfig = {
         "Maker's Curse: Traitor",
         "Twist Flesh"
       ],
-      "powerRecovery": "1 / 0.035"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -56,7 +59,7 @@ const config: GodConfig = {
       "reward": [
         "Venom in the veins"
       ],
-      "powerRecovery": "2 / 0.07"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -65,7 +68,7 @@ const config: GodConfig = {
       "reward": [
         "Cultists in Waiting"
       ],
-      "powerRecovery": "3 / 0.105"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -74,7 +77,7 @@ const config: GodConfig = {
       "reward": [
         "Bury Power"
       ],
-      "powerRecovery": "4 / 0.14"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -83,14 +86,14 @@ const config: GodConfig = {
       "reward": [
         "Eternity"
       ],
-      "powerRecovery": "5 / 0.175"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
       "progress": 257,
       "agents": 6,
       "reward": [],
-      "powerRecovery": "6 / 0.21"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -100,7 +103,7 @@ const config: GodConfig = {
         "Intrinsic Lifespan",
         "苏醒"
       ],
-      "powerRecovery": "7 / 0.245"
+      "powerRecovery": "7/0.245"
     }
   ],
   "powers": [
@@ -228,7 +231,8 @@ const config: GodConfig = {
           "id": "intrinsic-lifespan-trait",
           "seal": 6
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "house-blessings",

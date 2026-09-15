@@ -19,8 +19,8 @@ const config: GodConfig = {
   "finalAgents": "5",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "每回合恢复 0.035 × 神力上限 × 难度恢复系数²；表中按系数 1 列示。",
-  "specialVictory": "无",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
     "让可控制的 <CrossReference name=\"Adolia Instance\" /> 接近目标，用 <CrossReference name=\"A Passing Thought\" /> 传播 <CrossReference name=\"Faceless Memory\" />。",
     "通过 <CrossReference name=\"Recollection\" /> 加速感染，<CrossReference name=\"Visual Imprint\" /> 改变对 Adolia 的偏好；<CrossReference name=\"Mind Eater\" /> 吞噬等级并补充神力。",
@@ -31,31 +31,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "",
-    "text": "所有活动 Adolia 化身都被消灭时会失败；Adolia Swarm 按每 5 HP 计一个化身，至少计一个。Subsumed Settlement 本身不计入该存活计数。没有专属 Holy Order；普通非黑暗教团加入 Mass Delusion 教义。模组设置 Arcane Remedy 默认开启，允许 Alliance 制作疗法。"
+    "text": "所有活动 Adolia 化身都被消灭时会失败；Adolia Swarm 按每 5 HP 计一个化身，至少计一个。Subsumed Settlement 本身不计入该存活计数。模组设置 Arcane Remedy 默认开启，允许 Alliance 制作疗法。",
+    "playStyle": "通过记忆感染增殖化身，再用 Pareidolia 将人物侵蚀转成聚居地吞没。多个化身提供持续传播能力，但必须分散保留活动化身，避免被一并清除。"
   },
-  "supplicant": {
-    "name": "Supplicant",
-    "image": "icon_adolia.png",
-    "stats": "Might 2；Lore 2；Intrigue 4；Command 3；HP 5",
-    "abilities": [
-      {
-        "name": "Adolia Instance",
-        "text": "开局即为化身，免疫老年死亡，可作为 <CrossReference name=\"A Passing Thought\" /> 的传播媒介。"
-      },
-      {
-        "name": "Intrusive Thought",
-        "text": "可选能力：每回合使同地及相邻地点的人物单位 Faceless Memory 强度额外 +1。之后招募或主动转化的可控制化身继承该选择。"
-      },
-      {
-        "name": "Mental Leech",
-        "text": "可选能力：每回合从同地感染 Faceless Memory、XP 大于 2 的非玩家人物单位各窃取 2 XP。之后招募或主动转化的可控制化身继承该选择。"
-      },
-      {
-        "name": "Dark Memories",
-        "text": "可选能力：每回合使同地英雄与侍僧个人 Shadow +1%，相邻地点英雄与侍僧个人 Shadow +2%，最高 100%。之后招募或主动转化的可控制化身继承该选择。"
-      }
-    ]
-  },
+  "specialVictory": "无",
+  "specialFailure": "所有活动 Adolia 化身都被消灭时立即失败。Adolia Swarm 按每 5 HP 计一个化身，至少计一个；Subsumed Settlement 本身不计入存活数量。",
   "seals": [
     {
       "seal": 0,
@@ -65,7 +45,7 @@ const config: GodConfig = {
         "A Passing Thought",
         "Mind Eater"
       ],
-      "powerRecovery": "神力上限 1；每回合恢复 0.035 × 难度恢复系数"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -75,14 +55,14 @@ const config: GodConfig = {
         "Recollection",
         "Visual Imprint"
       ],
-      "powerRecovery": "神力上限 2；每回合恢复 0.07 × 难度恢复系数"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
       "progress": 40,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "神力上限 3；每回合恢复 0.105 × 难度恢复系数"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -92,7 +72,7 @@ const config: GodConfig = {
         "Pareidolia",
         "Rising Panic"
       ],
-      "powerRecovery": "神力上限 4；每回合恢复 0.14 × 难度恢复系数"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -102,14 +82,14 @@ const config: GodConfig = {
         "Virulent Spread",
         "Blissful Ignorance"
       ],
-      "powerRecovery": "神力上限 5；每回合恢复 0.175 × 难度恢复系数"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
       "progress": 270,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "神力上限 6；每回合恢复 0.21 × 难度恢复系数"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -118,7 +98,7 @@ const config: GodConfig = {
       "reward": [
         "Conceptual Bleed"
       ],
-      "powerRecovery": "神力上限 7；每回合恢复 0.245 × 难度恢复系数"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
@@ -128,7 +108,7 @@ const config: GodConfig = {
         "Societal Collapse",
         "苏醒"
       ],
-      "powerRecovery": "神力上限 8；每回合恢复 0.28 × 难度恢复系数"
+      "powerRecovery": "8/0.28"
     }
   ],
   "powers": [
@@ -213,6 +193,29 @@ const config: GodConfig = {
       "limit": "非黑暗王国首都，Pareidolia 至少 200。"
     }
   ],
+  "supplicant": {
+    "name": "Supplicant",
+    "image": "icon_adolia.png",
+    "stats": "Might 2；Lore 2；Intrigue 4；Command 3；HP 5",
+    "abilities": [
+      {
+        "name": "Adolia Instance",
+        "text": "开局即为化身，免疫老年死亡，可作为 <CrossReference name=\"A Passing Thought\" /> 的传播媒介。"
+      },
+      {
+        "name": "Intrusive Thought",
+        "text": "可选能力：每回合使同地及相邻地点的人物单位 Faceless Memory 强度额外 +1。之后招募或主动转化的可控制化身继承该选择。"
+      },
+      {
+        "name": "Mental Leech",
+        "text": "可选能力：每回合从同地感染 Faceless Memory、XP 大于 2 的非玩家人物单位各窃取 2 XP。之后招募或主动转化的可控制化身继承该选择。"
+      },
+      {
+        "name": "Dark Memories",
+        "text": "可选能力：每回合使同地英雄与侍僧个人 Shadow +1%，相邻地点英雄与侍僧个人 Shadow +2%，最高 100%。之后招募或主动转化的可控制化身继承该选择。"
+      }
+    ]
+  },
   "sections": [
     {
       "id": "traits",
@@ -635,12 +638,20 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "media": false,
       "items": [
         {
           "name": "Mass Delusion",
-          "text": "0 至 −3 四档，仅 −3 生效。每座 Temple 在当地没有 Pareidolia 时创建强度 1；已有修正时每回合增加 2，并使 Temple Menace +0.5。\n同时向未感染的相邻人类聚居地创建 Pareidolia。每个已经感染的相邻人类聚居地，每回合再为 Temple 所在地点增加 1 强度。普通非黑暗教团可获得这项教义，Witches Holy Order 除外。"
+          "text": "",
+          "tenetRange": "-3 – 0",
+          "tenetLevels": [
+            {
+              "level": -3,
+              "text": "每座 Temple 在当地没有 Pareidolia 时创建强度 1；已有修正时，每回合使当地强度 +2、Temple Menace +0.5，并检查相邻人类聚居地：未感染的地点创建强度 1；每个已感染的相邻地点，再为 Temple 所在地点增加 1 强度。"
+            }
+          ],
+          "meta": "适用于非黑暗信仰，Witches 除外"
         }
       ]
     },
@@ -652,47 +663,172 @@ const config: GodConfig = {
         {
           "name": "Mass Delirium",
           "image": "event_adolia0.jpg",
-          "text": "模组事件。在已有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" />、尚未被吞没的聚居地执行任务时，定义概率 10%。可无事离开；煽动幻觉使当地 Shadow +50%、自身 Menace +5、任务进度 −15；抢劫获得 50 Gold、Menace +8、任务进度 −10。"
+          "text": "模组事件。在已有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" />、尚未被吞没的聚居地执行任务时，定义概率 10%。",
+          "eventOptions": [
+            {
+              "name": "Do nothing",
+              "text": "无效果。"
+            },
+            {
+              "name": "Feed their delusions",
+              "text": "当地 Shadow +50 个百分点；Menace +5；任务进度 −15。"
+            },
+            {
+              "name": "Rob them",
+              "text": "Gold +50；Menace +8；任务进度 −10。"
+            }
+          ]
         },
         {
           "name": "Social Decay",
           "image": "event_adolia3.jpg",
-          "text": "模组事件。在已有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" />、尚未被吞没的聚居地执行任务时，定义概率 10%。可无事离开；煽动使 Unrest +50、Menace +8、Profile +5、任务进度 −15；抢掠获得 50 Gold、Menace +5、Profile +5、任务进度 −10；隐藏使 Menace −10、Profile −10、任务进度 −10。"
+          "text": "模组事件。在已有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" />、尚未被吞没的聚居地执行任务时，定义概率 10%。",
+          "eventOptions": [
+            {
+              "name": "Do nothing",
+              "text": "无效果。"
+            },
+            {
+              "name": "Fan the flames",
+              "text": "当地 Unrest +50；Menace +8；Profile +5；任务进度 −15。"
+            },
+            {
+              "name": "Join in the looting",
+              "text": "Gold +50；Menace +5；Profile +5；任务进度 −10。"
+            },
+            {
+              "name": "Hide in the chaos",
+              "text": "Menace −10；Profile −10；任务进度 −10。"
+            }
+          ]
         },
         {
           "name": "Confused Vendor",
           "image": "event_adolia6.jpg",
-          "text": "模组事件。在人类聚居地已有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" /> 且尚未被吞没时，任务中定义概率 10%。可无事离开；帮助商人使 Menace −10、Profile −5、任务进度 −15；欺骗获得 50 Gold、Menace +5、Profile +5、任务进度 −15。持有至少 30 Gold 时，可支付 30 Gold 购买物品：按实际权重，普通物品概率 2/3、稀有物品概率 1/3。"
+          "text": "模组事件。在人类聚居地已有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" /> 且尚未被吞没时，任务中定义概率 10%。",
+          "eventOptions": [
+            {
+              "name": "Do nothing",
+              "text": "无效果。"
+            },
+            {
+              "name": "Assist them",
+              "text": "Menace −10；Profile −5；任务进度 −15。"
+            },
+            {
+              "name": "Take advantage of them",
+              "text": "Gold +50；Menace +5；Profile +5；任务进度 −15。"
+            },
+            {
+              "name": "Purchase an item for cheap",
+              "text": "66.67%：Gold −30；获得普通物品。\n33.33%：Gold −30；获得稀有物品。",
+              "condition": "至少 30 Gold。"
+            }
+          ]
         },
         {
           "name": "Aftermath",
           "image": "event_adolia9.jpg",
-          "text": "模组事件。非 Adolia 化身移动进入 <CrossReference name=\"Subsumed Settlement\" /> 时，定义概率 20%。搜刮分别有 12.5% 概率获得 15 Gold、30 Gold、普通物品或稀有物品，50% 无收获；休息恢复 5 HP、Profile −10；也可直接离开。"
+          "text": "模组事件。非 Adolia 化身移动进入 <CrossReference name=\"Subsumed Settlement\" /> 时，定义概率 20%。",
+          "eventOptions": [
+            {
+              "name": "Loot",
+              "text": "12.5%：Gold +15。\n12.5%：Gold +30。\n50%：无效果。\n12.5%：获得普通物品。\n12.5%：获得稀有物品。"
+            },
+            {
+              "name": "Rest",
+              "text": "Profile −10；HP +5。"
+            },
+            {
+              "name": "Keep moving",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "A Sighting",
           "image": "event_adolia4.jpg",
-          "text": "模组事件。可控制的 Adolia 化身移动经过非 Arctic、非 Desert 的人类聚居地时，定义概率 3%。可无事离开；告知姓名使当地 Shadow +50%、Menace +10、Profile +15；直面旅人使当地 Madness +100、Menace +10、Profile +15。"
+          "text": "模组事件。可控制的 Adolia 化身移动经过非 Arctic、非 Desert 的人类聚居地时，定义概率 3%。",
+          "eventOptions": [
+            {
+              "name": "Keep moving",
+              "text": "无效果。"
+            },
+            {
+              "name": "Give them a name",
+              "text": "当地 Shadow +50 个百分点；Menace +10；Profile +15。"
+            },
+            {
+              "name": "Turn to face them",
+              "text": "当地 Madness +100；Menace +10；Profile +15。"
+            }
+          ]
         },
         {
           "name": "Two Silent Ghosts",
           "image": "event_adolia7.jpg",
-          "text": "模组事件。可控制的 Adolia 化身移动经过 City Ruins 或 <CrossReference name=\"Subsumed Settlement\" /> 时，定义概率 5%。Profile −15、Menace −10。"
+          "text": "模组事件。可控制的 Adolia 化身移动经过 City Ruins 或 <CrossReference name=\"Subsumed Settlement\" /> 时，定义概率 5%。",
+          "eventOptions": [
+            {
+              "name": "Far from civilization their presence fades",
+              "text": "Menace −10；Profile −15。"
+            }
+          ]
         },
         {
           "name": "Bewildered Bandits",
           "image": "event_adolia5.jpg",
-          "text": "模组事件。非 Adolia 化身移动经过同时有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" /> 与 Banditry、尚未被吞没的地点时，定义概率 10%。服从有 50% 概率失去全部 Gold，50% 无事；操纵有 25% 概率损失 4 HP、25% 获得 50 Gold、50% 无事；逃跑有 50% 概率损失 3 HP，50% 无事。"
+          "text": "模组事件。非 Adolia 化身移动经过同时有 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" /> 与 Banditry、尚未被吞没的地点时，定义概率 10%。",
+          "eventOptions": [
+            {
+              "name": "Give in to their demands",
+              "text": "50%：失去全部 Gold。\n50%：无效果。"
+            },
+            {
+              "name": "Manipulate them",
+              "text": "25%：HP −4。\n25%：Gold +50。\n50%：无效果。"
+            },
+            {
+              "name": "Try to run",
+              "text": "50%：HP −3。\n50%：无效果。"
+            }
+          ]
         },
         {
           "name": "Something Familiar",
           "image": "event_adolia2.jpg",
-          "text": "模组事件。偶数回合，感染 Faceless Memory 的非玩家人物或统治者，定义概率 0.1%。可无事结束；Family 要求 Power 大于 0，消耗 1 Power，使个人 Shadow +100% 并变为极端喜欢 Adolia；Adolia 选项要求个人 Shadow 大于 99%，实际也消耗 1 Power并产生相同效果。"
+          "text": "模组事件。偶数回合，感染 Faceless Memory 的非玩家人物或统治者，定义概率 0.1%。",
+          "eventOptions": [
+            {
+              "name": "A figment",
+              "text": "无效果。"
+            },
+            {
+              "name": "Family",
+              "text": "个人 Shadow +100 个百分点；变为极端喜欢 Adolia；Power −1。",
+              "condition": "当前 Power >0。"
+            },
+            {
+              "name": "Adolia",
+              "text": "个人 Shadow +100 个百分点；变为极端喜欢 Adolia；Power −1。",
+              "condition": "个人 Shadow >99%。"
+            }
+          ]
         },
         {
           "name": "Faceless Form",
           "image": "event_adolia1.jpg",
-          "text": "模组事件。偶数回合，感染 Faceless Memory 的非玩家人物或统治者，定义概率 0.1%。可无事结束，或杀死该人物并获得 2 Power。"
+          "text": "模组事件。偶数回合，感染 Faceless Memory 的非玩家人物或统治者，定义概率 0.1%。",
+          "eventOptions": [
+            {
+              "name": "It continues to eat away at %him...",
+              "text": "无效果。"
+            },
+            {
+              "name": "...Until there is nothing left",
+              "text": "该人物死亡；Power +2。"
+            }
+          ]
         },
         {
           "name": "Pareidolia Crises",

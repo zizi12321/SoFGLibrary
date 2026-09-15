@@ -19,7 +19,8 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "吞噬进度",
   "unlockMethod": "按累计吞噬进度解锁，不按回合解锁。封印 5–7 的阈值乘以难度增长系数并向下取整；表中为系数 1。",
-  "powerRecovery": "神力上限 M＝max(1，floor(0.125 × √(1 + Σ人口×Prosperity)))；Σ 对本地或邻地有 Mammon's Influence 的人类聚居地去重统计，Prosperity 使用 0–1 内部值，且可超过 1。每回合恢复 0.035 × M × 难度恢复系数²。开局持有 1 Power；破除封印不直接增加上限。",
+  "powerCapacity": "神力上限 M＝max(1，floor(0.125 × √(1 + Σ人口×Prosperity)))。Σ 对本地或邻地有 Mammon's Influence 的人类聚居地去重统计；Prosperity 以 100%＝1 计，可超过 1。",
+  "powerRecovery": "每回合恢复＝0.035 × M。开局持有 1 Power；破除封印不直接增加上限。",
   "core": [
     "开局建立 <CrossReference name=\"The Mountain\" /> 与 <CrossReference name=\"The Mountain's Wealth\" />，连接山脉的贸易路线获得 <CrossReference name=\"Mammon's Influence\" />。",
     "用 <CrossReference name=\"Call of the Mountain\" /> 召集 <CrossReference name=\"Lured Crowd\" href=\"#entry-lured-crowd-army\" />；人群到山脉后被吞噬，推进封印、恢复财富并增加贸易扩张额度。",
@@ -29,9 +30,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "财富、吞噬与影响范围",
-    "text": "吞噬进度是累计值，不会在破封时扣除。人群和 Devour Sin 会调用同一吞噬机制：基准每吞噬 1 人或灵魂增加 1 进度、0.1 格扩张额度；每次恢复的财富向下取整，因此 Armoured Populace 每回合吞噬 2 灵魂不会恢复财富。\n神力上限取决于影响范围内人口与 Prosperity，不取决于山中财富百分比；吞噬人口可能反过来降低神力上限。山中财富的 Menace／Profile 决定 Raid Mountain 对英雄的吸引与可见性。\nMammon 没有 Holy Order。"
+    "text": "吞噬进度是累计值，不会在破封时扣除。人群和 Devour Sin 会调用同一吞噬机制：基准每吞噬 1 人或灵魂增加 1 进度、0.1 格扩张额度；每次恢复的财富向下取整，因此 Armoured Populace 每回合吞噬 2 灵魂不会恢复财富。\n神力上限取决于影响范围内人口与 Prosperity，不取决于山中财富百分比；吞噬人口可能反过来降低神力上限。山中财富的 Menace／Profile 决定 Raid Mountain 对英雄的吸引与可见性。",
+    "playStyle": "围绕贸易覆盖、人口和 Prosperity 经营经济，再将人群与罪恶转成吞噬进度。扩张会增加神力潜力，吞噬也会消耗人口，必须同时守住山中财富。"
   },
-  "specialVictory": "最终封印开启时立即胜利，基准累计进度为 800；最终阈值随难度增长系数调整。The Mountain 的财富归零则失败。",
+  "specialVictory": "最终封印开启时立即胜利，默认阈值为累计吞噬进度 800；最终阈值随游戏难度调整。",
+  "specialFailure": "The Mountain's Wealth 强度降至 0 时失败。",
   "seals": [
     {
       "seal": 0,
@@ -44,7 +47,7 @@ const config: GodConfig = {
         "Create Shadow Market",
         "Smuggling"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 1,
@@ -53,14 +56,14 @@ const config: GodConfig = {
       "reward": [
         "Distraction"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 2,
       "progress": 30,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 3,
@@ -70,7 +73,7 @@ const config: GodConfig = {
         "Call of Wealth",
         "Gift from The Mountain"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 4,
@@ -79,7 +82,7 @@ const config: GodConfig = {
       "reward": [
         "Plutomania"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 5,
@@ -89,7 +92,7 @@ const config: GodConfig = {
         "Danger in The Mountain",
         "Embrace of Metal"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 6,
@@ -98,7 +101,7 @@ const config: GodConfig = {
       "reward": [
         "All is Mine"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     },
     {
       "seal": 7,
@@ -108,7 +111,7 @@ const config: GodConfig = {
         "苏醒",
         "立刻胜利"
       ],
-      "powerRecovery": "M / 0.035 × M"
+      "powerRecovery": "M/0.035×M"
     }
   ],
   "powers": [
@@ -844,7 +847,6 @@ const config: GodConfig = {
 };
 
 const preparedConfig = prepareGodConfig(config);
-
 export default function MammonArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
   return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }

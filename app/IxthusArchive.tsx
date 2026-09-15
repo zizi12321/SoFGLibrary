@@ -20,7 +20,8 @@ const config: GodConfig = {
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
   "dlc": "不兼容 DLC",
-  "powerRecovery": "神力上限＝已破封印数 +1；每回合恢复＝0.035 × 神力上限 × 难度恢复系数²。表中按系数 1 列示。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
     "用 <CrossReference name=\"Summon Gawain\" /> 多次召唤 <CrossReference name=\"Sir Gawain\" />。随着解封增加，Sir Gawain 的 Might 会逐步提高；死亡后会留下可供再次召唤的身体。",
     "用 <CrossReference name=\"To Seek the Grail\" /> 在 infiltration 大于 0% 的人类聚居地建立 <CrossReference name=\"Whispers of Eternal Life\" />，让英雄执行 <CrossReference name=\"Seek the Grail\" /> 与 <CrossReference name=\"Quest for the Grail\" />，取得 <CrossReference name=\"Holy Grail\" />。",
@@ -30,9 +31,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "永生与复苏",
-    "text": "Holy Grail 赋予 Cursed Immortality。人物死亡后留下 Immortal Body，复苏进度达到 100 时恢复；英雄逐渐转为 Dread Knight，统治者可以建立 Eternal City。\n开局在 the Elder Tomb 创建 Waters of Eternal Life 与 Gawain's Immortal Body。Ixthus 没有专属 Holy Order；Patrons of the Grail 加入现有教团。"
+    "text": "Holy Grail 赋予 Cursed Immortality。人物死亡后留下 Immortal Body，复苏进度达到 100 时恢复；英雄逐渐转为 Dread Knight，统治者可以建立 Eternal City。\n开局在 the Elder Tomb 创建 Waters of Eternal Life 与 Gawain's Immortal Body。",
+    "playStyle": "以 Holy Grail 诱导英雄与统治者追求永生，再利用复苏、Dread Knight 和 Eternal City 改变世界。既要安排寻杯路径，也要经营永生人物与城市带来的长期影响。"
   },
   "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -43,7 +46,7 @@ const config: GodConfig = {
         "Summon Gawain",
         "Festering Hatred"
       ],
-      "powerRecovery": "1 / 0.035"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -52,7 +55,7 @@ const config: GodConfig = {
       "reward": [
         "Trials and Tribulations"
       ],
-      "powerRecovery": "2 / 0.07"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -61,14 +64,14 @@ const config: GodConfig = {
       "reward": [
         "Eternal Gift"
       ],
-      "powerRecovery": "3 / 0.105"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
       "progress": 105,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "4 / 0.14"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -78,7 +81,7 @@ const config: GodConfig = {
         "Rest nor Recourse",
         "Quicken the Sands"
       ],
-      "powerRecovery": "5 / 0.175"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
@@ -87,14 +90,14 @@ const config: GodConfig = {
       "reward": [
         "Grim Desertion"
       ],
-      "powerRecovery": "6 / 0.21"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
       "progress": 265,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "7 / 0.245"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
@@ -104,7 +107,7 @@ const config: GodConfig = {
         "Echoing Ruin",
         "苏醒"
       ],
-      "powerRecovery": "8 / 0.28"
+      "powerRecovery": "8/0.28"
     }
   ],
   "powers": [
@@ -207,35 +210,31 @@ const config: GodConfig = {
         {
           "name": "Grails Temptation",
           "text": "标记人物是否携带 Holy Grail；它本身不提供额外属性。",
-          "image": "grail_item_0.png",
           "id": "grails-temptation-trait"
         },
         {
           "name": "Cursed Immortality (0)",
-          "text": "每逢 3 的倍数回合，强度 +1；所在地 Unrest >75 时额外 +1，Prosperity <70% 时额外 +1。每次死亡强度 +40，并留下 Immortal Body。自主人物可以执行 Embrace Eternity；统治者可以执行 Constitute Eternal City。死亡不增加英雄死亡造成的世界恐慌，Infamous 不生效。",
-          "image": "Fallen_0.png"
+          "text": "每逢 3 的倍数回合，强度 +1；所在地 Unrest >75 时额外 +1，Prosperity <70% 时额外 +1。每次死亡强度 +40，并留下 Immortal Body。自主人物可以执行 Embrace Eternity；统治者可以执行 Constitute Eternal City。死亡不增加英雄死亡造成的世界恐慌，Infamous 不生效。"
         },
         {
           "name": "Immortal Hunger",
-          "text": "人物在 human settlement 中每回合使地点 Shadow 增加 0.015，并在受伤时恢复 1 HP；战斗开始时会把本体 <CrossReference name=\"The Hunger\" /> 加到防守方。死亡后会留下 charge=20 的 Immortal Body；若身体未被绑定，之后可以复生。",
-          "image": "Fallen_0.png"
+          "text": "人物在 human settlement 中每回合使地点 Shadow 增加 0.015，并在受伤时恢复 1 HP；战斗开始时会把本体 <CrossReference name=\"The Hunger\" /> 加到防守方。死亡后会留下 charge=20 的 Immortal Body；若身体未被绑定，之后可以复生。"
         },
         {
           "name": "Embraced Immortality",
-          "text": "人物在 human settlement 中每回合使当地标准 Devastation 增加 3，并恢复 1 HP；死亡后会留下 charge=20 的 Immortal Body，未被绑定时可以复生。",
-          "image": "Fallen_0.png"
+          "text": "人物在 human settlement 中每回合使当地标准 Devastation 增加 3，并恢复 1 HP；死亡后会留下 charge=20 的 Immortal Body，未被绑定时可以复生。"
         },
         {
           "name": "Gawain's Immortality (0)",
-          "text": "Sir Gawain 身上的 trait。它的 charge 初始为 Might×3；每次 Gawain 死亡会使 charge 增加 40，并在死亡地点没有同类身体时留下 charge=20 的 Gawain's Immortal Body。",
-          "image": "gawain_0.png"
+          "text": "Sir Gawain 身上的 trait。它的 charge 初始为 Might×3；每次 Gawain 死亡会使 charge 增加 40，并在死亡地点没有同类身体时留下 charge=20 的 Gawain's Immortal Body。"
         },
         {
           "name": "The Hunger",
           "text": "人物每回合饥饿强度 +3；Feed 完成后清零强度、恢复满 HP、个人及地点 Shadow 各 +50%、Menace +8。Chosen One 免疫。Immortal Hunger 在主动战斗时使防守者感染该特质。",
           "baseGame": true
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "location-modifiers",
@@ -462,13 +461,21 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "items": [
         {
           "name": "Patrons of the Grail",
-          "text": "Patrons of the Grail 是 Ixthus 在 onStart(map) 中加入现有 Holy Order 的 HolyTenet；代码没有创建 Ixthus 专属 Holy Order。符合条件的 Acolyte 会为 Whispers of Eternal Life 提供资金，普通资金来自其 Gold，Holy 分支使用 preaching reserves。"
+          "text": "",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "Acolyte 执行 Holy: Fund Quest for Grail 的意愿 +60。该行动从 preaching reserves 捐出 50 Gold，为 Whispers of Eternal Life 的寻杯任务提供资金。"
+            }
+          ]
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "hero-tasks",

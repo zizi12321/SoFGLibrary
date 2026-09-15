@@ -19,13 +19,21 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "每回合恢复 0.035 × 神力上限 × 难度系数²。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
     "通过 <CrossReference name=\"Bloodstain\" /> 和 <CrossReference name=\"Soul-Scar\" /> 累积历史杀戮，把血污转化为后续神力与 <CrossReference name=\"Engulfing Tide\" /> 的资源。",
     "用 <CrossReference name=\"Hateful Spirit\" />、<CrossReference name=\"Might Makes Right\" /> 和 <CrossReference name=\"Distort Soul\" /> 扰乱英雄、统治者与地点，再用 <CrossReference name=\"Purge Hateful Spirit\" /> 等任务牵制英雄。",
     "第 9 封印解锁 <CrossReference name=\"Demonic Nexus\" /> 与 <CrossReference name=\"Engulfing Tide\" /> 后，在据点积累 <CrossReference name=\"Demonic Energy\" />，通过 <CrossReference name=\"Distill Demonic Horde\" /> 生成 <CrossReference name=\"Rampaging Demons\" />。",
     "苏醒后，由 <CrossReference name=\"Demon of the Tide\" /> 与 <CrossReference name=\"Rampaging Demons\" /> 自主袭击人类聚居地。"
   ],
+  "overviewExtra": {
+    "title": "",
+    "text": "",
+    "playStyle": "把杀戮留下的 Bloodstain 与 Soul-Scar 当作长期资源，借仇恨和附身制造更多冲突。苏醒后将积累的资源转成恶魔能量与自主军势。"
+  },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -35,7 +43,7 @@ const config: GodConfig = {
         "Bloody Handprint",
         "Echoes of Shadow"
       ],
-      "powerRecovery": "神力上限 1；每回合恢复 0.035 × 难度系数²"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -44,7 +52,7 @@ const config: GodConfig = {
       "reward": [
         "Hateful Spirit"
       ],
-      "powerRecovery": "神力上限 2；每回合恢复 0.07 × 难度系数²"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -53,7 +61,7 @@ const config: GodConfig = {
       "reward": [
         "Shadow Guardian"
       ],
-      "powerRecovery": "神力上限 3；每回合恢复 0.105 × 难度系数²"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -62,7 +70,7 @@ const config: GodConfig = {
       "reward": [
         "Blood in the Water"
       ],
-      "powerRecovery": "神力上限 4；每回合恢复 0.14 × 难度系数²"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -71,7 +79,7 @@ const config: GodConfig = {
       "reward": [
         "Crimson Haze"
       ],
-      "powerRecovery": "神力上限 5；每回合恢复 0.175 × 难度系数²"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
@@ -80,7 +88,7 @@ const config: GodConfig = {
       "reward": [
         "Might Makes Right"
       ],
-      "powerRecovery": "神力上限 6；每回合恢复 0.21 × 难度系数²"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -89,7 +97,7 @@ const config: GodConfig = {
       "reward": [
         "Unending Bloodshed"
       ],
-      "powerRecovery": "神力上限 7；每回合恢复 0.245 × 难度系数²"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
@@ -98,7 +106,7 @@ const config: GodConfig = {
       "reward": [
         "Distort Soul"
       ],
-      "powerRecovery": "神力上限 8；每回合恢复 0.28 × 难度系数²"
+      "powerRecovery": "8/0.28"
     },
     {
       "seal": 8,
@@ -107,7 +115,7 @@ const config: GodConfig = {
       "reward": [
         "Echoes of Ruin"
       ],
-      "powerRecovery": "神力上限 9；每回合恢复 0.315 × 难度系数²"
+      "powerRecovery": "9/0.315"
     },
     {
       "seal": 9,
@@ -117,7 +125,7 @@ const config: GodConfig = {
         "Engulfing Tide",
         "苏醒"
       ],
-      "powerRecovery": "神力上限 10；每回合恢复 0.35 × 难度系数²"
+      "powerRecovery": "10/0.35"
     }
   ],
   "powers": [
@@ -255,7 +263,8 @@ const config: GodConfig = {
           "name": "Muddied Trail",
           "text": "回合结束时一次性扣除指定的 Profile 与 Menace 后自行移除；实际数值为各 -5。"
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "location-modifiers",
@@ -383,12 +392,19 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "items": [
         {
           "name": "Martyrs for War",
           "id": "martyrs-for-war-doctrine",
-          "text": "教义处于负面影响状态时，教团侍僧获得 Martyr for War；其死亡会增加 100 Unrest，并提高当地人物对 Combat、Cruelty 的喜好、降低对 Cooperation 的喜好。"
+          "text": "",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "Acolyte 获得 Martyr for War。其死亡会增加当地 100 Unrest，并提高当地人物对 Combat、Cruelty 的喜好、降低对 Cooperation 的喜好。"
+            }
+          ]
         }
       ],
       "media": false
@@ -438,6 +454,10 @@ const config: GodConfig = {
           "name": "Soul-Scar",
           "meta": "历史杀戮记录",
           "text": "记录已被消费的 Bloodstain。不能再次支付一般神力，但仍计入 Engulfing Tide 的转化条件。"
+        },
+        {
+          "name": "Violent Omens",
+          "text": "随回合推进增加世界恐慌，贡献值＝30% × 当前回合 ÷ 360。第 360 回合贡献 30%，之后仍按该公式继续增加。此机制还会清零因英雄堕落累计的恐慌项。"
         }
       ]
     }
@@ -780,11 +800,6 @@ const config: GodConfig = {
         }
       ]
     }
-  },
-  "specialVictory": "无",
-  "overviewExtra": {
-    "title": "",
-    "text": "Violent Omens 随回合推进，数值为 30% × 当前回合 ÷ 360。没有专属 Holy Order；现有教团会加入 Martyrs for War 教义。"
   }
 };
 

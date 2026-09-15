@@ -19,7 +19,8 @@ const config: GodConfig = {
   "finalAgents": "5",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "神力上限＝已破封印数 + 1；基础每回合恢复 0.035 × 神力上限 × 难度恢复系数²。Sap Life Force 在 −1／−2 时额外恢复固定 0.02／0.04；不按神庙数量累乘。表中按难度系数 1、教义中立列示。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限 + Sap Life Force 的额外恢复。\nSap Life Force 为 −1／−2 时，额外恢复 0.02／0.04；表内为尚无额外恢复时的数值。",
   "core": [
     "用 <CrossReference name=\"Start Faith\" /> 在已渗透的人类聚居地建立 <CrossReference name=\"Ophanim's Faith\" />；Supplicant 的 <CrossReference name=\"Duality（shadow / faith）\" /> 在完成渗透时交替增加 Shadow 和 Faith。",
     "当城市或国家首都 Faith 达到 150，用 <CrossReference name=\"Theocracy\" /> 建立 <CrossReference name=\"Ophanim Theocracy\" />；首都与其他城市的 Faith 决定内战分裂。",
@@ -29,8 +30,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "Faith、Doubt 与完美化",
-    "text": "Shadow 会促进 Faith，而 Faith 反过来压低 Shadow。统治者 Awareness 会抑制未神权化国家中的 Faith。\n\n国家神权化提供 Faith 每回合 +3、军队 HP 上限 +25%，并使受控人口计入相应胜利进度；城市完美化则将当地与统治者 Shadow、统治者 Awareness 归零，压低 Unrest 和 Doubt。完美化状态会在 Faith 后来下降时继续保留。"
+    "text": "Shadow 会促进 Faith，而 Faith 反过来压低 Shadow。统治者 Awareness 会抑制未神权化国家中的 Faith。\n\n国家神权化提供 Faith 每回合 +3、军队 HP 上限 +25%，并使受控人口计入相应胜利进度；城市完美化则将当地与统治者 Shadow、统治者 Awareness 归零，压低 Unrest 和 Doubt。完美化状态会在 Faith 后来下降时继续保留。",
+    "playStyle": "经营 Faith 的增长与传播，把城市信仰转成神权国家和完美城市。扩张同时需要处理 Doubt，再借助国家战争、宗教人物与完美化单位推进胜利。"
   },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -40,7 +44,7 @@ const config: GodConfig = {
         "Start Faith",
         "Sleepless Labour"
       ],
-      "powerRecovery": "1 / 0.035"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -50,7 +54,7 @@ const config: GodConfig = {
         "Peace and Order",
         "Swift of Foot"
       ],
-      "powerRecovery": "2 / 0.07"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -60,7 +64,7 @@ const config: GodConfig = {
         "Theocracy",
         "Declare Heretic"
       ],
-      "powerRecovery": "3 / 0.105"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -70,7 +74,7 @@ const config: GodConfig = {
         "Call to Serve",
         "Excise Doubt"
       ],
-      "powerRecovery": "4 / 0.14"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -79,7 +83,7 @@ const config: GodConfig = {
       "reward": [
         "Crusade"
       ],
-      "powerRecovery": "5 / 0.175"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
@@ -88,7 +92,7 @@ const config: GodConfig = {
       "reward": [
         "Empower Slaves"
       ],
-      "powerRecovery": "6 / 0.21"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -97,7 +101,7 @@ const config: GodConfig = {
       "reward": [
         "Perfect Servant"
       ],
-      "powerRecovery": "7 / 0.245"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
@@ -107,7 +111,7 @@ const config: GodConfig = {
         "Smite",
         "苏醒"
       ],
-      "powerRecovery": "8 / 0.28"
+      "powerRecovery": "8/0.28"
     }
   ],
   "powers": [
@@ -236,7 +240,8 @@ const config: GodConfig = {
           "text": "Declare Heretic 会主动结算此特质：其他可控制 Agent 必须同时满足 Profile 与 Menace 均小于牺牲者对应数值的一半，才能把自身这两项各减半。临时世界恐慌变化量减少 牺牲者 Menace/300，下限 −0.5；Declare Heretic 随后还会将该变化量再除以 2。",
           "baseGame": true
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "location-modifiers",
@@ -386,18 +391,44 @@ const config: GodConfig = {
         },
         {
           "name": "Paranoid Society",
-          "text": "可取 0／−1。−1 时，Ophanimic Faith 的 Temple 两步范围内，由 Faith 高低差新生的 Doubt 延迟 5 回合，表现为 Festering Doubt；不会延迟相邻 Doubt 的直接传播。每座对应 Temple 使所在地点 Prosperity 的计算值减少 0.15。"
+          "text": "",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "Ophanimic Faith 的 Temple 两步范围内，由 Faith 高低差新生的 Doubt 延迟 5 回合，表现为 Festering Doubt。相邻 Doubt 的直接传播仍正常结算。每座对应 Temple 使所在地点 Prosperity 的计算值减少 0.15。"
+            }
+          ]
         },
         {
           "name": "Sap Life Force",
-          "text": "可取 0／−1／−2。−1／−2 时全局每回合额外恢复 0.02／0.04 Power，与神庙数量无关。\n神力未满时，每回合最多由一座 Temple 的所在地承担 2／4 人口损失；同一教义对象记录本回合已执行，后续神庙不再扣人口。人口低于 2 时聚居地毁灭。神力满时不扣人口，神力增益计算本身不要求存在神庙。"
+          "text": "",
+          "tenetRange": "-2 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "全局每回合额外恢复 0.02 Power，与 Temple 数量无关。神力未满时，每回合最多由一座 Temple 的所在地承担 2 人口损失；人口低于 2 时聚居地毁灭。神力满时不扣人口；额外神力恢复也在没有 Temple 时生效。"
+            },
+            {
+              "level": -2,
+              "text": "全局每回合额外恢复 0.04 Power，与 Temple 数量无关。神力未满时，每回合最多由一座 Temple 的所在地承担 4 人口损失；人口低于 2 时聚居地毁灭。神力满时不扣人口；额外神力恢复也在没有 Temple 时生效。"
+            }
+          ]
         },
         {
           "name": "Inquisitors",
-          "text": "可取 0／−1。−1 时允许 Ophanimic Faith 的成员执行 Holy: Inquisition，并为该任务增加 125 动机；清除 Doubt 的数量不随教义等级另行放大。",
-          "meta": "宗教任务：Holy: Inquisition"
+          "text": "",
+          "meta": "宗教任务：Holy: Inquisition",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "允许 Ophanimic Faith 的成员执行 Holy: Inquisition，并为该任务增加 125 执行意愿。"
+            }
+          ]
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "religious-tasks",
@@ -463,47 +494,117 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Perfection Achieved",
-          "text": "Ophanim's Faith 回合更新时超过 299，且人类聚居地尚未完美化时触发。两个选项都会建立 Perfect City 状态；View the perfection [PAN TO LOCATION] 另外将视角移到地点。",
-          "image": "event-perfection.jpg"
+          "text": "Ophanim's Faith 回合更新时超过 299，且人类聚居地尚未完美化时触发。",
+          "image": "event-perfection.jpg",
+          "eventOptions": [
+            {
+              "name": "This harsh light grants no warmth",
+              "text": "建立 Perfect City 状态。"
+            },
+            {
+              "name": "View the perfection [PAN TO LOCATION]",
+              "text": "将视角移到目标地点；建立 Perfect City 状态。"
+            }
+          ]
         },
         {
           "name": "Holy site discovered in %HEX_NAME",
-          "text": "Explore Ruins 的专属入口：尚未分配事件链、探索深度为 0，所在地是人类城市或小型聚居地（不包括矮人城市与前哨站），且不是 Arctic、Snow、Dry Cold 或 Tundra。与其他符合条件的探索入口竞争，不保证每处遗迹都出现。\nBegin the dig：探索深度 +1，Faith +10；将此地分配为后续圣地事件链。事件标题中的 %HEX_NAME 会替换为地点名。",
-          "image": "event-holy-site.jpg"
+          "text": "Explore Ruins 的专属入口：尚未分配事件链、探索深度为 0，所在地是人类城市或小型聚居地（不包括矮人城市与前哨站），且不是 Arctic、Snow、Dry Cold 或 Tundra。与其他符合条件的探索入口竞争，不保证每处遗迹都出现。\n标题中的 %HEX_NAME 会替换为地点名。",
+          "image": "event-holy-site.jpg",
+          "eventOptions": [
+            {
+              "name": "Begin the dig",
+              "text": "探索深度 +1；当地 Faith +10；此地继续使用圣地探索事件链。"
+            }
+          ]
         },
         {
           "name": "Holy site of %HEX_NAME",
-          "text": "圣地事件链，探索深度 1。\nGold for the cause：探索深度 +1，执行者 Gold +25。\nGive back graciously：要求至少 25 Gold；消耗 25 Gold，探索深度 +1，Faith +10，已有 Doubt −5。",
+          "text": "圣地事件链，探索深度 1。",
           "id": "holy-site-depth-1",
-          "image": "event-holy-site.jpg"
+          "image": "event-holy-site.jpg",
+          "eventOptions": [
+            {
+              "name": "Gold for the cause",
+              "text": "探索深度 +1；Gold +25；此地继续使用圣地探索事件链。"
+            },
+            {
+              "name": "Give back graciously",
+              "text": "探索深度 +1；已有 Doubt −5；当地 Faith +10；Gold −25；此地继续使用圣地探索事件链。",
+              "condition": "至少 25 Gold。"
+            }
+          ]
         },
         {
           "name": "Holy site of %HEX_NAME",
-          "text": "圣地事件链，探索深度 2。The excavation proceeds：探索深度 +1，Faith +10。",
+          "text": "圣地事件链，探索深度 2。",
           "id": "holy-site-depth-2",
-          "image": "event-holy-site.jpg"
+          "image": "event-holy-site.jpg",
+          "eventOptions": [
+            {
+              "name": "The excavation proceeds",
+              "text": "探索深度 +1；当地 Faith +10。"
+            }
+          ]
         },
         {
           "name": "Holy site of %HEX_NAME",
-          "text": "圣地事件链，探索深度 3。They shall all see：探索深度 +1，Faith +30，已有 Doubt −20。",
+          "text": "圣地事件链，探索深度 3。",
           "id": "holy-site-depth-3",
-          "image": "event-holy-site.jpg"
+          "image": "event-holy-site.jpg",
+          "eventOptions": [
+            {
+              "name": "They shall all see",
+              "text": "探索深度 +1；已有 Doubt −20；当地 Faith +30。"
+            }
+          ]
         },
         {
           "name": "The holy relic of %HEX_NAME",
-          "text": "圣地事件链，探索深度 4。Brought to light：探索深度 +1，获得 Ophanimic Totem，Faith +50，已有 Doubt −25。",
-          "image": "event-holy-site.jpg"
+          "text": "圣地事件链，探索深度 4。",
+          "image": "event-holy-site.jpg",
+          "eventOptions": [
+            {
+              "name": "Brought to light",
+              "text": "探索深度 +1；获得 Ophanimic Totem；已有 Doubt −25；当地 Faith +50。"
+            }
+          ]
         },
         {
           "name": "The doubtful swarm the holy site",
-          "text": "圣地事件链在探索深度 1–3、当地已有 Doubt、全局尚未处理本事件时可出现；选择权重为 2，同阶段主事件为 1，只有两者符合时本事件概率为 2/3。\nLet them see：Doubt −15，执行者 Menace +4，保持当前探索深度。\nTurn them away：探索深度 +1，Menace +4。\nWords of wisdom：要求 Power >0，消耗 1 Power，探索深度 +1，Doubt −25。任一选项都会记录全局已处理。",
-          "image": "event-holy-site.jpg"
+          "text": "圣地事件链在探索深度 1–3、当地已有 Doubt、全局尚未处理本事件时可出现；选择权重为 2，同阶段主事件为 1，只有两者符合时本事件概率为 2/3。",
+          "image": "event-holy-site.jpg",
+          "eventOptions": [
+            {
+              "name": "Let them see",
+              "text": "Menace +4；已有 Doubt −15；记录本事件已处理；此地继续使用圣地探索事件链。"
+            },
+            {
+              "name": "Turn them away",
+              "text": "探索深度 +1；Menace +4；记录本事件已处理；此地继续使用圣地探索事件链。"
+            },
+            {
+              "name": "Words of wisdom",
+              "text": "探索深度 +1；已有 Doubt −25；Power −1；记录本事件已处理；此地继续使用圣地探索事件链。",
+              "condition": "当前 Power >0。"
+            }
+          ]
         },
         {
           "name": "A peaceful village shaken by a senseless tragedy",
-          "text": "本体共享移动事件，包含 Ophanim 专属选项。地点有 Farms，没有 Devastation 或 Plague，并满足 50<Madness<250，或 25%<统治者 Shadow<68%；无统治者时后项使用地图格黑暗值。全局标记尚未记录时以 1% 概率触发。\nA sign of dark times：地点 Shadow +33 个百分点。\nThey need to believe：Ophanim 专属，Faith +75；没有 Faith 时创建。任一选项记录事件，通常不再触发。",
+          "text": "本体共享移动事件，包含 Ophanim 专属选项。地点有 Farms，没有 Devastation 或 Plague，并满足 50<Madness<250，或 25%<统治者 Shadow<68%；无统治者时后项使用地图格黑暗值。全局标记尚未记录时以 1% 概率触发。",
           "image": "event-shaken-village.jpg",
-          "baseGame": true
+          "baseGame": true,
+          "eventOptions": [
+            {
+              "name": "A sign of dark times",
+              "text": "当地 Shadow +33 个百分点；记录当前回合，阻止后续通常再次触发。"
+            },
+            {
+              "name": "They need to believe",
+              "text": "当地 Faith +75；记录当前回合，阻止后续通常再次触发。"
+            }
+          ]
         }
       ]
     }
@@ -1039,12 +1140,10 @@ const config: GodConfig = {
         }
       ]
     }
-  },
-  "specialVictory": "无"
+  }
 };
 
 const preparedConfig = prepareGodConfig(config);
-
 export default function OphanimArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
   return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }

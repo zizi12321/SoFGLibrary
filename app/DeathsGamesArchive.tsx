@@ -19,8 +19,8 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "神力恢复固定为 51 / 350，约 0.146 点每回合；神力上限固定为 7，不随封印增加。封印只提高 Agent 上限。",
-  "specialVictory": "无",
+  "powerCapacity": "神力上限固定为 7。",
+  "powerRecovery": "每回合恢复＝51 ÷ 350，约 0.1457。封印不改变神力上限与恢复速度。",
   "core": [
     "用 <CrossReference name=\"Draw Card\" /> 消耗 1 点神力，从随机稀有度池获得一张一次性卡牌；手牌最多保留 7 张。",
     "用 <CrossReference name=\"Redraw\" /> 消耗 2 点神力，弃掉全部手牌，再抽取少一张新卡牌；它使用一套比普通抽牌更窄的抽取池。",
@@ -31,8 +31,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "抽取概率",
-    "text": "Draw Card：Common 共 5 张，每张 14%；Uncommon 共 4 张，每张 5.25%；Rare 共 2 张，每张 4.5%。\nRedraw：Common 共 3 张，每张约 23.33%；Uncommon 共 3 张，每张 7%；Rare 共 2 张，每张 4.5%。\nDeath's Games 没有 Holy Order。"
+    "text": "Draw Card：Common 共 5 张，每张 14%；Uncommon 共 4 张，每张 5.25%；Rare 共 2 张，每张 4.5%。\nRedraw：Common 共 3 张，每张约 23.33%；Uncommon 共 3 张，每张 7%；Rare 共 2 张，每张 4.5%。",
+    "playStyle": "依靠随机手牌进行短促、灵活的干预，用卡牌支持 Agent 的移动、任务与生存。手牌上限和 Redraw 的损耗要求选择保留时机，后期优势主要来自更多 Agent 与卡牌配合。"
   },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -42,49 +45,49 @@ const config: GodConfig = {
         "Draw Card",
         "Redraw"
       ],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 1,
       "progress": 15,
       "agents": 2,
       "reward": [],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 2,
       "progress": 30,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 3,
       "progress": 70,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 4,
       "progress": 200,
       "agents": 4,
       "reward": [],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 5,
       "progress": 300,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 6,
       "progress": 500,
       "agents": 6,
       "reward": [],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     },
     {
       "seal": 7,
@@ -93,7 +96,7 @@ const config: GodConfig = {
       "reward": [
         "无特殊苏醒效果"
       ],
-      "powerRecovery": "7 / 0.145714…"
+      "powerRecovery": "7/0.1457"
     }
   ],
   "powers": [

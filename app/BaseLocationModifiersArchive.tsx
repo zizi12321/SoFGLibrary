@@ -41,7 +41,6 @@ export default function BaseLocationModifiersArchive({ onReturn }: { onReturn: (
           </button>
         </div>
         <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
-        <nav className="sidebar-nav">{entries.map((item, index) => <a href={"#" + entryId(item.name)} key={item.name}><span>{String(index + 1).padStart(2, "0")}</span><b>{item.name}</b></a>)}</nav>
         <div className="sidebar-bulk"><button type="button" onClick={() => setOpenEntries(new Set(allIds))}>全部展开</button><button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button></div>
       </aside>
       <div className="content-shell">

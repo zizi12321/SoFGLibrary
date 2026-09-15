@@ -19,7 +19,8 @@ const config: GodConfig = {
   "finalAgents": "5",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "神力上限＝已破封印数 + 1。每回合恢复 0.035 × 神力上限 × 难度恢复系数²；世界初始化与神力恢复各应用一次难度系数。表中按难度系数 1 列示。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
     "用 <CrossReference name=\"Heart of the Forest\" /> 建立据点与根系网络，保证其他神力始终在 3 格范围内有施放中心。",
     "先放置 <CrossReference name=\"Grove of Golden Roses\" />、<CrossReference name=\"Grove of Nectar\" />、<CrossReference name=\"Grove of Peace Lillies\" /> 或 <CrossReference name=\"Grove of Leper's Succor\" />，向人类提供解决问题的礼物。",
@@ -30,8 +31,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "Gift 与森林网络",
-    "text": "Vinerva 没有初始 Agent，也不会按通常开局放置 Elder Tomb；开局提供 3 次招募额度，但同时在场的 Agent 仍受封印上限限制。\n\n<CrossReference name=\"Vinerva's Gift\" /> 是统治者接受馈赠后留下的地点资源，换任统治者不会主动将它清除。<CrossReference name=\"Heart of the Forest\" href=\"#entry-heart-location\" /> 是据点设施，可以依附现有聚居地；有害神力增加最近 Heart 的 Menace，使人类国家更可能派军队摧毁它。下列神力的 Menace 数值均以难度系数 1 为准，实际取 floor(基础值 × 难度增长系数)。"
+    "text": "Vinerva 没有初始 Agent，也不会按通常开局放置 Elder Tomb；开局提供 3 次招募额度，但同时在场的 Agent 仍受封印上限限制。\n\n<CrossReference name=\"Vinerva's Gift\" /> 是统治者接受馈赠后留下的地点资源，换任统治者不会主动将它清除。<CrossReference name=\"Heart of the Forest\" href=\"#entry-heart-location\" /> 是据点设施，可以依附现有聚居地；有害神力增加最近 Heart 的 Menace，使人类国家更可能派军队摧毁它。下列神力的 Menace 数值均以难度系数 1 为准，实际取 floor(基础值 × 难度增长系数)。",
+    "playStyle": "先提供人类愿意接受的礼物，再把馈赠积累转成侵蚀和破坏。重点是经营 Heart 的覆盖范围、观察统治者需求，并在转化据点时保护根系网络。"
   },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -41,7 +45,7 @@ const config: GodConfig = {
         "Heart of the Forest",
         "Grove of Golden Roses"
       ],
-      "powerRecovery": "1 / 0.035"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -51,7 +55,7 @@ const config: GodConfig = {
         "Grove of Salvation",
         "Black Forest"
       ],
-      "powerRecovery": "2 / 0.07"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -61,7 +65,7 @@ const config: GodConfig = {
         "Grove of Nectar",
         "Grove of Peace Lillies"
       ],
-      "powerRecovery": "3 / 0.105"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -71,7 +75,7 @@ const config: GodConfig = {
         "Choking Spores",
         "Grove of Leper's Succor"
       ],
-      "powerRecovery": "4 / 0.14"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -80,7 +84,7 @@ const config: GodConfig = {
       "reward": [
         "Grove of Dragonflower"
       ],
-      "powerRecovery": "5 / 0.175"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
@@ -90,7 +94,7 @@ const config: GodConfig = {
         "Neurotoxins",
         "Pheromones"
       ],
-      "powerRecovery": "6 / 0.21"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -99,7 +103,7 @@ const config: GodConfig = {
       "reward": [
         "Serpentine Vines"
       ],
-      "powerRecovery": "7 / 0.245"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
@@ -108,14 +112,14 @@ const config: GodConfig = {
       "reward": [
         "Manifestation"
       ],
-      "powerRecovery": "8 / 0.28"
+      "powerRecovery": "8/0.28"
     },
     {
       "seal": 8,
       "progress": 300,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "9 / 0.315"
+      "powerRecovery": "9/0.315"
     },
     {
       "seal": 9,
@@ -125,7 +129,7 @@ const config: GodConfig = {
         "Wilderness Spirits",
         "苏醒"
       ],
-      "powerRecovery": "10 / 0.35"
+      "powerRecovery": "10/0.35"
     }
   ],
   "powers": [
@@ -246,11 +250,10 @@ const config: GodConfig = {
     {
       "id": "traits",
       "title": "人物特质",
-      "media": true,
+      "media": false,
       "items": [
         {
           "name": "Vinerva's Gift of Might",
-          "image": "grove-dragonflower.png",
           "text": "Gift of Might 首次执行建立等级 1，此后每次直接加 1，并将持续时间重置为 22 回合。持续时间内，等级 1–7 的 Might 加成依次为 +4、+3、+2、+2、+1、+1、0，等级 8 及以上为 −1；持续时间耗尽也变为 −1。虽然特质声明最大等级 5，重复食用的代码没有使用该限制。\n接受动机中的成瘾项为 min(250，40 + 5 × 等级)，剩余强化回合每回合压低动机 7。"
         }
       ]
@@ -522,13 +525,24 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "media": false,
       "items": [
         {
           "name": "A Darker Nature",
           "meta": "Witches 专属教义",
-          "text": "Vinerva 在场时，Witches Holy Order 增加此教义。状态可为 0、−1、−2；负值是 Elder 方向。状态 −1／−2 时，Holy: Cultivate Her Gifts 完成后的增长分别为每回合 1／2，持续 20 回合；教义还分别为该任务增加 50／100 动机。"
+          "text": "",
+          "tenetRange": "-2 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "Holy: Cultivate Her Gifts 完成后，使对应礼物每回合增长 1，持续 20 回合；该任务的执行意愿 +50。"
+            },
+            {
+              "level": -2,
+              "text": "Holy: Cultivate Her Gifts 完成后，使对应礼物每回合增长 2，持续 20 回合；该任务的执行意愿 +100。"
+            }
+          ]
         }
       ]
     },
@@ -557,7 +571,17 @@ const config: GodConfig = {
         {
           "name": "Vinerva's Gift Accepted",
           "image": "event-gift-accepted.jpg",
-          "text": "由四个 Accept Gift 行动直接弹出的本体提示事件。Accept Gift of Gold 只在创建新的 Vinerva's Gift 时触发，另三个行动每次完成都会尝试触发。\nTheir fate is sealed. 不改变数值；Let us see [CENTRE VIEW ON TARGET]. 仅将视角移到目标地点。礼物的实际效果由行动代码结算。"
+          "text": "由四个 Accept Gift 行动直接弹出的本体提示事件。Accept Gift of Gold 只在创建新的 Vinerva's Gift 时触发，另三个行动每次完成都会尝试触发。\n礼物的实际效果由统治者行动结算。",
+          "eventOptions": [
+            {
+              "name": "Their fate is sealed.",
+              "text": "无效果。"
+            },
+            {
+              "name": "Let us see [CENTRE VIEW ON TARGET].",
+              "text": "将视角移到目标地点。"
+            }
+          ]
         }
       ]
     }
@@ -1120,12 +1144,10 @@ const config: GodConfig = {
         }
       ]
     }
-  },
-  "specialVictory": "无"
+  }
 };
 
 const preparedConfig = prepareGodConfig(config);
-
 export default function VinervaArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
   return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }

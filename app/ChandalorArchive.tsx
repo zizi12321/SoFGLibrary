@@ -19,7 +19,8 @@ const config: GodConfig = {
   "finalAgents": "5",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "每回合恢复 0.035 × 神力上限 × 难度系数²。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
     "用 <CrossReference name=\"Sense Loneliness\" /> 找出未婚英雄和统治者。",
     "用 <CrossReference name=\"Growing Bond\" /> 提高两人的相互好感。",
@@ -28,6 +29,13 @@ const config: GodConfig = {
     "沿婚姻施放 <CrossReference name=\"Blood Bond\" />，把一个家族的诅咒复制给配偶家族。",
     "后期用 <CrossReference name=\"Rapture\" /> 按家族诅咒数打断英雄与统治者，同时让 <CrossReference name=\"Chandalor's Awe\" /> 向全图扩散。"
   ],
+  "overviewExtra": {
+    "title": "",
+    "text": "以婚姻连接家族，再通过 Blood Bond 传播诅咒，削弱英雄与统治者的行动能力。",
+    "playStyle": "围绕人物关系和家族布局，先促成婚姻，再沿血缘与配偶联系传播诅咒。重点是选择能够连接多个关键人物的家族，逐步扩大精神干扰和衰败。"
+  },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -38,7 +46,7 @@ const config: GodConfig = {
         "Move On",
         "Growing Bond"
       ],
-      "powerRecovery": "神力上限 1；每回合恢复 0.035 × 难度系数²"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
@@ -48,7 +56,7 @@ const config: GodConfig = {
         "Ceremony",
         "Forgive and Forget"
       ],
-      "powerRecovery": "神力上限 2；每回合恢复 0.07 × 难度系数²"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -58,7 +66,7 @@ const config: GodConfig = {
         "Blood Bond",
         "Vile Curse"
       ],
-      "powerRecovery": "神力上限 3；每回合恢复 0.105 × 难度系数²"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -68,7 +76,7 @@ const config: GodConfig = {
         "Curse of Poverty",
         "Heartbreak"
       ],
-      "powerRecovery": "神力上限 4；每回合恢复 0.14 × 难度系数²"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -78,7 +86,7 @@ const config: GodConfig = {
         "Curse of Overwhelming Joy",
         "<CrossReference name=\"Vile Curse\" href=\"#entry-vile-curse-passive-4\" />"
       ],
-      "powerRecovery": "神力上限 5；每回合恢复 0.175 × 难度系数²"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
@@ -88,14 +96,14 @@ const config: GodConfig = {
         "Curse of Obsession",
         "Pacifism"
       ],
-      "powerRecovery": "神力上限 6；每回合恢复 0.21 × 难度系数²"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
       "progress": 150,
       "agents": 4,
       "reward": [],
-      "powerRecovery": "神力上限 7；每回合恢复 0.245 × 难度系数²"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
@@ -104,14 +112,14 @@ const config: GodConfig = {
       "reward": [
         "<CrossReference name=\"Vile Curse\" href=\"#entry-vile-curse-passive-7\" />"
       ],
-      "powerRecovery": "神力上限 8；每回合恢复 0.28 × 难度系数²"
+      "powerRecovery": "8/0.28"
     },
     {
       "seal": 8,
       "progress": 275,
       "agents": 4,
       "reward": [],
-      "powerRecovery": "神力上限 9；每回合恢复 0.315 × 难度系数²"
+      "powerRecovery": "9/0.315"
     },
     {
       "seal": 9,
@@ -122,7 +130,7 @@ const config: GodConfig = {
         "Stand in Awe",
         "苏醒"
       ],
-      "powerRecovery": "神力上限 10；每回合恢复 0.35 × 难度系数²"
+      "powerRecovery": "10/0.35"
     }
   ],
   "powers": [
@@ -283,7 +291,7 @@ const config: GodConfig = {
     {
       "id": "traits",
       "title": "人物特质",
-      "media": true,
+      "media": false,
       "items": [
         {
           "seal": 0,
@@ -293,19 +301,16 @@ const config: GodConfig = {
         {
           "seal": 3,
           "name": "Poverty",
-          "image": "curse_poverty.png",
           "text": "由 Curse of Poverty 对家族成员动态赋予。每回合损失当前 Gold 的 5%，但至少损失 5；玩家 Agent、Deep Ones、Vampires 与 Dark Empire 统治者不会获得它。"
         },
         {
           "seal": 4,
           "name": "Overwhelming Joy",
-          "image": "curse_lazy.png",
           "text": "由同名家族诅咒动态赋予。英雄的挑战进度每回合减少 5、最低仍为 1；统治者行动约有一半回合不推进。"
         },
         {
           "seal": 5,
           "name": "Obsession",
-          "image": "curse_menace.png",
           "text": "由 Curse of Obsession 动态赋予。英雄完成挑战额外获得 8 Menace；统治者每回合给所在地增加 1 Unrest。"
         }
       ]
@@ -478,12 +483,20 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "media": false,
       "items": [
         {
           "name": "Wicked Curses",
-          "text": "选择 Chandalor 时，这项新教义会加入所有 Witches Holy Order。它只有 0 与 −1 两档；处于 Elder 影响（−1）时，女巫对 Holy: Wicked Curse 的执行意愿固定增加 75，并在各人类聚居地获得该宗教任务。"
+          "text": "",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "女巫可在人类聚居地执行 Holy: Wicked Curse，该任务的执行意愿 +75。"
+            }
+          ],
+          "meta": "Witches 专属教义"
         }
       ]
     },
@@ -548,7 +561,13 @@ const config: GodConfig = {
           "name": "Wicked Curses 觉醒",
           "id": "wicked-curses-event",
           "image": "curse_activateHO.png",
-          "text": "本局第一次有女巫在 Wicked Curses 教义处于 Elder 影响时进行回合结算，会显示此事件，告知女巫教团已经开始把诅咒传播到人类聚居地；事件本身不再附加额外数值效果。"
+          "text": "本局第一次有女巫在 Wicked Curses 教义处于 Elder 影响时进行回合结算，会显示此事件，告知女巫教团已经开始把诅咒传播到人类聚居地。",
+          "eventOptions": [
+            {
+              "name": "A minor diversion.",
+              "text": "无效果。"
+            }
+          ]
         }
       ]
     }
@@ -907,11 +926,6 @@ const config: GodConfig = {
         }
       ]
     }
-  },
-  "specialVictory": "无",
-  "overviewExtra": {
-    "title": "",
-    "text": "以婚姻连接家族，再通过 Blood Bond 传播诅咒，削弱英雄与统治者的行动能力。没有专属 Holy Order；Witches Holy Order 加入 Wicked Curses 教义。"
   }
 };
 

@@ -8,7 +8,7 @@ type GodChoice = ArchivePageChoice;
 const gods = [
   { id: "she-who-will-feast", name: "She Who Will Feast", type: "游戏本体", image: "./she-who-will-feast/portrait.png", focus: "渗透、Shadow 扩散与苏醒军队" },
   { id: "iastur", name: "Iastur, The Laughing King", type: "游戏本体", image: "./iastur/portrait.png", focus: "Laughing Tome、Madness 与性格操纵" },
-  { id: "vinerva", name: "Vinerva", type: "游戏本体", image: "./vinerva/portrait.png", focus: "森林之心、诱惑馈赠与自然军势" },
+  { id: "vinerva", name: "Vinerva, the Dark Goddess", type: "游戏本体", image: "./vinerva/portrait.png", focus: "森林之心、诱惑馈赠与自然军势" },
   { id: "ophanim", name: "Ophanim, The Divine Beyond", type: "游戏本体", image: "./ophanim/portrait.png", focus: "Faith、Doubt 与神权国家" },
   { id: "mammon", name: "Mammon, Wealth of Man, Spirit of the Mountain", type: "游戏本体", image: "./mammon/portrait.png", focus: "贸易网络、Greed/Decadence 与吞噬" },
   { id: "broken-maker", name: "The Broken Maker", type: "游戏本体", image: "./broken-maker/portrait.png", focus: "家族诅咒、世代轮回与借用神力" },
@@ -16,11 +16,12 @@ const gods = [
   { id: "cordyceps", name: "Cordyceps Hive Mind", type: "游戏本体", image: "./cordyceps/god_portrait.png", focus: "感染、Hive、Larval Mass 与虫群军队" },
   { id: "deaths-games", name: "Death's Games", type: "游戏本体", image: "./deaths-games/godCardsTMP.png", focus: "抽卡、概率与一次性干预" },
   { id: "ixthus", name: "Ixthus, King of Cups", type: "模组神祇", image: "./ixthus/kingOfCups_Portrait.png", focus: "Holy Grail、永生、英雄与统治者的死亡" },
-  { id: "kishi", name: "Kishi", type: "模组神祇", image: "./kishi/god_portrait.png", focus: "Bloodstain、Soul-Scar 与恶魔浪潮" },
-  { id: "living-void", name: "Living Void", type: "模组神祇", image: "./living-void/god_portrait.png", focus: "虚空侵蚀、真空异常与世界坍缩" },
+  { id: "kishi", name: "Kishi, the Jagged Tide", type: "模组神祇", image: "./kishi/god_portrait.png", focus: "Bloodstain、Soul-Scar 与恶魔浪潮" },
+  { id: "living-void", name: "The Living Void", type: "模组神祇", image: "./living-void/god_portrait.png", focus: "虚空侵蚀、真空异常与世界坍缩" },
   { id: "chandalor", name: "Chandalor, the Cursed Bloom", type: "模组神祇", image: "./chandalor/god_portrait.png", focus: "婚姻网络、家族诅咒与精神干扰" },
   {"id":"escamrak","name":"Escamrak","type":"模组神祇","image":"./escamrak/god_game.png","focus":"Fleshcrafting、活体聚居地与神体重构"},
   {"id":"adolia","name":"Adolia, the Faceless Memory","type":"模组神祇","image":"./adolia/facelessmemory_portrait.png","focus":"记忆感染、Pareidolia 与化身扩散"},
+  { id: "kalastrophe", name: "Kalastrophe, the Shifting Calamity", type: "模组神祇", image: "./kalastrophe/God_Ingame.png", focus: "神力定制、英雄腐化与灾厄组合" },
 ] as const;
 
 export default function GodIndex({ onSelect }: { onSelect: (god: GodChoice) => void }) {

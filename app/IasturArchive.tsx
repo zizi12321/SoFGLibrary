@@ -19,7 +19,8 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "神力上限＝已破封印数 + 1。每回合恢复 0.035 × 神力上限 × 难度系数 × Tome 倍率；表中左、右恢复值分别为倍率 0.5 与 1.5，难度系数取 1。未封印书由非玩家人物或统治者持有，或 Laughing King's Tome 位于人类 Society 的人类聚居地时，倍率为 1.5；否则为 0.5。只有 Hysterical Tome 不会提高倍率。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限 × Tome 倍率。\n未封印书由非玩家人物或统治者持有，或活跃 Laughing King's Tome 位于人类 Society 的人类聚居地时，倍率为 1.5；其余状态为 0.5。表内两个恢复值分别对应这两档的低值与高值。",
   "core": [
     "Supplicant 开局携带 <CrossReference name=\"Laughing Tome\" />；用 <CrossReference name=\"Place Tome\" /> 将其放到人类聚居地，或交给非玩家人物阅读，让书在外发挥作用并提高神力恢复。",
     "在书所在地完成 <CrossReference name=\"Drive Word of Mouth\" />，或施放 <CrossReference name=\"Stories Told In Dreams\" />，提高 <CrossReference name=\"Madness\" />。",
@@ -30,8 +31,11 @@ const config: GodConfig = {
   ],
   "overviewExtra": {
     "title": "Madness 与 Tome 状态",
-    "text": "<CrossReference name=\"Madness\" /> 由地点上的 Tome、<CrossReference name=\"Maddening Tongues\" /> 和 <CrossReference name=\"Everyone Shall Play\" /> 等机制累积；超过 100 后会增加当地 Unrest，并逐步侵蚀统治者的 Sanity。人类聚居地达到 300 且没有长期疯狂效果时，触发一次 <CrossReference name=\"Madness Crisis\" /> 并留下长期效果；强度回落到 150。\n\nTome 处于 Bound、Asleep、Unbound 或作为地点修正影响凡人时，会改变神力恢复倍率。只有未封印书由非玩家人物持有，或活跃真本位于人类 Society 的人类聚居地时，倍率为 1.5；其余情况为 0.5。"
+    "text": "<CrossReference name=\"Madness\" /> 由地点上的 Tome、<CrossReference name=\"Maddening Tongues\" /> 和 <CrossReference name=\"Everyone Shall Play\" /> 等机制累积；超过 100 后会增加当地 Unrest，并逐步侵蚀统治者的 Sanity。人类聚居地达到 300 且没有长期疯狂效果时，触发一次 <CrossReference name=\"Madness Crisis\" /> 并留下长期效果；强度回落到 150。\n\nTome 处于 Bound、Asleep、Unbound 或作为地点修正影响凡人时，会改变神力恢复倍率。只有未封印书由非玩家人物持有，或活跃真本位于人类 Society 的人类聚居地时，倍率为 1.5；其余情况为 0.5。",
+    "playStyle": "围绕一本会流转、被封印的 Tome 组织行动，依靠 Madness 与人物喜恶间接改变世界。需要持续关注书的位置与状态，平衡扩散、神力恢复和防守。"
   },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -40,14 +44,14 @@ const config: GodConfig = {
       "reward": [
         "Let's see what this game brings"
       ],
-      "powerRecovery": "1 / 0.0175–0.0525"
+      "powerRecovery": "1/0.0175–0.0525"
     },
     {
       "seal": 1,
       "progress": 12,
       "agents": 2,
       "reward": [],
-      "powerRecovery": "2 / 0.0350–0.1050"
+      "powerRecovery": "2/0.035–0.105"
     },
     {
       "seal": 2,
@@ -56,7 +60,7 @@ const config: GodConfig = {
       "reward": [
         "The Devil Finds Work..."
       ],
-      "powerRecovery": "3 / 0.0525–0.1575"
+      "powerRecovery": "3/0.0525–0.1575"
     },
     {
       "seal": 3,
@@ -66,7 +70,7 @@ const config: GodConfig = {
         "...For Idle Hands",
         "It's All Just a Game"
       ],
-      "powerRecovery": "4 / 0.0700–0.2100"
+      "powerRecovery": "4/0.07–0.21"
     },
     {
       "seal": 4,
@@ -76,7 +80,7 @@ const config: GodConfig = {
         "Stories Told In Dreams",
         "Fascinate"
       ],
-      "powerRecovery": "5 / 0.0875–0.2625"
+      "powerRecovery": "5/0.0875–0.2625"
     },
     {
       "seal": 5,
@@ -85,7 +89,7 @@ const config: GodConfig = {
       "reward": [
         "Everyone Shall Play"
       ],
-      "powerRecovery": "6 / 0.1050–0.3150"
+      "powerRecovery": "6/0.105–0.315"
     },
     {
       "seal": 6,
@@ -94,7 +98,7 @@ const config: GodConfig = {
       "reward": [
         "Incoherent Thoughts"
       ],
-      "powerRecovery": "7 / 0.1225–0.3675"
+      "powerRecovery": "7/0.1225–0.3675"
     },
     {
       "seal": 7,
@@ -103,14 +107,14 @@ const config: GodConfig = {
       "reward": [
         "Hysterical Tome"
       ],
-      "powerRecovery": "8 / 0.1400–0.4200"
+      "powerRecovery": "8/0.14–0.42"
     },
     {
       "seal": 8,
       "progress": 264,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "9 / 0.1575–0.4725"
+      "powerRecovery": "9/0.1575–0.4725"
     },
     {
       "seal": 9,
@@ -120,7 +124,7 @@ const config: GodConfig = {
         "Warp Reality",
         "苏醒"
       ],
-      "powerRecovery": "10 / 0.1750–0.5250"
+      "powerRecovery": "10/0.175–0.525"
     }
   ],
   "powers": [
@@ -453,13 +457,21 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "items": [
         {
           "name": "Maddening Insight",
-          "text": "已有 Holy Order 会加入的专属教义，不会另建独立教团。等级范围 0 至 −1；0 时无效果。\n−1 时，该信仰的聚居地每有一名不受玩家控制的人物单位正在学习 Arcane Secret，每回合使该学习者 Sanity −1，并使当地统治者 Sanity −1，仅在各自 Sanity >0 时扣除。多名学习者分别触发，统治者可能同回合损失多点。"
+          "text": "",
+          "tenetRange": "-1 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "该信仰的聚居地每有一名不受玩家控制的人物单位正在学习 Arcane Secret，每回合使该学习者 Sanity −1，并使当地统治者 Sanity −1，仅在各自 Sanity >0 时扣除。多名学习者分别触发，统治者可能同回合损失多点。"
+            }
+          ]
         }
-      ]
+      ],
+      "media": false
     },
     {
       "id": "events",
@@ -474,13 +486,37 @@ const config: GodConfig = {
         },
         {
           "name": "Story time",
-          "text": "Agent 在 Hysterical Tome 副本所在地点执行四种基础属性对应的任务，途中事件计时到达要求；同地有非 Chosen One、厌恶 Madness 的英雄时可触发，概率参数为 0.5。\nSend trouble：英雄 Menace +9，Agent Menace +3。\nLead astray：英雄 Disrupted 3 回合，Agent Menace +3。\nLeave to quest：不产生额外人物效果。三个选项均重置途中事件计时。\n事件原文中的人称代词随人物变化。次数条件与选项更新使用的计数变量不一致，不能保证按设计在五次后停止。事件定义未指定图片。"
+          "text": "Agent 在 Hysterical Tome 副本所在地点执行四种基础属性对应的任务，途中事件计时到达要求；同地有非 Chosen One、厌恶 Madness 的英雄时可触发，概率参数为 0.5。\n选项中的人称代词随人物变化。次数条件与选项更新使用的计数变量不一致，不能保证按设计在五次后停止。事件定义未指定图片。",
+          "eventOptions": [
+            {
+              "name": "Send trouble %his2 way",
+              "text": "重置途中事件计时；目标英雄 Menace +9；Menace +3。"
+            },
+            {
+              "name": "Lead %him astray",
+              "text": "重置途中事件计时；目标英雄 Disrupted 3 回合；Menace +3。"
+            },
+            {
+              "name": "Leave %him2 to %his2 quest",
+              "text": "重置途中事件计时。"
+            }
+          ]
         },
         {
           "name": "A peaceful village shaken by a senseless tragedy",
           "image": "event-shaken-village.jpg",
           "baseGame": true,
-          "text": "本体移动事件。地点须有农场，Madness 在 50 与 250 之间，或当地统治者 Shadow 在 25% 与 68% 之间（没有统治者时读取地图格子的黑暗程度）；Devastation 与 Plague 均为 0，且此前未记录这起事件。概率参数为 0.01。\nA sign of dark times：当地 Shadow +33 个百分点。\nIt all makes sense...：当地 Madness +75，仅此神祇可以选择。\n完成选项后记录当前回合，阻止后续通常再次触发。"
+          "text": "本体移动事件。地点须有农场，Madness 在 50 与 250 之间，或当地统治者 Shadow 在 25% 与 68% 之间（没有统治者时读取地图格子的黑暗程度）；Devastation 与 Plague 均为 0，且此前未记录这起事件。概率参数为 0.01。",
+          "eventOptions": [
+            {
+              "name": "A sign of dark times",
+              "text": "当地 Shadow +33 个百分点；记录当前回合，阻止后续通常再次触发。"
+            },
+            {
+              "name": "It all makes sense...",
+              "text": "当地 Madness +75；记录当前回合，阻止后续通常再次触发。"
+            }
+          ]
         }
       ]
     }
@@ -682,12 +718,10 @@ const config: GodConfig = {
         }
       ]
     }
-  },
-  "specialVictory": "无"
+  }
 };
 
 const preparedConfig = prepareGodConfig(config);
-
 export default function IasturArchive({ onGodChange }: { onGodChange: (god: ArchiveGodChoice) => void }) {
   return <GodArchive config={preparedConfig} onGodChange={onGodChange} />;
 }

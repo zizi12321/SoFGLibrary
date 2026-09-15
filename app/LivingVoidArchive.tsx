@@ -19,15 +19,23 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "回合",
   "unlockMethod": "常规回合解锁",
-  "powerRecovery": "每回合恢复 0.035 × 神力上限 × 难度系数²。",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × 神力上限。",
   "core": [
-    "在 <CrossReference name=\"Great Wound\" /> 牺牲 Agent 的生命，取得 <CrossReference name=\"Voidstone\" />。",
+    "在 Great Wound 执行 Nothing from Something，消耗 Agent 的 2 HP，取得 Voidstone。",
     "把石头带到渗透至少 50% 的人类聚居地，执行 <CrossReference name=\"Plant Voidstone\" />。",
     "用 <CrossReference name=\"Open Rift\" /> 将 <CrossReference name=\"Hidden Voidstone\" /> 转化为 50% 的 <CrossReference name=\"Hungry Rift\" />。",
     "利用 Devastation、神庙和 <CrossReference name=\"Expand Rift\" /> 推高裂隙，同时压制或破坏 <CrossReference name=\"Reality Anchor\" />。",
     "裂隙达到 300% 后摧毁当地聚居地，形成永久的 <CrossReference name=\"World Rupture\" />。",
     "苏醒后施放 <CrossReference name=\"Vacuum Collapse\" />，从 <CrossReference name=\"Great Wound\" /> 与所有 <CrossReference name=\"World Rupture\" /> 同时向外吞噬地图。"
   ],
+  "overviewExtra": {
+    "title": "",
+    "text": "Great Wound 取代开局的 the Elder Tomb，裂隙成熟后形成额外的世界吞噬起点。",
+    "playStyle": "将 Voidstone 暗中埋入人类据点，再推动裂隙成熟。每处成熟裂隙都是后期吞噬世界的新起点，扩张重点是维持增长并压制 Reality Anchor。"
+  },
+  "specialVictory": "无",
+  "specialFailure": "无",
   "seals": [
     {
       "seal": 0,
@@ -36,14 +44,14 @@ const config: GodConfig = {
       "reward": [
         "Warp Light"
       ],
-      "powerRecovery": "神力上限 1；每回合恢复 0.035 × 难度系数²"
+      "powerRecovery": "1/0.035"
     },
     {
       "seal": 1,
       "progress": 12,
       "agents": 2,
       "reward": [],
-      "powerRecovery": "神力上限 2；每回合恢复 0.07 × 难度系数²"
+      "powerRecovery": "2/0.07"
     },
     {
       "seal": 2,
@@ -53,14 +61,14 @@ const config: GodConfig = {
         "Hollow Earth",
         "Shattered Light"
       ],
-      "powerRecovery": "神力上限 3；每回合恢复 0.105 × 难度系数²"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
       "progress": 44,
       "agents": 3,
       "reward": [],
-      "powerRecovery": "神力上限 4；每回合恢复 0.14 × 难度系数²"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -70,14 +78,14 @@ const config: GodConfig = {
         "Open Rift",
         "Stare Deep"
       ],
-      "powerRecovery": "神力上限 5；每回合恢复 0.175 × 难度系数²"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
       "progress": 110,
       "agents": 4,
       "reward": [],
-      "powerRecovery": "神力上限 6；每回合恢复 0.21 × 难度系数²"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -86,14 +94,14 @@ const config: GodConfig = {
       "reward": [
         "Devour Warmth"
       ],
-      "powerRecovery": "神力上限 7；每回合恢复 0.245 × 难度系数²"
+      "powerRecovery": "7/0.245"
     },
     {
       "seal": 7,
       "progress": 200,
       "agents": 5,
       "reward": [],
-      "powerRecovery": "神力上限 8；每回合恢复 0.28 × 难度系数²"
+      "powerRecovery": "8/0.28"
     },
     {
       "seal": 8,
@@ -102,7 +110,7 @@ const config: GodConfig = {
       "reward": [
         "Seeds of Destruction"
       ],
-      "powerRecovery": "神力上限 9；每回合恢复 0.315 × 难度系数²"
+      "powerRecovery": "9/0.315"
     },
     {
       "seal": 9,
@@ -112,7 +120,7 @@ const config: GodConfig = {
         "Vacuum Collapse",
         "苏醒"
       ],
-      "powerRecovery": "神力上限 10；每回合恢复 0.35 × 难度系数²"
+      "powerRecovery": "10/0.35"
     }
   ],
   "powers": [
@@ -309,12 +317,23 @@ const config: GodConfig = {
     },
     {
       "id": "religion",
-      "title": "宗教与教义",
+      "title": "宗教教义",
       "media": false,
       "items": [
         {
           "name": "Seekers of the New World",
-          "text": "Living Void 开局时加入每个 Holy Order，只有 0、−1、−2 三档。受 Elder 影响时，教团侍僧会更愿意执行 Holy: Open Rift；每座神庙还会令同地 Hungry Rift 每回合分别增加 5% 或 10%，同时神庙每回合增加 0.1 Menace。"
+          "text": "",
+          "tenetRange": "-2 – 0",
+          "tenetLevels": [
+            {
+              "level": -1,
+              "text": "Holy: Open Rift 的执行意愿 +50；每座 Temple 使同地 Hungry Rift 每回合增加 5 个百分点，同时 Temple Menace +0.1。"
+            },
+            {
+              "level": -2,
+              "text": "Holy: Open Rift 的执行意愿 +100；每座 Temple 使同地 Hungry Rift 每回合增加 10 个百分点，同时 Temple Menace +0.1。"
+            }
+          ]
         }
       ]
     },
@@ -455,24 +474,48 @@ const config: GodConfig = {
         {
           "name": "Sealed Rift",
           "image": "void_riftclosed.png",
-          "text": "英雄彻底消除 Hungry Rift 时显示的结果事件，不再附加额外数值效果。"
+          "text": "英雄彻底消除 Hungry Rift 时显示的结果事件。",
+          "eventOptions": [
+            {
+              "name": "A foothold has been lost.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "Matured Rift",
           "image": "void_rupture_fullimage.png",
-          "text": "Hungry Rift 达到 300% 并转化为 World Rupture 时显示的结果事件。"
+          "text": "Hungry Rift 达到 300% 并转化为 World Rupture 时显示的结果事件。",
+          "eventOptions": [
+            {
+              "name": "A foothold has been established.",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "Seekers of the New World",
           "image": "void_HO.png",
           "id": "seekers-event",
-          "text": "本局第一次由宗教任务开启 Hungry Rift 时显示，记录教团开始以新世界教义协助 Living Void。"
+          "text": "本局第一次由宗教任务开启 Hungry Rift 时显示，记录教团开始以新世界教义协助 Living Void。",
+          "eventOptions": [
+            {
+              "name": "They usher Us in",
+              "text": "无效果。"
+            }
+          ]
         },
         {
           "name": "Vacuum Collapse",
           "image": "god_background.png",
           "id": "vacuum-collapse-event",
-          "text": "每局第一次由 Vacuum Collapse 吞噬人类聚居地时显示；不附加代码之外的额外效果。"
+          "text": "每局第一次由 Vacuum Collapse 吞噬人类聚居地时显示。",
+          "eventOptions": [
+            {
+              "name": "They were the first. But they will not be the last.",
+              "text": "无效果。"
+            }
+          ]
         }
       ]
     }
@@ -850,11 +893,6 @@ const config: GodConfig = {
         }
       ]
     }
-  },
-  "specialVictory": "无",
-  "overviewExtra": {
-    "title": "",
-    "text": "没有专属 Holy Order；现有教团加入 Seekers of the New World 教义。Great Wound 取代开局的 the Elder Tomb，裂隙成熟后形成额外的世界吞噬起点。"
   }
 };
 

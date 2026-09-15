@@ -19,8 +19,8 @@ const config: GodConfig = {
   "finalAgents": "6",
   "progressLabel": "吞噬进度",
   "unlockMethod": "吞噬进度达到对应封印阈值",
-  "powerRecovery": "神力上限＝已破封印数 + 1；每回合恢复＝0.035 × max(3，神力上限) × 难度恢复系数²。表中按系数 1 列示。苏醒时神力补满，Awareness of the Underground 提高到 100%。",
-  "specialVictory": "无",
+  "powerCapacity": "神力上限＝已破封印数 + 1。",
+  "powerRecovery": "每回合恢复＝0.035 × max(3，神力上限)。苏醒时神力补满。",
   "core": [
     "开局在地下寻找没有 Society、没有 Settlement、非海洋且靠近人类聚居地的位置，建立 <CrossReference name=\"the Elder Tomb\" />；那里生成 <CrossReference name=\"The Creature's Heart\" />（最大 HP 1000，开局 HP 1）、Supplicant，并从周边地下位置随机生成最多四条初始触手。",
     "用 <CrossReference name=\"Grow\" /> 从心脏向新的地下地点延伸触手；路径上的每个触手段都是 <CrossReference name=\"Tentacle Segment\" />，终点会留下 <CrossReference name=\"Evidence\" />。",
@@ -30,9 +30,12 @@ const config: GodConfig = {
     "达到最终阈值后苏醒：Awareness of the Underground 变为 100%，心脏和触手每回合增加 Menace，地表军队会主动向地下进攻；必须在心脏被摧毁前清除围剿。"
   ],
   "overviewExtra": {
-    "title": "地下意识与 Holy Order",
-    "text": "Awareness of the Underground 是 0%–100% 的地下发现度。Bring the Food、Drag Bodies Under、Devastate、Sinkholes、Grab Ship、Withdraw Agent 与 Drag Down City 会直接提高它；Report Findings 提高 15%。苏醒时提高到 100%。\nThe Evil Beneath 没有 Holy Order。"
+    "title": "地下意识",
+    "text": "Awareness of the Underground 是 0%–100% 的地下发现度。Bring the Food、Drag Bodies Under、Devastate、Sinkholes、Grab Ship、Withdraw Agent 与 Drag Down City 会直接提高它；Report Findings 提高 15%。苏醒时提高到 100%。",
+    "playStyle": "在地下经营触手与食物运输，把地表死亡转成心脏生命和封印进度。行动越激烈越容易暴露，后期需要从隐蔽收割转向保护心脏、应对地表围剿。"
   },
+  "specialVictory": "无",
+  "specialFailure": "The Creature's Heart 被摧毁时立即失败。",
   "seals": [
     {
       "seal": 0,
@@ -45,7 +48,7 @@ const config: GodConfig = {
         "Devour Knowledge",
         "Devour Worshipper"
       ],
-      "powerRecovery": "1 / 0.105"
+      "powerRecovery": "1/0.105"
     },
     {
       "seal": 1,
@@ -55,7 +58,7 @@ const config: GodConfig = {
         "Grow",
         "Vile Secretions"
       ],
-      "powerRecovery": "2 / 0.105"
+      "powerRecovery": "2/0.105"
     },
     {
       "seal": 2,
@@ -65,7 +68,7 @@ const config: GodConfig = {
         "Strength from Below",
         "Withdraw Agent"
       ],
-      "powerRecovery": "3 / 0.105"
+      "powerRecovery": "3/0.105"
     },
     {
       "seal": 3,
@@ -74,7 +77,7 @@ const config: GodConfig = {
       "reward": [
         "Devastate"
       ],
-      "powerRecovery": "4 / 0.14"
+      "powerRecovery": "4/0.14"
     },
     {
       "seal": 4,
@@ -83,7 +86,7 @@ const config: GodConfig = {
       "reward": [
         "Sinkholes"
       ],
-      "powerRecovery": "5 / 0.175"
+      "powerRecovery": "5/0.175"
     },
     {
       "seal": 5,
@@ -93,7 +96,7 @@ const config: GodConfig = {
         "Grab Ship",
         "Defend the Heart"
       ],
-      "powerRecovery": "6 / 0.21"
+      "powerRecovery": "6/0.21"
     },
     {
       "seal": 6,
@@ -103,7 +106,7 @@ const config: GodConfig = {
         "Drag Down City",
         "苏醒"
       ],
-      "powerRecovery": "7 / 0.245"
+      "powerRecovery": "7/0.245"
     }
   ],
   "powers": [

@@ -16,6 +16,7 @@ import IxthusArchive from "./IxthusArchive";
 import KishiArchive from "./KishiArchive";
 import EscamrakArchive from "./EscamrakArchive";
 import AdoliaArchive from "./AdoliaArchive";
+import KalastropheArchive from "./KalastropheArchive";
 import GodIndex from "./GodIndex";
 import BaseLocationModifiersArchive from "./BaseLocationModifiersArchive";
 import type { ArchivePageChoice } from "./GodArchiveTypes";
@@ -30,7 +31,7 @@ export default function GodArchive() {
       return;
     }
     const requested = new URLSearchParams(window.location.search).get("god") as GodChoice | null;
-    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia"].includes(requested)) setGod(requested);
+    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia", "kalastrophe"].includes(requested)) setGod(requested);
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
@@ -54,6 +55,7 @@ export default function GodArchive() {
   if (god === "living-void") return <LivingVoidArchive onGodChange={switchGod} />;
   if (god === "chandalor") return <ChandalorArchive onGodChange={switchGod} />;
   if (god === "escamrak") return <EscamrakArchive onGodChange={switchGod} />;
+  if (god === "kalastrophe") return <KalastropheArchive onGodChange={switchGod} />;
   if (god === "adolia") return <AdoliaArchive onGodChange={switchGod} />;
   return <GodIndex onSelect={switchGod} />;
 }
