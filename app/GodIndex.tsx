@@ -22,6 +22,11 @@ const gods = [
   {"id":"escamrak","name":"Escamrak","type":"模组神祇","image":"./escamrak/god_game.png","focus":"Fleshcrafting、活体聚居地与神体重构"},
   {"id":"adolia","name":"Adolia, the Faceless Memory","type":"模组神祇","image":"./adolia/facelessmemory_portrait.png","focus":"记忆感染、Pareidolia 与化身扩散"},
   { id: "kalastrophe", name: "Kalastrophe, the Shifting Calamity", type: "模组神祇", image: "./kalastrophe/God_Ingame.png", focus: "神力定制、英雄腐化与灾厄组合" },
+  {"id":"thing-from-beyond","name":"The Thing From Beyond, Interdimensional Parasite","type":"模组神祇","image":"./out-of-gods/god_portrait.png","focus":"现实裂隙、魔法仪式与残存邪恶势力"},
+  {"id":"paradoxis","name":"Paradoxis, Closer of Loops","type":"模组神祇","image":"./out-of-gods/god_portrait2.png","focus":"时间衰变、时间干预与闭合时间环"},
+  {"id":"shadow-counsel","name":"Shadow Counsel, Fickle Muse, Dark Advisor","type":"模组神祇","image":"./out-of-gods/god_portrait3.png","focus":"Pawn 操控、战争维持与统治者干预"},
+  {"id":"shadow-counsel-war","name":"Shadow Counsel, WAR-MODE","type":"模组神祇","image":"./out-of-gods/god_portrait3.png","focus":"性格操纵、帝国战争与军队支援"},
+  {"id":"lotus-egregore","name":"Lotus Egregore, Collective blissful apathy","type":"模组神祇","image":"./out-of-gods/god_portrait4.png","focus":"Lotus 种植、供货网络与金库经营"},
 ] as const;
 
 export default function GodIndex({ onSelect }: { onSelect: (god: GodChoice) => void }) {

@@ -4,6 +4,25 @@ import { D, type ArchiveRecordConfig } from "./GodArchiveTypes";
 export const config: ArchiveRecordConfig = {
   id: "base-location-modifiers", assetDir: "base-location-modifiers", powers: [],
   sections: [{ id: "location-modifiers", title: "地点修正", items: [
+
+    D("Plague", "疾病降低 Prosperity，每点强度造成 −0.003。强度不高于 100 时，累计每回合 强度/450 人死亡并增加 1 Death；超过 100 时改为 强度/300 人和 2 Death。整数死亡数结算后保留小数余量。达到 300 时摧毁聚居地。\n每回合增加 ⌊强度/100⌋+1 的 Unrest。超过传播门槛后，向疾病强度低于自身一半的相邻人类聚居地每回合传播 1；Quarantine 提高传播门槛。", {
+      image: "./out-of-gods/plague.png", baseGame: true,
+      modifierChange: { natural: "默认难度下每回合强度 +2。", external: "Plague Immunity 每有 50 点，使 Plague 每回合 −1，向下取整。\nElven City 与已经完成神权接管的聚居地每回合 −10。" }
+    }),
+    D("Well of Shadows", "使 Shadow 向相邻低 Shadow 地点额外传播。传播量随两地 Shadow 差值增大，并受接收地点的 Ward 抑制；地点成为废墟后仍保留。", {
+      image: "./out-of-gods/wellOfShadows.png", baseGame: true,
+      modifierChange: { natural: "每回合强度 −2。", external: "" }
+    }),
+    D("Military Fervour", "提高以当地为故乡的 Human Army 最大 HP，倍率为 1 + min(强度,100)/100。", {
+      image: "./out-of-gods/unit_humanArmy.png", baseGame: true,
+      modifierChange: { natural: "非教程模式下，每回合强度 −2。", external: "" }
+    }),
+    D("Malign Catch", "每回合使当地 Shadow 增加 0.15 个百分点，最高 100%；Madness 低于 150 时每回合增加 1。\n同样在 Madness 低于 150 时，按 (强度 −100)/0.0075 累积精神侵蚀；累积超过 1 后归零，并使当地统治者 Sanity −1。", {
+      image: "./out-of-gods/malignCatch.png", baseGame: true,
+      modifierChange: { natural: "", external: "" }
+    }),
+    {"name":"Orcish Funding","text":"每逢 10 的倍数回合，从资助国每位地方统治者抽取其 Gold 的 20%，分别向下取整。若受资助部落存在强度低于 290 的 Orcish Industry，则将总额平均分配后按 50% 转为各处工业强度，最高 300。没有合适工业地点时不收款。\n资助国或部落消亡、或修正所在地易主时移除。","image":"./out-of-gods/agent_warlord.png","initialValue":"","modifierChange":{"natural":"","external":""},"baseGame":true},
+    {"name":"Orcish Industry","text":"用于支持 Orc 军队；军队 HP 上限依赖故乡及相邻地点的工业总量。","image":"./out-of-gods/orcishIndustry.png","initialValue":"","modifierChange":{"natural":"强度低于 50 时每回合 +1；达到 51 或以上时每回合 −1。","external":""},"baseGame":true},
     D("Shadow", "Shadow 是地点的黑暗侵蚀度，范围为 0–100%。达到 100% 时地点完全 Enshadowed，计入征服区域与胜利进度；当地贵族会获得 Shadow，并不再为威胁进行防御。Shadow 会按地点的流动规则向相邻地点传播，也会逐步传给当地统治者；非 Chosen One Agent 在当地休息时，其个人 Shadow 会向地点值靠拢。", {
       image: "./ophanim/power-shadow.png", baseGame: true,
       modifierChange: { natural: "每回合从符合地点 Shadow 流动规则的相邻高 Shadow 地点传播。\n传播量受相邻地点 Shadow、Ward、Infiltration 和难度影响。\n最终限制在 0–100%。", external: "Deep One Cult 强度超过 100 时，每回合增加 Cult 强度 ÷ 1000 个百分点，最高 100%。" }

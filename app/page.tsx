@@ -17,6 +17,11 @@ import KishiArchive from "./KishiArchive";
 import EscamrakArchive from "./EscamrakArchive";
 import AdoliaArchive from "./AdoliaArchive";
 import KalastropheArchive from "./KalastropheArchive";
+import ThingFromBeyondArchive from "./ThingFromBeyondArchive";
+import ParadoxisArchive from "./ParadoxisArchive";
+import ShadowCounselArchive from "./ShadowCounselArchive";
+import ShadowCounselWarArchive from "./ShadowCounselWarArchive";
+import LotusEgregoreArchive from "./LotusEgregoreArchive";
 import GodIndex from "./GodIndex";
 import BaseLocationModifiersArchive from "./BaseLocationModifiersArchive";
 import type { ArchivePageChoice } from "./GodArchiveTypes";
@@ -31,7 +36,7 @@ export default function GodArchive() {
       return;
     }
     const requested = new URLSearchParams(window.location.search).get("god") as GodChoice | null;
-    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia", "kalastrophe"].includes(requested)) setGod(requested);
+    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia", "kalastrophe", "thing-from-beyond", "paradoxis", "shadow-counsel", "shadow-counsel-war", "lotus-egregore"].includes(requested)) setGod(requested);
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
@@ -57,5 +62,10 @@ export default function GodArchive() {
   if (god === "escamrak") return <EscamrakArchive onGodChange={switchGod} />;
   if (god === "kalastrophe") return <KalastropheArchive onGodChange={switchGod} />;
   if (god === "adolia") return <AdoliaArchive onGodChange={switchGod} />;
+  if (god === "thing-from-beyond") return <ThingFromBeyondArchive onGodChange={switchGod} />;
+  if (god === "paradoxis") return <ParadoxisArchive onGodChange={switchGod} />;
+  if (god === "shadow-counsel") return <ShadowCounselArchive onGodChange={switchGod} />;
+  if (god === "shadow-counsel-war") return <ShadowCounselWarArchive onGodChange={switchGod} />;
+  if (god === "lotus-egregore") return <LotusEgregoreArchive onGodChange={switchGod} />;
   return <GodIndex onSelect={switchGod} />;
 }
