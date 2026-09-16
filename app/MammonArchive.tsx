@@ -261,7 +261,7 @@ const config: GodConfig = {
           "image": "greed-icon.png",
           "modifierChange": {
             "natural": "失去本地及邻地全部 Mammon's Influence，或所属势力不再是人类／精灵国家时归零；回合检查将超过 100 的强度压回 100。",
-            "external": "<CrossReference name=\"Mammon's Influence\" />：Prosperity <95% 且没有 Decadence 时，创建 Greed；已有 Greed 每回合增加 2 × [1 + 5 × (1−Prosperity)]，多个 Influence 不叠加该增长。\nProsperity >105% 时，每回合减少 2 × [1 + 5 × (Prosperity−1)]；需先消退 Greed，之后才能生成 Decadence。\nProsperity 在 95%–105% 时不推动增减；公式中 Prosperity 用 0–1 内部值。"
+            "external": "<CrossReference name=\"Mammon's Influence\" />：Prosperity <95% 且没有 Decadence 时，创建 Greed；已有 Greed 每回合增加 2 × [1 + 5 × (1−Prosperity)]，多个 Influence 不叠加该增长。\nProsperity >105% 时，每回合减少 2 × [1 + 5 × (Prosperity−1)]；需先消退 Greed，之后才能生成 Decadence。\nProsperity 在 95%–105% 时不推动增减。"
           },
           "initialValue": ""
         },
@@ -271,7 +271,7 @@ const config: GodConfig = {
           "image": "decadence-icon.png",
           "modifierChange": {
             "natural": "失去本地及邻地全部 Mammon's Influence，或所属势力不再是人类／精灵国家时归零；回合检查将超过 100 的强度压回 100。",
-            "external": "<CrossReference name=\"Mammon's Influence\" />：Prosperity >105% 且没有 Greed 时，创建 Decadence；已有 Decadence 且强度低于 100 时，每个覆盖本地的 Influence 各增加 2 × [1 + 5 × (Prosperity−1)]。这一增长可叠加，与 Greed 不同。\nProsperity <95% 时，每回合减少 2 × [1 + 5 × (1−Prosperity)]，多个 Influence 不叠加减少；需先消退 Decadence，之后才能生成 Greed。\nProsperity 在 95%–105% 时不推动增减；公式中 Prosperity 用 0–1 内部值。"
+            "external": "<CrossReference name=\"Mammon's Influence\" />：Prosperity >105% 且没有 Greed 时，创建 Decadence；已有 Decadence 且强度低于 100 时，每个覆盖本地的 Influence 各增加 2 × [1 + 5 × (Prosperity−1)]。这一增长可叠加，与 Greed 不同。\nProsperity <95% 时，每回合减少 2 × [1 + 5 × (1−Prosperity)]，多个 Influence 不叠加减少；需先消退 Decadence，之后才能生成 Greed。\nProsperity 在 95%–105% 时不推动增减。"
           },
           "initialValue": ""
         },

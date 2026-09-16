@@ -722,7 +722,7 @@ const config: GodConfig = {
           "initialValue": "",
           "modifierChange": {
             "natural": "每回合增加（150−当前强度）÷50。",
-            "external": "<CrossReference name=\"Enduring Arrogance\" /> 每回合将低于记录值的强度恢复，并更新记录。\n四步内每个怪物领地、每支黑暗军队通常各 −0.5，两项各自最多 −2.5；若本国为 Dark Empire，则军队一项改为每支 +0.5、最多 +2.5。\n本地 Famine 每点 −0.05。\n四步内单位 Menace 总和 ×（1−统治者 Shadow）×−0.01，最低 −2.5。\n世界恐慌 ×（1−统治者 Shadow）×−0.1，最低 −2.5；两项 Shadow 均按 0–1 计。\n四步内非精灵人类聚居地各提供 Unrest÷100÷（0.5+0.5×距离），合计再乘 0.5，最多 +3。\n统治者每级 Cruelty、Ambition 偏好各 +0.5；每级 Cooperation、Human 偏好各 −0.5。"
+            "external": "<CrossReference name=\"Enduring Arrogance\" /> 每回合将低于记录值的强度恢复，并更新记录。\n四步内每个怪物领地、每支黑暗军队通常各 −0.5，两项各自最多 −2.5；若本国为 Dark Empire，则军队一项改为每支 +0.5、最多 +2.5。\n本地 Famine 每点 −0.05。\n四步内单位 Menace 总和 ×（1−统治者 Shadow）×−0.01，最低 −2.5。\n世界恐慌 ×（1−统治者 Shadow）×−0.1，最低 −2.5。\n四步内非精灵人类聚居地各提供 Unrest÷100÷（0.5+0.5×距离），合计再乘 0.5，最多 +3。\n统治者每级 Cruelty、Ambition 偏好各 +0.5；每级 Cooperation、Human 偏好各 −0.5。"
           },
           "baseGame": true
         },

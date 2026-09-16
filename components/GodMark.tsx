@@ -1,4 +1,7 @@
 import {
+  Cog,
+  Network,
+  Factory,
   Orbit,
   Hourglass,
   Drama,
@@ -39,7 +42,7 @@ type GodMarkId =
   | "chandalor"
   | "escamrak"
   | "adolia"
-  | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore";
+  | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore" | "aberrant-metal" | "alai" | "mekhane";
 
 const marks = {
   "she-who-will-feast": Worm,
@@ -63,6 +66,9 @@ const marks = {
   "shadow-counsel": Drama,
   "shadow-counsel-war": Swords,
   "lotus-egregore": Flower2,
+  "aberrant-metal": Factory,
+  "alai": Network,
+  "mekhane": Cog,
 } as const;
 
 export function GodMark({ god, size = 17 }: { god: GodMarkId; size?: number }) {

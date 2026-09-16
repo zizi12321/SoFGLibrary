@@ -4,6 +4,8 @@ import { D, type ArchiveRecordConfig } from "./GodArchiveTypes";
 export const config: ArchiveRecordConfig = {
   id: "base-location-modifiers", assetDir: "base-location-modifiers", powers: [],
   sections: [{ id: "location-modifiers", title: "地点修正", items: [
+    {"name":"Soul","id":"soul","baseGame":true,"initialValue":"","text":"保存死者灵魂，显示名随物种变化，例如 Human Soul。提供 <CrossReference name=\"Secrets of Death\" />、Summon First Daughter、Vampiric Curse 与 Holy: Funeral Rites；死者具有 The Hunger 时另提供 Holy: Promised Return，各行动仍有各自的执行条件。\n每回合使当地 Death 增加 1。地点成为废墟后仍保留；图像使用死者本人的肖像。","modifierChange":{"natural":"每回合强度 −1；结算后低于 0.1 时移除。","external":"<CrossReference name=\"Secrets of Death\" /> 完成时移除。\nVampiric Curse 或 Holy: Promised Return 完成转化时移除。\nHoly: Funeral Rites 完成时移除。"}},
+    {"name":"Hunger / Famine","id":"hunger-famine","image":"./aberrant-metal/famine.png","baseGame":true,"initialValue":"","text":"同一修正在强度低于 100 时显示 Hunger，达到 100 后显示 Famine。Prosperity 修正为 −强度/200；达到 50 后不再提供通常的休息挑战。\n普通模式下，低于 100 时每回合 Unrest +4；100 至不足 200 时每回合 Unrest +16、人口 −2；200 至 300 时每回合 Unrest +4、人口减少 ⌊max(2,人口 × 0.05)⌋；超过 300 时人类类聚居地毁灭。\n人口损失计入 Death，剩余人口最低保留 1；100 至不足 200 时若扣减后人口不大于 0，该次不增加 Death。开启难民且地点允许时，另生成损失人口一半规模的难民，向下取整，包含在本次人口扣减中。","modifierChange":{"natural":"令 P 为常规人口结算后的当前人口，F 为当轮本地产粮与进口之和。\nP>F 时，每回合 +min(10,max(5,P−F))。\nP≤F 时，每回合 −max(10,5×(F−P))。","external":""}},
 
     D("Plague", "疾病降低 Prosperity，每点强度造成 −0.003。强度不高于 100 时，累计每回合 强度/450 人死亡并增加 1 Death；超过 100 时改为 强度/300 人和 2 Death。整数死亡数结算后保留小数余量。达到 300 时摧毁聚居地。\n每回合增加 ⌊强度/100⌋+1 的 Unrest。超过传播门槛后，向疾病强度低于自身一半的相邻人类聚居地每回合传播 1；Quarantine 提高传播门槛。", {
       image: "./out-of-gods/plague.png", baseGame: true,
@@ -83,13 +85,13 @@ export const config: ArchiveRecordConfig = {
     }),
     D("Elven Arrogance", "精灵对自身优越性的确信，150 为决策中立点。附近威胁会影响其是否愿意介入世界事务；统治者 Shadow 越高，单位 Menace 与世界恐慌造成的下降越弱。", {
       image: "./kalastrophe/enshadow.png", baseGame: true,
-      modifierChange: { natural: "每回合增加（150−当前强度）÷50，逐步趋向 150。", external: "四步内每个怪物领地、每支黑暗军队各 −0.5，两项分别最多 −2.5。本国为 Dark Empire 时，军队改为每支 +0.5、最多 +2.5，并停用怪物领地的扣减。\n当地 Famine 每点 −0.05。\n四步内单位 Menace 总和 ×（1−统治者 Shadow）×−0.01，最低 −2.5。\n世界恐慌 ×（1−统治者 Shadow）×−0.1，最低 −2.5；这里的 Shadow 按 0–1 计。\n四步内非精灵人类聚居地各提供 Unrest÷100÷（0.5+0.5×距离），合计再乘 0.5，最多 +3。\n统治者每级 Cruelty、Ambition 偏好各 +0.5；每级 Cooperation、Human 偏好各 −0.5。" }
+      modifierChange: { natural: "每回合增加（150−当前强度）÷50，逐步趋向 150。", external: "四步内每个怪物领地、每支黑暗军队各 −0.5，两项分别最多 −2.5。本国为 Dark Empire 时，军队改为每支 +0.5、最多 +2.5，并停用怪物领地的扣减。\n当地 Famine 每点 −0.05。\n四步内单位 Menace 总和 ×（1−统治者 Shadow）×−0.01，最低 −2.5。\n世界恐慌 ×（1−统治者 Shadow）×−0.1，最低 −2.5。\n四步内非精灵人类聚居地各提供 Unrest÷100÷（0.5+0.5×距离），合计再乘 0.5，最多 +3。\n统治者每级 Cruelty、Ambition 偏好各 +0.5；每级 Cooperation、Human 偏好各 −0.5。" }
     }),
     D("Ward", "抑制从相邻地点传入的 Shadow，包括 Well of Shadows 的传播。强度达到 100 时，阻止来自相邻 Enshadowed 地点的这类自然传播。", {
       image: "./kalastrophe/driveBackShadow.png", baseGame: true,
       modifierChange: { natural: "每回合强度 −2。", external: "" }
     }),
-    D("Deep One Cult", "在聚居地发展的 Deep One 秘密崇拜。Security 修正为 −⌊（50+强度）÷100⌋。强度超过 100 后，每回合增加强度 ÷1000 个百分点的 Shadow；当地 Madness 低于 Cult 强度 −100 时，每回合增加 1.5 Madness。\n在人类聚居地达到 300 时，将其转为 Deep One Sanctum；70% 人口经 Sanctum 转送至深海城市，统治者转为自主 Deep One。\n令 q＝（1−Infiltration）×（1−Shadow），两项均按 0–1 计：每回合 Menace 增加 0.2+0.2×本地 q+0.25×相邻合格地点的 q 总和；Profile 增加 0.1+0.1×本地 q+0.1×相邻合格地点的 q 总和。合格邻地为 Society 所属的人类类聚居地。", {
+    D("Deep One Cult", "在聚居地发展的 Deep One 秘密崇拜。Security 修正为 −⌊（50+强度）÷100⌋。强度超过 100 后，每回合增加强度 ÷1000 个百分点的 Shadow；当地 Madness 低于 Cult 强度 −100 时，每回合增加 1.5 Madness。\n在人类聚居地达到 300 时，将其转为 Deep One Sanctum；70% 人口经 Sanctum 转送至深海城市，统治者转为自主 Deep One。\n令 q＝（1−Infiltration）×（1−Shadow）：每回合 Menace 增加 0.2+0.2×本地 q+0.25×相邻合格地点的 q 总和；Profile 增加 0.1+0.1×本地 q+0.1×相邻合格地点的 q 总和。合格邻地为 Society 所属的人类类聚居地。", {
       image: "./kalastrophe/deepOnes.png", baseGame: true,
       modifierChange: { natural: "非教程模式下，正常游戏中每回合强度 +1。", external: "加速成熟期间，每回合额外 +3。\n当地统治者对 Deep Ones 的偏好等级每级每回合调整 1 点强度：正面为增加，负面为减少。" }
     }),

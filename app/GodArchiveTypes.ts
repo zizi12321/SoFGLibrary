@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type ArchiveGodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia" | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore";
+export type ArchiveGodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia" | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore" | "aberrant-metal" | "alai" | "mekhane";
 export type Relation = { name: string; href: string; meta?: string; text?: string; image?: string };
 export type ArchivePageChoice = ArchiveGodChoice | "base-location-modifiers";
 export type EventOption = { name: string; text: string; condition?: string };
@@ -12,7 +12,7 @@ export type SealItem = { seal: number; progress: number; progressText?: string; 
 export type SectionConfig = { id: string; title: string; items: DetailItem[]; media?: boolean; icon?: ReactNode };
 export type SupplicantConfig = { name?: string; image?: string; stats: string; abilities: DetailItem[] };
 export type GodConfig = {
-  id: "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia" | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore"; name: string; number: string; theme: string; assetDir: string; background: string; portrait: string;
+  id: "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "she-who-will-feast" | "iastur" | "vinerva" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia" | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore" | "aberrant-metal" | "alai" | "mekhane"; name: string; number: string; theme: string; assetDir: string; background: string; portrait: string;
   flavour: string; caption: string; maxTurns: string; awaken: string; panic: string; finalAgents: string; progressLabel: string; unlockMethod?: string; dlc?: string; sourceMod?: string; initialAgents?: string; heroMetric?: { value: string; label: string }; powerRecovery: string; powerCapacity?: string; supplicant?: SupplicantConfig;
   core: string[]; overviewExtra?: { title: string; text: string; playStyle?: string }; specialVictory?: string; specialFailure?: string; seals: SealItem[]; powers: PowerItem[]; powerGroups?: PowerGroupConfig[]; drawPowers?: PowerItem[]; drawCards?: SectionConfig; sections: SectionConfig[];
   relations?: Record<string, { sources?: Relation[]; effects?: Relation[] }>;

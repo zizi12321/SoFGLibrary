@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BookOpen, ChevronDown, Crown, Eye, PanelLeftClose, PanelLeftOpen, Shield, ShieldAlert, Skull, Swords } from "lucide-react";
 import MobileReferenceDialog from "./MobileReferenceDialog";
+import { getReferenceCategory } from "./ArchiveReferenceCategory";
 import { GodMark } from "../components/GodMark";
 import type { ArchiveGodChoice, ArchiveRecordConfig, DetailItem, GodConfig, PowerItem, Relation, SectionConfig, SupplicantConfig } from "./GodArchiveTypes";
 
@@ -37,7 +38,10 @@ function CrossReference({ config, name, href, meta, text, image }: { config: Arc
  const resolvedHref = href ?? (entry ? "#" + (entry.id ? "entry-" + entry.id : anchorFor(entry.name)) : relationLink ?? "#");
  const richResolvedText = text ?? (entry && "effect" in entry ? entry.effect : (entry ? [entry.text, ...(entry.tenetLevels ?? []).map(level => `${level.level}: ${level.text}`)].filter(Boolean).join("\n") : undefined)) ?? relation?.effects?.[0]?.text ?? relation?.sources?.[0]?.text ?? "";
  const resolvedText = richResolvedText.replace(/<CrossReference name="([^"]+)"[^>]*\/>/g, "$1");
- const resolvedMeta = meta ?? (entry && "effect" in entry ? "神力" : entry ? "相关机制" : "相关机制");
+ const categoryEntry = resolvedHref.startsWith("#entry-")
+   ? allEntries(config).find(item => "#" + (item.id ? "entry-" + item.id : anchorFor(item.name)) === resolvedHref)
+   : entry;
+ const resolvedMeta = getReferenceCategory(config, categoryEntry, resolvedHref) ?? (meta === "相关机制" ? undefined : meta) ?? "";
  const textOnlyEntry = config.sections.some(section => ["traits", "religion"].includes(section.id) && section.items.some(item => item === entry));
  const resolvedImage = textOnlyEntry ? undefined : imageFor(config, image ?? (entry && "icon" in entry ? entry.icon : entry && "image" in entry ? entry.image : undefined));
  const positionPopover = (anchor: HTMLAnchorElement) => {

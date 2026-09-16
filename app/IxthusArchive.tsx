@@ -253,7 +253,7 @@ const config: GodConfig = {
         },
         {
           "name": "Whispers of Eternal Life",
-          "text": "提供 <CrossReference name=\"Seek the Grail\" />、<CrossReference name=\"Fund Quest for Grail\" /> 与 <CrossReference name=\"Holy: Fund Quest for Grail\" />。任务 Profile＝10 + 相邻人类聚居地 Infiltration 之和 ×5；Menace 每回合 +3，上限＝40 + 相邻人类聚居地 Shadow 之和 ×10（比例按 0–1 代入）。",
+          "text": "提供 <CrossReference name=\"Seek the Grail\" />、<CrossReference name=\"Fund Quest for Grail\" /> 与 <CrossReference name=\"Holy: Fund Quest for Grail\" />。任务 Profile＝10 + 相邻人类聚居地 Infiltration 之和 ×5；Menace 每回合 +3，上限＝40 + 相邻人类聚居地 Shadow 之和 ×10。",
           "image": "grail_0.png",
           "initialValue": "",
           "modifierChange": {

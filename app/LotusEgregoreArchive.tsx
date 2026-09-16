@@ -147,7 +147,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Lotus Plantation",
-          "text": "把部分粮食生产转为 Lotus。食物产出乘数为 1 − 强度/200；Lotus 产量见供货规则。\n每回合 Profile 与 Menace 各增加 25 × 世界恐慌 × (1.5 − Infiltration) × (1.5 − Shadow) × 强度/100；三个比例均按 0–1 计算。强度为 0 时停产并停止新增 Profile、Menace，但已累积值保留。",
+          "text": "把部分粮食生产转为 Lotus。食物产出乘数为 1 − 强度/200；Lotus 产量见供货规则。\n每回合 Profile 与 Menace 各增加 25 × 世界恐慌 × (1.5 − Infiltration) × (1.5 − Shadow) × 强度/100。强度为 0 时停产并停止新增 Profile、Menace，但已累积值保留。",
           "image": "plantation.png",
           "initialValue": "20",
           "modifierChange": {
@@ -167,7 +167,7 @@ const config: GodConfig = {
         },
         {
           "name": "Lotus Export Stockpile",
-          "text": "决定本国 Lotus 用于出口的比例。被查封后名称变为 Closed Export Stockpile，停止出口并隐藏清理任务。\n每回合 Profile 与 Menace 各增加 25 × 世界恐慌 × (1.5 − Infiltration) × (1.5 − Shadow) × 强度/100；三个比例均按 0–1 计算。查封本身只设置关闭状态，因此强度大于 0 时这两项暴露值仍继续增加。",
+          "text": "决定本国 Lotus 用于出口的比例。被查封后名称变为 Closed Export Stockpile，停止出口并隐藏清理任务。\n每回合 Profile 与 Menace 各增加 25 × 世界恐慌 × (1.5 − Infiltration) × (1.5 − Shadow) × 强度/100。查封本身只设置关闭状态，因此强度大于 0 时这两项暴露值仍继续增加。",
           "image": "market.png",
           "initialValue": "20",
           "modifierChange": {

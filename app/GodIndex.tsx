@@ -27,6 +27,9 @@ const gods = [
   {"id":"shadow-counsel","name":"Shadow Counsel, Fickle Muse, Dark Advisor","type":"模组神祇","image":"./out-of-gods/god_portrait3.png","focus":"Pawn 操控、战争维持与统治者干预"},
   {"id":"shadow-counsel-war","name":"Shadow Counsel, WAR-MODE","type":"模组神祇","image":"./out-of-gods/god_portrait3.png","focus":"性格操纵、帝国战争与军队支援"},
   {"id":"lotus-egregore","name":"Lotus Egregore, Collective blissful apathy","type":"模组神祇","image":"./out-of-gods/god_portrait4.png","focus":"Lotus 种植、供货网络与金库经营"},
+  { id: "aberrant-metal", name: "Aberrant Metal", type: "模组神祇", image: "./aberrant-metal/factory_portrait.png", focus: "生产核心、工业污染与活体工厂" },
+  { id: "alai", name: "Alai, the Strings That Bind", type: "模组神祇", image: "./alai/god_portrait.png", focus: "家族吞噬、傀儡继承与灵魂织网" },
+  { id: "mekhane", name: "MEKHANE, the Broken God", type: "模组神祇", image: "./mekhane/mekhane_portrait.png", focus: "组件制造、三支教派与神体重组" },
 ] as const;
 
 export default function GodIndex({ onSelect }: { onSelect: (god: GodChoice) => void }) {
