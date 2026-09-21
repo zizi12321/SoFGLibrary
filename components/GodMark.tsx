@@ -42,7 +42,7 @@ type GodMarkId =
   | "chandalor"
   | "escamrak"
   | "adolia"
-  | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore" | "aberrant-metal" | "alai" | "mekhane";
+  | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore" | "aberrant-metal" | "alai" | "mekhane" | "villikos";
 
 const marks = {
   "she-who-will-feast": Worm,
@@ -69,6 +69,7 @@ const marks = {
   "aberrant-metal": Factory,
   "alai": Network,
   "mekhane": Cog,
+  "villikos": Crown,
 } as const;
 
 export function GodMark({ god, size = 17 }: { god: GodMarkId; size?: number }) {

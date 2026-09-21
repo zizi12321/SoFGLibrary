@@ -10,6 +10,7 @@ export function getReferenceCategory(
   if (href && !href.startsWith("#")) return undefined;
   if (config.supplicant && (href === "#entry-supplicant" || href === "#agent")) return "初始 Agent";
   if (entry) {
+    if (config.id === "base-items") return "物品";
     if (config.powers.includes(entry as PowerItem)) return "神力";
     if (config.drawPowers?.includes(entry as PowerItem)) return "卡牌神力";
     const group = config.powerGroups?.find(group => group.powers.includes(entry as PowerItem));

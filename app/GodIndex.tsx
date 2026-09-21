@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, BookOpen, CircleDot } from "lucide-react";
+import { ArrowUpRight, BookOpen, CircleDot, Package } from "lucide-react";
 import type { ArchivePageChoice } from "./GodArchiveTypes";
 
 type GodChoice = ArchivePageChoice;
@@ -30,6 +30,7 @@ const gods = [
   { id: "aberrant-metal", name: "Aberrant Metal", type: "模组神祇", image: "./aberrant-metal/factory_portrait.png", focus: "生产核心、工业污染与活体工厂" },
   { id: "alai", name: "Alai, the Strings That Bind", type: "模组神祇", image: "./alai/god_portrait.png", focus: "家族吞噬、傀儡继承与灵魂织网" },
   { id: "mekhane", name: "MEKHANE, the Broken God", type: "模组神祇", image: "./mekhane/mekhane_portrait.png", focus: "组件制造、三支教派与神体重组" },
+  { id: "villikos", name: "Villikos, the First Claimant", type: "模组神祇", image: "./villikos/villikos_portrait.png", focus: "Claim 扩散、Imperial Blood 与帝国征服" },
 ] as const;
 
 export default function GodIndex({ onSelect }: { onSelect: (god: GodChoice) => void }) {
@@ -39,5 +40,5 @@ export default function GodIndex({ onSelect }: { onSelect: (god: GodChoice) => v
     const index = gods.findIndex((item) => item.id === god.id);
     return <button type="button" className="god-index-card" key={god.id} onClick={() => onSelect(god.id)}><span className="god-index-number">{String(index + 1).padStart(2, "0")}</span><span className="god-index-image"><Image src={god.image} alt="" fill sizes="(max-width: 760px) 60vw, (max-width: 1180px) 45vw, 240px" /></span><span className="god-index-copy"><small>{god.type}</small><b>{god.name}</b><span>{god.focus}</span></span><ArrowUpRight className="god-index-arrow" size={20} /></button>;
   };
-  return <main className="archive-index"><header className="index-header"><div className="index-brand"><CircleDot size={18} /><span>Shadows of Forbidden Gods</span></div><p>神祇资料库</p><h1>选择神祇</h1><div className="index-intro"><BookOpen size={18} /><span>基于游戏本体程序集、模组 DLL、事件定义与原始美术素材整理。每个页面均可查看封印、神力、Agent、单位、地点修正、任务与相关机制。</span></div></header><section className="god-index-group" aria-labelledby="base-gods-heading"><div className="index-group-heading"><p>游戏本体</p><h2 id="base-gods-heading">游戏本体</h2><span>9 位神祇</span></div><div className="god-index-grid">{baseGods.map(renderCard)}</div></section><section className="god-index-group" aria-labelledby="mod-gods-heading"><div className="index-group-heading"><p>Mod</p><h2 id="mod-gods-heading">Mod 神祇</h2><span>{modGods.length} 位神祇</span></div><div className="god-index-grid">{modGods.map(renderCard)}</div></section><section className="god-index-group" aria-labelledby="other-information-heading"><div className="index-group-heading"><h2 id="other-information-heading">其他信息</h2></div><button className="modifier-library-link" type="button" onClick={() => onSelect("base-location-modifiers")}><BookOpen size={22} /><span>游戏本体地点修正</span><ArrowUpRight size={20} /></button></section><footer className="index-footer">当前共收录 {gods.length} 位神祇</footer></main>;
+  return <main className="archive-index"><header className="index-header"><div className="index-brand"><CircleDot size={18} /><span>Shadows of Forbidden Gods</span></div><p>神祇资料库</p><h1>选择神祇</h1><div className="index-intro"><BookOpen size={18} /><span>基于游戏本体程序集、模组 DLL、事件定义与原始美术素材整理。每个页面均可查看封印、神力、Agent、单位、地点修正、任务与相关机制。</span></div></header><section className="god-index-group" aria-labelledby="base-gods-heading"><div className="index-group-heading"><p>游戏本体</p><h2 id="base-gods-heading">游戏本体</h2><span>9 位神祇</span></div><div className="god-index-grid">{baseGods.map(renderCard)}</div></section><section className="god-index-group" aria-labelledby="mod-gods-heading"><div className="index-group-heading"><p>Mod</p><h2 id="mod-gods-heading">Mod 神祇</h2><span>{modGods.length} 位神祇</span></div><div className="god-index-grid">{modGods.map(renderCard)}</div></section><section className="god-index-group" aria-labelledby="other-information-heading"><div className="index-group-heading"><h2 id="other-information-heading">其他信息</h2></div><button className="modifier-library-link" type="button" onClick={() => onSelect("base-location-modifiers")}><BookOpen size={22} /><span>游戏本体地点修正</span><ArrowUpRight size={20} /></button><button className="modifier-library-link" type="button" onClick={() => onSelect("base-items")}><Package size={22} /><span>游戏本体与 Mod 物品</span><ArrowUpRight size={20} /></button></section><footer className="index-footer">当前共收录 {gods.length} 位神祇</footer></main>;
 }

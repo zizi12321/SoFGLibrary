@@ -538,7 +538,7 @@ const config: GodConfig = {
         {
           "name": "Insectine Devotion",
           "text": "",
-          "tenetRange": "-2 – 0",
+          "tenetRange": "−2 – 2",
           "tenetLevels": [
             {
               "level": -1,

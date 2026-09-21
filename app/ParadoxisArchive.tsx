@@ -194,6 +194,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Close Loop",
+          "meta": "Lore",
           "text": "Chosen One 完成后立即触发特殊胜利。引导期间风险为 50。世界恐慌与常规胜利进度越高，执行意愿越强。",
           "image": "theProphecy.png",
           "location": "Temporal Rift Site",

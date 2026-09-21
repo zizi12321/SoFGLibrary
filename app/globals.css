@@ -803,6 +803,8 @@ footer { grid-template-columns: 1fr; text-align: left; }
   position: relative;
   width: min(460px, 100%);
   max-height: min(78vh, 620px);
+  max-height: min(78dvh, 620px);
+  overscroll-behavior: contain;
   overflow-y: auto;
   padding: 18px;
   border: 1px solid #817a70;
@@ -826,13 +828,14 @@ footer { grid-template-columns: 1fr; text-align: left; }
   background: rgba(23, 21, 19, .08);
   color: #171513;
 }
-.mobile-reference-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding-right: 28px; }
+.mobile-reference-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; padding-right: 28px; }
+.mobile-reference-card.has-image { grid-template-columns: 72px minmax(0, 1fr); align-items: start; }
 .mobile-reference-image { position: relative; width: 72px; height: 72px; background: transparent; }
 .mobile-reference-image img { object-fit: contain; }
-.mobile-reference-copy { min-width: 0; display: flex; flex-direction: column; }
+.mobile-reference-copy { min-width: 0; display: flex; flex-direction: column; overflow-wrap: anywhere; }
 .mobile-reference-copy small { margin-bottom: 4px; color: #8d2824; font: 650 11px var(--font-geist-mono); }
 .mobile-reference-copy b { margin-bottom: 8px; font-size: 17px; line-height: 1.25; }
-.mobile-reference-copy p { margin: 0; color: #4e4943; font-size: 14px; line-height: 1.62; }
+.mobile-reference-copy p { margin: 0; white-space: pre-line; color: #4e4943; font-size: 14px; line-height: 1.62; }
 .mobile-reference-jump {
   min-height: 44px;
   display: flex;
@@ -856,7 +859,7 @@ footer { grid-template-columns: 1fr; text-align: left; }
 @media (max-width: 760px) {
   html, body { max-width: 100%; overflow-x: clip; }
   .site-shell {
-    --mobile-sidebar-width: clamp(108px, 31vw, 128px);
+    --mobile-sidebar-width: min(300px, 86vw);
     width: 100%;
     max-width: 100%;
     overflow-x: clip;
@@ -895,7 +898,7 @@ footer { grid-template-columns: 1fr; text-align: left; }
   .sidebar-bulk { grid-template-columns: 1fr; gap: 4px; margin-top: 7px; }
   .sidebar-bulk button { min-height: 28px; font-size: 9px; }
   .sidebar-note { display: none; }
-  .content-shell { width: auto; max-width: calc(100% - var(--mobile-sidebar-width)); margin-left: var(--mobile-sidebar-width); overflow-x: clip; }
+  .content-shell { width: 100%; max-width: 100%; margin-left: 0; overflow-x: clip; }
   .hero, .section, .seal-table, .seal-head, .seal-row { min-width: 0; max-width: 100%; }
   .hero-title-wrap h1 { white-space: normal; overflow-wrap: anywhere; }
   .seal-table { width: 100%; overflow: hidden; }
@@ -924,7 +927,8 @@ footer { grid-template-columns: 1fr; text-align: left; }
   .sidebar-hidden .content-shell { width: 100%; max-width: 100%; margin-left: 0; }
   .mobile-reference-backdrop { padding: 12px; }
   .mobile-reference-dialog { padding: 16px; }
-  .mobile-reference-card { grid-template-columns: 58px minmax(0, 1fr); gap: 12px; }
+  .mobile-reference-card { gap: 12px; }
+  .mobile-reference-card.has-image { grid-template-columns: 58px minmax(0, 1fr); }
   .mobile-reference-image { width: 58px; height: 58px; }
 }
 /* Ixthus archive theme */
@@ -1350,3 +1354,48 @@ footer { grid-template-columns: 1fr; text-align: left; }
 .mekhane-theme #anomalous-powers .expandable-summary { grid-template-columns: 56px minmax(0,1fr) 16px auto; }
 .god-index-card:has(img[src*="/mekhane/"]) .god-index-image img { object-fit: contain; }
 @media (max-width: 760px) { .mekhane-theme .hero-title-wrap h1 { font-size: clamp(1.55rem, 6.8vw, 2.35rem); } }
+
+/* Villikos: page-local additions only. */
+.villikos-theme { --blood: #c6a75d; --blood-dark: #6f5526; }
+.villikos-theme .content-shell { min-width: 0; }
+.villikos-theme .expandable-inner p { white-space: pre-line; overflow-wrap: anywhere; }
+.villikos-theme .hero-portrait img { object-fit: contain; object-position: center; }
+.villikos-theme .portrait-frame, .villikos-theme .portrait-frame::before { border: 0; box-shadow: none; }
+.villikos-theme .cross-popover { display: none; }
+.villikos-theme .cross-reference:hover .cross-popover, .villikos-theme .cross-reference:focus-visible .cross-popover { display: grid; }
+.villikos-theme .hero-title-wrap h1 { white-space: normal; overflow-wrap: anywhere; line-height: 1.05; font-size: clamp(2.2rem, 3.7vw, 4rem); }
+.god-index-card:has(img[src*="/villikos/"]) .god-index-image img { object-fit: contain; }
+@media (max-width: 760px) { .villikos-theme .hero-title-wrap h1 { font-size: clamp(1.55rem, 6.8vw, 2.35rem); } }
+
+.villikos-theme .portrait-frame { background: transparent; }
+
+/* Base-game item catalog: additions only; existing archive layouts are unchanged. */
+.modifier-library-link + .modifier-library-link { margin-top: 14px; }
+.base-items-theme .item-acquisition { margin-top: 18px; padding-top: 17px; border-top: 1px solid var(--line); }
+.base-items-theme .summary-name { overflow-wrap: anywhere; }
+
+/* Item catalogue categories */
+.base-items-theme .item-category-nav { flex: 1; min-height: 0; overflow-x: hidden; }
+.base-items-theme .item-category-nav a { flex-shrink: 0; padding-top: 8px; padding-bottom: 8px; }
+.base-items-theme .item-category-nav a b { white-space: normal; overflow-wrap: anywhere; line-height: 1.45; }
+.base-items-theme .plain-heading h2 { overflow-wrap: anywhere; }
+
+.base-items-theme .category-acquisition { margin-bottom: 28px; padding: 22px 24px; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
+.base-items-theme .category-acquisition h3 { margin: 0 0 12px; color: var(--text); font-size: 16px; }
+.base-items-theme .category-acquisition p { margin: 0; white-space: pre-line; overflow-wrap: anywhere; color: var(--muted); font-size: 14px; line-height: 1.9; }
+@media (max-width: 760px) { .base-items-theme .category-acquisition { padding: 14px 12px; } .base-items-theme .category-acquisition p { font-size: 12px; } }
+
+/* Mobile sidebar overlays the full-width reading surface. */
+.mobile-sidebar-backdrop { display: none; }
+@media (max-width: 760px) {
+  .site-shell .content-shell { width: 100%; max-width: 100%; margin-left: 0; transition: none; }
+  .site-shell .sidebar { z-index: 1500; overscroll-behavior: contain; }
+  .site-shell:not(.sidebar-hidden) .sidebar { padding: 16px 14px; box-shadow: 12px 0 40px rgba(0,0,0,.45); }
+  .site-shell:not(.sidebar-hidden) .sidebar-brand { display: flex; }
+  .site-shell:not(.sidebar-hidden) .sidebar-brand b { white-space: normal; letter-spacing: .03em; }
+  .site-shell:not(.sidebar-hidden) .sidebar-nav a { min-height: 42px; }
+  .site-shell:not(.sidebar-hidden) .sidebar-nav a b { font-size: 12px; }
+  .site-shell:not(.sidebar-hidden) .sidebar-bulk { grid-template-columns: 1fr 1fr; }
+  .mobile-sidebar-backdrop { display: block; position: fixed; z-index: 1400; inset: 0; border: 0; padding: 0; background: rgba(0,0,0,.5); touch-action: none; }
+  .site-shell .section, .site-shell [id^="entry-"] { scroll-margin-top: 64px; }
+}

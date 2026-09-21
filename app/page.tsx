@@ -24,9 +24,11 @@ import ShadowCounselWarArchive from "./ShadowCounselWarArchive";
 import LotusEgregoreArchive from "./LotusEgregoreArchive";
 import AlaiArchive from "./AlaiArchive";
 import MekhaneArchive from "./MekhaneArchive";
+import VillikosArchive from "./VillikosArchive";
 import AberrantMetalArchive from "./AberrantMetalArchive";
 import GodIndex from "./GodIndex";
 import BaseLocationModifiersArchive from "./BaseLocationModifiersArchive";
+import BaseItemsArchive from "./BaseItemsArchive";
 import type { ArchivePageChoice } from "./GodArchiveTypes";
 
 type GodChoice = ArchivePageChoice;
@@ -34,20 +36,22 @@ type GodChoice = ArchivePageChoice;
 export default function GodArchive() {
   const [god, setGod] = useState<GodChoice>("index");
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("page") === "base-location-modifiers") {
-      setGod("base-location-modifiers");
+    const requestedPage = new URLSearchParams(window.location.search).get("page");
+    if (requestedPage === "base-location-modifiers" || requestedPage === "base-items") {
+      setGod(requestedPage);
       return;
     }
     const requested = new URLSearchParams(window.location.search).get("god") as GodChoice | null;
-    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia", "kalastrophe", "thing-from-beyond", "paradoxis", "shadow-counsel", "shadow-counsel-war", "lotus-egregore", "aberrant-metal", "alai", "mekhane"].includes(requested)) setGod(requested);
+    if (requested && ["she-who-will-feast", "iastur", "vinerva", "ophanim", "mammon", "broken-maker", "evil-beneath", "deaths-games", "cordyceps", "ixthus", "kishi", "living-void", "chandalor", "escamrak", "adolia", "kalastrophe", "thing-from-beyond", "paradoxis", "shadow-counsel", "shadow-counsel-war", "lotus-egregore", "aberrant-metal", "alai", "mekhane", "villikos"].includes(requested)) setGod(requested);
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
-    const url = nextGod === "index" ? window.location.pathname : nextGod === "base-location-modifiers" ? `${window.location.pathname}?page=base-location-modifiers` : `${window.location.pathname}?god=${nextGod}`;
+    const url = nextGod === "index" ? window.location.pathname : (nextGod === "base-location-modifiers" || nextGod === "base-items") ? `${window.location.pathname}?page=${nextGod}` : `${window.location.pathname}?god=${nextGod}`;
     window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
   if (god === "index") return <GodIndex onSelect={switchGod} />;
+  if (god === "base-items") return <BaseItemsArchive onReturn={() => switchGod("index")} />;
   if (god === "base-location-modifiers") return <BaseLocationModifiersArchive onReturn={() => switchGod("index")} />;
   if (god === "she-who-will-feast") return <SheWhoWillFeastArchive onGodChange={switchGod} />;
   if (god === "iastur") return <IasturArchive onGodChange={switchGod} />;
@@ -69,6 +73,7 @@ export default function GodArchive() {
   if (god === "paradoxis") return <ParadoxisArchive onGodChange={switchGod} />;
   if (god === "shadow-counsel") return <ShadowCounselArchive onGodChange={switchGod} />;
   if (god === "shadow-counsel-war") return <ShadowCounselWarArchive onGodChange={switchGod} />;
+  if (god === "villikos") return <VillikosArchive onGodChange={switchGod} />;
   if (god === "mekhane") return <MekhaneArchive onGodChange={switchGod} />;
   if (god === "alai") return <AlaiArchive onGodChange={switchGod} />;
   if (god === "aberrant-metal") return <AberrantMetalArchive onGodChange={switchGod} />;

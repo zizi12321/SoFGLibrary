@@ -305,6 +305,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Weaken The Curse",
+          "meta": "Lore",
           "text": "使 The Curse 强度 −150。引导风险为 50；施法者的 Awareness 与世界恐慌越高，通常越愿意执行。",
           "image": "reforgeTheSeal.png",
           "location": "Destroyed Coven",
@@ -315,6 +316,7 @@ const config: GodConfig = {
         },
         {
           "name": "Fulfil the Prophecy",
+          "meta": "Lore",
           "text": "Chosen One 完成后使玩家失败。",
           "image": "theProphecy.png",
           "location": "Destroyed Coven",

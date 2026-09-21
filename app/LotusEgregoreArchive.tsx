@@ -245,6 +245,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Burn Lotus Field",
+          "meta": "Might",
           "text": "移除对应 Lotus Plantation 或 Lotus Garden，并增加其强度 2 倍的 Devastation。Profile 与 Menace 取目标修正已经累积的值。",
           "image": "ophanimRootOutDissent.png",
           "location": "Lotus Plantation，或 Holy Site 已被亵渎的 Lotus Garden",
@@ -255,6 +256,7 @@ const config: GodConfig = {
         },
         {
           "name": "Shut down operation",
+          "meta": "Might",
           "text": "将出口点永久设为 Closed Export Stockpile，停止出口。保留修正及其强度；Profile 与 Menace 取该修正已累积的值。",
           "image": "gridlock.png",
           "location": "尚未关闭的 Lotus Export Stockpile",

@@ -708,6 +708,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Banish Production Core",
+          "meta": "Lore",
           "text": "移除 Production Core 与 Core Efficiency。普通地点留下 Ruined Core；已经成为 Aberrant Factory 的地点直接毁灭。普通人类类城市还会清除相关采集单位、恢复原兴趣点、清除渗透，把地点 Shadow 归零并将统治者 Shadow 降至原来的 1/3。\n即时封印进度扣除 max(1,⌊Core Efficiency⌋)，随后会被神祇阶段计数覆盖；失去核心及后续产出的影响保留。\nDanger = 10 + 工厂设施加成 + ⌊当地 Aberrant Laborers 当前 HP/3⌋；深海城市额外加入整数人口，Orc Camp 额外加入本地与相邻 Orc Camp 的工业整数总量÷3并向下取整。引导另有 50 点 Channelling Danger。",
           "image": "reforgeTheSeal.png",
           "location": "Production Core",
@@ -718,6 +719,7 @@ const config: GodConfig = {
         },
         {
           "name": "Clear Ruined Core",
+          "meta": "Lore",
           "text": "英雄与玩家 Agent 均可执行。废墟消退进度增加 Lore × 10；达到 100 后立即清除废墟并恢复原兴趣点。\n经验在完成后按变化后的 Complexity 计算，为 ⌊(6 × Complexity)^0.75⌋。",
           "image": "icon_power_subsettlement1.png",
           "location": "Ruined Core",

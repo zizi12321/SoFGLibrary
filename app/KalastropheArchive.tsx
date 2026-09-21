@@ -1329,6 +1329,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Pillage Hoard",
+          "meta": "Other",
           "text": "取得 35 Gold，使 <CrossReference name=\"Hidden Hoard\" href=\"#entry-hidden-hoard-modifier\" /> 的强度 −50、Profile +10、吸引力 +5。可反复执行，并允许多人同时进行。",
           "location": "<CrossReference name=\"Hidden Hoard\" href=\"#entry-hidden-hoard-modifier\" /> 所在地点。",
           "limit": "",
@@ -1340,6 +1341,7 @@ const config: GodConfig = {
         },
         {
           "name": "Combat Banditry",
+          "meta": "Might",
           "text": "移除当地 <CrossReference name=\"Banditry\" />。<CrossReference name=\"Arm Bandits\" /> 可将其额外 Danger 提至至少 7；<CrossReference name=\"Seethe\" /> 可进一步累加。",
           "location": "<CrossReference name=\"Banditry\" /> 所在地点。",
           "limit": "",
@@ -1351,6 +1353,7 @@ const config: GodConfig = {
         },
         {
           "name": "Mediate Politics",
+          "meta": "Command",
           "text": "<CrossReference name=\"Political Instability\" /> −25。<CrossReference name=\"Lost Faith\" /> 在当地有该修正时使本任务额外 Danger +8；<CrossReference name=\"Seethe\" /> 也会增加额外 Danger。",
           "location": "City Palace 或精灵城市对应设施。",
           "limit": "",
@@ -1368,6 +1371,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Influence Holy Order",
+          "meta": "Lore + Command",
           "text": "我方完成时增加 Elder Influence，增量为 min（100，⌊700÷max（1，信徒统治者数+2×Temple 数+Acolyte 数）^0.75⌋），不超过阈值。未受控且个人 Shadow <66% 的执行者改为增加 Human Influence。",
           "location": "提供此行动的宗教设施。",
           "limit": "",
@@ -1379,6 +1383,7 @@ const config: GodConfig = {
         },
         {
           "name": "Fund Holy Order",
+          "meta": "Other",
           "text": "游戏名称为 Fund 后接具体宗教名。捐献 Gold 增加该宗教储备，并按捐款的一半向上取整增加影响力；玩家增加 Elder Influence，未受控执行者增加 Human Influence，均不超过阈值。",
           "location": "提供此行动的宗教设施。",
           "limit": "执行者至少有 1 Gold。",

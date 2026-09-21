@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { SidebarBackdrop, useArchiveSidebar } from "./ArchiveSidebar";
+import { useArchiveNavigation } from "./useArchiveNavigation";
+
+import { useState } from "react";
 import { BookOpen, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 import { DetailGrid } from "./BaseGodArchive";
 import { config } from "./BaseLocationModifiersData";
@@ -10,7 +13,7 @@ const entryId = (name: string) => "entry-" + name.toLowerCase().replace(/[^a-z0-
 const allIds = entries.map(item => entryId(item.name));
 
 export default function BaseLocationModifiersArchive({ onReturn }: { onReturn: () => void }) {
-  const [sidebarHidden, setSidebarHidden] = useState(false);
+  const { sidebarHidden, setSidebarHidden, closeMobileSidebar, onSidebarClick } = useArchiveSidebar();
   const [openEntries, setOpenEntries] = useState<Set<string>>(new Set());
   const reveal = (id: string) => setOpenEntries(current => new Set(current).add(id));
   const toggle = (id: string) => setOpenEntries(current => {
@@ -18,25 +21,14 @@ export default function BaseLocationModifiersArchive({ onReturn }: { onReturn: (
     next.has(id) ? next.delete(id) : next.add(id);
     return next;
   });
-  useEffect(() => {
-    const openHash = () => {
-      const id = window.location.hash.slice(1);
-      if (allIds.includes(id)) setOpenEntries(current => new Set(current).add(id));
-    };
-    openHash();
-    window.addEventListener("hashchange", openHash);
-    return () => window.removeEventListener("hashchange", openHash);
-  }, []);
+  const onArchiveClick = useArchiveNavigation(reveal);
   return (
     <main className={"site-shell base-modifiers-theme" + (sidebarHidden ? " sidebar-hidden" : "")}
-      onClickCapture={event => {
-        const link = (event.target as HTMLElement).closest('a[href^="#entry-"]');
-        if (link) reveal(link.getAttribute("href")!.slice(1));
-      }}>
-      <aside className="sidebar">
+      onClick={onArchiveClick}>
+      <SidebarBackdrop hidden={sidebarHidden} onClose={closeMobileSidebar} /><aside className="sidebar" onClick={onSidebarClick}>
         <div className="sidebar-head">
           <div className="sidebar-brand"><span className="brand-mark"><BookOpen size={17} /></span><span><b>游戏本体地点修正</b><small>其他信息</small></span></div>
-          <button className="sidebar-toggle" type="button" aria-label={sidebarHidden ? "展开侧边栏" : "收起侧边栏"} onClick={() => setSidebarHidden(value => !value)}>
+          <button className="sidebar-toggle" type="button" aria-expanded={!sidebarHidden} aria-label={sidebarHidden ? "展开侧边栏" : "收起侧边栏"} onClick={() => setSidebarHidden(value => !value)}>
             {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
         </div>

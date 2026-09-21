@@ -637,6 +637,7 @@ const config: GodConfig = {
       "items": [
         {
           "name": "Reforge The Seal",
+          "meta": "Lore",
           "text": "完成后使玩家失败。引导风险为 50。",
           "image": "reforgeTheSeal.png",
           "location": "Accident Site",
@@ -648,6 +649,7 @@ const config: GodConfig = {
         },
         {
           "name": "Fulfil the Prophecy",
+          "meta": "Lore",
           "text": "Chosen One 完成后使玩家失败。引导风险为 50。",
           "image": "theProphecy.png",
           "location": "Accident Site",

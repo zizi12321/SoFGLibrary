@@ -1149,7 +1149,7 @@ const config: GodConfig = {
           "name": "Acquired Knowledge",
           "id": "h-mek-assembly",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1161,11 +1161,11 @@ const config: GodConfig = {
           "name": "Corrupt Influence",
           "id": "h-mek-bribe",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
-              "text": "非 Mekhanite Kingdom、非 Dark Empire 内的 Congregation 产生 Political Agitation，并每 5 回合增加 1 Profile。"
+              "text": "非首都、非 Mekhanite Kingdom、非 Dark Empire 内的 Congregation，每回合使当地 Political Agitation +2，并在回合数为 5 的倍数时增加 1 Profile。"
             }
           ]
         },
@@ -1173,7 +1173,7 @@ const config: GodConfig = {
           "name": "Mekhanite Unity",
           "id": "h-mek-citystates",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−5 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1201,7 +1201,7 @@ const config: GodConfig = {
           "name": "Growing Faith",
           "id": "h-mek-congregationnum",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1221,7 +1221,7 @@ const config: GodConfig = {
           "name": "Word of Mouth",
           "id": "h-mek-conversion",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−2 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1237,7 +1237,7 @@ const config: GodConfig = {
           "name": "Local Armories",
           "id": "h-mek-danger",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1249,7 +1249,7 @@ const config: GodConfig = {
           "name": "Blood and Iron",
           "id": "h-mek-death",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1261,15 +1261,19 @@ const config: GodConfig = {
           "name": "Abyssal Ore",
           "id": "h-mek-deepones",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
-              "text": "开放 Abyssal Ores，帮助 Deep One Cult 换取 Piece。"
+              "text": "开放 <CrossReference name=\"Abyssal Ores\" href=\"#entry-ch-deeponestopiececult\" />，帮助 Deep One Cult 换取 Piece；该任务执行意愿 +10。"
+            },
+            {
+              "level": -2,
+              "text": "保留 <CrossReference name=\"Abyssal Ores\" href=\"#entry-ch-deeponestopiececult\" />，帮助 Deep One Cult 换取 Piece；该任务执行意愿 +20。"
             },
             {
               "level": -3,
-              "text": "保留采集能力，Abyssal City 还会建立 Abyssal Congregation。"
+              "text": "保留 Deep One Cult 中的 <CrossReference name=\"Abyssal Ores\" href=\"#entry-ch-deeponestopiececult\" />，执行意愿 +30。\n在 Abyssal City 创建 Abyssal Congregation，并在已有渗透的 Orc Fortress 创建 Orcish Congregation。"
             }
           ]
         },
@@ -1277,7 +1281,7 @@ const config: GodConfig = {
           "name": "Mechanical Salvage",
           "id": "h-mek-devastation",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1289,7 +1293,7 @@ const config: GodConfig = {
           "name": "Rural Isolation",
           "id": "h-mek-farms",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1301,7 +1305,7 @@ const config: GodConfig = {
           "name": "Syncretic Theology",
           "id": "h-mek-holyorder",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1313,7 +1317,7 @@ const config: GodConfig = {
           "name": "Hidden Shrines",
           "id": "h-mek-holysites",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1325,7 +1329,7 @@ const config: GodConfig = {
           "name": "Impossible Geometry",
           "id": "h-mek-madness",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1337,7 +1341,7 @@ const config: GodConfig = {
           "name": "Broken Truths",
           "id": "h-mek-madnesspops",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -3,
@@ -1349,7 +1353,7 @@ const config: GodConfig = {
           "name": "Black Market Connections",
           "id": "h-mek-market",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1369,7 +1373,7 @@ const config: GodConfig = {
           "name": "Mass Appeal",
           "id": "h-mek-masspop",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1381,7 +1385,7 @@ const config: GodConfig = {
           "name": "Distractions by Design",
           "id": "h-mek-minordisrupt",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1393,7 +1397,7 @@ const config: GodConfig = {
           "name": "Entrenched Ideas",
           "id": "h-mek-minorsects",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1413,7 +1417,7 @@ const config: GodConfig = {
           "name": "Theological Drift",
           "id": "h-mek-minorsectspread",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1425,19 +1429,19 @@ const config: GodConfig = {
           "name": "National Ambitions",
           "id": "h-mek-national",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
-              "text": "提高 Mekhanite 统治者建立国家和起义的倾向。"
+              "text": "建立 Mekhanite Kingdom、发动 Mekhanite Uprising 的教义执行意愿加成均为 +10；Augment Military 的执行意愿 +5，Rush Clockwork Soldiers 的执行意愿 −5。"
             },
             {
               "level": -2,
-              "text": "进一步提高相关倾向。"
+              "text": "建立 Mekhanite Kingdom、发动 Mekhanite Uprising 的教义执行意愿加成均为 +20；Augment Military 的执行意愿 +10，Rush Clockwork Soldiers 的执行意愿 −10。"
             },
             {
               "level": -3,
-              "text": "Mekhanite Kingdom 可加入已成立的 Unified Church。"
+              "text": "建立 Mekhanite Kingdom、发动 Mekhanite Uprising 的教义执行意愿加成均为 +30；Augment Military 的执行意愿 +15，Rush Clockwork Soldiers 的执行意愿 −15。\n满足其他条件的 Mekhanite Kingdom 可通过 Join Mekhanite Empire 加入已建立的 Unified Church。"
             }
           ]
         },
@@ -1445,15 +1449,19 @@ const config: GodConfig = {
           "name": "Orcish Tools",
           "id": "h-mek-orc",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
-              "text": "开放 Orcish Tools，增加 Orcish Industry 换取 Piece。"
+              "text": "开放 <CrossReference name=\"Orcish Tools\" href=\"#entry-ch-industrytopiece\" />，增加 Orcish Industry 换取 Piece；该任务执行意愿 +10。"
+            },
+            {
+              "level": -2,
+              "text": "保留 <CrossReference name=\"Orcish Tools\" href=\"#entry-ch-industrytopiece\" />，增加 Orcish Industry 换取 Piece；该任务执行意愿 +20。"
             },
             {
               "level": -3,
-              "text": "保留采集能力，已渗透 Orc Fortress 还会建立 Orcish Congregation。"
+              "text": "保留 <CrossReference name=\"Orcish Tools\" href=\"#entry-ch-industrytopiece\" />，该任务执行意愿 +30。\n在 Abyssal City 创建 Abyssal Congregation，并在已有渗透的 Orc Fortress 创建 Orcish Congregation。"
             }
           ]
         },
@@ -1461,7 +1469,7 @@ const config: GodConfig = {
           "name": "Hostile Utilities",
           "id": "h-mek-profile",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1481,7 +1489,7 @@ const config: GodConfig = {
           "name": "Reality Refactoring",
           "id": "h-mek-relicprofile",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1501,7 +1509,7 @@ const config: GodConfig = {
           "name": "Material Past",
           "id": "h-mek-schema",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1513,7 +1521,7 @@ const config: GodConfig = {
           "name": "Underground Networks",
           "id": "h-mek-schemahide",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1533,7 +1541,7 @@ const config: GodConfig = {
           "name": "Obsidian Parts",
           "id": "h-mek-shadow",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1553,7 +1561,7 @@ const config: GodConfig = {
           "name": "Inherent Tinkerers",
           "id": "h-mek-specialist",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -3,
@@ -1565,7 +1573,7 @@ const config: GodConfig = {
           "name": "Organized Excavations",
           "id": "h-mek-unearth",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1577,15 +1585,19 @@ const config: GodConfig = {
           "name": "Maddening Metals",
           "id": "h-mek-unearthmadness",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
               "text": "Unearthed Fragments 每回合为本地增加 1 Madness。"
             },
             {
+              "level": -2,
+              "text": "Unearthed Fragments 每回合为本地增加 1 Madness。"
+            },
+            {
               "level": -3,
-              "text": "除本地外，也为相邻人类聚居地每回合增加 1 Madness。"
+              "text": "Unearthed Fragments 每回合为本地及相邻人类聚居地各增加 1 Madness。"
             }
           ]
         },
@@ -1593,7 +1605,7 @@ const config: GodConfig = {
           "name": "Dark Minerals",
           "id": "h-mek-unearthshadow",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−1 – 0",
           "tenetLevels": [
             {
               "level": -1,
@@ -1605,19 +1617,19 @@ const config: GodConfig = {
           "name": "Militant Following",
           "id": "h-mek-zealots",
           "text": "",
-          "tenetRange": "undefined – 0",
+          "tenetRange": "−3 – 0",
           "tenetLevels": [
             {
               "level": -1,
-              "text": "Mekhanite Zealot 随从 Attack、Defence 各 +1，降低招募费用。"
+              "text": "Mekhanite Zealot 的 Attack、Defence 各 +1（均为 3）；Recruit Zealot Minion 的费用降至 2 Divine Schema。"
             },
             {
               "level": -2,
-              "text": "Attack、Defence 各 +2。"
+              "text": "Mekhanite Zealot 的 Attack、Defence 各 +2（均为 4）；Recruit Zealot Minion 的费用降至 1 Divine Schema。"
             },
             {
               "level": -3,
-              "text": "Attack、Defence 各 +3。"
+              "text": "Mekhanite Zealot 的 Attack、Defence 各 +3（均为 5）；Recruit Zealot Minion 的费用降至 1 Divine Schema。"
             }
           ]
         },
@@ -2712,6 +2724,7 @@ const config: GodConfig = {
         {
           "name": "Destroy MEKHANE",
           "id": "ch-mek-damagemek",
+          "meta": "Might",
           "text": "神体完整度 −10；归零造成玩家失败。",
           "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
           "limit": "英雄可执行。",
@@ -2723,6 +2736,7 @@ const config: GodConfig = {
         {
           "name": "Investigate Mekhanites",
           "id": "ch-mek-hero-investigatemekhanites",
+          "meta": "Command",
           "text": "创建 Recent Investigations，持续提高 Congregation Profile。",
           "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
           "limit": "非 Mekhanite；个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
@@ -2734,6 +2748,7 @@ const config: GodConfig = {
         {
           "name": "Expose Mekhanites",
           "id": "ch-mek-hero-exposecongregation",
+          "meta": "Command",
           "text": "当前 Profile −20，最低 Profile +10。",
           "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
           "limit": "Awareness 100%，个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
@@ -2745,6 +2760,7 @@ const config: GodConfig = {
         {
           "name": "Steal Relics",
           "id": "ch-mek-hero-raidcongregation",
+          "meta": "Might",
           "text": "偷走最多 3 件 Relic；对非 Relic 组件逐件进行 4/9 概率的销毁判定。Congregation Profile −15；当地 Armed Congregation 强度 −10。",
           "location": "存有组件的 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
           "limit": "英雄有物品栏空位，满足任务的觉醒与 Shadow 限制。",
@@ -2756,6 +2772,7 @@ const config: GodConfig = {
         {
           "name": "Destroy Components",
           "id": "ch-mek-hero-raidcongregation-destroycomponents",
+          "meta": "Might",
           "text": "尝试销毁最多 10 件组件，每件判定成功率 4/9；也会拿走可携带的 Relic。Congregation Profile −5。",
           "location": "存有组件的 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
           "limit": "非 Mekhanite 英雄。",
@@ -2767,6 +2784,7 @@ const config: GodConfig = {
         {
           "name": "Destroy Relics",
           "id": "ch-mek-hero-destroyrelic",
+          "meta": "Might",
           "text": "对 Relic 逐件进行 4/9 概率的销毁判定，最多处理 3 件。",
           "location": "存有 Relic 的 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
           "limit": "Awareness 100%、个人 Shadow 未满、对 Mekhanites 偏好不高于 0 的英雄，或 Sarkic 人物。",
@@ -2778,6 +2796,7 @@ const config: GodConfig = {
         {
           "name": "Convert",
           "id": "ch-mek-hero-convert",
+          "meta": "Command",
           "text": "使执行者成为 Mekhanite；人物继续自主行动。",
           "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
           "limit": "尚未皈依且喜好 Mekhanites。",
@@ -2789,6 +2808,7 @@ const config: GodConfig = {
         {
           "name": "Disperse Minor Sect",
           "id": "ch-mek-hero-disperseminor",
+          "meta": "Command",
           "text": "强度 −50；结果不大于 0 且英雄 Awareness 至少 50% 时移除教派。其他情况下教派强度变为 1，Profile 归零。Distractions 生效时，成功移除会令英雄 Disrupted 3 回合。",
           "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
           "limit": "非 Mekhanite 英雄。",
@@ -2800,6 +2820,7 @@ const config: GodConfig = {
         {
           "name": "Investigate Exiles",
           "id": "ch-mek-hero-investigateexile",
+          "meta": "Intrigue",
           "text": "Profile +25；有 5% 概率使英雄对 Mekhanites 的偏好降低。",
           "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
           "limit": "Awareness 超过 50%，设施 Profile 低于 50。",
@@ -2811,6 +2832,7 @@ const config: GodConfig = {
         {
           "name": "Raid Exiles",
           "id": "ch-mek-hero-raidexile",
+          "meta": "Intrigue",
           "text": "Profile 超过 100 时进行摧毁判定，成功后移除设施并重置当地 Shadow 与 Infiltration；未摧毁时 Profile +25。",
           "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
           "limit": "个人 Shadow 未满，设施 Profile 至少 50。",
@@ -2822,6 +2844,7 @@ const config: GodConfig = {
         {
           "name": "Raise Suspicion",
           "id": "ch-mek-hero-raisesuspicion",
+          "meta": "Command",
           "text": "降低统治者对 Mekhanites 的偏好 1 级。",
           "location": "有人类统治者的聚居地",
           "limit": "英雄厌恶 Mekhanites、个人 Shadow 未满；统治者 Awareness 100%。",
@@ -2833,6 +2856,7 @@ const config: GodConfig = {
         {
           "name": "Sabotage Forge Production",
           "id": "ch-mek-hero-sabotageproduction",
+          "meta": "Might",
           "text": "Production 强度 −25。",
           "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
           "limit": "Awareness 100%，对 Mekhanites 偏好不高于 0。",
@@ -2844,6 +2868,7 @@ const config: GodConfig = {
         {
           "name": "Combat Global Rotbolt Spread",
           "id": "ch-mek-hero-shrinkrotbolt",
+          "meta": "Lore",
           "text": "持续施法期间，每回合使所有陆地 Rotbolt 减少施法者 Lore，同时消耗 2 Geomantic Locus，执行者 Profile +2。",
           "location": "Geomantic Locus",
           "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 2；当地 Locus 强度大于 0。",
@@ -2855,6 +2880,7 @@ const config: GodConfig = {
         {
           "name": "Combat Local Rotbolt Spread",
           "id": "ch-mek-hero-shrinkrotboltlocal",
+          "meta": "Lore",
           "text": "强度 −50。",
           "location": "<CrossReference name=\"Rotbolt\" href=\"#entry-pr-mek-rotbolt\" />",
           "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 1。",
@@ -2866,6 +2892,7 @@ const config: GodConfig = {
         {
           "name": "Banish Clockwork Virus",
           "id": "ch-mek-co-destroyclockworkvirus",
+          "meta": "Lore",
           "text": "强度 −100；结果小于 0 时移除。",
           "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
           "limit": "仅 Chosen One。",
@@ -2877,6 +2904,7 @@ const config: GodConfig = {
         {
           "name": "Destroy A Machine",
           "id": "ch-mek-co-destroymachine",
+          "meta": "Lore",
           "text": "强度 −50；结果小于 0 时移除，并停用相关后续神力。",
           "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
           "limit": "仅 Chosen One。",
@@ -2888,6 +2916,7 @@ const config: GodConfig = {
         {
           "name": "Combat Clockwork Virus",
           "id": "ch-mek-shrinkclockworkvirus",
+          "meta": "Lore",
           "text": "强度 −15。",
           "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
           "limit": "除 Chosen One 外的人物均可执行；英雄会自主选择。",
@@ -2899,6 +2928,7 @@ const config: GodConfig = {
         {
           "name": "Contain Relics",
           "id": "ch-mek-vault-hero-storerelics",
+          "meta": "Other",
           "text": "把携带的 Relics 放入 Vault，增加其研究速度。",
           "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
           "limit": "英雄携带可收容的 Relic。",
@@ -2910,6 +2940,7 @@ const config: GodConfig = {
         {
           "name": "Reforge Seals",
           "id": "ch-mek-vaultseal",
+          "meta": "Lore",
           "text": "重新封印 MEKHANE，玩家立即失败。",
           "location": "<CrossReference name=\"Vault Research\" href=\"#entry-pr-mek-vault\" /> 至少 300 的 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
           "limit": "仅 Chosen One；Foundation 路线已开启。",
@@ -3119,6 +3150,7 @@ const config: GodConfig = {
         {
           "name": "Speaker's Sermon",
           "id": "ch-mek-increasemekpreferencespeaker",
+          "meta": "Other",
           "text": "创建 Speaker's Sermon，按当地人口获得最多 3 Divine Schema。",
           "location": "有统治者的人类聚居地",
           "limit": "仅 Speaker。",
@@ -3130,6 +3162,7 @@ const config: GodConfig = {
         {
           "name": "Harvest Information",
           "id": "ch-librarytopiece",
+          "meta": "Lore",
           "text": "消耗连接强度 50，收集最多 3 Piece。",
           "location": "<CrossReference name=\"Maxwellist Connection\" href=\"#entry-pr-mek-connection\" /> 至少 50 的地点",
           "limit": "仅 Intelligence；物品栏有空位。",
@@ -3141,6 +3174,7 @@ const config: GodConfig = {
         {
           "name": "Harvest Information",
           "id": "ch-locitopiece",
+          "meta": "Lore",
           "text": "消耗 30 Geomantic Locus，以 Piece 填满物品栏空位。",
           "location": "Geomantic Locus 至少 30 的地点",
           "limit": "仅 Intelligence。",
@@ -3152,6 +3186,7 @@ const config: GodConfig = {
         {
           "name": "Unorthodox Experiment",
           "id": "ch-mek-exileexperiment",
+          "meta": "Lore",
           "text": "尝试产生 Unorthodox Piece，供实验组装使用。",
           "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
           "limit": "仅 Mekhanite Exile。",
@@ -3163,6 +3198,7 @@ const config: GodConfig = {
         {
           "name": "Gain Insight",
           "id": "ch-mek-sarkic-study",
+          "meta": "Lore",
           "text": "消耗知识地点修正，获得 Sarkic Insights。",
           "location": "Arcane Secret 或 Sarkic Insight",
           "limit": "Sarkic 人物，持有 Insights 少于 30。",
@@ -3174,6 +3210,7 @@ const config: GodConfig = {
         {
           "name": "Find Insights",
           "id": "ch-mek-sarkictomb-gather",
+          "meta": "Lore",
           "text": "取得 Sarkic Insights，执行期间墓穴每回合强度 −2。",
           "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
           "limit": "Sarkic 人物，持有 Insights 少于 30；墓穴未被亵渎。",
@@ -3185,6 +3222,7 @@ const config: GodConfig = {
         {
           "name": "Cleanse Klavigar's Tomb",
           "id": "ch-mek-sarkictomb-cleanse",
+          "meta": "Lore",
           "text": "消耗 25 Sarkic Insights，解除亵渎，恢复采集与增长。",
           "location": "Desecrated 状态的 <CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
           "limit": "Sarkic 人物。",
@@ -3196,6 +3234,7 @@ const config: GodConfig = {
         {
           "name": "Unearth Klavigar's Tomb",
           "id": "ch-mek-sarkictomb",
+          "meta": "Intrigue",
           "text": "建立 Klavigar Tomb。基础费用为现存墓穴数 ×10 Insights，再加 ⌊当地 Infiltration 百分点 /20⌋。",
           "location": "Ancient Ruins",
           "limit": "Karcist；世界墓穴少于 4，地点尚未完全渗透且无冲突设施。",
@@ -3207,6 +3246,7 @@ const config: GodConfig = {
         {
           "name": "Mutate",
           "id": "ch-mek-sarkicmutate",
+          "meta": "Lore",
           "text": "消耗 2 Sarkic Insights，取得或升级一项 Sarkic Mutation。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Applied Mutations 生效，已有突变总等级低于人物等级。",
@@ -3218,6 +3258,7 @@ const config: GodConfig = {
         {
           "name": "Karcist Ascension",
           "id": "ch-mek-sarkickarcist",
+          "meta": "Lore",
           "text": "使选定的 Sarkic Cultist 晋升为 Karcist；Temple Profile +10。消耗 Sarkic Insights：当前没有 Karcist 时为 1，否则为现存 Karcist 数 ×10。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Karcist Ascension 生效；仅教团选定的继任者，Insights 足够。",
@@ -3229,6 +3270,7 @@ const config: GodConfig = {
         {
           "name": "Grand Karcist Ascension",
           "id": "ch-mek-sarkicgrandkarcist",
+          "meta": "Command",
           "text": "使 Karcist 晋升为 Grand Karcist。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Grand Karcist 教义生效，尚无已选定的最高领袖。需要至少 15 Sarkic Insights；完成函数没有扣除该资源。",
@@ -3240,6 +3282,7 @@ const config: GodConfig = {
         {
           "name": "Karcist's Sermon",
           "id": "ch-mek-sarkicsermon",
+          "meta": "Command",
           "text": "消耗 5 Sarkic Insights，创建 Karcist's Sermon。",
           "location": "有统治者的人类聚居地",
           "limit": "Karcist；目标不在 Alliance，且尚未完全渗透或完全 Enshadowed。",
@@ -3251,6 +3294,7 @@ const config: GodConfig = {
         {
           "name": "Convert Ruler",
           "id": "ch-mek-sarkicpreference",
+          "meta": "Command",
           "text": "消耗 5 Sarkic Insights，使统治者皈依 Sarkic。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
           "limit": "Sarkic 人物，目标符合转化条件。",
@@ -3262,6 +3306,7 @@ const config: GodConfig = {
         {
           "name": "Sarkic Initiation",
           "id": "ch-mek-sarkicrecruit",
+          "meta": "Command",
           "text": "消耗 5 Sarkic Insights，招募 Sarkic Cultist。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Karcist。",
@@ -3273,6 +3318,7 @@ const config: GodConfig = {
         {
           "name": "Recruit Sarkic Initiate Minion",
           "id": "ch-mek-sarkic-recruitminion",
+          "meta": "Command",
           "text": "消耗 3 Sarkic Insights，招募 Sarkic Initiate 随从。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Sarkic 人物。",
@@ -3284,6 +3330,7 @@ const config: GodConfig = {
         {
           "name": "Root Out Infiltration",
           "id": "ch-mek-sarkic-security",
+          "meta": "Intrigue",
           "text": "消耗 10 Sarkic Insights，清除当地 Infiltration。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
           "limit": "Karcist；地点已有渗透。",
@@ -3295,6 +3342,7 @@ const config: GodConfig = {
         {
           "name": "Divert Attention",
           "id": "ch-mek-sarkichidetemple",
+          "meta": "Intrigue",
           "text": "消耗 3 Sarkic Insights，Temple Profile −15。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Sarkic 人物；Counter-Infiltration 会阻止降低 Profile。",
@@ -3306,6 +3354,7 @@ const config: GodConfig = {
         {
           "name": "Form Deathless Empire",
           "id": "ch-mek-sarkicempire",
+          "meta": "Command",
           "text": "建立 Deathless Empire，吸纳 Sarkic 地区并可能引起内战。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Grand Karcist。",
@@ -3317,6 +3366,7 @@ const config: GodConfig = {
         {
           "name": "Raise Halkosts",
           "id": "ch-mek-sarkicarmyundead",
+          "meta": "Lore",
           "text": "消耗 5 Sarkic Insights，召唤 HP 为 ⌊Death ×1.5⌋ 的 Sarkic Halkost，并消耗一半 Death。",
           "location": "有 Death 的 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
           "limit": "Karcist，Deathless Empire 已存在。",
@@ -3328,6 +3378,7 @@ const config: GodConfig = {
         {
           "name": "Unearth Adytom",
           "id": "ch-mek-sarkicadytom",
+          "meta": "Other",
           "text": "消耗 10 Sarkic Insights，寻找 Adytom。通常每次成功率 30%；此前失败次数达到现存墓穴数 −1 时必定成功，创建 Ascension Ritual 并触发 Adytom 事件。",
           "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
           "limit": "Grand Karcist。",
@@ -3339,6 +3390,7 @@ const config: GodConfig = {
         {
           "name": "Sarkic Ascension",
           "id": "ch-mek-sarkic-victory",
+          "meta": "Other",
           "text": "启动时消耗 15 Sarkic Insights。持续执行时，每回合增加 Grand Karcist 的 Lore 的仪式强度；达到 100 后 Sarkics 获胜，玩家失败。",
           "location": "<CrossReference name=\"Ascension Ritual\" href=\"#entry-pr-mek-sarkic-victory\" />",
           "limit": "Grand Karcist；God-Eater 生效，Termination 未生效；启动需满足 15 Insights 的资源要求。",
@@ -3350,6 +3402,7 @@ const config: GodConfig = {
         {
           "name": "Unleash the Red Death",
           "id": "ch-mek-sarkicreddeath",
+          "meta": "Command",
           "text": "消耗 20 Sarkic Insights，向世界释放 The Flesh That Hates 和 Red Death。",
           "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
           "limit": "Grand Karcist，Deathless Empire 已成立且此前没有释放。",
