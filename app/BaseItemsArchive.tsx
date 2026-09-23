@@ -1,6 +1,7 @@
 "use client";
 
 import { SidebarBackdrop, useArchiveSidebar } from "./ArchiveSidebar";
+import { CatalogueNavigation } from "./CatalogueNavigation";
 import { useArchiveNavigation } from "./useArchiveNavigation";
 
 import { useState } from "react";
@@ -11,8 +12,17 @@ import { modItemSections } from "./ModItemsData";
 
 const config = { ...baseConfig, sections: [...baseConfig.sections, ...modItemSections] };
 
+
+const navGroups = [
+  { name: "游戏本体", entries: baseConfig.sections.map(section => ({ href: "#" + section.id, label: section.title })) },
+  ...modItemSections.map(section => ({
+    name: section.title,
+    entries: section.items.map(item => ({ href: item.id ? "#entry-" + item.id : "#" + entryId(item.name), label: item.name })),
+  })),
+];
+
 const entries = config.sections.flatMap(section => section.items);
-const entryId = (name: string) => "entry-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+function entryId(name: string) { return "entry-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
 const allIds = entries.map(item => item.id ? "entry-" + item.id : entryId(item.name));
 
 export default function BaseItemsArchive({ onReturn }: { onReturn: () => void }) {
@@ -37,9 +47,7 @@ export default function BaseItemsArchive({ onReturn }: { onReturn: () => void })
         </div>
         <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
         <div className="sidebar-bulk"><button type="button" onClick={() => setOpenEntries(new Set(allIds))}>全部展开</button><button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button></div>
-        <nav className="sidebar-nav item-category-nav" aria-label="物品分类">
-          {config.sections.map((section, index) => <a key={section.id} href={"#" + section.id} title={section.title}><span>{String(index + 1).padStart(2, "0")}</span><b>{section.title}</b></a>)}
-        </nav>
+        <CatalogueNavigation groups={navGroups} label="物品导航" />
       </aside>
       <div className="content-shell">
         <header id="top" className="modifier-library-header"><h1>游戏本体与 Mod 物品</h1><p>本体 {baseConfig.sections.reduce((sum, section) => sum + section.items.length, 0)} 项，Mod {modItemSections.reduce((sum, section) => sum + section.items.length, 0)} 项；分别列出功能与获取方式。Mod 按文件夹分组，采用当前 2.0 版本；没有版本文件夹时采用根目录内容。</p></header>

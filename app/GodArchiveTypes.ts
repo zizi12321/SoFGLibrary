@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export type ArchiveGodChoice = "index" | "she-who-will-feast" | "iastur" | "vinerva" | "ophanim" | "mammon" | "broken-maker" | "evil-beneath" | "deaths-games" | "cordyceps" | "ixthus" | "kishi" | "living-void" | "chandalor" | "escamrak" | "adolia" | "kalastrophe" | "thing-from-beyond" | "paradoxis" | "shadow-counsel" | "shadow-counsel-war" | "lotus-egregore" | "aberrant-metal" | "alai" | "mekhane" | "villikos";
 export type Relation = { name: string; href: string; meta?: string; text?: string; image?: string };
-export type ArchivePageChoice = ArchiveGodChoice | "base-location-modifiers" | "base-items" | "agents" | "religions";
+export type ArchivePageChoice = ArchiveGodChoice | "base-location-modifiers" | "base-items" | "agents" | "religions" | "non-player-units" | "minions" | "armies";
 export type EventOption = { name: string; text: string; condition?: string };
 export type TenetLevel = { level: number; text: string };
 export type DetailItem = { name: string; text: string; acquisition?: string; eventOptions?: EventOption[]; tenetRange?: string; tenetLevels?: TenetLevel[]; image?: string; images?: string[]; seal?: number; meta?: string; statLine?: string; location?: string; limit?: string; id?: string; baseGame?: boolean; time?: string; stats?: string; abilities?: DetailItem[]; positiveTags?: string; negativeTags?: string; initialValue?: string; modifierChange?: { natural: string; external: string } };

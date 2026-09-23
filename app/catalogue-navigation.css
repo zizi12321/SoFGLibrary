@@ -1,0 +1,5 @@
+
+.site-shell .catalogue-nav .catalogue-nav-group { width: 100%; min-width: 0; }
+.catalogue-nav-group > p { color: var(--accent); font-size: 11px; margin: 22px 0 10px; padding-left: 10px; overflow-wrap: anywhere; }
+.site-shell .catalogue-nav .catalogue-nav-group a { display: flex; padding: 9px 10px; width: 100%; }
+.site-shell .catalogue-nav .catalogue-nav-group a b { white-space: normal; line-height: 1.45; font-size: 12px; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }

@@ -30,7 +30,10 @@ import GodIndex from "./GodIndex";
 import BaseLocationModifiersArchive from "./BaseLocationModifiersArchive";
 import AgentsArchive from "./AgentsArchive";
 import ReligionsArchive from "./ReligionsArchive";
+import NonPlayerUnitsArchive from "./NonPlayerUnitsArchive";
+import ArmiesArchive from "./ArmiesArchive";
 import BaseItemsArchive from "./BaseItemsArchive";
+import MinionsArchive from "./MinionsArchive";
 import type { ArchivePageChoice } from "./GodArchiveTypes";
 
 type GodChoice = ArchivePageChoice;
@@ -39,7 +42,7 @@ export default function GodArchive() {
   const [god, setGod] = useState<GodChoice>("index");
   useEffect(() => {
     const requestedPage = new URLSearchParams(window.location.search).get("page");
-    if (requestedPage === "base-location-modifiers" || requestedPage === "base-items" || requestedPage === "agents" || requestedPage === "religions") {
+    if (requestedPage === "base-location-modifiers" || requestedPage === "base-items" || requestedPage === "agents" || requestedPage === "religions" || requestedPage === "non-player-units" || requestedPage === "minions" || requestedPage === "armies") {
       setGod(requestedPage);
       return;
     }
@@ -48,13 +51,16 @@ export default function GodArchive() {
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
-    const url = nextGod === "index" ? window.location.pathname : (nextGod === "base-location-modifiers" || nextGod === "base-items" || nextGod === "agents" || nextGod === "religions") ? `${window.location.pathname}?page=${nextGod}` : `${window.location.pathname}?god=${nextGod}`;
+    const url = nextGod === "index" ? window.location.pathname : (nextGod === "base-location-modifiers" || nextGod === "base-items" || nextGod === "agents" || nextGod === "religions" || nextGod === "non-player-units" || nextGod === "minions" || nextGod === "armies") ? `${window.location.pathname}?page=${nextGod}` : `${window.location.pathname}?god=${nextGod}`;
     window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
   if (god === "index") return <GodIndex onSelect={switchGod} />;
+  if (god === "armies") return <ArmiesArchive onReturn={() => switchGod("index")} />;
+  if (god === "non-player-units") return <NonPlayerUnitsArchive onReturn={() => switchGod("index")} />;
   if (god === "religions") return <ReligionsArchive onReturn={() => switchGod("index")} />;
   if (god === "agents") return <AgentsArchive onReturn={() => switchGod("index")} />;
+  if (god === "minions") return <MinionsArchive onReturn={() => switchGod("index")} />;
   if (god === "base-items") return <BaseItemsArchive onReturn={() => switchGod("index")} />;
   if (god === "base-location-modifiers") return <BaseLocationModifiersArchive onReturn={() => switchGod("index")} />;
   if (god === "she-who-will-feast") return <SheWhoWillFeastArchive onGodChange={switchGod} />;

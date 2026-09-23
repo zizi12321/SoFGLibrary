@@ -1,0 +1,26 @@
+.npc-theme { --accent: #93adad; }
+.npc-collection, .npc-group, .npc-record { scroll-margin-top: 72px; min-width: 0; }
+.npc-group-heading { font-size: 23px; color: var(--accent); margin: 36px 0 0; overflow-wrap: anywhere; }
+.npc-theme .npc-record { padding-block: 36px; }
+.npc-record-heading { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; min-width: 0; }
+.npc-record-heading > div { min-width: 0; }
+.npc-record-heading h3 { font-size: clamp(25px, 3vw, 39px); line-height: 1.25; margin: 8px 0 0; overflow-wrap: anywhere; }
+.npc-catalog-portrait { width: 112px; height: 112px; object-fit: contain; flex: 0 0 112px; }
+.npc-basics { border-block: 1px solid var(--line); padding-block: 22px; }
+.npc-basics h4, .npc-subsection > h4 { font-size: 17px; margin: 0 0 12px; }
+.npc-basics > div + div { margin-top: 20px; }
+.npc-basics p { line-height: 1.85; white-space: pre-line; overflow-wrap: anywhere; margin: 0; }
+.npc-subsection { margin-top: 24px; min-width: 0; }
+.npc-theme .task-stat-line { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .npc-theme .modifier-library-header { padding-top: 72px; }
+  .npc-theme .npc-record { padding-block: 28px; }
+  .npc-record-heading { gap: 16px; }
+  .npc-catalog-portrait { width: 80px; height: 80px; flex-basis: 80px; }
+  .npc-record-heading h3 { font-size: 26px; }
+}
+
+.npc-theme .npc-group-heading { padding-inline: 5vw; }
+.npc-theme .section-index { color: var(--accent); }
+
+@media (max-width: 760px) { .npc-theme .npc-group-heading { padding-inline: 20px; } }

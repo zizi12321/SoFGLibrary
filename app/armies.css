@@ -1,0 +1,30 @@
+.army-theme { --accent: #93adad; }
+.army-collection, .army-group, .army-record { scroll-margin-top: 72px; min-width: 0; }
+.army-group-heading { font-size: 23px; color: var(--accent); margin: 36px 0 0; overflow-wrap: anywhere; }
+.army-theme .army-record { padding-block: 36px; }
+.army-record-heading { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; min-width: 0; }
+.army-record-heading > div { min-width: 0; }
+.army-record-heading h3 { font-size: clamp(25px, 3vw, 39px); line-height: 1.25; margin: 8px 0 0; overflow-wrap: anywhere; }
+.army-catalog-portrait { width: 112px; height: 112px; object-fit: contain; flex: 0 0 112px; }
+.army-basics { border-block: 1px solid var(--line); padding-block: 22px; }
+.army-basics h4, .army-subsection > h4 { font-size: 17px; margin: 0 0 12px; }
+.army-basics > div + div { margin-top: 20px; }
+.army-basics p { line-height: 1.85; white-space: pre-line; overflow-wrap: anywhere; margin: 0; }
+.army-subsection { margin-top: 24px; min-width: 0; }
+.army-theme .task-stat-line { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .army-theme .modifier-library-header { padding-top: 72px; }
+  .army-theme .army-record { padding-block: 28px; }
+  .army-record-heading { gap: 16px; }
+  .army-catalog-portrait { width: 80px; height: 80px; flex-basis: 80px; }
+  .army-record-heading h3 { font-size: 26px; }
+}
+
+.army-theme .army-group-heading { padding-inline: 5vw; }
+.army-theme .section-index { color: var(--accent); }
+
+@media (max-width: 760px) { .army-theme .army-group-heading { padding-inline: 20px; } }
+
+.army-theme { --accent: #b7a68c; }
+.army-mechanics > h2 { margin-bottom: 24px; font-size: 26px; }
+.army-theme .army-record .army-basics > div:first-child { padding: 18px; background: rgba(183,166,140,.06); border: 1px solid var(--line); }

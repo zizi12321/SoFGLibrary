@@ -1,0 +1,9 @@
+
+.minions-theme { --accent: #b7ae88; }
+.minion-collection { min-width: 0; scroll-margin-top: 72px; }
+.minions-theme .plain-heading h2 { font-size: clamp(26px, 3.4vw, 46px); overflow-wrap: anywhere; }
+.minion-group-intro { white-space: pre-line; margin: 0 0 24px; line-height: 1.85; color: var(--muted); }
+.minions-theme .task-stat-line { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .minions-theme .modifier-library-header { padding-top: 72px; }
+}
