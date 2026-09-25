@@ -379,7 +379,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "media": false,
@@ -511,7 +511,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -917,74 +917,1502 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "media": true,
-      "items": [
+      "id": "place-hook-3591348120-2",
+      "name": "聚居地中的 MEKHANE 行动",
+      "text": "使用 MEKHANE 时向已有聚居地加入。资源转化取决于对应教义及修正；Geomantic Locus 相关两项只在当地具有该修正时加入。实际执行还受每个行动限制。",
+      "baseGame": false
+    },
+    {
+      "name": "Raise Suspicion",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-hero-raisesuspicion",
+      "meta": "Command",
+      "text": "降低统治者对 Mekhanites 的偏好 1 级。",
+      "location": "有人类统治者的聚居地",
+      "limit": "英雄厌恶 Mekhanites、个人 Shadow 未满；统治者 Awareness 100%。",
+      "statLine": "Complexity: 20\nProfile: 60 + 已解封数 ×20\nMenace: 0\nXP: 36",
+      "positiveTags": "Cooperation",
+      "negativeTags": "Mekhanites、Religion",
+      "image": "base-vendetta.png"
+    },
+    {
+      "name": "Combat Global Rotbolt Spread",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-hero-shrinkrotbolt",
+      "meta": "Lore",
+      "text": "持续施法期间，每回合使所有陆地 Rotbolt 减少施法者 Lore，同时消耗 2 Geomantic Locus，执行者 Profile +2。",
+      "location": "Geomantic Locus",
+      "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 2；当地 Locus 强度大于 0。",
+      "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "无",
+      "image": "icon_scprotbolt.png"
+    },
+    {
+      "name": "Establish Connection",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-maxwellist-connection",
+      "text": "建立 Maxwellist Connection。",
+      "location": "与 <CrossReference name=\"Maxwellist Connection\" href=\"#entry-pr-mek-connection\" /> 修正或下列兴趣点所在地点相邻的陆地：<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" />。",
+      "limit": "我方 Agent 或 Living Saint，拥有 Noosphere Connection；目标聚居地完全渗透且尚无连接。",
+      "statLine": "Complexity: 15\nProfile: 100\nMenace: 0\nXP: 29",
+      "image": "iconmekspell6.png"
+    },
+    {
+      "name": "Establish Congregation",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-buildcongregation",
+      "text": "消耗 10 Divine Schema 建立 Mekhanite Congregation。",
+      "location": "可渗透的人类聚居地",
+      "limit": "我方 Agent；当地合格且未达到 Congregation 上限。",
+      "statLine": "Complexity: 50\nProfile: 50\nMenace: 0\nXP: 72",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Holy Transmission",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-increasemekpreference",
+      "text": "消耗 Divine Schema，使当地统治者皈依 Mekhanites；统治者 Shadow 与 Word of Mouth 降低费用。",
+      "location": "有统治者的人类聚居地",
+      "limit": "持有足够 Divine Schema。",
+      "statLine": "Complexity: 50\nProfile: 90\nMenace: 0\nXP: 72",
+      "image": "icon_wordofmouth.png"
+    },
+    {
+      "name": "Impart Mekhanite Knowledge",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-rulerschema",
+      "text": "把 Divine Schema 转交当地统治者。",
+      "location": "Mekhanite 统治者所在聚居地",
+      "limit": "携带足够 Divine Schema。",
+      "statLine": "Complexity: 20\nProfile: 90\nMenace: 0\nXP: 36",
+      "image": "icon_wordofmouth.png"
+    },
+    {
+      "name": "Mechanical Salvage",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-ruintopiece",
+      "text": "从废墟中取得 1 Piece。",
+      "location": "City Ruins",
+      "limit": "Mechanical Salvage 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 50\nProfile: 500\nMenace: 0\nXP: 72",
+      "image": "icon_powerunearth_orange.png"
+    },
+    {
+      "name": "Blood and Iron",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-deathtopiece",
+      "text": "消耗 25 Death，得到 1 Piece。",
+      "location": "Death 或 <CrossReference name=\"Clockwork Death\" href=\"#entry-pr-mek-clockworkvirusdead\" /> 至少 25 的地点",
+      "limit": "Blood and Iron 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_red.png"
+    },
+    {
+      "name": "Impossible Geometry",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-madnesstopiece",
+      "text": "消耗 15 Madness，得到 1 Piece。",
+      "location": "Madness 至少 15 的地点",
+      "limit": "Impossible Geometry 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_pink.png"
+    },
+    {
+      "name": "Abyssal Ores",
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-deeponestopiececult",
+      "text": "Deep One Cult 强度 +15，并取得 1 Piece。",
+      "location": "Deep One Cult",
+      "limit": "Abyssal Ore 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_green.png"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-infiltrate",
+      "name": "Maxwellist Infiltration",
+      "text": "使当地一个兴趣点进入已渗透状态。",
+      "image": "/locations/game/infiltrate.png",
+      "meta": "Intrigue",
+      "baseGame": false,
+      "location": "使用 MEKHANE 时向已有聚居地加入。资源转化取决于对应教义及修正；Geomantic Locus 相关两项只在当地具有该修正时加入。实际执行还受每个行动限制。",
+      "limit": "仅 Maxwellist Infiltrator。",
+      "statLine": "Complexity: 50 + 25 × Security\nProfile: 200\nMenace: 20\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-infiltrateawareness",
+      "name": "Maxwellist Disinformation",
+      "text": "将当地统治者 Awareness 设为 0%，持续 30 回合。",
+      "image": "/locations/game/infiltrate.png",
+      "meta": "Intrigue",
+      "baseGame": false,
+      "location": "使用 MEKHANE 时向已有聚居地加入。资源转化取决于对应教义及修正；Geomantic Locus 相关两项只在当地具有该修正时加入。实际执行还受每个行动限制。",
+      "limit": "仅 Maxwellist Infiltrator；当地渗透度 ≥50%。",
+      "statLine": "Complexity: 50 + 25 × Security；当地完全渗透时减半\nProfile: 200\nMenace: 20\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-2--place-task-3591348120-ch-locitopiece",
+      "name": "Harvest Information",
+      "text": "消耗 30 Geomantic Locus，以 Piece 填满物品栏空位。",
+      "image": "/locations/mod/God_MEKHANE.iconmekspell3.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "Geomantic Locus 至少 30 的地点",
+      "limit": "仅 Intelligence。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21"
+    },
+    {
+      "id": "place-hook-3591348120-3",
+      "name": "人类聚居地的 Mekhanite 宣讲",
+      "text": "使用 MEKHANE 时加入 Speaker 的宣讲行动。\n\n对应地点 / 兴趣点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "name": "Speaker's Sermon",
+      "id": "god-place-place-hook-3591348120-3--place-task-3591348120-ch-mek-increasemekpreferencespeaker",
+      "meta": "Other",
+      "text": "创建 Speaker's Sermon，按当地人口获得最多 3 Divine Schema。",
+      "location": "有统治者的人类聚居地",
+      "limit": "仅 Speaker。",
+      "statLine": "Complexity: max(5, 30 − 统治者 Shadow 百分点 ×0.25)\nProfile: 50\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "无",
+      "image": "icon_orthodoxsermon.png"
+    },
+    {
+      "id": "place-hook-3591348120-4",
+      "name": "城市的 Containment Vault 建造",
+      "text": "使用 MEKHANE 且启用 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 挑战选项时加入；执行者须符合英雄建造条件。\n\n对应地点 / 兴趣点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-4--place-task-3591348120-ch-mek-vault-hero-create",
+      "name": "Create Containment Vault",
+      "text": "使用携带的 Relic 建立 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />，并将它存入。",
+      "image": "/locations/mod/God_MEKHANE.icon_vault.png",
+      "meta": "Command",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />",
+      "limit": "世界恐慌 ≥25%，Alliance 存在；执行者携带 Relic。",
+      "statLine": "Complexity: 30\nProfile: 90 + 世界恐慌 / 4\nMenace: 0\nXP: 49",
+      "positiveTags": "无",
+      "negativeTags": "Shadow、Mekhanites"
+    },
+    {
+      "id": "place-hook-3591348120-5",
+      "name": "Orc Camp 的 MEKHANE 转化",
+      "text": "使用 MEKHANE，具有对应 Orc 教义，且营地有 Orcish Industry 时加入。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_evil_orc.png"
+    },
+    {
+      "name": "Orcish Tools",
+      "id": "god-place-place-hook-3591348120-5--place-task-3591348120-ch-industrytopiece",
+      "text": "Orcish Industry +10，并得到 1 Piece。",
+      "location": "已渗透 Orc Camp，Orcish Industry 至少 10",
+      "limit": "Orcish Tools 生效；物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_yellow.png"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-place-hook-3591348120-2",
+      "name": "聚居地中的 MEKHANE 行动",
+      "blocks": [
         {
-          "name": "Mekhanite Congregation",
-          "id": "sub-mek-congregation",
-          "text": "组件仓库与基础组装场所。具有独立 Profile 与最低 Profile；组装、调查和隐藏行动会改变它们。可专业化为 Citadel、Forge 或 Maxwellist Relay。",
-          "image": "icon_subcongregation.png"
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3591348120-2"
+          ]
         },
         {
-          "name": "Citadel",
-          "id": "sub-mek-congregationtower",
-          "text": "由 Towers of Change 建立，保留库存与 Profile。Tower of Change 培育 Metalsmith，并向普通 Acolyte 分发 Divine Schema。",
-          "image": "icon_subcongregation.png"
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-hero-raisesuspicion",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-hero-shrinkrotbolt"
+          ]
         },
         {
-          "name": "Orthodox Forge",
-          "id": "sub-mek-forge",
-          "text": "由 Standardization 建立的 Cogwork Orthodoxy 制造中心，开放 Clockwork Mechanism、Cogwork Relic 与 Automatons，并具有 Production。",
-          "image": "icon_subcongregation.png"
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-maxwellist-connection",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-buildcongregation",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-increasemekpreference",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-rulerschema",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-ruintopiece",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-deathtopiece",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-madnesstopiece",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-deeponestopiececult"
+          ]
         },
         {
-          "name": "Maxwellist Relay",
-          "id": "sub-mek-relay",
-          "text": "由 Apotheosis 建立，开放 Arcane Components 与 Constructs，并通过 Signal 支援连接网络。",
-          "image": "icon_subcongregation.png"
-        },
-        {
-          "name": "Exile Community",
-          "id": "sub-mek-exiles",
-          "text": "由 Fragmented Following 建立。Exile 在此实验，制造 Unorthodox Piece 和具有自主破坏能力的实验体。",
-          "image": "icon_subexiles.png"
-        },
-        {
-          "name": "Orcish Congregation",
-          "id": "sub-mek-congregationorc",
-          "text": "Orcish Tools 达到最高 Elder Influence 后，在已渗透 Orc Fortress 中建立；库存 Relics 强化当地防御与军队。",
-          "image": "icon_subcongregation.png"
-        },
-        {
-          "name": "Abyssal Congregation",
-          "id": "sub-mek-congregationabyssal",
-          "text": "Abyssal Ore 达到最高 Elder Influence 后在 Abyssal City 中建立。用于保存组件，不累积 Profile。",
-          "image": "icon_subcongregation.png"
-        },
-        {
-          "name": "Containment Vault",
-          "id": "sub-mek-vault",
-          "text": "英雄把夺取的 Relics 送来收容，推动 Vault Research；Foundation 启用后可发展为重新封印 MEKHANE 的威胁。",
-          "image": "icon_vault.png"
-        },
-        {
-          "name": "Sarkic Temple",
-          "id": "sub-mek-sarkictemple",
-          "text": "Sarkic 自主人物的活动中心，提供晋升、研究与扩张任务。具有独立 Profile；可通过调查与曝光再进行摧毁。",
-          "image": "icon_sarkicpresence.png"
-        },
-        {
-          "name": "Flesh That Hates",
-          "id": "sub-mek-sarkicfleshthathates",
-          "text": "Unleash the Red Death 建立的活体设施，产生 Red Death，并能孕育 Raging Flesh。",
-          "image": "icon_sarkic_fleshthathates.png"
+          "title": "自主单位任务",
+          "entryIds": [
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-infiltrate",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-mek-infiltrateawareness",
+            "god-place-place-hook-3591348120-2--place-task-3591348120-ch-locitopiece"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-place-hook-3591348120-3",
+      "name": "人类聚居地的 Mekhanite 宣讲",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3591348120-3"
+          ]
+        },
+        {
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-place-hook-3591348120-3--place-task-3591348120-ch-mek-increasemekpreferencespeaker"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-4",
+      "name": "城市的 Containment Vault 建造",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3591348120-4"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-place-hook-3591348120-4--place-task-3591348120-ch-mek-vault-hero-create"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-5",
+      "name": "Orc Camp 的 MEKHANE 转化",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3591348120-5"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-3591348120-5--place-task-3591348120-ch-industrytopiece"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_evil_orc.png"
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "name": "Mekhanite Congregation",
+      "id": "sub-mek-congregation",
+      "text": "组件仓库与基础组装场所。具有独立 Profile 与最低 Profile；组装、调查和隐藏行动会改变它们。可专业化为 Citadel、Forge 或 Maxwellist Relay。\n\n出现方式\n<CrossReference name=\"Congregate\" href=\"#entry-p-mek-congregate\" meta=\"神力\" text=\"建立 Congregation，并产生一名普通 Acolyte。第一次同时建立 Church of the Broken God、生成 The Supplicant，将 Agent 上限从 0 提高到 2；首次免费，此后每次消耗 1。\n当地可渗透设施全部完成渗透，普通 Temple 被移除，已有 Minor Sect 被移除。Congregation 数量上限为 2 + 已解封数，并受相应教义增加。\" image=\"./mekhane/icon_subcongregation.png\" /> 神力或 Build Congregation 建立。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n可以执行：<CrossReference name=\"通用\" href=\"#god-place-mekhane-common\" meta=\"共用行动\" text=\"六种据点共用的组件储存、取出及祈祷行动。\" />、<CrossReference name=\"除Abyssal外通用\" href=\"#god-place-mekhane-common-non-abyssal\" meta=\"共用行动\" text=\"除 Abyssal Congregation 外的共用挑战与英雄任务；普通组装两项仅限 Congregation、Orcish Congregation 和 Citadel。\" />。",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Hide Mekhanites",
+      "id": "god-place-location-sub-mek-congregation--ruler-act-mek-convertbasehidecongregation",
+      "text": "消耗 3 Divine Schema，使 Congregation Profile −25。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "统治者喜好 Mekhanites，当前 Profile 高于最低值；不在 Mekhanite Kingdom 内。",
+      "time": "10 回合",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "Gold",
+      "image": "icon_powerhiddenworks.png"
+    },
+    {
+      "name": "Dismantle Congregation",
+      "id": "god-place-location-sub-mek-congregation--ruler-act-mek-awaredestroycongregation",
+      "text": "消耗 100 Gold，拆除 Congregation。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "Gold 超过 100，对 Mekhanites 的偏好不高于 0，Congregation Profile 至少 50。",
+      "time": "15 回合",
+      "positiveTags": "Combat",
+      "negativeTags": "Gold、Mekhanites",
+      "image": "icon_powerfalseimage.png"
+    },
+    {
+      "name": "Expose Congregation",
+      "id": "god-place-location-sub-mek-congregation--ruler-act-mek-awareexposecongregation",
+      "text": "消耗 150 Gold，当前 Profile −20，最低 Profile +10。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "Gold 超过 150，对 Mekhanites 的偏好不高于 0，当前 Profile 高于最低值。",
+      "time": "10 回合",
+      "positiveTags": "Combat",
+      "negativeTags": "Gold、Mekhanites、Shadow"
+    },
+    {
+      "name": "Investigate Congregation",
+      "id": "god-place-location-sub-mek-congregation--ruler-act-mek-awareinvestigatecongregation",
+      "text": "消耗 100 Gold，创建 Recent Investigations。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "Gold 超过 100，世界恐慌至少 10%，Congregation Profile 至少 5，对 Mekhanites 的偏好不高于 0；没有正在进行的调查修正。",
+      "time": "10 回合",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites"
+    },
+    {
+      "name": "Abyssal Congregation",
+      "id": "sub-mek-congregationabyssal",
+      "text": "Abyssal Ore 达到最高 Elder Influence 后在 Abyssal City 中建立。用于保存组件，不累积 Profile。\n\n出现方式\nAbyssal Ore 最高 Elder Influence 下，在合格 <CrossReference name=\"Abyssal City\" href=\"?page=locations#entry-location-set-deeponeabyssalcity\" meta=\"地点\" text=\"地下海洋中的 Deep One 聚居地，防御上限为 50。人口超过 50 后会尝试向相邻地下海洋扩张：新城市分得 25 人口；向已有合格城市迁移时转移本城人口的 25%。\n\n出现方式\nDeep One Sanctum 引导人口入海后建立；也可由已有 Abyssal City 扩张。普通城市固定带 Abyssal City 兴趣点；建设 Armory 或 Cathedral 时可能新建特殊城市，或在既有城市中增加对应兴趣点。\n\n可能配置的兴趣点\nAbyssal Armory、Abyssal Cathedral、Abyssal City。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_evil_deepOneCity.png\" target=\"_blank\" /> 中生成。\n\n可出现地点\n<CrossReference name=\"Abyssal City\" href=\"?page=locations#entry-location-set-deeponeabyssalcity\" meta=\"地点\" text=\"地下海洋中的 Deep One 聚居地，防御上限为 50。人口超过 50 后会尝试向相邻地下海洋扩张：新城市分得 25 人口；向已有合格城市迁移时转移本城人口的 25%。\n\n出现方式\nDeep One Sanctum 引导人口入海后建立；也可由已有 Abyssal City 扩张。普通城市固定带 Abyssal City 兴趣点；建设 Armory 或 Cathedral 时可能新建特殊城市，或在既有城市中增加对应兴趣点。\n\n可能配置的兴趣点\nAbyssal Armory、Abyssal Cathedral、Abyssal City。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_evil_deepOneCity.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n可以执行：<CrossReference name=\"通用\" href=\"#god-place-mekhane-common\" meta=\"共用行动\" text=\"六种据点共用的组件储存、取出及祈祷行动。\" />。",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Orcish Congregation",
+      "id": "sub-mek-congregationorc",
+      "text": "Orcish Tools 达到最高 Elder Influence 后，在已渗透 Orc Fortress 中建立；库存 Relics 强化当地防御与军队。\n\n出现方式\n<CrossReference name=\"Orcish Tools\" href=\"#entry-ch-industrytopiece\" /> 最高 Elder Influence 下，在合格、已渗透的 Orc <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" /> 中生成。\n\n可出现地点\n<CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n可以执行：<CrossReference name=\"通用\" href=\"#god-place-mekhane-common\" meta=\"共用行动\" text=\"六种据点共用的组件储存、取出及祈祷行动。\" />、<CrossReference name=\"除Abyssal外通用\" href=\"#god-place-mekhane-common-non-abyssal\" meta=\"共用行动\" text=\"除 Abyssal Congregation 外的共用挑战与英雄任务；普通组装两项仅限 Congregation、Orcish Congregation 和 Citadel。\" />。",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Orcish Tools",
+      "id": "god-place-location-sub-mek-congregationorc--place-task-3591348120-ch-industrytopiece",
+      "text": "Orcish Industry +10，并得到 1 Piece。",
+      "location": "已渗透 Orc Camp，Orcish Industry 至少 10",
+      "limit": "Orcish Tools 生效；物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_yellow.png"
+    },
+    {
+      "name": "Citadel",
+      "id": "sub-mek-congregationtower",
+      "text": "由 Towers of Change 建立，保留库存与 Profile。Tower of Change 培育 Metalsmith，并向普通 Acolyte 分发 Divine Schema。\n\n出现方式\n<CrossReference name=\"Towers of Change\" href=\"#entry-p-mek-towerofchange\" meta=\"神力\" text=\"把 Congregation 改为 Citadel，保留库存、Profile 与最低 Profile。以此为故乡的普通 Acolyte 转为 Metalsmith，改为提供教派增益；Citadel 支持向普通 Acolyte 分发 Divine Schema。\n尚未解锁 The Clockworks 时，使其解锁回合提前 10。\" image=\"./mekhane/icon_tower.png\" /> 替换已有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n可以执行：<CrossReference name=\"通用\" href=\"#god-place-mekhane-common\" meta=\"共用行动\" text=\"六种据点共用的组件储存、取出及祈祷行动。\" />、<CrossReference name=\"除Abyssal外通用\" href=\"#god-place-mekhane-common-non-abyssal\" meta=\"共用行动\" text=\"除 Abyssal Congregation 外的共用挑战与英雄任务；普通组装两项仅限 Congregation、Orcish Congregation 和 Citadel。\" />。",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Exile Community",
+      "id": "sub-mek-exiles",
+      "text": "由 Fragmented Following 建立。Exile 在此实验，制造 Unorthodox Piece 和具有自主破坏能力的实验体。\n\n出现方式\n<CrossReference name=\"Fragmented Following\" href=\"#entry-p-mek-exiles\" meta=\"神力\" text=\"建立 Mekhanite Exiles，移除当地 Minor Sect 及普通 Temple。Exile 通过实验制造灾害并干扰其他地点。\" image=\"./mekhane/icon_subexiles.png\" /> 在合格地点建立。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "icon_subexiles.png"
+    },
+    {
+      "name": "Unorthodox Experiment",
+      "id": "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exileexperiment",
+      "meta": "Lore",
+      "text": "尝试产生 Unorthodox Piece，供实验组装使用。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "仅 Mekhanite Exile。",
+      "statLine": "Complexity: 10\nProfile: 50\nMenace: 0\nXP: 21",
+      "positiveTags": "Shadow、Discord",
+      "negativeTags": "无",
+      "image": "icon_subexiles.png"
+    },
+    {
+      "name": "Experiment with Cogworks",
+      "id": "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exile-assembledevastation",
+      "text": "消耗 3 Unorthodox Piece，制造 Rampaging Experiment；设施 Profile +10。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
+      "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
+      "image": "icon_exileExperiment.png"
+    },
+    {
+      "name": "Experiment with the Arcane",
+      "id": "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exile-assemblemadness",
+      "text": "消耗 3 Unorthodox Piece，制造 Maddening Machine；设施 Profile +10。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
+      "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
+      "image": "icon_exileExperiment3.png"
+    },
+    {
+      "name": "Experiment with Shadow",
+      "id": "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exile-assembleshadow",
+      "text": "消耗 3 Unorthodox Piece，制造 False Image；设施 Profile +10。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
+      "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
+      "image": "icon_exileExperiment2.png"
+    },
+    {
+      "name": "Investigate Exiles",
+      "id": "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-hero-investigateexile",
+      "meta": "Intrigue",
+      "text": "Profile +25；有 5% 概率使英雄对 Mekhanites 的偏好降低。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "Awareness 超过 50%，设施 Profile 低于 50。",
+      "statLine": "Complexity: 25\nProfile: 50\nMenace: 0\nXP: 42",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites、Discord、Religion",
+      "image": "icon_minorsect.png"
+    },
+    {
+      "name": "Raid Exiles",
+      "id": "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-hero-raidexile",
+      "meta": "Intrigue",
+      "text": "Profile 超过 100 时进行摧毁判定，成功后移除设施并重置当地 Shadow 与 Infiltration；未摧毁时 Profile +25。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "个人 Shadow 未满，设施 Profile 至少 50。",
+      "statLine": "Complexity: 25\nProfile: 50\nMenace: 0\nXP: 42",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites、Discord、Religion",
+      "image": "icon_minorsect.png"
+    },
+    {
+      "name": "Orthodox Forge",
+      "id": "sub-mek-forge",
+      "text": "由 Standardization 建立的 Cogwork Orthodoxy 制造中心，开放 Clockwork Mechanism、Cogwork Relic 与 Automatons，并具有 Production。\n\n出现方式\n<CrossReference name=\"Standardization\" href=\"#entry-p-mek-spreadorthodoxy\" meta=\"神力\" text=\"把 Congregation 改为 Forge，保留库存、Profile 与最低 Profile，以生产 Cogwork Components 与 Automatons 为主。相关 Acolyte 转为 Orthodox Legate。\n首次建立 Cogwork Orthodoxy；缺少有效 Council of Patriarchs 时在目标创建 Council。尚未解锁 Mechanical Choir 时，使其解锁回合提前 10。\" image=\"./mekhane/icon_subforge.png\" /> 替换已有 Congregation。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n可以执行：<CrossReference name=\"通用\" href=\"#god-place-mekhane-common\" meta=\"共用行动\" text=\"六种据点共用的组件储存、取出及祈祷行动。\" />、<CrossReference name=\"除Abyssal外通用\" href=\"#god-place-mekhane-common-non-abyssal\" meta=\"共用行动\" text=\"除 Abyssal Congregation 外的共用挑战与英雄任务；普通组装两项仅限 Congregation、Orcish Congregation 和 Citadel。\" />。\n其中 Assemble Mechanism、Assemble Relic 由本据点的 Cogwork 组装行动替代。",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Assemble Cogwork Mechanism",
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-assemblecogworkmechanism",
+      "text": "3 Piece 合成 1 Clockwork Mechanism；Congregation Profile +4。Council of Patriarchs 可降低材料费用。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemcogworkmechanism.png"
+    },
+    {
+      "name": "Gild Basic Mechanism",
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-assemblecogworkmechanismconversion",
+      "text": "将 1 Mechanism 转为 1 Clockwork Mechanism，另支付 Gold；Congregation Profile +3。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "材料与 Gold 足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemcogworkmechanism.png"
+    },
+    {
+      "name": "Assemble Cogwork Relic",
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-assemblecogworkrelic",
+      "text": "3 Clockwork Mechanism 合成 1 Cogwork Relic；Congregation Profile +10，并获得 Divine Schema。Council of Patriarchs 可降低材料费用。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
+      "image": "icon_itemcogworkrelic.png"
+    },
+    {
+      "name": "Assemble Gatherer",
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-automaton-basic",
+      "text": "组装 Gatherer。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Gatherer 数)。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
+      "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
+      "image": "icon_automaton.png"
+    },
+    {
+      "name": "Assemble Sentinel",
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-automaton-sentinel",
+      "text": "组装 Sentinel。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Sentinel 数)。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
+      "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
+      "image": "icon_automaton_sentry.png"
+    },
+    {
+      "name": "Assemble Speaker",
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-automaton-speaker",
+      "text": "组装 Speaker。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Speaker 数)。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
+      "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
+      "image": "icon_automaton_speaker.png"
+    },
+    {
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-councilschema",
+      "name": "Centralized Knowledge",
+      "text": "花费 Gold 获得 1 Divine Schema。",
+      "image": "/locations/mod/God_MEKHANE.icon_orthodoxschema.png",
+      "meta": "固定进度",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "玩家人物，携带足够 Gold。",
+      "statLine": "Complexity: 5\nProfile: 40\nMenace: 5\nXP: 12"
+    },
+    {
+      "id": "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-councilhide",
+      "name": "Relocate Council",
+      "text": "消耗 Divine Schema，把 Council of Patriarchs 及其库存搬到这里。",
+      "image": "/locations/mod/God_MEKHANE.icon_orthodoxdistract.png",
+      "meta": "Command",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "玩家人物；Council 当前不在此地，且有足够 Divine Schema。",
+      "statLine": "Complexity: 30\nProfile: 40\nMenace: 5\nXP: 49"
+    },
+    {
+      "id": "location-sub-mek-mekhane",
+      "name": "MEKHANE’s Body",
+      "text": "MEKHANE 的建造地点，只接受 Divine Machines 推进重建。兴趣点自身不提供挑战；交付由携带组件的人物仪式处理。\n\n出现方式\n<CrossReference name=\"Begin Construction\" href=\"#entry-p-mek-body\" meta=\"神力\" text=\"建立 MEKHANE's Body 与对应设施，开始重组神体。此后英雄可以直接损伤神体，神体被摧毁会导致特殊失败。\" image=\"./mekhane/icon_powermekhane.png\" /> 放在合格地点；空地先创建野外兴趣点载体并清除默认遗迹。\n\n可出现地点\n<CrossReference name=\"野外兴趣点地点\" href=\"?page=locations#entry-location-set-minorother\" meta=\"地点\" text=\"用于承载遗迹、奇观与女巫据点。普通构造时带 Ancient Ruins；若用于生成奇观或女巫据点，生成器会清除这份默认遗迹后放入实际兴趣点。\n\n出现方式\n未占用的非海洋地点可生成 Ancient Ruins；地图生成器另选址安放奇观与女巫据点。\n\n可能配置的兴趣点\nAncient Ruins、Temple、Heart of the Forest、Coven of Witches、Brother of Sleep、The Entrance、Primal Font。\n固定、随机与改建来源见各兴趣点。\n\n自身任务列表为空；当地修正、保留的兴趣点或特殊单位可能另提供行动。\" image=\"/locations/game/loc_minor_castle.png\" target=\"_blank\" />、<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n自身任务列表为空；当地修正、保留的兴趣点或特殊单位可能另提供行动。",
+      "image": "/locations/mod/God_MEKHANE.icon_mekhane.png",
+      "baseGame": false
+    },
+    {
+      "name": "Maxwellist Relay",
+      "id": "sub-mek-relay",
+      "text": "由 Apotheosis 建立，开放 Arcane Components 与 Constructs，并通过 Signal 支援连接网络。\n\n出现方式\n<CrossReference name=\"Apotheosis\" href=\"#entry-p-mek-spreadmaxwellism\" meta=\"神力\" text=\"把 Congregation 改为 Maxwellist Relay，保留库存、Profile 与最低 Profile，以 Arcane Components、Constructs 和 Maxwellist 法术为主。相关 Acolyte 转为 Living Saint。\n首次建立 Maxwellism，并创建主 Maxwellist Noosphere。\" image=\"./mekhane/icon_subrelay.png\" /> 替换已有 Congregation。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n可以执行：<CrossReference name=\"通用\" href=\"#god-place-mekhane-common\" meta=\"共用行动\" text=\"六种据点共用的组件储存、取出及祈祷行动。\" />、<CrossReference name=\"除Abyssal外通用\" href=\"#god-place-mekhane-common-non-abyssal\" meta=\"共用行动\" text=\"除 Abyssal Congregation 外的共用挑战与英雄任务；普通组装两项仅限 Congregation、Orcish Congregation 和 Citadel。\" />。\n其中 Assemble Mechanism、Assemble Relic 由本据点的 Arcane 组装行动替代。",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Assemble Arcane Mechanism",
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanemechanism",
+      "text": "3 Piece 合成 1 Arcane Mechanism；Congregation Profile +4。Noosphere 可降低材料费用。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemarcanemechanism.png"
+    },
+    {
+      "name": "Defragment Basic Mechanism",
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanemechanismconversion",
+      "text": "1 Mechanism 转为 1 Arcane Mechanism；Congregation Profile +3。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemarcanemechanism.png"
+    },
+    {
+      "name": "Assemble Arcane Relic",
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanerelic",
+      "text": "3 Arcane Mechanism 合成 1 Arcane Relic；Congregation Profile +10，并获得 Divine Schema。Noosphere 可降低材料费用。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
+      "image": "icon_itemarcanerelic.png"
+    },
+    {
+      "name": "Calculate Secret",
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanesecret",
+      "text": "消耗 3 Divine Schema，获得 1 Arcane Knowledge。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "持有足够 Divine Schema。",
+      "statLine": "Complexity: 40\nProfile: 0\nMenace: 0\nXP: 60",
+      "image": "iconmekspell2.png"
+    },
+    {
+      "name": "Assemble Infiltrator",
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-mek-maxwellist-infiltrator",
+      "text": "组装 Infiltrator。消耗 Arcane Mechanism 数量为 max(1, 3 − Noosphere 人口 /200 的整数部分 + 现存 Infiltrator 数)。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Living Saint；材料足够。",
+      "statLine": "Complexity: 30\nProfile: 200\nMenace: 5\nXP: 49",
+      "image": "icon_construct_infiltrator.png"
+    },
+    {
+      "name": "Assemble Intelligence",
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-mek-maxwellist-intelligence",
+      "text": "组装自主 Intelligence。消耗 Arcane Mechanism 数量为 max(1, 3 − Noosphere 人口 /200 的整数部分 + 现存 Intelligence 数)。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Living Saint；材料足够。",
+      "statLine": "Complexity: 40\nProfile: 20\nMenace: 0\nXP: 60",
+      "image": "icon_construct_intelligence.png"
+    },
+    {
+      "id": "god-place-location-sub-mek-relay--place-task-3591348120-ch-transferarcanerelics",
+      "name": "Transfer Arcane Relics",
+      "text": "把其他 Congregation 库存中的 Arcane Relics 转移到此 Relay。",
+      "image": "/locations/mod/God_MEKHANE.icon_itemarcanerelic.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "玩家控制的 Mekhanite。",
+      "statLine": "Complexity: 10\nProfile: 90\nMenace: 0\nXP: 21"
+    },
+    {
+      "name": "Flesh That Hates",
+      "id": "sub-mek-sarkicfleshthathates",
+      "text": "Unleash the Red Death 建立的活体设施，产生 Red Death，并能孕育 Raging Flesh。\n\n出现方式\n<CrossReference name=\"Unleash the Red Death\" href=\"#entry-ch-mek-sarkicreddeath\" /> 建立，后可由 Raging Flesh 在合格聚居地传播。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "icon_sarkic_fleshthathates.png"
+    },
+    {
+      "name": "Unleash the Red Death",
+      "id": "god-place-location-sub-mek-sarkicfleshthathates--place-task-3591348120-ch-mek-sarkicreddeath",
+      "meta": "Command",
+      "text": "消耗 20 Sarkic Insights，向世界释放 The Flesh That Hates 和 Red Death。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist，Deathless Empire 已成立且此前没有释放。",
+      "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkic_fleshthathates.png"
+    },
+    {
+      "name": "Sarkic Temple",
+      "id": "sub-mek-sarkictemple",
+      "text": "Sarkic 自主人物的活动中心，提供晋升、研究与扩张任务。具有独立 Profile；可通过调查与曝光再进行摧毁。\n\n出现方式\nSarkic 初始据点、建殿行动、宗教扩张与 Ritual Power 扩展流程均可建立。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "icon_sarkicpresence.png"
+    },
+    {
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicheroinvestigate",
+      "name": "Investigate Sarkics",
+      "text": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> Profile +10，Sarkic Cult 的 Elder Influence +10，同时提高教派对我方的敌意。",
+      "image": "/locations/game/clues.png",
+      "meta": "Command",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 0\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "positiveTags": "Danger",
+      "negativeTags": "Disease、Sarkics"
+    },
+    {
+      "name": "Investigate Sarkics",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicagentinvestigate",
+      "text": "Sarkic Temple Profile +10，Sarkic Cult 的 Elder Influence +10，同时提高教派对我方的敌意。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 0\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "image": "base-clues.png"
+    },
+    {
+      "name": "Expose Sarkics",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicagentexpose",
+      "text": "Temple Profile +30。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "我方 Agent；Profile 低于 100。",
+      "statLine": "Complexity: 40\nProfile: 90 + 已解封数 ×20 + Sarkic Temple Profile\nMenace: 0\nXP: 60",
+      "image": "icon_sarkicspell2.png"
+    },
+    {
+      "name": "Destroy Sarkic Temple",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicdestroytemple",
+      "text": "摧毁 Sarkic Temple。",
+      "location": "Profile 达到 100 的 <CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Killing Blows 生效；Mekhanite，排除 Automaton。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 90\nMenace: 0\nDanger: 30\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "image": "base-war.png"
+    },
+    {
+      "name": "Divert Attention",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkichidetemple",
+      "meta": "Intrigue",
+      "text": "消耗 3 Sarkic Insights，Temple Profile −15。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Sarkic 人物；Counter-Infiltration 会阻止降低 Profile。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkichide.png"
+    },
+    {
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicconvertsecrets",
+      "name": "Imbue Knowledge",
+      "text": "消耗 Sarkic Insights，增加 Sarkic 教团的 Human Influence。",
+      "image": "/locations/mod/God_MEKHANE.icon_sarkic1.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "执行者信奉 Sarkicism；影响力尚未达到修改教义所需数值，相关教义允许使用。",
+      "statLine": "Complexity: 15\nProfile: 50\nMenace: 0\nXP: 29",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无"
+    },
+    {
+      "name": "Karcist Ascension",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkickarcist",
+      "meta": "Lore",
+      "text": "使选定的 Sarkic Cultist 晋升为 Karcist；Temple Profile +10。消耗 Sarkic Insights：当前没有 Karcist 时为 1，否则为现存 Karcist 数 ×10。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Karcist Ascension 生效；仅教团选定的继任者，Insights 足够。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicKarcist.png"
+    },
+    {
+      "name": "Mutate",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicmutate",
+      "meta": "Lore",
+      "text": "消耗 2 Sarkic Insights，取得或升级一项 Sarkic Mutation。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Applied Mutations 生效，已有突变总等级低于人物等级。",
+      "statLine": "Complexity: 10\nProfile: 200\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicpop.png"
+    },
+    {
+      "name": "Sarkic Initiation",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicrecruit",
+      "meta": "Command",
+      "text": "消耗 5 Sarkic Insights，招募 Sarkic Cultist。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Karcist。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_acolyte1sf.png"
+    },
+    {
+      "name": "Recruit Sarkic Initiate Minion",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkic-recruitminion",
+      "meta": "Command",
+      "text": "消耗 3 Sarkic Insights，招募 Sarkic Initiate 随从。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Sarkic 人物。",
+      "statLine": "Complexity: 3\nProfile: 90\nMenace: 0\nXP: 8",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkic_cultist.png"
+    },
+    {
+      "name": "Convert Ruler",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicpreference",
+      "meta": "Command",
+      "text": "消耗 5 Sarkic Insights，使统治者皈依 Sarkic。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
+      "limit": "Sarkic 人物，目标符合转化条件。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicconvert.png"
+    },
+    {
+      "name": "Karcist's Sermon",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicsermon",
+      "meta": "Command",
+      "text": "消耗 5 Sarkic Insights，创建 Karcist's Sermon。",
+      "location": "有统治者的人类聚居地",
+      "limit": "Karcist；目标不在 Alliance，且尚未完全渗透或完全 Enshadowed。",
+      "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicsermon.png"
+    },
+    {
+      "name": "Unleash the Red Death",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicreddeath",
+      "meta": "Command",
+      "text": "消耗 20 Sarkic Insights，向世界释放 The Flesh That Hates 和 Red Death。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist，Deathless Empire 已成立且此前没有释放。",
+      "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkic_fleshthathates.png"
+    },
+    {
+      "name": "Root Out Infiltration",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkic-security",
+      "meta": "Intrigue",
+      "text": "消耗 10 Sarkic Insights，清除当地 Infiltration。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
+      "limit": "Karcist；地点已有渗透。",
+      "statLine": "Complexity: 25\nProfile: 500\nMenace: 0\nXP: 42",
+      "positiveTags": "Sarkics",
+      "negativeTags": "Mekhanites",
+      "image": "icon_sarkicshadow.png"
+    },
+    {
+      "name": "Form Deathless Empire",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicempire",
+      "meta": "Command",
+      "text": "建立 Deathless Empire，吸纳 Sarkic 地区并可能引起内战。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist。",
+      "statLine": "Complexity: 50\nProfile: 50\nMenace: 0\nXP: 72",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicempire.png"
+    },
+    {
+      "name": "Grand Karcist Ascension",
+      "id": "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicgrandkarcist",
+      "meta": "Command",
+      "text": "使 Karcist 晋升为 Grand Karcist。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist 教义生效，尚无已选定的最高领袖。需要至少 15 Sarkic Insights；完成函数没有扣除该资源。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "base-deepOnes.png"
+    },
+    {
+      "name": "Containment Vault",
+      "id": "sub-mek-vault",
+      "text": "英雄把夺取的 Relics 送来收容，推动 Vault Research；Foundation 启用后可发展为重新封印 MEKHANE 的威胁。\n\n出现方式\n由知情统治者、携带 Relic 的英雄或 MEKHANE 的对应开局选项建立；主要位于合格国家的首都。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "icon_vault.png"
+    },
+    {
+      "name": "Contain Relics",
+      "id": "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-hero-storerelics",
+      "meta": "Other",
+      "text": "把携带的 Relics 放入 Vault，增加其研究速度。",
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "英雄携带可收容的 Relic。",
+      "statLine": "Complexity: 3\nProfile: 90 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 8",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites",
+      "image": "icon_vault.png"
+    },
+    {
+      "id": "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-hero-learn",
+      "name": "Study Enemy",
+      "text": "获得 Specialist: Mekhanite。",
+      "image": "/locations/mod/God_MEKHANE.icon_brokenchurchshadow.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "世界恐慌 ≥50%；执行者 Awareness ≥50%，不是 Mekhanite 或 Biomechanical，尚无该特质。",
+      "statLine": "Complexity: 3\nProfile: 90 + 世界恐慌 / 4\nMenace: 0\nXP: 8",
+      "positiveTags": "Co-Operation",
+      "negativeTags": "Shadow、Mekhanites"
+    },
+    {
+      "name": "Raid Vault",
+      "id": "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-raid",
+      "text": "夺回库存中的 Relics，并将 Vault Research 重置为 1。",
+      "location": "已渗透的 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Mekhanite，排除 Automaton；物品栏有空位。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 90\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "image": "base-raid.png"
+    },
+    {
+      "id": "god-place-location-sub-mek-vault--place-task-base-ch-infiltrate",
+      "name": "Infiltrate",
+      "text": "渗透一个兴趣点，解锁依赖它的行动。",
+      "image": "/locations/game/infiltrate.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Catacombs\" href=\"?page=points-of-interest#entry-location-sub-catacombs\" meta=\"兴趣点\" text=\"当地 Death 低于 200 时，每回合从每个相邻地点吸收最多 5 Death，并转入当地。200 是开始吸收前的检查值，多个邻地同时转入时可以越过该值。\n\n出现方式\n普通小型聚居地生成 Holy Site 后，另有 50% 概率配置。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/catacombs.png\" target=\"_blank\" />、<CrossReference name=\"Holy Site / Desecrated Holy Site\" href=\"?page=points-of-interest#entry-location-sub-cathedral\" meta=\"兴趣点\" text=\"未被亵渎时提供 Consecrate、Desecrate Holy Site 与 Cleanse Own Soul；仍可提供适用的 Blasphemous Rituals。\n被亵渎后每回合增加当地 Shadow 1%，最高 100%。Dark Empire 会使其进入亵渎状态；Ophanim 控制会解除该状态；亵渎的圣所在 Alliance 中每回合增加 2 Menace。\n\n出现方式\n小型人类聚居地的随机候选；附近已有 Holy Site 时，不加入新地点的候选池。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cathedral.png\" target=\"_blank\" />、<CrossReference name=\"City Palace\" href=\"?page=points-of-interest#entry-location-sub-city\" meta=\"兴趣点\" text=\"城市的政治中心。除 Infiltrate、Enshadow、招募与训练外，按国家首都、Alliance、政治不稳定等条件提供外交、Conclave、Dark Coronation 等任务。\n随从招募：Sellsword 供双方招募；Knight 通常属于英雄招募，Dark Empire 或 Ophanim Theocracy 中转为黑暗阵营招募。统治者 Shadow <50%、Awareness >90% 时，另加入英雄的 Paladin 招募。\n\n出现方式\nCity 创建时固定配置。\n\n可出现地点\nCity。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cityCentre.png\" target=\"_blank\" />、<CrossReference name=\"Docks\" href=\"?page=points-of-interest#entry-location-sub-docks\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，并提供 Malign Catch、Plague Ships 与渗透。\n\n出现方式\n沿海 City 创建时固定配置。\n\n可出现地点\nCity。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/docks.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=points-of-interest#entry-location-sub-elvencity\" meta=\"兴趣点\" text=\"精灵城市的中心兴趣点，提供渗透与训练，以及符合首都、国际关系和政治不稳定条件的外交任务。\n\n出现方式\nElven City 创建时固定配置。\n\n可出现地点\nElven City。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cityCentre.png\" target=\"_blank\" />、<CrossReference name=\"Farming Community / Mushroom Farm\" href=\"?page=points-of-interest#entry-location-sub-farms\" meta=\"兴趣点\" text=\"粮食生成倍率为 2。位于地下时名称变为 Mushroom Farm；还可渗透。\n\n出现方式\n小型人类聚居地的随机候选；Escamrak 创建部分 Living Settlement 时也会加入。\n\n可出现地点\n小型人类聚居地、Living Settlement。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/farms.png\" target=\"_blank\" />、<CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />、<CrossReference name=\"Gold Mine\" href=\"?page=points-of-interest#entry-location-sub-goldmine\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，并每回合给当地统治者 1 Gold。\n\n出现方式\n矮人城市或据点的随机候选。\n\n可出现地点\nDwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/orcMines.png\" target=\"_blank\" />、<CrossReference name=\"Seat of Holy Order\" href=\"?page=points-of-interest#entry-location-sub-holyordercapital\" meta=\"兴趣点\" text=\"教团的权力中心。继承 Temple 的任务，额外提供 Enshadow 与满足教义条件的 The Hunger’s Promise。为当地提供 2 Security 加成。\n\n出现方式\n地图生成教团时安放，通常替换所在地第一个兴趣点；该地点也成为教团的政治据点。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/holyOrderSeat.png\" target=\"_blank\" />、<CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" />、<CrossReference name=\"Market\" href=\"?page=points-of-interest#entry-location-sub-market\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，配置 3 个商品购买槽。商品由 Buy Item 的刷新逻辑决定，Prosperity 影响物品品质；渗透后可 Force Restock。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/market.png\" target=\"_blank\" />、<CrossReference name=\"Vast Sewers\" href=\"?page=points-of-interest#entry-location-sub-sewers\" meta=\"兴趣点\" text=\"城市地下管网。渗透后可传播 Plague，并招募此处配置的 Vermin。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/sewers.png\" target=\"_blank\" />、<CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />、<CrossReference name=\"Cave Fortress\" href=\"?page=points-of-interest#entry-location-sub-undergroundfort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限。\n\n出现方式\n人类向地下建立殖民据点时配置；该流程最多保留规定数量的其他兴趣点后加入本堡垒。\n\n可出现地点\nCity、小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />、<CrossReference name=\"Coven of Witches\" href=\"?page=points-of-interest#entry-location-sub-witchcoven\" meta=\"兴趣点\" text=\"可渗透的野外女巫据点，防御加成 50。渗透后可利用 Enshadow、Dark Worship 以及 Crow 招募；Menace 增长可能引来人类军队摧毁兴趣点。\n\n出现方式\n采用旧式女巫据点生成方式时放入野外兴趣点地点；宗教模式下的女巫 Temple 是另一种实现。\n\n可出现地点\n野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/coven.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Fortress\" href=\"?page=points-of-interest#entry-location-sub-dwarffortress\" meta=\"兴趣点\" text=\"Community Library 为矮人殖民引入的堡垒，沿用 Fortress 的渗透与防御能力。\n\n出现方式\nTask_BuildSettlement 的矮人建立据点流程配置。\n\n可出现地点\nDwarven City。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />、<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "兴趣点尚未渗透；<CrossReference name=\"City Palace\" href=\"?page=points-of-interest#entry-location-sub-city\" meta=\"兴趣点\" text=\"城市的政治中心。除 Infiltrate、Enshadow、招募与训练外，按国家首都、Alliance、政治不稳定等条件提供外交、Conclave、Dark Coronation 等任务。\n随从招募：Sellsword 供双方招募；Knight 通常属于英雄招募，Dark Empire 或 Ophanim Theocracy 中转为黑暗阵营招募。统治者 Shadow <50%、Awareness >90% 时，另加入英雄的 Paladin 招募。\n\n出现方式\nCity 创建时固定配置。\n\n可出现地点\nCity。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cityCentre.png\" target=\"_blank\" /> 必须最后渗透，先完成当地其他可渗透兴趣点。所选 Alliance 规则可能禁止在联盟领地渗透。",
+      "statLine": "Complexity: 50 + 25 × Security\nProfile: 30\nMenace: 20\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-recoverarcanerelics",
+      "name": "Recover Arcane Relics",
+      "text": "从 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 中取走最多 3 件 Arcane Relics。",
+      "image": "/locations/mod/God_MEKHANE.icon_itemarcanerelic.png",
+      "meta": "Might",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Vault 已渗透且有对应库存，人物物品栏有空位；Mekhanite 身份，Automaton 中仅 Maxwellist Infiltrator 可使用。",
+      "statLine": "Complexity: 10 + 10 × Security\nProfile: 90\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-recovercogworkrelics",
+      "name": "Recover Cogwork Relics",
+      "text": "从 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 中取走最多 3 件 Cogwork Relics。",
+      "image": "/locations/mod/God_MEKHANE.icon_itemcogworkrelic.png",
+      "meta": "Might",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Vault 已渗透且有对应库存，人物物品栏有空位；Mekhanite 身份，Automaton 中仅 Maxwellist Infiltrator 可使用。",
+      "statLine": "Complexity: 10 + 10 × Security\nProfile: 90\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-recoverrelics",
+      "name": "Recover Relics",
+      "text": "从 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 中取走最多 3 件 Basic Relics。",
+      "image": "/locations/mod/God_MEKHANE.icon_itembasicrelic.png",
+      "meta": "Might",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Vault 已渗透且有对应库存，人物物品栏有空位；Mekhanite 身份，Automaton 中仅 Maxwellist Infiltrator 可使用。",
+      "statLine": "Complexity: 10 + 10 × Security\nProfile: 90\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "place-hook-3591348120-0",
+      "name": "Ancient Ruins 的 MEKHANE 扩展",
+      "text": "使用 MEKHANE 时提供资源发掘；启用对应 Sarkic 开局选项时另提供 Sarkic Tomb 入口。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Ancient Ruins\" href=\"?page=points-of-interest#entry-location-sub-ancientruins\" meta=\"兴趣点\" text=\"可供探索的古代遗迹，默认最多探索 5 次。探索带来遗迹事件、物品或危险；同时提供 Hero’s Journey、Guard Ruins、Wait to Explore Ruins 和野外 Lay Low。不能渗透，所在聚居地毁灭后仍可存续。\n\n出现方式\n地图在合格野地随机生成；不是所有名为 Ruins 的地点都拥有此兴趣点。\n\n可出现地点\n野外兴趣点地点、Ruins。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/ancientRuins.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/ancientRuins.png"
+    },
+    {
+      "name": "Unearth Klavigar's Tomb",
+      "id": "god-place-place-hook-3591348120-0--place-task-3591348120-ch-mek-sarkictomb",
+      "meta": "Intrigue",
+      "text": "建立 Klavigar Tomb。基础费用为现存墓穴数 ×10 Insights，再加 ⌊当地 Infiltration 百分点 /20⌋。",
+      "location": "Ancient Ruins",
+      "limit": "Karcist；世界墓穴少于 4，地点尚未完全渗透且无冲突设施。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_subsarkictomb.png"
+    },
+    {
+      "name": "Reveal Fragments",
+      "id": "god-place-place-hook-3591348120-0--place-task-3591348120-ch-mek-createresourceunearth",
+      "text": "消耗 10 Divine Schema，建立 Unearthed Fragments。",
+      "location": "Ancient Ruins",
+      "limit": "我方 Agent；当地没有碎片。",
+      "statLine": "Complexity: 10\nProfile: 90\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth.png"
+    },
+    {
+      "id": "place-hook-3591348120-1",
+      "name": "Market 的 MEKHANE 商品",
+      "text": "使用 MEKHANE 时，在 <CrossReference name=\"Market\" href=\"?page=points-of-interest#entry-location-sub-market\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，配置 3 个商品购买槽。商品由 Buy Item 的刷新逻辑决定，Prosperity 影响物品品质；渗透后可 Force Restock。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/market.png\" target=\"_blank\" /> 或名称为 Grand Bazaar 的兴趣点所在地点加入。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Market\" href=\"?page=points-of-interest#entry-location-sub-market\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，配置 3 个商品购买槽。商品由 Buy Item 的刷新逻辑决定，Prosperity 影响物品品质；渗透后可 Force Restock。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/market.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/market.png"
+    },
+    {
+      "name": "Buy Pieces",
+      "id": "god-place-place-hook-3591348120-1--place-task-3591348120-ch-buypieces",
+      "text": "支付 15 Gold，最多购买 3 Piece。",
+      "location": "已渗透 Market 或 Grand Bazaar",
+      "limit": "Mekhanite，物品栏有空位；Black Market Connections ≤−1。",
+      "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
+      "image": "icon_itembasicpiece.png"
+    },
+    {
+      "name": "Buy Mechanisms",
+      "id": "god-place-place-hook-3591348120-1--place-task-3591348120-ch-buymechanisms",
+      "text": "支付 30 Gold，最多购买 3 Mechanism。",
+      "location": "已渗透 Market 或 Grand Bazaar",
+      "limit": "Mekhanite，物品栏有空位；Black Market Connections ≤−2。",
+      "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
+      "image": "icon_itembasicmechanism.png"
+    },
+    {
+      "name": "Buy Relic",
+      "id": "god-place-place-hook-3591348120-1--place-task-3591348120-ch-buyrelic",
+      "text": "支付 90 Gold，购买 1 Relic。",
+      "location": "已渗透 Market 或 Grand Bazaar",
+      "limit": "Mekhanite，物品栏有空位；Black Market Connections 为 −3。",
+      "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
+      "image": "icon_itembasicrelic.png"
+    },
+    {
+      "name": "Store All Components",
+      "id": "god-place-mekhane-common--ch-storecomponentsall",
+      "text": "将携带的所有组件存入当地库存。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "携带至少 1 件组件。",
+      "statLine": "Complexity: 1\nProfile: 100；Priority 地点为 500\nMenace: 0\nXP: 3",
+      "image": "iconstore1.png"
+    },
+    {
+      "name": "Store Specific Components",
+      "id": "god-place-mekhane-common--ch-storecomponent",
+      "text": "选择一种组件存入当地库存。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "携带组件。",
+      "statLine": "Complexity: 1\nProfile: 100；Priority 地点为 500\nMenace: 0\nXP: 3",
+      "image": "iconstore1.png"
+    },
+    {
+      "name": "Take Mekhanite Component",
+      "id": "god-place-mekhane-common--ch-takecomponent",
+      "text": "选择库存中的组件领取，数量受人物物品栏空位限制。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "物品栏有空位。",
+      "statLine": "Complexity: 1\nProfile: 100\nMenace: 0\nXP: 3",
+      "image": "iconstore2.png"
+    },
+    {
+      "name": "Mekhanite Prayer",
+      "id": "god-place-mekhane-common--ch-mek-prayer",
+      "text": "消耗 1 Divine Schema，教团 Elder Influence +10。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "Mekhanite，持有 Divine Schema。",
+      "statLine": "Complexity: 20\nProfile: 50\nMenace: 5\nXP: 36",
+      "image": "base-basicPrayer.png"
+    },
+    {
+      "name": "Mechanical Hymns",
+      "id": "god-place-mekhane-common--ch-mek-smithboostelder",
+      "text": "消耗 2 Divine Schema，创建 Mechanical Hymns；Metalsmith 免费。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "我方 Agent 或 Metalsmith。",
+      "statLine": "Complexity: 15\nProfile: 90\nMenace: 0\nXP: 29",
+      "image": "icon_brokenchurchshadow.png"
+    },
+    {
+      "name": "Divert Attention",
+      "id": "god-place-mekhane-common-non-abyssal--ch-divertattention",
+      "text": "Congregation Profile −20。Underground Networks 每级额外减少 10；−3 时另获得 1 Divine Schema。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "执行者是 Mekhanite、Speaker，或喜好 Mekhanites。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "image": "icon_powerhiddenworks.png"
+    },
+    {
+      "name": "Assemble Mechanism",
+      "id": "god-place-mekhane-common-non-abyssal--ch-assemblemechanism",
+      "text": "3 Piece 合成 1 Mechanism；Congregation Profile +2。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
+      "image": "icon_itembasicmechanism.png"
+    },
+    {
+      "name": "Assemble Relic",
+      "id": "god-place-mekhane-common-non-abyssal--ch-assemblerelic",
+      "text": "3 Mechanism 合成 1 Relic；Congregation Profile +10，并获得 Divine Schema。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 5\nXP: 49",
+      "image": "icon_itembasicrelic.png"
+    },
+    {
+      "name": "Assemble Divine Machine",
+      "id": "god-place-mekhane-common-non-abyssal--ch-assembledivinemachine",
+      "text": "各消耗 1 Relic、Cogwork Relic、Arcane Relic，组装 1 Divine Machine；Congregation Profile +15。优先使用携带的材料，缺少部分可从库存补足。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "三类材料齐备。",
+      "statLine": "Complexity: 50\nProfile: 8\nMenace: 5\nXP: 72",
+      "image": "icon_divinemachine.png"
+    },
+    {
+      "name": "Recruit Zealot Minion",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-recruitzealot",
+      "text": "消耗 Divine Schema，招募 Mekhanite Zealot 随从。Militant Following 调整费用与随从属性。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "拥有足够 Divine Schema 与 Command 空间。",
+      "statLine": "Complexity: 3\nProfile: 90\nMenace: 0\nXP: 8",
+      "image": "icon_acolyte_zealot.png"
+    },
+    {
+      "name": "Mekhanite Smithing",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-smithboostmodifier",
+      "text": "消耗 3 Divine Schema，创建 Mekhanite Smithing；Metalsmith 免费。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Metalsmith。",
+      "statLine": "Complexity: 30\nProfile: 90\nMenace: 0\nXP: 49",
+      "image": "icon_brokenChurchSmithing.png"
+    },
+    {
+      "name": "Arm Congregation",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-smithdanger",
+      "text": "消耗 3 Divine Schema，创建 Armed Congregation；Metalsmith 免费。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Metalsmith。",
+      "statLine": "Complexity: 30\nProfile: 90\nMenace: 0\nXP: 49",
+      "image": "icon_brokenChurchDanger.png"
+    },
+    {
+      "name": "Expose Mekhanites",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-hero-exposecongregation",
+      "meta": "Command",
+      "text": "当前 Profile −20，最低 Profile +10。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "Awareness 100%，个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
+      "statLine": "Complexity: 20；Sentinel Presence 生效时 40\nProfile: 20 + Congregation Profile\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 36；加强后为 60",
+      "positiveTags": "Cooperation",
+      "negativeTags": "Mekhanites",
+      "image": "icon_powerfalseimage.png"
+    },
+    {
+      "name": "Investigate Mekhanites",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-hero-investigatemekhanites",
+      "meta": "Command",
+      "text": "创建 Recent Investigations，持续提高 Congregation Profile。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "非 Mekhanite；个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
+      "statLine": "Complexity: 40；Sentinel Presence 生效时 80\nProfile: 40 + Congregation Profile\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 60；加强后为 102",
+      "positiveTags": "Danger",
+      "negativeTags": "Mekhanites、Shadow",
+      "image": "icon_powerhiddenworks.png"
+    },
+    {
+      "name": "Steal Relics",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-hero-raidcongregation",
+      "meta": "Might",
+      "text": "偷走最多 3 件 Relic；对非 Relic 组件逐件进行 4/9 概率的销毁判定。Congregation Profile −15；当地 Armed Congregation 强度 −10。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "英雄有物品栏空位，满足任务的觉醒与 Shadow 限制。",
+      "statLine": "Complexity: 30；Sentinel Presence 生效时 60\nProfile: 50 + 已解封数 ×10\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 49；加强后为 82",
+      "positiveTags": "Danger",
+      "negativeTags": "Mekhanites、Shadow、Combat",
+      "image": "base-raid.png"
+    },
+    {
+      "name": "Destroy Relics",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-hero-destroyrelic",
+      "meta": "Might",
+      "text": "对 Relic 逐件进行 4/9 概率的销毁判定，最多处理 3 件。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "Awareness 100%、个人 Shadow 未满、对 Mekhanites 偏好不高于 0 的英雄，或 Sarkic 人物。",
+      "statLine": "Complexity: 30；Sentinel Presence 生效时 60\nProfile: Congregation Profile\nMenace: 0\nXP: 49；加强后为 82",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites",
+      "image": "base-raid.png"
+    },
+    {
+      "name": "Destroy Components",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-hero-raidcongregation-destroycomponents",
+      "meta": "Might",
+      "text": "尝试销毁最多 10 件组件，每件判定成功率 4/9；也会拿走可携带的 Relic。Congregation Profile −5。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "非 Mekhanite 英雄。",
+      "statLine": "Complexity: 20；Sentinel Presence 生效时 40\nProfile: 50 + 已解封数 ×10\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 36；加强后为 60",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites、Shadow",
+      "image": "base-raid.png"
+    },
+    {
+      "name": "Convert",
+      "id": "god-place-mekhane-common-non-abyssal--ch-mek-hero-convert",
+      "meta": "Command",
+      "text": "使执行者成为 Mekhanite；人物继续自主行动。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "尚未皈依且喜好 Mekhanites。",
+      "statLine": "Complexity: 20\nProfile: 50\nMenace: 0\nXP: 36",
+      "positiveTags": "Cooperation、Mekhanites、Religion",
+      "negativeTags": "无",
+      "image": "icon_subcongregation.png"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-mekhane-common",
+      "name": "通用",
+      "blocks": [
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-mekhane-common--ch-storecomponentsall",
+            "god-place-mekhane-common--ch-storecomponent",
+            "god-place-mekhane-common--ch-takecomponent",
+            "god-place-mekhane-common--ch-mek-prayer",
+            "god-place-mekhane-common--ch-mek-smithboostelder"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-mekhane-common-non-abyssal",
+      "name": "除Abyssal外通用",
+      "blocks": [
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-mekhane-common-non-abyssal--ch-divertattention",
+            "god-place-mekhane-common-non-abyssal--ch-assemblemechanism",
+            "god-place-mekhane-common-non-abyssal--ch-assemblerelic",
+            "god-place-mekhane-common-non-abyssal--ch-assembledivinemachine",
+            "god-place-mekhane-common-non-abyssal--ch-mek-recruitzealot",
+            "god-place-mekhane-common-non-abyssal--ch-mek-smithboostmodifier",
+            "god-place-mekhane-common-non-abyssal--ch-mek-smithdanger"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-mekhane-common-non-abyssal--ch-mek-hero-exposecongregation",
+            "god-place-mekhane-common-non-abyssal--ch-mek-hero-investigatemekhanites",
+            "god-place-mekhane-common-non-abyssal--ch-mek-hero-raidcongregation",
+            "god-place-mekhane-common-non-abyssal--ch-mek-hero-destroyrelic",
+            "god-place-mekhane-common-non-abyssal--ch-mek-hero-raidcongregation-destroycomponents",
+            "god-place-mekhane-common-non-abyssal--ch-mek-hero-convert"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-congregation",
+      "name": "Mekhanite Congregation",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-congregation"
+          ]
+        },
+        {
+          "title": "统治者行动",
+          "entryIds": [
+            "god-place-location-sub-mek-congregation--ruler-act-mek-convertbasehidecongregation",
+            "god-place-location-sub-mek-congregation--ruler-act-mek-awaredestroycongregation",
+            "god-place-location-sub-mek-congregation--ruler-act-mek-awareexposecongregation",
+            "god-place-location-sub-mek-congregation--ruler-act-mek-awareinvestigatecongregation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-congregationabyssal",
+      "name": "Abyssal Congregation",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-congregationabyssal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-congregationorc",
+      "name": "Orcish Congregation",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-congregationorc"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-mek-congregationorc--place-task-3591348120-ch-industrytopiece"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-congregationtower",
+      "name": "Citadel",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-congregationtower"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-exiles",
+      "name": "Exile Community",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-exiles"
+          ]
+        },
+        {
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exileexperiment"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exile-assembledevastation",
+            "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exile-assemblemadness",
+            "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-exile-assembleshadow"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-hero-investigateexile",
+            "god-place-location-sub-mek-exiles--place-task-3591348120-ch-mek-hero-raidexile"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-forge",
+      "name": "Orthodox Forge",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-forge"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-assemblecogworkmechanism",
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-assemblecogworkmechanismconversion",
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-assemblecogworkrelic",
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-automaton-basic",
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-automaton-sentinel",
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-automaton-speaker",
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-councilschema"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-sub-mek-forge--place-task-3591348120-ch-mek-councilhide"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-mekhane",
+      "name": "MEKHANE’s Body",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "location-sub-mek-mekhane"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-relay",
+      "name": "Maxwellist Relay",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-relay"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanemechanism",
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanemechanismconversion",
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanerelic",
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-assemblearcanesecret",
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-mek-maxwellist-infiltrator",
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-mek-maxwellist-intelligence"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-sub-mek-relay--place-task-3591348120-ch-transferarcanerelics"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-sarkicfleshthathates",
+      "name": "Flesh That Hates",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-sarkicfleshthathates"
+          ]
+        },
+        {
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-location-sub-mek-sarkicfleshthathates--place-task-3591348120-ch-mek-sarkicreddeath"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-sarkictemple",
+      "name": "Sarkic Temple",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-sarkictemple"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicheroinvestigate"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicagentinvestigate",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicagentexpose",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicdestroytemple"
+          ]
+        },
+        {
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkichidetemple",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicconvertsecrets",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkickarcist",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicmutate",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicrecruit",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkic-recruitminion",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicpreference",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicsermon",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicreddeath",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkic-security",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicempire",
+            "god-place-location-sub-mek-sarkictemple--place-task-3591348120-ch-mek-sarkicgrandkarcist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-mek-vault",
+      "name": "Containment Vault",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "sub-mek-vault"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-hero-storerelics",
+            "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-hero-learn"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-raid",
+            "god-place-location-sub-mek-vault--place-task-base-ch-infiltrate"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-recoverarcanerelics",
+            "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-recovercogworkrelics",
+            "god-place-location-sub-mek-vault--place-task-3591348120-ch-mek-vault-recoverrelics"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-place-hook-3591348120-0",
+      "name": "Ancient Ruins 的 MEKHANE 扩展",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3591348120-0"
+          ]
+        },
+        {
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-place-hook-3591348120-0--place-task-3591348120-ch-mek-sarkictomb"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-3591348120-0--place-task-3591348120-ch-mek-createresourceunearth"
+          ]
+        }
+      ],
+      "image": "/locations/game/ancientRuins.png"
+    },
+    {
+      "id": "god-place-place-hook-3591348120-1",
+      "name": "Market 的 MEKHANE 商品",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3591348120-1"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-3591348120-1--place-task-3591348120-ch-buypieces",
+            "god-place-place-hook-3591348120-1--place-task-3591348120-ch-buymechanisms",
+            "god-place-place-hook-3591348120-1--place-task-3591348120-ch-buyrelic"
+          ]
+        }
+      ],
+      "image": "/locations/game/market.png"
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "media": true,
@@ -1051,7 +2479,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "minions",
       "title": "随从",
       "media": true,
@@ -1079,7 +2507,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "media": true,
@@ -1135,7 +2563,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教与教义",
       "media": false,
@@ -1772,7 +3200,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "media": true,
@@ -2016,1404 +3444,1473 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "challenges",
+  "title": "挑战",
+  "media": true,
+  "items": [
     {
-      "id": "challenges",
-      "title": "挑战",
-      "media": true,
-      "items": [
-        {
-          "name": "Scavenge for Fragment",
-          "id": "ch-scavengepiece",
-          "text": "获得 1 Piece；Mekhanite Exile 获得 Unorthodox Piece。执行期间每回合消耗地点强度 2；Organized Excavations 生效时消耗减半。",
-          "location": "<CrossReference name=\"Unearthed Fragments\" href=\"#entry-pr-mek-resourceunearthed\" />",
-          "limit": "Mekhanite 或 Automaton；物品栏有空位，碎片未耗尽。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "image": "icon_powerunearth.png"
-        },
-        {
-          "name": "Assemble Mechanism",
-          "id": "ch-assemblemechanism",
-          "text": "3 Piece 合成 1 Mechanism；Congregation Profile +2。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
-          "image": "icon_itembasicmechanism.png"
-        },
-        {
-          "name": "Assemble Relic",
-          "id": "ch-assemblerelic",
-          "text": "3 Mechanism 合成 1 Relic；Congregation Profile +10，并获得 Divine Schema。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 30\nProfile: 100\nMenace: 5\nXP: 49",
-          "image": "icon_itembasicrelic.png"
-        },
-        {
-          "name": "Assemble Cogwork Mechanism",
-          "id": "ch-assemblecogworkmechanism",
-          "text": "3 Piece 合成 1 Clockwork Mechanism；Congregation Profile +4。Council of Patriarchs 可降低材料费用。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 或 Orthodox Ministry",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
-          "image": "icon_itemcogworkmechanism.png"
-        },
-        {
-          "name": "Gild Basic Mechanism",
-          "id": "ch-assemblecogworkmechanismconversion",
-          "text": "将 1 Mechanism 转为 1 Clockwork Mechanism，另支付 Gold；Congregation Profile +3。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 或 Orthodox Ministry",
-          "limit": "材料与 Gold 足够。",
-          "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
-          "image": "icon_itemcogworkmechanism.png"
-        },
-        {
-          "name": "Assemble Cogwork Relic",
-          "id": "ch-assemblecogworkrelic",
-          "text": "3 Clockwork Mechanism 合成 1 Cogwork Relic；Congregation Profile +10，并获得 Divine Schema。Council of Patriarchs 可降低材料费用。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 或 Orthodox Ministry",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
-          "image": "icon_itemcogworkrelic.png"
-        },
-        {
-          "name": "Assemble Arcane Mechanism",
-          "id": "ch-assemblearcanemechanism",
-          "text": "3 Piece 合成 1 Arcane Mechanism；Congregation Profile +4。Noosphere 可降低材料费用。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 或 Maxwellist Hub",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
-          "image": "icon_itemarcanemechanism.png"
-        },
-        {
-          "name": "Defragment Basic Mechanism",
-          "id": "ch-assemblearcanemechanismconversion",
-          "text": "1 Mechanism 转为 1 Arcane Mechanism；Congregation Profile +3。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 或 Maxwellist Hub",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
-          "image": "icon_itemarcanemechanism.png"
-        },
-        {
-          "name": "Assemble Arcane Relic",
-          "id": "ch-assemblearcanerelic",
-          "text": "3 Arcane Mechanism 合成 1 Arcane Relic；Congregation Profile +10，并获得 Divine Schema。Noosphere 可降低材料费用。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 或 Maxwellist Hub",
-          "limit": "材料足够。",
-          "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
-          "image": "icon_itemarcanerelic.png"
-        },
-        {
-          "name": "Assemble Divine Machine",
-          "id": "ch-assembledivinemachine",
-          "text": "各消耗 1 Relic、Cogwork Relic、Arcane Relic，组装 1 Divine Machine；Congregation Profile +15。优先使用携带的材料，缺少部分可从库存补足。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" /> 及其专业化设施",
-          "limit": "三类材料齐备。",
-          "statLine": "Complexity: 50\nProfile: 8\nMenace: 5\nXP: 72",
-          "image": "icon_divinemachine.png"
-        },
-        {
-          "name": "Calculate Secret",
-          "id": "ch-assemblearcanesecret",
-          "text": "消耗 3 Divine Schema，获得 1 Arcane Knowledge。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 或 Maxwellist Hub",
-          "limit": "持有足够 Divine Schema。",
-          "statLine": "Complexity: 40\nProfile: 0\nMenace: 0\nXP: 60",
-          "image": "iconmekspell2.png"
-        },
-        {
-          "name": "Store All Components",
-          "id": "ch-storecomponentsall",
-          "text": "将携带的所有组件存入当地库存。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" /> 及其专业化设施",
-          "limit": "携带至少 1 件组件。",
-          "statLine": "Complexity: 1\nProfile: 100；Priority 地点为 500\nMenace: 0\nXP: 3",
-          "image": "iconstore1.png"
-        },
-        {
-          "name": "Store Specific Components",
-          "id": "ch-storecomponent",
-          "text": "选择一种组件存入当地库存。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" /> 及其专业化设施",
-          "limit": "携带组件。",
-          "statLine": "Complexity: 1\nProfile: 100；Priority 地点为 500\nMenace: 0\nXP: 3",
-          "image": "iconstore1.png"
-        },
-        {
-          "name": "Take Mekhanite Component",
-          "id": "ch-takecomponent",
-          "text": "选择库存中的组件领取，数量受人物物品栏空位限制。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" /> 及其专业化设施",
-          "limit": "物品栏有空位。",
-          "statLine": "Complexity: 1\nProfile: 100\nMenace: 0\nXP: 3",
-          "image": "iconstore2.png"
-        },
-        {
-          "name": "Divert Attention",
-          "id": "ch-divertattention",
-          "text": "Congregation Profile −20。Underground Networks 每级额外减少 10；−3 时另获得 1 Divine Schema。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "执行者是 Mekhanite、Speaker，或喜好 Mekhanites。",
-          "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
-          "image": "icon_powerhiddenworks.png"
-        },
-        {
-          "name": "Bless Fragments",
-          "id": "ch-mek-blesspiece",
-          "text": "消耗 2 Divine Schema，创建持续 25 回合的 Regenerating Metals。",
-          "location": "<CrossReference name=\"Unearthed Fragments\" href=\"#entry-pr-mek-resourceunearthed\" />",
-          "limit": "持有足够 Divine Schema。",
-          "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
-          "image": "icon_powerregeneratingmetal.png"
-        },
-        {
-          "name": "Establish Congregation",
-          "id": "ch-mek-buildcongregation",
-          "text": "消耗 10 Divine Schema 建立 Mekhanite Congregation。",
-          "location": "可渗透的人类聚居地",
-          "limit": "我方 Agent；当地合格且未达到 Congregation 上限。",
-          "statLine": "Complexity: 50\nProfile: 50\nMenace: 0\nXP: 72",
-          "image": "icon_subcongregation.png"
-        },
-        {
-          "name": "Reveal Fragments",
-          "id": "ch-mek-createresourceunearth",
-          "text": "消耗 10 Divine Schema，建立 Unearthed Fragments。",
-          "location": "Ancient Ruins",
-          "limit": "我方 Agent；当地没有碎片。",
-          "statLine": "Complexity: 10\nProfile: 90\nMenace: 0\nXP: 21",
-          "image": "icon_powerunearth.png"
-        },
-        {
-          "name": "Build MEKHANE +10%",
-          "id": "ch-mek-buildmek-tier3",
-          "text": "消耗携带的 1 Divine Machine，使建造完成度 +10%。",
-          "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
-          "limit": "持有 Divine Machine。",
-          "statLine": "Complexity: 75\nProfile: 100\nMenace: 0\nXP: 97",
-          "image": "icon_divinemachine.png"
-        },
-        {
-          "name": "Guard MEKHANE",
-          "id": "ch-mek-guardmek",
-          "text": "永久留下一个随从，为 Destroy MEKHANE 增加 Danger。",
-          "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
-          "limit": "至少带有一个随从。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_mekhane.png"
-        },
-        {
-          "name": "Mekhanite Prayer",
-          "id": "ch-mek-prayer",
-          "text": "消耗 1 Divine Schema，教团 Elder Influence +10。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "Mekhanite，持有 Divine Schema。",
-          "statLine": "Complexity: 20\nProfile: 50\nMenace: 5\nXP: 36",
-          "image": "base-basicPrayer.png"
-        },
-        {
-          "name": "Recruit Zealot Minion",
-          "id": "ch-mek-recruitzealot",
-          "text": "消耗 Divine Schema，招募 Mekhanite Zealot 随从。Militant Following 调整费用与随从属性。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "拥有足够 Divine Schema 与 Command 空间。",
-          "statLine": "Complexity: 3\nProfile: 90\nMenace: 0\nXP: 8",
-          "image": "icon_acolyte_zealot.png"
-        },
-        {
-          "name": "Gain Attention to Sect",
-          "id": "ch-mek-gainattentionminor",
-          "text": "Minor Sect Profile +15。",
-          "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
-          "limit": "我方 Agent。",
-          "statLine": "Complexity: 25\nProfile: 0\nMenace: 0\nXP: 42",
-          "image": "icon_powerhiddenworks.png"
-        },
-        {
-          "name": "Grow Sect",
-          "id": "ch-mek-growsect",
-          "text": "Minor Sect 强度 +30。",
-          "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
-          "limit": "我方 Agent。",
-          "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
-          "image": "icon_powerhiddenworks.png"
-        },
-        {
-          "name": "Boost Production",
-          "id": "ch-mek-boostproduction",
-          "text": "Production 强度翻倍，最高 100。翻倍结果超过 100 时会立即处理一次生产，并令 Forge Profile +10。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite。",
-          "statLine": "Complexity: 15\nProfile: 0\nMenace: 0\nXP: 29",
-          "image": "icon_orthodoxboostproduction.png"
-        },
-        {
-          "name": "Boost Relay Signal",
-          "id": "ch-mek-boostsignal",
-          "text": "Signal 强度 +30。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
-          "limit": "有可用 Signal。",
-          "statLine": "Complexity: 15\nProfile: 0\nMenace: 0\nXP: 29",
-          "image": "icon_subrelay.png"
-        },
-        {
-          "name": "Impart Mekhanite Knowledge",
-          "id": "ch-mek-rulerschema",
-          "text": "把 Divine Schema 转交当地统治者。",
-          "location": "Mekhanite 统治者所在聚居地",
-          "limit": "携带足够 Divine Schema。",
-          "statLine": "Complexity: 20\nProfile: 90\nMenace: 0\nXP: 36",
-          "image": "icon_wordofmouth.png"
-        },
-        {
-          "name": "Holy Transmission",
-          "id": "ch-mek-increasemekpreference",
-          "text": "消耗 Divine Schema，使当地统治者皈依 Mekhanites；统治者 Shadow 与 Word of Mouth 降低费用。",
-          "location": "有统治者的人类聚居地",
-          "limit": "持有足够 Divine Schema。",
-          "statLine": "Complexity: 50\nProfile: 90\nMenace: 0\nXP: 72",
-          "image": "icon_wordofmouth.png"
-        },
-        {
-          "name": "Obtain Divine Schema",
-          "id": "ch-mek-schemastudy",
-          "text": "取得 1 Divine Schema 并移除当地图纸；未皈依的英雄执行时获得 Awareness。",
-          "location": "<CrossReference name=\"Divine Schema\" href=\"#entry-pr-mek-schema\" />",
-          "limit": "Sarkic 人物不能执行；自主 Mekhanite 需等待图纸出现 15 回合。",
-          "statLine": "Complexity: 30\nProfile: 70\nMenace: 0\nXP: 49",
-          "image": "icon_schema.png"
-        },
-        {
-          "name": "Buy Pieces",
-          "id": "ch-buypieces",
-          "text": "支付 15 Gold，最多购买 3 Piece。",
-          "location": "已渗透 Market 或 Grand Bazaar",
-          "limit": "Mekhanite，物品栏有空位；Black Market Connections ≤−1。",
-          "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
-          "image": "icon_itembasicpiece.png"
-        },
-        {
-          "name": "Buy Mechanisms",
-          "id": "ch-buymechanisms",
-          "text": "支付 30 Gold，最多购买 3 Mechanism。",
-          "location": "已渗透 Market 或 Grand Bazaar",
-          "limit": "Mekhanite，物品栏有空位；Black Market Connections ≤−2。",
-          "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
-          "image": "icon_itembasicmechanism.png"
-        },
-        {
-          "name": "Buy Relic",
-          "id": "ch-buyrelic",
-          "text": "支付 90 Gold，购买 1 Relic。",
-          "location": "已渗透 Market 或 Grand Bazaar",
-          "limit": "Mekhanite，物品栏有空位；Black Market Connections 为 −3。",
-          "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
-          "image": "icon_itembasicrelic.png"
-        },
-        {
-          "name": "Blood and Iron",
-          "id": "ch-deathtopiece",
-          "text": "消耗 25 Death，得到 1 Piece。",
-          "location": "Death 或 <CrossReference name=\"Clockwork Death\" href=\"#entry-pr-mek-clockworkvirusdead\" /> 至少 25 的地点",
-          "limit": "Blood and Iron 生效；Mekhanite 或 Automaton，物品栏有空位。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "image": "icon_powerunearth_red.png"
-        },
-        {
-          "name": "Impossible Geometry",
-          "id": "ch-madnesstopiece",
-          "text": "消耗 15 Madness，得到 1 Piece。",
-          "location": "Madness 至少 15 的地点",
-          "limit": "Impossible Geometry 生效；Mekhanite 或 Automaton，物品栏有空位。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "image": "icon_powerunearth_pink.png"
-        },
-        {
-          "name": "Mechanical Salvage",
-          "id": "ch-ruintopiece",
-          "text": "从废墟中取得 1 Piece。",
-          "location": "City Ruins",
-          "limit": "Mechanical Salvage 生效；Mekhanite 或 Automaton，物品栏有空位。",
-          "statLine": "Complexity: 50\nProfile: 500\nMenace: 0\nXP: 72",
-          "image": "icon_powerunearth_orange.png"
-        },
-        {
-          "name": "Orcish Tools",
-          "id": "ch-industrytopiece",
-          "text": "Orcish Industry +10，并得到 1 Piece。",
-          "location": "已渗透 Orc Camp，Orcish Industry 至少 10",
-          "limit": "Orcish Tools 生效；物品栏有空位。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "image": "icon_powerunearth_yellow.png"
-        },
-        {
-          "name": "Abyssal Ores",
-          "id": "ch-deeponestopiececult",
-          "text": "Deep One Cult 强度 +15，并取得 1 Piece。",
-          "location": "Deep One Cult",
-          "limit": "Abyssal Ore 生效；Mekhanite 或 Automaton，物品栏有空位。",
-          "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
-          "image": "icon_powerunearth_green.png"
-        },
-        {
-          "name": "Assemble Gatherer",
-          "id": "ch-mek-automaton-basic",
-          "text": "组装 Gatherer。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Gatherer 数)。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 或 Orthodox Ministry",
-          "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
-          "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
-          "image": "icon_automaton.png"
-        },
-        {
-          "name": "Assemble Sentinel",
-          "id": "ch-mek-automaton-sentinel",
-          "text": "组装 Sentinel。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Sentinel 数)。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 或 Orthodox Ministry",
-          "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
-          "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
-          "image": "icon_automaton_sentry.png"
-        },
-        {
-          "name": "Assemble Speaker",
-          "id": "ch-mek-automaton-speaker",
-          "text": "组装 Speaker。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Speaker 数)。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 或 Orthodox Ministry",
-          "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
-          "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
-          "image": "icon_automaton_speaker.png"
-        },
-        {
-          "name": "Assemble Infiltrator",
-          "id": "ch-mek-maxwellist-infiltrator",
-          "text": "组装 Infiltrator。消耗 Arcane Mechanism 数量为 max(1, 3 − Noosphere 人口 /200 的整数部分 + 现存 Infiltrator 数)。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 或 Maxwellist Hub",
-          "limit": "我方 Agent 或 Living Saint；材料足够。",
-          "statLine": "Complexity: 30\nProfile: 200\nMenace: 5\nXP: 49",
-          "image": "icon_construct_infiltrator.png"
-        },
-        {
-          "name": "Assemble Intelligence",
-          "id": "ch-mek-maxwellist-intelligence",
-          "text": "组装自主 Intelligence。消耗 Arcane Mechanism 数量为 max(1, 3 − Noosphere 人口 /200 的整数部分 + 现存 Intelligence 数)。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 或 Maxwellist Hub",
-          "limit": "我方 Agent 或 Living Saint；材料足够。",
-          "statLine": "Complexity: 40\nProfile: 20\nMenace: 0\nXP: 60",
-          "image": "icon_construct_intelligence.png"
-        },
-        {
-          "name": "Establish Connection",
-          "id": "ch-mek-maxwellist-connection",
-          "text": "建立 Maxwellist Connection。",
-          "location": "与 <CrossReference name=\"Maxwellist Connection\" href=\"#entry-pr-mek-connection\" /> 或 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" /> 相邻的陆地",
-          "limit": "我方 Agent 或 Living Saint，拥有 Noosphere Connection；目标聚居地完全渗透且尚无连接。",
-          "statLine": "Complexity: 15\nProfile: 100\nMenace: 0\nXP: 29",
-          "image": "iconmekspell6.png"
-        },
-        {
-          "name": "Clockworks: Fine",
-          "id": "ch-mek-clockworksfine",
-          "text": "批量加工库存 Piece；每件产物增加 2 Congregation Profile。普通设施产出 Mechanism，Maxwellist 设施产出 Arcane Mechanism。\nOrthodox 分支先以 Piece 是否足够判断，但实际产量读取库存 Mechanism 数；因此其显示说明与执行结果存在差异。",
-          "location": "<CrossReference name=\"The Clockworks\" href=\"#entry-pr-mek-clockworks\" />",
-          "limit": "Mekhanite；Congregation 库存中有组件。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_scpclockworks.png"
-        },
-        {
-          "name": "Clockworks: Very Fine",
-          "id": "ch-mek-clockworksveryfine",
-          "text": "批量把已有 Mechanism 升级为对应 Relic，并处理 Piece 到 Mechanism 的加工。默认每 3 件低阶组件产出 1 件高阶组件，每件实际产物使 Congregation Profile +2。",
-          "location": "<CrossReference name=\"The Clockworks\" href=\"#entry-pr-mek-clockworks\" />",
-          "limit": "Mekhanite；Congregation 库存中有组件。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_scpclockworks.png"
-        },
-        {
-          "name": "Mechanical Hymns",
-          "id": "ch-mek-smithboostelder",
-          "text": "消耗 2 Divine Schema，创建 Mechanical Hymns；Metalsmith 免费。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "我方 Agent 或 Metalsmith。",
-          "statLine": "Complexity: 15\nProfile: 90\nMenace: 0\nXP: 29",
-          "image": "icon_brokenchurchshadow.png"
-        },
-        {
-          "name": "Mekhanite Smithing",
-          "id": "ch-mek-smithboostmodifier",
-          "text": "消耗 3 Divine Schema，创建 Mekhanite Smithing；Metalsmith 免费。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "我方 Agent 或 Metalsmith。",
-          "statLine": "Complexity: 30\nProfile: 90\nMenace: 0\nXP: 49",
-          "image": "icon_brokenChurchSmithing.png"
-        },
-        {
-          "name": "Arm Congregation",
-          "id": "ch-mek-smithdanger",
-          "text": "消耗 3 Divine Schema，创建 Armed Congregation；Metalsmith 免费。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "我方 Agent 或 Metalsmith。",
-          "statLine": "Complexity: 30\nProfile: 90\nMenace: 0\nXP: 49",
-          "image": "icon_brokenChurchDanger.png"
-        },
-        {
-          "name": "Experiment with Cogworks",
-          "id": "ch-mek-exile-assembledevastation",
-          "text": "消耗 3 Unorthodox Piece，制造 Rampaging Experiment；设施 Profile +10。",
-          "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
-          "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
-          "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
-          "image": "icon_exileExperiment.png"
-        },
-        {
-          "name": "Experiment with the Arcane",
-          "id": "ch-mek-exile-assemblemadness",
-          "text": "消耗 3 Unorthodox Piece，制造 Maddening Machine；设施 Profile +10。",
-          "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
-          "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
-          "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
-          "image": "icon_exileExperiment3.png"
-        },
-        {
-          "name": "Experiment with Shadow",
-          "id": "ch-mek-exile-assembleshadow",
-          "text": "消耗 3 Unorthodox Piece，制造 False Image；设施 Profile +10。",
-          "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
-          "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
-          "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
-          "image": "icon_exileExperiment2.png"
-        },
-        {
-          "name": "Augment",
-          "id": "rt-mek-augment",
-          "text": "消耗 Divine Schema 选择一项 Augmentation；费用随已有 Augmentation 数量增加。",
-          "location": "执行者所在地",
-          "limit": "我方 Agent，持有足够 Divine Schema。",
-          "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
-          "image": "icon_augmentationadv.png"
-        },
-        {
-          "name": "Unified Church",
-          "id": "rt-mek-mekempire",
-          "text": "建立 Unified Church 帝国。Dark Empire 和平转化；其他国家不支持 Mekhanites 的领主可能发动内战。",
-          "location": "Mekhanite Kingdom 或 Dark Empire 中的 Congregation",
-          "limit": "The Builder；仅可使用一次。",
-          "statLine": "Complexity: 50\nProfile: 0\nMenace: 0\nXP: 72",
-          "image": "icon_mekhaneempire.png"
-        },
-        {
-          "name": "Mekhanite Revolution",
-          "id": "rt-mek-militancy",
-          "text": "建立 Mekhanite Kingdom，可能引起内战。",
-          "location": "<CrossReference name=\"Augmented Population\" href=\"#entry-pr-mek-augmentpops\" /> 至少 50 的人类国家聚居地",
-          "limit": "The Builder；目标不是 Dark Empire 或既有 Mekhanite 国家。",
-          "statLine": "Complexity: 20\nProfile: 0\nMenace: 0\nXP: 36",
-          "image": "icon_zealot.png"
-        },
-        {
-          "name": "Gather Relics",
-          "id": "rt-mek-gainrelics",
-          "text": "从 Congregation 库存中收集 Relic、Cogwork Relic、Arcane Relic 各 1 件，用于制作 Divine Machine。",
-          "location": "The Builder 所在地",
-          "limit": "The Builder，物品栏有空位且世界库存中有材料。",
-          "statLine": "Complexity: 20\nProfile: 0\nMenace: 0\nXP: 36",
-          "image": "iconstore2.png"
-        },
-        {
-          "name": "Mekhanite Crusade",
-          "id": "rt-mek-war",
-          "text": "使 Unified Church 向目标国家宣战，帝国内贵族皈依 Mekhanites。",
-          "location": "Unified Church 以外的人类或精灵聚居地",
-          "limit": "The Builder；Unified Church 已建立。",
-          "statLine": "Complexity: 10\nProfile: 0\nMenace: 50\nXP: 21",
-          "image": "base-war.png"
-        },
-        {
-          "name": "Drive Back",
-          "id": "rt-mek-scatter",
-          "text": "驱退本地非 Mekhanite 单位。",
-          "location": "Bumaro's Warhammer 持有者所在地",
-          "limit": "持有 Bumaro’s Warhammer；冷却 5 回合。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_itemhammer.png"
-        },
-        {
-          "name": "Propagate Clockwork Virus",
-          "id": "ch-mek-growclockworkvirus",
-          "text": "强度 +30。",
-          "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
-          "limit": "我方 Agent 或 Mekhanite。",
-          "statLine": "Complexity: 40\nProfile: 0\nMenace: 0\nXP: 60",
-          "image": "icon_scpclockworkvirus.png"
-        },
-        {
-          "name": "Spread Rotbolt",
-          "id": "ch-mek-growrotbolt",
-          "text": "持续施法时，强度低于 100 的 Rotbolt 每回合增加执行者 Lore；执行者每回合 Menace +2。",
-          "location": "<CrossReference name=\"Rotbolt\" href=\"#entry-pr-mek-rotbolt\" />",
-          "limit": "我方 Agent。",
-          "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
-          "image": "base-deepOnes.png"
-        },
-        {
-          "name": "Grow the Machine",
-          "id": "ch-mek-growmachine",
-          "text": "完成时强度 +30。执行者已有 Machine Effect 时，该特质强度减半，并增加个人 Shadow 15 个百分点。交付组件界面的额外转化结果未找到可靠生效路径。",
-          "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
-          "limit": "我方 Agent，或受 Machine Effect 影响的自主英雄。",
-          "statLine": "Complexity: 5\nProfile: 50 + A Machine 强度\nMenace: 0\nXP: 12",
-          "image": "icon_scpamachine.png"
-        },
-        {
-          "name": "Raid Vault",
-          "id": "ch-mek-vault-raid",
-          "text": "夺回库存中的 Relics，并将 Vault Research 重置为 1。",
-          "location": "已渗透的 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
-          "limit": "Mekhanite，排除 Automaton；物品栏有空位。",
-          "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 90\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
-          "image": "base-raid.png"
-        },
-        {
-          "name": "Desecrate Sarkic Tomb",
-          "id": "ch-mek-sarkictomb-desecrate",
-          "text": "使墓穴进入 Desecrated 状态，失去强度并停止产出 Sarkic Insights。",
-          "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
-          "limit": "Mekhanite 或 Awareness 100% 的人物，排除 Sarkic。",
-          "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
-          "image": "icon_subsarkictomb.png"
-        },
-        {
-          "name": "Banish Red Death",
-          "id": "ch-mek-co-destroyreddeath",
-          "text": "强度 −500；降到 0 以下时移除，并清除 The Flesh That Hates。",
-          "location": "<CrossReference name=\"Red Death\" href=\"#entry-pr-mek-sarkic-reddeath\" />",
-          "limit": "我方 Agent 或 Chosen One。",
-          "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
-          "image": "base-reforgeTheSeal.png"
-        },
-        {
-          "name": "Expose Sarkics",
-          "id": "ch-mek-sarkicagentexpose",
-          "text": "Temple Profile +30。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "我方 Agent；Profile 低于 100。",
-          "statLine": "Complexity: 40\nProfile: 90 + 已解封数 ×20 + Sarkic Temple Profile\nMenace: 0\nXP: 60",
-          "image": "icon_sarkicspell2.png"
-        },
-        {
-          "name": "Investigate Sarkics",
-          "id": "ch-mek-sarkicagentinvestigate",
-          "text": "Sarkic Temple Profile +10，Sarkic Cult 的 Elder Influence +10，同时提高教派对我方的敌意。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "我方 Agent。",
-          "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 0\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
-          "image": "base-clues.png"
-        },
-        {
-          "name": "Destroy Sarkic Temple",
-          "id": "ch-mek-sarkicdestroytemple",
-          "text": "摧毁 Sarkic Temple。",
-          "location": "Profile 达到 100 的 <CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Killing Blows 生效；Mekhanite，排除 Automaton。",
-          "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 90\nMenace: 0\nDanger: 30\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
-          "image": "base-war.png"
-        },
-        {
-          "name": "Production: Automatons",
-          "id": "ch-mek-productionautomaton",
-          "text": "切换为 Automatons；Production 每回合 +0.5，达到 100 后相应组装 Complexity 减半。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_orthodoxautomaton.png"
-        },
-        {
-          "name": "Production: Smelt Gold",
-          "id": "ch-mek-productionxp",
-          "text": "切换为 Smelt Gold；Production 每回合 +2，满额后持续支援 Council of Patriarchs。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_orthodoxgold.png"
-        },
-        {
-          "name": "Production: Automaton Repairs",
-          "id": "ch-mek-productionrepair",
-          "text": "切换为 Automaton Repairs；Production 每回合 +3，满额后为机械单位及 Legates 恢复 2 HP。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_orthodoxrepair.png"
-        },
-        {
-          "name": "Production: Smelt Metal",
-          "id": "ch-mek-productionsmelt",
-          "text": "切换为 Smelt Metal；Production 每回合 +1，满额后生产 1 Piece。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_orthodoxpiece.png"
-        },
-        {
-          "name": "Production: Cogwork Military",
-          "id": "ch-mek-productioncogwork",
-          "text": "切换为 Cogwork Military；Production 每回合 +1，满额后增加 Mekhanite Army 的 15 额外 HP 上限。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_orthodoxdanger.png"
-        },
-        {
-          "name": "Production: Idle",
-          "id": "ch-mek-productionstop",
-          "text": "切换为 Idle；Production 每回合 +1，满额后产生 1 Elder Influence。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_subforge.png"
-        },
-        {
-          "name": "Signal: Repeating",
-          "id": "ch-mek-signalbuff",
-          "text": "切换为 Repeating；每回合为 Noosphere 增加现存连接数量的强度。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_powermaxwellist.png"
-        },
-        {
-          "name": "Signal: Fractal",
-          "id": "ch-mek-signalprofile",
-          "text": "切换为 Fractal；Signal 每回合 +5，满额后连接地点的 Mekhanite Profile −20。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_powermaxwellist.png"
-        },
-        {
-          "name": "Stop the Signal",
-          "id": "ch-mek-signalstop",
-          "text": "停止当前 Signal。",
-          "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
-          "limit": "Mekhanite；当前未处于该模式。",
-          "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
-          "image": "icon_powermaxwellist.png"
-        },
-        {
-          "id": "ch-mek-signalrepeating",
-          "name": "Repeating Signal",
-          "text": "创建持续 30 回合的 Repeating Signal。",
-          "location": "<CrossReference name=\"Noosphere\" href=\"#entry-pr-mek-maxwellistwan\" />",
-          "limit": "Mekhanite；Noosphere 未达到上限。",
-          "statLine": "Complexity: 20\nProfile: 0\nMenace: 0\nXP: 36",
-          "image": "icon_powermaxwellist.png"
-        },
-        {
-          "id": "ch-mek-sacrificeself",
-          "name": "Throw Self In",
-          "image": "base-brutalAssassination.png",
-          "text": "执行者死亡，A Machine 的当前强度与强度上限各增加 100。",
-          "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
-          "limit": "我方可控 Agent 可以执行；带有 Machine Effect 的其他人物也可以执行，但 Chosen One 除外。",
-          "statLine": "Complexity: 10\nProfile: 200\nMenace: 0\nXP: 21"
-        }
-      ]
+      "name": "Scavenge for Fragment",
+      "id": "ch-scavengepiece",
+      "text": "获得 1 Piece；Mekhanite Exile 获得 Unorthodox Piece。执行期间每回合消耗地点强度 2；Organized Excavations 生效时消耗减半。",
+      "location": "<CrossReference name=\"Unearthed Fragments\" href=\"#entry-pr-mek-resourceunearthed\" />",
+      "limit": "Mekhanite 或 Automaton；物品栏有空位，碎片未耗尽。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth.png"
     },
     {
-      "id": "hero-tasks",
-      "title": "英雄任务",
-      "media": true,
-      "items": [
-        {
-          "name": "Destroy MEKHANE",
-          "id": "ch-mek-damagemek",
-          "meta": "Might",
-          "text": "神体完整度 −10；归零造成玩家失败。",
-          "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
-          "limit": "英雄可执行。",
-          "statLine": "Complexity: 30\nProfile: 世界恐慌百分点 + 神体完成度百分点\nMenace: 神体完成度百分点 ×2\nDanger: 神体驻守随从提供\nXP: 49",
-          "positiveTags": "Ambition",
-          "negativeTags": "Shadow、Discord、Mekhanites",
-          "image": "icon_powerfalseimage.png"
-        },
-        {
-          "name": "Investigate Mekhanites",
-          "id": "ch-mek-hero-investigatemekhanites",
-          "meta": "Command",
-          "text": "创建 Recent Investigations，持续提高 Congregation Profile。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "非 Mekhanite；个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
-          "statLine": "Complexity: 40；Sentinel Presence 生效时 80\nProfile: 40 + Congregation Profile\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 60；加强后为 102",
-          "positiveTags": "Danger",
-          "negativeTags": "Mekhanites、Shadow",
-          "image": "icon_powerhiddenworks.png"
-        },
-        {
-          "name": "Expose Mekhanites",
-          "id": "ch-mek-hero-exposecongregation",
-          "meta": "Command",
-          "text": "当前 Profile −20，最低 Profile +10。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "Awareness 100%，个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
-          "statLine": "Complexity: 20；Sentinel Presence 生效时 40\nProfile: 20 + Congregation Profile\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 36；加强后为 60",
-          "positiveTags": "Cooperation",
-          "negativeTags": "Mekhanites",
-          "image": "icon_powerfalseimage.png"
-        },
-        {
-          "name": "Steal Relics",
-          "id": "ch-mek-hero-raidcongregation",
-          "meta": "Might",
-          "text": "偷走最多 3 件 Relic；对非 Relic 组件逐件进行 4/9 概率的销毁判定。Congregation Profile −15；当地 Armed Congregation 强度 −10。",
-          "location": "存有组件的 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "英雄有物品栏空位，满足任务的觉醒与 Shadow 限制。",
-          "statLine": "Complexity: 30；Sentinel Presence 生效时 60\nProfile: 50 + 已解封数 ×10\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 49；加强后为 82",
-          "positiveTags": "Danger",
-          "negativeTags": "Mekhanites、Shadow、Combat",
-          "image": "base-raid.png"
-        },
-        {
-          "name": "Destroy Components",
-          "id": "ch-mek-hero-raidcongregation-destroycomponents",
-          "meta": "Might",
-          "text": "尝试销毁最多 10 件组件，每件判定成功率 4/9；也会拿走可携带的 Relic。Congregation Profile −5。",
-          "location": "存有组件的 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "非 Mekhanite 英雄。",
-          "statLine": "Complexity: 20；Sentinel Presence 生效时 40\nProfile: 50 + 已解封数 ×10\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 36；加强后为 60",
-          "positiveTags": "Combat、Danger",
-          "negativeTags": "Mekhanites、Shadow",
-          "image": "base-raid.png"
-        },
-        {
-          "name": "Destroy Relics",
-          "id": "ch-mek-hero-destroyrelic",
-          "meta": "Might",
-          "text": "对 Relic 逐件进行 4/9 概率的销毁判定，最多处理 3 件。",
-          "location": "存有 Relic 的 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "Awareness 100%、个人 Shadow 未满、对 Mekhanites 偏好不高于 0 的英雄，或 Sarkic 人物。",
-          "statLine": "Complexity: 30；Sentinel Presence 生效时 60\nProfile: Congregation Profile\nMenace: 0\nXP: 49；加强后为 82",
-          "positiveTags": "Combat、Danger",
-          "negativeTags": "Mekhanites",
-          "image": "base-raid.png"
-        },
-        {
-          "name": "Convert",
-          "id": "ch-mek-hero-convert",
-          "meta": "Command",
-          "text": "使执行者成为 Mekhanite；人物继续自主行动。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "尚未皈依且喜好 Mekhanites。",
-          "statLine": "Complexity: 20\nProfile: 50\nMenace: 0\nXP: 36",
-          "positiveTags": "Cooperation、Mekhanites、Religion",
-          "negativeTags": "无",
-          "image": "icon_subcongregation.png"
-        },
-        {
-          "name": "Disperse Minor Sect",
-          "id": "ch-mek-hero-disperseminor",
-          "meta": "Command",
-          "text": "强度 −50；结果不大于 0 且英雄 Awareness 至少 50% 时移除教派。其他情况下教派强度变为 1，Profile 归零。Distractions 生效时，成功移除会令英雄 Disrupted 3 回合。",
-          "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
-          "limit": "非 Mekhanite 英雄。",
-          "statLine": "Complexity: 50 + Entrenched Doctrine 的有效等级 ×20\nProfile: Minor Sect Profile\nMenace: 世界恐慌百分点 ×0.4\nXP: 随 Complexity 计算",
-          "positiveTags": "Combat",
-          "negativeTags": "Mekhanites",
-          "image": "icon_minorsect.png"
-        },
-        {
-          "name": "Investigate Exiles",
-          "id": "ch-mek-hero-investigateexile",
-          "meta": "Intrigue",
-          "text": "Profile +25；有 5% 概率使英雄对 Mekhanites 的偏好降低。",
-          "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
-          "limit": "Awareness 超过 50%，设施 Profile 低于 50。",
-          "statLine": "Complexity: 25\nProfile: 50\nMenace: 0\nXP: 42",
-          "positiveTags": "无",
-          "negativeTags": "Mekhanites、Discord、Religion",
-          "image": "icon_minorsect.png"
-        },
-        {
-          "name": "Raid Exiles",
-          "id": "ch-mek-hero-raidexile",
-          "meta": "Intrigue",
-          "text": "Profile 超过 100 时进行摧毁判定，成功后移除设施并重置当地 Shadow 与 Infiltration；未摧毁时 Profile +25。",
-          "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
-          "limit": "个人 Shadow 未满，设施 Profile 至少 50。",
-          "statLine": "Complexity: 25\nProfile: 50\nMenace: 0\nXP: 42",
-          "positiveTags": "Combat、Danger",
-          "negativeTags": "Mekhanites、Discord、Religion",
-          "image": "icon_minorsect.png"
-        },
-        {
-          "name": "Raise Suspicion",
-          "id": "ch-mek-hero-raisesuspicion",
-          "meta": "Command",
-          "text": "降低统治者对 Mekhanites 的偏好 1 级。",
-          "location": "有人类统治者的聚居地",
-          "limit": "英雄厌恶 Mekhanites、个人 Shadow 未满；统治者 Awareness 100%。",
-          "statLine": "Complexity: 20\nProfile: 60 + 已解封数 ×20\nMenace: 0\nXP: 36",
-          "positiveTags": "Cooperation",
-          "negativeTags": "Mekhanites、Religion",
-          "image": "base-vendetta.png"
-        },
-        {
-          "name": "Sabotage Forge Production",
-          "id": "ch-mek-hero-sabotageproduction",
-          "meta": "Might",
-          "text": "Production 强度 −25。",
-          "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
-          "limit": "Awareness 100%，对 Mekhanites 偏好不高于 0。",
-          "statLine": "Complexity: 15\nProfile: 30 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 29",
-          "positiveTags": "Combat、Danger",
-          "negativeTags": "Mekhanites",
-          "image": "icon_orthodoxdissaray.png"
-        },
-        {
-          "name": "Combat Global Rotbolt Spread",
-          "id": "ch-mek-hero-shrinkrotbolt",
-          "meta": "Lore",
-          "text": "持续施法期间，每回合使所有陆地 Rotbolt 减少施法者 Lore，同时消耗 2 Geomantic Locus，执行者 Profile +2。",
-          "location": "Geomantic Locus",
-          "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 2；当地 Locus 强度大于 0。",
-          "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "无",
-          "image": "icon_scprotbolt.png"
-        },
-        {
-          "name": "Combat Local Rotbolt Spread",
-          "id": "ch-mek-hero-shrinkrotboltlocal",
-          "meta": "Lore",
-          "text": "强度 −50。",
-          "location": "<CrossReference name=\"Rotbolt\" href=\"#entry-pr-mek-rotbolt\" />",
-          "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 1。",
-          "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "无",
-          "image": "icon_scprotbolt.png"
-        },
-        {
-          "name": "Banish Clockwork Virus",
-          "id": "ch-mek-co-destroyclockworkvirus",
-          "meta": "Lore",
-          "text": "强度 −100；结果小于 0 时移除。",
-          "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
-          "limit": "仅 Chosen One。",
-          "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
-          "positiveTags": "无",
-          "negativeTags": "Disease、Mekhanites",
-          "image": "base-reforgeTheSeal.png"
-        },
-        {
-          "name": "Destroy A Machine",
-          "id": "ch-mek-co-destroymachine",
-          "meta": "Lore",
-          "text": "强度 −50；结果小于 0 时移除，并停用相关后续神力。",
-          "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
-          "limit": "仅 Chosen One。",
-          "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
-          "positiveTags": "Combat、Danger",
-          "negativeTags": "Shadow、Madness、Mekhanites",
-          "image": "base-reforgeTheSeal.png"
-        },
-        {
-          "name": "Combat Clockwork Virus",
-          "id": "ch-mek-shrinkclockworkvirus",
-          "meta": "Lore",
-          "text": "强度 −15。",
-          "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
-          "limit": "除 Chosen One 外的人物均可执行；英雄会自主选择。",
-          "statLine": "Complexity: 40\nProfile: 50\nMenace: 0\nXP: 60",
-          "positiveTags": "无",
-          "negativeTags": "Disease、Mekhanites",
-          "image": "icon_scpclockworkvirus.png"
-        },
-        {
-          "name": "Contain Relics",
-          "id": "ch-mek-vault-hero-storerelics",
-          "meta": "Other",
-          "text": "把携带的 Relics 放入 Vault，增加其研究速度。",
-          "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
-          "limit": "英雄携带可收容的 Relic。",
-          "statLine": "Complexity: 3\nProfile: 90 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 8",
-          "positiveTags": "无",
-          "negativeTags": "Mekhanites",
-          "image": "icon_vault.png"
-        },
-        {
-          "name": "Reforge Seals",
-          "id": "ch-mek-vaultseal",
-          "meta": "Lore",
-          "text": "重新封印 MEKHANE，玩家立即失败。",
-          "location": "<CrossReference name=\"Vault Research\" href=\"#entry-pr-mek-vault\" /> 至少 300 的 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
-          "limit": "仅 Chosen One；Foundation 路线已开启。",
-          "statLine": "Complexity: 75\nProfile: 90 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 97",
-          "positiveTags": "Cooperation",
-          "negativeTags": "Shadow",
-          "image": "base-reforgeTheSeal.png"
-        }
-      ]
+      "name": "Assemble Mechanism",
+      "id": "ch-assemblemechanism",
+      "text": "3 Piece 合成 1 Mechanism；Congregation Profile +2。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
+      "image": "icon_itembasicmechanism.png",
+      "locationGroup": "除Abyssal外通用"
     },
     {
-      "id": "ruler-actions",
-      "title": "统治者行动",
-      "media": true,
-      "items": [
-        {
-          "name": "Study Mekhanite Texts",
-          "id": "act-mek-convertbasestudy",
-          "text": "消耗 30 Gold，获得 1 + 当地储存的三类 Relic 总数的 Divine Schema。",
-          "location": "Mekhanite 统治者的聚居地",
-          "limit": "统治者是 Mekhanite。",
-          "time": "5 回合",
-          "positiveTags": "Ambition",
-          "negativeTags": "无",
-          "image": "icon_schema.png"
-        },
-        {
-          "name": "Self-Augment",
-          "id": "act-mek-convertbaseaugment",
-          "text": "消耗 3 Divine Schema，使最低的一项基础属性 +1；平手时依次选择 Command、Intrigue、Might、Lore。记录一次 Augmentation。",
-          "location": "Mekhanite 统治者的聚居地",
-          "limit": "拥有足够图纸。",
-          "time": "5 回合",
-          "positiveTags": "Ambition",
-          "negativeTags": "Discord",
-          "image": "icon_augmentationadv.png"
-        },
-        {
-          "name": "Augment Military",
-          "id": "act-mek-convertarmy",
-          "text": "把现有军队转为 Mekhanite Army，或建立新军队。费用为 max(1, ⌊(100 − Augmented Population 强度) /10⌋) Divine Schema。原军队 HP 大于 1 时继承，否则以新军队一半 HP 开始。",
-          "location": "<CrossReference name=\"Augmented Population\" href=\"#entry-pr-mek-augmentpops\" />",
-          "limit": "Mekhanite 统治者；现有军队尚未机械化。",
-          "time": "5 回合",
-          "positiveTags": "Combat",
-          "negativeTags": "无",
-          "image": "icon_acolyte_zealot.png"
-        },
-        {
-          "name": "Augment Population",
-          "id": "act-mek-convertbasedarkactionaugmentpop",
-          "text": "消耗 3 Divine Schema，建立 Augmented Population，并使当地宗教归属 Church of the Broken God。",
-          "location": "Shadow 100% 的聚居地",
-          "limit": "尚无 Augmented Population。",
-          "time": "5 回合",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "Discord",
-          "image": "icon_augmentationadv.png"
-        },
-        {
-          "name": "Sterilize Land",
-          "id": "act-mek-convertbasedarkactiondestroyenviro",
-          "text": "实际扣除 100 Divine Schema 和 100 Gold，创建 Sterilized Land，并给本地地形增加 20 火山破坏。",
-          "location": "统治者的聚居地",
-          "limit": "尚无 Sterilized Land，资源足够。",
-          "time": "10 回合",
-          "positiveTags": "Mekhanites、Madness、Discord",
-          "negativeTags": "Cooperation、Gold",
-          "image": "icon_sterilizedland.png"
-        },
-        {
-          "name": "Reallocate Resources",
-          "id": "act-mek-convertbasedarkactiondonate",
-          "text": "消耗 3 Divine Schema，为一处 Congregation 增添 Piece，并创建 Reallocated Resources；优先选择 Priority。若当地属于其他教团，Unrest +30。",
-          "location": "统治者的聚居地",
-          "limit": "喜好 Mekhanites，存在可接受组件的 Congregation。",
-          "time": "5 回合",
-          "positiveTags": "Cooperation",
-          "negativeTags": "Discord"
-        },
-        {
-          "name": "Mekhanite Gold / Digital Gold / Synthesize Gold",
-          "id": "act-mek-convertbasegold",
-          "text": "消耗 3 Divine Schema，获得 ⌊Prosperity ×45×当地对应 Relic 数⌋ Gold。普通 Congregation 使用 Relic，Forge 使用 Cogwork Relic，Relay 使用 Arcane Relic。",
-          "location": "统治者的聚居地",
-          "limit": "统治者喜好 Mekhanites。",
-          "time": "5 回合",
-          "positiveTags": "Mekhanites、Gold",
-          "negativeTags": "无",
-          "image": "icon_powerorthodox.png"
-        },
-        {
-          "name": "Hide Mekhanites",
-          "id": "act-mek-convertbasehidecongregation",
-          "text": "消耗 3 Divine Schema，使 Congregation Profile −25。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "统治者喜好 Mekhanites，当前 Profile 高于最低值；不在 Mekhanite Kingdom 内。",
-          "time": "10 回合",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "Gold",
-          "image": "icon_powerhiddenworks.png"
-        },
-        {
-          "name": "Holy Transmission",
-          "id": "act-mek-convertbaseincreasepreference",
-          "text": "消耗 3 Divine Schema，随机使一个同国相邻统治者对 Mekhanites 的偏好 +1。",
-          "location": "Mekhanite 统治者的聚居地",
-          "limit": "邻近候选人的偏好不高于 0，Awareness 低于 50%。",
-          "time": "5 回合",
-          "positiveTags": "Shadow、Cooperation、Religion",
-          "negativeTags": "无",
-          "image": "icon_wordofmouth.png"
-        },
-        {
-          "name": "Instill Order",
-          "id": "act-mek-convertbaseunrest",
-          "text": "消耗 3 Divine Schema，Unrest −25、Devastation −25。",
-          "location": "有 Unrest 或 <CrossReference name=\"Devastation\" href=\"#entry-base-devastation\" /> 的聚居地",
-          "limit": "至少一个目标修正具有正强度。",
-          "time": "5 回合",
-          "positiveTags": "Mekhanites、Cooperation",
-          "negativeTags": "Discord",
-          "image": "icon_brokenchurchshadow.png"
-        },
-        {
-          "name": "Rush Clockwork Soldiers",
-          "id": "act-mek-convertbuildweakarmy",
-          "text": "消耗 100 Gold，组建 30 HP 的 Clockwork Army。",
-          "location": "战争中的 Mekhanite Kingdom 或 Dark Empire",
-          "limit": "统治者资源足够。",
-          "time": "2 回合",
-          "positiveTags": "Combat、Cooperation",
-          "negativeTags": "无",
-          "image": "icon_army_artificial.png"
-        },
-        {
-          "name": "Dismantle Congregation",
-          "id": "act-mek-awaredestroycongregation",
-          "text": "消耗 100 Gold，拆除 Congregation。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "Gold 超过 100，对 Mekhanites 的偏好不高于 0，Congregation Profile 至少 50。",
-          "time": "15 回合",
-          "positiveTags": "Combat",
-          "negativeTags": "Gold、Mekhanites",
-          "image": "icon_powerfalseimage.png"
-        },
-        {
-          "name": "Expose Congregation",
-          "id": "act-mek-awareexposecongregation",
-          "text": "消耗 150 Gold，当前 Profile −20，最低 Profile +10。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "Gold 超过 150，对 Mekhanites 的偏好不高于 0，当前 Profile 高于最低值。",
-          "time": "10 回合",
-          "positiveTags": "Combat",
-          "negativeTags": "Gold、Mekhanites、Shadow"
-        },
-        {
-          "name": "Investigate Congregation",
-          "id": "act-mek-awareinvestigatecongregation",
-          "text": "消耗 100 Gold，创建 Recent Investigations。",
-          "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />",
-          "limit": "Gold 超过 100，世界恐慌至少 10%，Congregation Profile 至少 5，对 Mekhanites 的偏好不高于 0；没有正在进行的调查修正。",
-          "time": "10 回合",
-          "positiveTags": "无",
-          "negativeTags": "Mekhanites"
-        },
-        {
-          "name": "Construct Vault",
-          "id": "act-mek-awarevaultbuild",
-          "text": "消耗 200 Gold，建立 Containment Vault。",
-          "location": "Alliance 内的 City 或 Elven City",
-          "limit": "Awareness 100%，Gold 超过 200，对 Mekhanites 的偏好不高于 0；世界尚无 Vault。",
-          "time": "5 回合",
-          "positiveTags": "无",
-          "negativeTags": "Mekhanites、Shadow",
-          "image": "icon_vault.png"
-        },
-        {
-          "name": "Quarantine Clockwork Virus",
-          "id": "act-mek-awareclockworkviruspanic",
-          "text": "Clockwork Virus −90，最低 0；Clockwork Death +30，创建强度 30 的 Quarantine，并使世界恐慌临时增加 5 个百分点。",
-          "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" /> 至少 100 的聚居地",
-          "limit": "由当地统治者执行。",
-          "time": "5 回合",
-          "positiveTags": "Cruel",
-          "negativeTags": "Disease、Mekhanites",
-          "image": "icon_scpclockworkvirus.png"
-        },
-        {
-          "name": "Quarantine Red Death",
-          "id": "act-mek-awarereddeathpanic",
-          "text": "Red Death −90，增加 Death，并实施 Quarantine。",
-          "location": "<CrossReference name=\"Red Death\" href=\"#entry-pr-mek-sarkic-reddeath\" /> 至少 100 的聚居地",
-          "limit": "由当地统治者执行。",
-          "time": "5 回合",
-          "positiveTags": "Cruel",
-          "negativeTags": "Disease、Sarkics",
-          "image": "icon_sarkic_fleshthathates.png"
-        }
-      ]
+      "name": "Assemble Relic",
+      "id": "ch-assemblerelic",
+      "text": "3 Mechanism 合成 1 Relic；Congregation Profile +10，并获得 Divine Schema。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 5\nXP: 49",
+      "image": "icon_itembasicrelic.png",
+      "locationGroup": "除Abyssal外通用"
     },
     {
-      "id": "religious-tasks",
-      "title": "宗教任务",
-      "media": true,
-      "items": [
-        {
-          "name": "Speaker's Sermon",
-          "id": "ch-mek-increasemekpreferencespeaker",
-          "meta": "Other",
-          "text": "创建 Speaker's Sermon，按当地人口获得最多 3 Divine Schema。",
-          "location": "有统治者的人类聚居地",
-          "limit": "仅 Speaker。",
-          "statLine": "Complexity: max(5, 30 − 统治者 Shadow 百分点 ×0.25)\nProfile: 50\nMenace: 0\nXP: 随 Complexity 计算",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "无",
-          "image": "icon_orthodoxsermon.png"
-        },
-        {
-          "name": "Harvest Information",
-          "id": "ch-librarytopiece",
-          "meta": "Lore",
-          "text": "消耗连接强度 50，收集最多 3 Piece。",
-          "location": "<CrossReference name=\"Maxwellist Connection\" href=\"#entry-pr-mek-connection\" /> 至少 50 的地点",
-          "limit": "仅 Intelligence；物品栏有空位。",
-          "statLine": "Complexity: 15\nProfile: 100\nMenace: 0\nXP: 29",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "无",
-          "image": "iconmekspell3.png"
-        },
-        {
-          "name": "Harvest Information",
-          "id": "ch-locitopiece",
-          "meta": "Lore",
-          "text": "消耗 30 Geomantic Locus，以 Piece 填满物品栏空位。",
-          "location": "Geomantic Locus 至少 30 的地点",
-          "limit": "仅 Intelligence。",
-          "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
-          "positiveTags": "Mekhanites",
-          "negativeTags": "无",
-          "image": "iconmekspell3.png"
-        },
-        {
-          "name": "Unorthodox Experiment",
-          "id": "ch-mek-exileexperiment",
-          "meta": "Lore",
-          "text": "尝试产生 Unorthodox Piece，供实验组装使用。",
-          "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
-          "limit": "仅 Mekhanite Exile。",
-          "statLine": "Complexity: 10\nProfile: 50\nMenace: 0\nXP: 21",
-          "positiveTags": "Shadow、Discord",
-          "negativeTags": "无",
-          "image": "icon_subexiles.png"
-        },
-        {
-          "name": "Gain Insight",
-          "id": "ch-mek-sarkic-study",
-          "meta": "Lore",
-          "text": "消耗知识地点修正，获得 Sarkic Insights。",
-          "location": "Arcane Secret 或 Sarkic Insight",
-          "limit": "Sarkic 人物，持有 Insights 少于 30。",
-          "statLine": "Complexity: 20\nProfile: 500\nMenace: 0\nXP: 36",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_secretsarkic.png"
-        },
-        {
-          "name": "Find Insights",
-          "id": "ch-mek-sarkictomb-gather",
-          "meta": "Lore",
-          "text": "取得 Sarkic Insights，执行期间墓穴每回合强度 −2。",
-          "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
-          "limit": "Sarkic 人物，持有 Insights 少于 30；墓穴未被亵渎。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_subsarkictomb.png"
-        },
-        {
-          "name": "Cleanse Klavigar's Tomb",
-          "id": "ch-mek-sarkictomb-cleanse",
-          "meta": "Lore",
-          "text": "消耗 25 Sarkic Insights，解除亵渎，恢复采集与增长。",
-          "location": "Desecrated 状态的 <CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
-          "limit": "Sarkic 人物。",
-          "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_subsarkictomb.png"
-        },
-        {
-          "name": "Unearth Klavigar's Tomb",
-          "id": "ch-mek-sarkictomb",
-          "meta": "Intrigue",
-          "text": "建立 Klavigar Tomb。基础费用为现存墓穴数 ×10 Insights，再加 ⌊当地 Infiltration 百分点 /20⌋。",
-          "location": "Ancient Ruins",
-          "limit": "Karcist；世界墓穴少于 4，地点尚未完全渗透且无冲突设施。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_subsarkictomb.png"
-        },
-        {
-          "name": "Mutate",
-          "id": "ch-mek-sarkicmutate",
-          "meta": "Lore",
-          "text": "消耗 2 Sarkic Insights，取得或升级一项 Sarkic Mutation。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Applied Mutations 生效，已有突变总等级低于人物等级。",
-          "statLine": "Complexity: 10\nProfile: 200\nMenace: 0\nXP: 21",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkicpop.png"
-        },
-        {
-          "name": "Karcist Ascension",
-          "id": "ch-mek-sarkickarcist",
-          "meta": "Lore",
-          "text": "使选定的 Sarkic Cultist 晋升为 Karcist；Temple Profile +10。消耗 Sarkic Insights：当前没有 Karcist 时为 1，否则为现存 Karcist 数 ×10。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Karcist Ascension 生效；仅教团选定的继任者，Insights 足够。",
-          "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkicKarcist.png"
-        },
-        {
-          "name": "Grand Karcist Ascension",
-          "id": "ch-mek-sarkicgrandkarcist",
-          "meta": "Command",
-          "text": "使 Karcist 晋升为 Grand Karcist。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Grand Karcist 教义生效，尚无已选定的最高领袖。需要至少 15 Sarkic Insights；完成函数没有扣除该资源。",
-          "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "base-deepOnes.png"
-        },
-        {
-          "name": "Karcist's Sermon",
-          "id": "ch-mek-sarkicsermon",
-          "meta": "Command",
-          "text": "消耗 5 Sarkic Insights，创建 Karcist's Sermon。",
-          "location": "有统治者的人类聚居地",
-          "limit": "Karcist；目标不在 Alliance，且尚未完全渗透或完全 Enshadowed。",
-          "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkicsermon.png"
-        },
-        {
-          "name": "Convert Ruler",
-          "id": "ch-mek-sarkicpreference",
-          "meta": "Command",
-          "text": "消耗 5 Sarkic Insights，使统治者皈依 Sarkic。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
-          "limit": "Sarkic 人物，目标符合转化条件。",
-          "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkicconvert.png"
-        },
-        {
-          "name": "Sarkic Initiation",
-          "id": "ch-mek-sarkicrecruit",
-          "meta": "Command",
-          "text": "消耗 5 Sarkic Insights，招募 Sarkic Cultist。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Karcist。",
-          "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_acolyte1sf.png"
-        },
-        {
-          "name": "Recruit Sarkic Initiate Minion",
-          "id": "ch-mek-sarkic-recruitminion",
-          "meta": "Command",
-          "text": "消耗 3 Sarkic Insights，招募 Sarkic Initiate 随从。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Sarkic 人物。",
-          "statLine": "Complexity: 3\nProfile: 90\nMenace: 0\nXP: 8",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkic_cultist.png"
-        },
-        {
-          "name": "Root Out Infiltration",
-          "id": "ch-mek-sarkic-security",
-          "meta": "Intrigue",
-          "text": "消耗 10 Sarkic Insights，清除当地 Infiltration。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
-          "limit": "Karcist；地点已有渗透。",
-          "statLine": "Complexity: 25\nProfile: 500\nMenace: 0\nXP: 42",
-          "positiveTags": "Sarkics",
-          "negativeTags": "Mekhanites",
-          "image": "icon_sarkicshadow.png"
-        },
-        {
-          "name": "Divert Attention",
-          "id": "ch-mek-sarkichidetemple",
-          "meta": "Intrigue",
-          "text": "消耗 3 Sarkic Insights，Temple Profile −15。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Sarkic 人物；Counter-Infiltration 会阻止降低 Profile。",
-          "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkichide.png"
-        },
-        {
-          "name": "Form Deathless Empire",
-          "id": "ch-mek-sarkicempire",
-          "meta": "Command",
-          "text": "建立 Deathless Empire，吸纳 Sarkic 地区并可能引起内战。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Grand Karcist。",
-          "statLine": "Complexity: 50\nProfile: 50\nMenace: 0\nXP: 72",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkicempire.png"
-        },
-        {
-          "name": "Raise Halkosts",
-          "id": "ch-mek-sarkicarmyundead",
-          "meta": "Lore",
-          "text": "消耗 5 Sarkic Insights，召唤 HP 为 ⌊Death ×1.5⌋ 的 Sarkic Halkost，并消耗一半 Death。",
-          "location": "有 Death 的 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
-          "limit": "Karcist，Deathless Empire 已存在。",
-          "statLine": "Complexity: max(5, Death ×0.1)\nProfile: 50\nMenace: 0\nXP: 随 Complexity 计算",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkic_halkost.png"
-        },
-        {
-          "name": "Unearth Adytom",
-          "id": "ch-mek-sarkicadytom",
-          "meta": "Other",
-          "text": "消耗 10 Sarkic Insights，寻找 Adytom。通常每次成功率 30%；此前失败次数达到现存墓穴数 −1 时必定成功，创建 Ascension Ritual 并触发 Adytom 事件。",
-          "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
-          "limit": "Grand Karcist。",
-          "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "base-deepOnes.png"
-        },
-        {
-          "name": "Sarkic Ascension",
-          "id": "ch-mek-sarkic-victory",
-          "meta": "Other",
-          "text": "启动时消耗 15 Sarkic Insights。持续执行时，每回合增加 Grand Karcist 的 Lore 的仪式强度；达到 100 后 Sarkics 获胜，玩家失败。",
-          "location": "<CrossReference name=\"Ascension Ritual\" href=\"#entry-pr-mek-sarkic-victory\" />",
-          "limit": "Grand Karcist；God-Eater 生效，Termination 未生效；启动需满足 15 Insights 的资源要求。",
-          "statLine": "Complexity: 10\nProfile: 1000\nMenace: 0\nXP: 21",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkicspell1.png"
-        },
-        {
-          "name": "Unleash the Red Death",
-          "id": "ch-mek-sarkicreddeath",
-          "meta": "Command",
-          "text": "消耗 20 Sarkic Insights，向世界释放 The Flesh That Hates 和 Red Death。",
-          "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
-          "limit": "Grand Karcist，Deathless Empire 已成立且此前没有释放。",
-          "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
-          "positiveTags": "Sarkics",
-          "negativeTags": "无",
-          "image": "icon_sarkic_fleshthathates.png"
-        }
-      ]
+      "name": "Assemble Cogwork Mechanism",
+      "id": "ch-assemblecogworkmechanism",
+      "text": "3 Piece 合成 1 Clockwork Mechanism；Congregation Profile +4。Council of Patriarchs 可降低材料费用。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemcogworkmechanism.png"
     },
     {
+      "name": "Gild Basic Mechanism",
+      "id": "ch-assemblecogworkmechanismconversion",
+      "text": "将 1 Mechanism 转为 1 Clockwork Mechanism，另支付 Gold；Congregation Profile +3。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "材料与 Gold 足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemcogworkmechanism.png"
+    },
+    {
+      "name": "Assemble Cogwork Relic",
+      "id": "ch-assemblecogworkrelic",
+      "text": "3 Clockwork Mechanism 合成 1 Cogwork Relic；Congregation Profile +10，并获得 Divine Schema。Council of Patriarchs 可降低材料费用。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
+      "image": "icon_itemcogworkrelic.png"
+    },
+    {
+      "name": "Assemble Arcane Mechanism",
+      "id": "ch-assemblearcanemechanism",
+      "text": "3 Piece 合成 1 Arcane Mechanism；Congregation Profile +4。Noosphere 可降低材料费用。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemarcanemechanism.png"
+    },
+    {
+      "name": "Defragment Basic Mechanism",
+      "id": "ch-assemblearcanemechanismconversion",
+      "text": "1 Mechanism 转为 1 Arcane Mechanism；Congregation Profile +3。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 20\nProfile: 100\nMenace: 0\nXP: 36",
+      "image": "icon_itemarcanemechanism.png"
+    },
+    {
+      "name": "Assemble Arcane Relic",
+      "id": "ch-assemblearcanerelic",
+      "text": "3 Arcane Mechanism 合成 1 Arcane Relic；Congregation Profile +10，并获得 Divine Schema。Noosphere 可降低材料费用。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "材料足够。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
+      "image": "icon_itemarcanerelic.png"
+    },
+    {
+      "name": "Assemble Divine Machine",
+      "id": "ch-assembledivinemachine",
+      "text": "各消耗 1 Relic、Cogwork Relic、Arcane Relic，组装 1 Divine Machine；Congregation Profile +15。优先使用携带的材料，缺少部分可从库存补足。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "三类材料齐备。",
+      "statLine": "Complexity: 50\nProfile: 8\nMenace: 5\nXP: 72",
+      "image": "icon_divinemachine.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Calculate Secret",
+      "id": "ch-assemblearcanesecret",
+      "text": "消耗 3 Divine Schema，获得 1 Arcane Knowledge。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "持有足够 Divine Schema。",
+      "statLine": "Complexity: 40\nProfile: 0\nMenace: 0\nXP: 60",
+      "image": "iconmekspell2.png"
+    },
+    {
+      "name": "Store All Components",
+      "id": "ch-storecomponentsall",
+      "text": "将携带的所有组件存入当地库存。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "携带至少 1 件组件。",
+      "statLine": "Complexity: 1\nProfile: 100；Priority 地点为 500\nMenace: 0\nXP: 3",
+      "image": "iconstore1.png",
+      "locationGroup": "通用"
+    },
+    {
+      "name": "Store Specific Components",
+      "id": "ch-storecomponent",
+      "text": "选择一种组件存入当地库存。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "携带组件。",
+      "statLine": "Complexity: 1\nProfile: 100；Priority 地点为 500\nMenace: 0\nXP: 3",
+      "image": "iconstore1.png",
+      "locationGroup": "通用"
+    },
+    {
+      "name": "Take Mekhanite Component",
+      "id": "ch-takecomponent",
+      "text": "选择库存中的组件领取，数量受人物物品栏空位限制。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "物品栏有空位。",
+      "statLine": "Complexity: 1\nProfile: 100\nMenace: 0\nXP: 3",
+      "image": "iconstore2.png",
+      "locationGroup": "通用"
+    },
+    {
+      "name": "Divert Attention",
+      "id": "ch-divertattention",
+      "text": "Congregation Profile −20。Underground Networks 每级额外减少 10；−3 时另获得 1 Divine Schema。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "执行者是 Mekhanite、Speaker，或喜好 Mekhanites。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "image": "icon_powerhiddenworks.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Bless Fragments",
+      "id": "ch-mek-blesspiece",
+      "text": "消耗 2 Divine Schema，创建持续 25 回合的 Regenerating Metals。",
+      "location": "<CrossReference name=\"Unearthed Fragments\" href=\"#entry-pr-mek-resourceunearthed\" />",
+      "limit": "持有足够 Divine Schema。",
+      "statLine": "Complexity: 30\nProfile: 100\nMenace: 0\nXP: 49",
+      "image": "icon_powerregeneratingmetal.png"
+    },
+    {
+      "name": "Establish Congregation",
+      "id": "ch-mek-buildcongregation",
+      "text": "消耗 10 Divine Schema 建立 Mekhanite Congregation。",
+      "location": "可渗透的人类聚居地",
+      "limit": "我方 Agent；当地合格且未达到 Congregation 上限。",
+      "statLine": "Complexity: 50\nProfile: 50\nMenace: 0\nXP: 72",
+      "image": "icon_subcongregation.png"
+    },
+    {
+      "name": "Reveal Fragments",
+      "id": "ch-mek-createresourceunearth",
+      "text": "消耗 10 Divine Schema，建立 Unearthed Fragments。",
+      "location": "Ancient Ruins",
+      "limit": "我方 Agent；当地没有碎片。",
+      "statLine": "Complexity: 10\nProfile: 90\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth.png"
+    },
+    {
+      "name": "Build MEKHANE +10%",
+      "id": "ch-mek-buildmek-tier3",
+      "text": "消耗携带的 1 Divine Machine，使建造完成度 +10%。",
+      "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
+      "limit": "持有 Divine Machine。",
+      "statLine": "Complexity: 75\nProfile: 100\nMenace: 0\nXP: 97",
+      "image": "icon_divinemachine.png"
+    },
+    {
+      "name": "Guard MEKHANE",
+      "id": "ch-mek-guardmek",
+      "text": "永久留下一个随从，为 Destroy MEKHANE 增加 Danger。",
+      "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
+      "limit": "至少带有一个随从。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_mekhane.png"
+    },
+    {
+      "name": "Mekhanite Prayer",
+      "id": "ch-mek-prayer",
+      "text": "消耗 1 Divine Schema，教团 Elder Influence +10。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "Mekhanite，持有 Divine Schema。",
+      "statLine": "Complexity: 20\nProfile: 50\nMenace: 5\nXP: 36",
+      "image": "base-basicPrayer.png",
+      "locationGroup": "通用"
+    },
+    {
+      "name": "Recruit Zealot Minion",
+      "id": "ch-mek-recruitzealot",
+      "text": "消耗 Divine Schema，招募 Mekhanite Zealot 随从。Militant Following 调整费用与随从属性。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "拥有足够 Divine Schema 与 Command 空间。",
+      "statLine": "Complexity: 3\nProfile: 90\nMenace: 0\nXP: 8",
+      "image": "icon_acolyte_zealot.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Gain Attention to Sect",
+      "id": "ch-mek-gainattentionminor",
+      "text": "Minor Sect Profile +15。",
+      "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 25\nProfile: 0\nMenace: 0\nXP: 42",
+      "image": "icon_powerhiddenworks.png"
+    },
+    {
+      "name": "Grow Sect",
+      "id": "ch-mek-growsect",
+      "text": "Minor Sect 强度 +30。",
+      "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
+      "image": "icon_powerhiddenworks.png"
+    },
+    {
+      "name": "Boost Production",
+      "id": "ch-mek-boostproduction",
+      "text": "Production 强度翻倍，最高 100。翻倍结果超过 100 时会立即处理一次生产，并令 Forge Profile +10。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite。",
+      "statLine": "Complexity: 15\nProfile: 0\nMenace: 0\nXP: 29",
+      "image": "icon_orthodoxboostproduction.png"
+    },
+    {
+      "name": "Boost Relay Signal",
+      "id": "ch-mek-boostsignal",
+      "text": "Signal 强度 +30。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
+      "limit": "有可用 Signal。",
+      "statLine": "Complexity: 15\nProfile: 0\nMenace: 0\nXP: 29",
+      "image": "icon_subrelay.png"
+    },
+    {
+      "name": "Impart Mekhanite Knowledge",
+      "id": "ch-mek-rulerschema",
+      "text": "把 Divine Schema 转交当地统治者。",
+      "location": "Mekhanite 统治者所在聚居地",
+      "limit": "携带足够 Divine Schema。",
+      "statLine": "Complexity: 20\nProfile: 90\nMenace: 0\nXP: 36",
+      "image": "icon_wordofmouth.png"
+    },
+    {
+      "name": "Holy Transmission",
+      "id": "ch-mek-increasemekpreference",
+      "text": "消耗 Divine Schema，使当地统治者皈依 Mekhanites；统治者 Shadow 与 Word of Mouth 降低费用。",
+      "location": "有统治者的人类聚居地",
+      "limit": "持有足够 Divine Schema。",
+      "statLine": "Complexity: 50\nProfile: 90\nMenace: 0\nXP: 72",
+      "image": "icon_wordofmouth.png"
+    },
+    {
+      "name": "Obtain Divine Schema",
+      "id": "ch-mek-schemastudy",
+      "text": "取得 1 Divine Schema 并移除当地图纸；未皈依的英雄执行时获得 Awareness。",
+      "location": "<CrossReference name=\"Divine Schema\" href=\"#entry-pr-mek-schema\" />",
+      "limit": "Sarkic 人物不能执行；自主 Mekhanite 需等待图纸出现 15 回合。",
+      "statLine": "Complexity: 30\nProfile: 70\nMenace: 0\nXP: 49",
+      "image": "icon_schema.png"
+    },
+    {
+      "name": "Buy Pieces",
+      "id": "ch-buypieces",
+      "text": "支付 15 Gold，最多购买 3 Piece。",
+      "location": "已渗透 Market 或 Grand Bazaar",
+      "limit": "Mekhanite，物品栏有空位；Black Market Connections ≤−1。",
+      "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
+      "image": "icon_itembasicpiece.png"
+    },
+    {
+      "name": "Buy Mechanisms",
+      "id": "ch-buymechanisms",
+      "text": "支付 30 Gold，最多购买 3 Mechanism。",
+      "location": "已渗透 Market 或 Grand Bazaar",
+      "limit": "Mekhanite，物品栏有空位；Black Market Connections ≤−2。",
+      "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
+      "image": "icon_itembasicmechanism.png"
+    },
+    {
+      "name": "Buy Relic",
+      "id": "ch-buyrelic",
+      "text": "支付 90 Gold，购买 1 Relic。",
+      "location": "已渗透 Market 或 Grand Bazaar",
+      "limit": "Mekhanite，物品栏有空位；Black Market Connections 为 −3。",
+      "statLine": "Complexity: 3\nProfile: 500\nMenace: 0\nXP: 8",
+      "image": "icon_itembasicrelic.png"
+    },
+    {
+      "name": "Blood and Iron",
+      "id": "ch-deathtopiece",
+      "text": "消耗 25 Death，得到 1 Piece。",
+      "location": "Death 或 <CrossReference name=\"Clockwork Death\" href=\"#entry-pr-mek-clockworkvirusdead\" /> 至少 25 的地点",
+      "limit": "Blood and Iron 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_red.png"
+    },
+    {
+      "name": "Impossible Geometry",
+      "id": "ch-madnesstopiece",
+      "text": "消耗 15 Madness，得到 1 Piece。",
+      "location": "Madness 至少 15 的地点",
+      "limit": "Impossible Geometry 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_pink.png"
+    },
+    {
+      "name": "Mechanical Salvage",
+      "id": "ch-ruintopiece",
+      "text": "从废墟中取得 1 Piece。",
+      "location": "City Ruins",
+      "limit": "Mechanical Salvage 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 50\nProfile: 500\nMenace: 0\nXP: 72",
+      "image": "icon_powerunearth_orange.png"
+    },
+    {
+      "name": "Orcish Tools",
+      "id": "ch-industrytopiece",
+      "text": "Orcish Industry +10，并得到 1 Piece。",
+      "location": "已渗透 Orc Camp，Orcish Industry 至少 10",
+      "limit": "Orcish Tools 生效；物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_yellow.png"
+    },
+    {
+      "name": "Abyssal Ores",
+      "id": "ch-deeponestopiececult",
+      "text": "Deep One Cult 强度 +15，并取得 1 Piece。",
+      "location": "Deep One Cult",
+      "limit": "Abyssal Ore 生效；Mekhanite 或 Automaton，物品栏有空位。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
+      "image": "icon_powerunearth_green.png"
+    },
+    {
+      "name": "Assemble Gatherer",
+      "id": "ch-mek-automaton-basic",
+      "text": "组装 Gatherer。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Gatherer 数)。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
+      "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
+      "image": "icon_automaton.png"
+    },
+    {
+      "name": "Assemble Sentinel",
+      "id": "ch-mek-automaton-sentinel",
+      "text": "组装 Sentinel。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Sentinel 数)。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
+      "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
+      "image": "icon_automaton_sentry.png"
+    },
+    {
+      "name": "Assemble Speaker",
+      "id": "ch-mek-automaton-speaker",
+      "text": "组装 Speaker。消耗 Clockwork Mechanism 数量为 max(1, 3 − Council of Patriarchs 强度 /100 的整数部分 + 现存 Speaker 数)。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "我方 Agent 或 Orthodox Legate；材料足够。",
+      "statLine": "Complexity: 30；Automatons 生产达到 100 时为 15\nProfile: 90\nMenace: 5\nXP: 49；生产加成为 29",
+      "image": "icon_automaton_speaker.png"
+    },
+    {
+      "name": "Assemble Infiltrator",
+      "id": "ch-mek-maxwellist-infiltrator",
+      "text": "组装 Infiltrator。消耗 Arcane Mechanism 数量为 max(1, 3 − Noosphere 人口 /200 的整数部分 + 现存 Infiltrator 数)。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Living Saint；材料足够。",
+      "statLine": "Complexity: 30\nProfile: 200\nMenace: 5\nXP: 49",
+      "image": "icon_construct_infiltrator.png"
+    },
+    {
+      "name": "Assemble Intelligence",
+      "id": "ch-mek-maxwellist-intelligence",
+      "text": "组装自主 Intelligence。消耗 Arcane Mechanism 数量为 max(1, 3 − Noosphere 人口 /200 的整数部分 + 现存 Intelligence 数)。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Living Saint；材料足够。",
+      "statLine": "Complexity: 40\nProfile: 20\nMenace: 0\nXP: 60",
+      "image": "icon_construct_intelligence.png"
+    },
+    {
+      "name": "Establish Connection",
+      "id": "ch-mek-maxwellist-connection",
+      "text": "建立 Maxwellist Connection。",
+      "location": "与 <CrossReference name=\"Maxwellist Connection\" href=\"#entry-pr-mek-connection\" /> 修正或下列兴趣点所在地点相邻的陆地：<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" />。",
+      "limit": "我方 Agent 或 Living Saint，拥有 Noosphere Connection；目标聚居地完全渗透且尚无连接。",
+      "statLine": "Complexity: 15\nProfile: 100\nMenace: 0\nXP: 29",
+      "image": "iconmekspell6.png"
+    },
+    {
+      "name": "Clockworks: Fine",
+      "id": "ch-mek-clockworksfine",
+      "text": "批量加工库存 Piece；每件产物增加 2 Congregation Profile。普通设施产出 Mechanism，Maxwellist 设施产出 Arcane Mechanism。\nOrthodox 分支先以 Piece 是否足够判断，但实际产量读取库存 Mechanism 数；因此其显示说明与执行结果存在差异。",
+      "location": "<CrossReference name=\"The Clockworks\" href=\"#entry-pr-mek-clockworks\" />",
+      "limit": "Mekhanite；Congregation 库存中有组件。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_scpclockworks.png"
+    },
+    {
+      "name": "Clockworks: Very Fine",
+      "id": "ch-mek-clockworksveryfine",
+      "text": "批量把已有 Mechanism 升级为对应 Relic，并处理 Piece 到 Mechanism 的加工。默认每 3 件低阶组件产出 1 件高阶组件，每件实际产物使 Congregation Profile +2。",
+      "location": "<CrossReference name=\"The Clockworks\" href=\"#entry-pr-mek-clockworks\" />",
+      "limit": "Mekhanite；Congregation 库存中有组件。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_scpclockworks.png"
+    },
+    {
+      "name": "Mechanical Hymns",
+      "id": "ch-mek-smithboostelder",
+      "text": "消耗 2 Divine Schema，创建 Mechanical Hymns；Metalsmith 免费。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" />、<CrossReference name=\"Abyssal Congregation\" href=\"#entry-sub-mek-congregationabyssal\" /> 所在地点。",
+      "limit": "我方 Agent 或 Metalsmith。",
+      "statLine": "Complexity: 15\nProfile: 90\nMenace: 0\nXP: 29",
+      "image": "icon_brokenchurchshadow.png",
+      "locationGroup": "通用"
+    },
+    {
+      "name": "Mekhanite Smithing",
+      "id": "ch-mek-smithboostmodifier",
+      "text": "消耗 3 Divine Schema，创建 Mekhanite Smithing；Metalsmith 免费。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Metalsmith。",
+      "statLine": "Complexity: 30\nProfile: 90\nMenace: 0\nXP: 49",
+      "image": "icon_brokenChurchSmithing.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Arm Congregation",
+      "id": "ch-mek-smithdanger",
+      "text": "消耗 3 Divine Schema，创建 Armed Congregation；Metalsmith 免费。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "我方 Agent 或 Metalsmith。",
+      "statLine": "Complexity: 30\nProfile: 90\nMenace: 0\nXP: 49",
+      "image": "icon_brokenChurchDanger.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Experiment with Cogworks",
+      "id": "ch-mek-exile-assembledevastation",
+      "text": "消耗 3 Unorthodox Piece，制造 Rampaging Experiment；设施 Profile +10。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
+      "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
+      "image": "icon_exileExperiment.png"
+    },
+    {
+      "name": "Experiment with the Arcane",
+      "id": "ch-mek-exile-assemblemadness",
+      "text": "消耗 3 Unorthodox Piece，制造 Maddening Machine；设施 Profile +10。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
+      "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
+      "image": "icon_exileExperiment3.png"
+    },
+    {
+      "name": "Experiment with Shadow",
+      "id": "ch-mek-exile-assembleshadow",
+      "text": "消耗 3 Unorthodox Piece，制造 False Image；设施 Profile +10。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "我方 Agent 或 Mekhanite Exile；携带材料。",
+      "statLine": "Complexity: 25\nProfile: 100\nMenace: 0\nXP: 42",
+      "image": "icon_exileExperiment2.png"
+    },
+    {
+      "name": "Augment",
+      "id": "rt-mek-augment",
+      "text": "消耗 Divine Schema 选择一项 Augmentation；费用随已有 Augmentation 数量增加。",
+      "location": "执行者所在地",
+      "limit": "我方 Agent，持有足够 Divine Schema。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21",
+      "image": "icon_augmentationadv.png"
+    },
+    {
+      "name": "Unified Church",
+      "id": "rt-mek-mekempire",
+      "text": "建立 Unified Church 帝国。Dark Empire 和平转化；其他国家不支持 Mekhanites 的领主可能发动内战。",
+      "location": "Mekhanite Kingdom 或 Dark Empire 中，有统治者且拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的聚居地。",
+      "limit": "The Builder；仅可使用一次。",
+      "statLine": "Complexity: 50\nProfile: 0\nMenace: 0\nXP: 72",
+      "image": "icon_mekhaneempire.png"
+    },
+    {
+      "name": "Mekhanite Revolution",
+      "id": "rt-mek-militancy",
+      "text": "建立 Mekhanite Kingdom，可能引起内战。",
+      "location": "<CrossReference name=\"Augmented Population\" href=\"#entry-pr-mek-augmentpops\" /> 至少 50 的人类国家聚居地",
+      "limit": "The Builder；目标不是 Dark Empire 或既有 Mekhanite 国家。",
+      "statLine": "Complexity: 20\nProfile: 0\nMenace: 0\nXP: 36",
+      "image": "icon_zealot.png"
+    },
+    {
+      "name": "Gather Relics",
+      "id": "rt-mek-gainrelics",
+      "text": "从 Congregation 库存中收集 Relic、Cogwork Relic、Arcane Relic 各 1 件，用于制作 Divine Machine。",
+      "location": "The Builder 所在地",
+      "limit": "The Builder，物品栏有空位且世界库存中有材料。",
+      "statLine": "Complexity: 20\nProfile: 0\nMenace: 0\nXP: 36",
+      "image": "iconstore2.png"
+    },
+    {
+      "name": "Mekhanite Crusade",
+      "id": "rt-mek-war",
+      "text": "使 Unified Church 向目标国家宣战，帝国内贵族皈依 Mekhanites。",
+      "location": "Unified Church 以外的人类或精灵聚居地",
+      "limit": "The Builder；Unified Church 已建立。",
+      "statLine": "Complexity: 10\nProfile: 0\nMenace: 50\nXP: 21",
+      "image": "base-war.png"
+    },
+    {
+      "name": "Drive Back",
+      "id": "rt-mek-scatter",
+      "text": "驱退本地非 Mekhanite 单位。",
+      "location": "Bumaro's Warhammer 持有者所在地",
+      "limit": "持有 Bumaro’s Warhammer；冷却 5 回合。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_itemhammer.png"
+    },
+    {
+      "name": "Propagate Clockwork Virus",
+      "id": "ch-mek-growclockworkvirus",
+      "text": "强度 +30。",
+      "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
+      "limit": "我方 Agent 或 Mekhanite。",
+      "statLine": "Complexity: 40\nProfile: 0\nMenace: 0\nXP: 60",
+      "image": "icon_scpclockworkvirus.png"
+    },
+    {
+      "name": "Spread Rotbolt",
+      "id": "ch-mek-growrotbolt",
+      "text": "持续施法时，强度低于 100 的 Rotbolt 每回合增加执行者 Lore；执行者每回合 Menace +2。",
+      "location": "<CrossReference name=\"Rotbolt\" href=\"#entry-pr-mek-rotbolt\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
+      "image": "base-deepOnes.png"
+    },
+    {
+      "name": "Grow the Machine",
+      "id": "ch-mek-growmachine",
+      "text": "完成时强度 +30。执行者已有 Machine Effect 时，该特质强度减半，并增加个人 Shadow 15 个百分点。交付组件界面的额外转化结果未找到可靠生效路径。",
+      "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
+      "limit": "我方 Agent，或受 Machine Effect 影响的自主英雄。",
+      "statLine": "Complexity: 5\nProfile: 50 + A Machine 强度\nMenace: 0\nXP: 12",
+      "image": "icon_scpamachine.png"
+    },
+    {
+      "name": "Raid Vault",
+      "id": "ch-mek-vault-raid",
+      "text": "夺回库存中的 Relics，并将 Vault Research 重置为 1。",
+      "location": "已渗透的 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Mekhanite，排除 Automaton；物品栏有空位。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 90\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "image": "base-raid.png"
+    },
+    {
+      "name": "Desecrate Sarkic Tomb",
+      "id": "ch-mek-sarkictomb-desecrate",
+      "text": "使墓穴进入 Desecrated 状态，失去强度并停止产出 Sarkic Insights。",
+      "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
+      "limit": "Mekhanite 或 Awareness 100% 的人物，排除 Sarkic。",
+      "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
+      "image": "icon_subsarkictomb.png"
+    },
+    {
+      "name": "Banish Red Death",
+      "id": "ch-mek-co-destroyreddeath",
+      "text": "强度 −500；降到 0 以下时移除，并清除 The Flesh That Hates。",
+      "location": "<CrossReference name=\"Red Death\" href=\"#entry-pr-mek-sarkic-reddeath\" />",
+      "limit": "我方 Agent 或 Chosen One。",
+      "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
+      "image": "base-reforgeTheSeal.png"
+    },
+    {
+      "name": "Expose Sarkics",
+      "id": "ch-mek-sarkicagentexpose",
+      "text": "Temple Profile +30。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "我方 Agent；Profile 低于 100。",
+      "statLine": "Complexity: 40\nProfile: 90 + 已解封数 ×20 + Sarkic Temple Profile\nMenace: 0\nXP: 60",
+      "image": "icon_sarkicspell2.png"
+    },
+    {
+      "name": "Investigate Sarkics",
+      "id": "ch-mek-sarkicagentinvestigate",
+      "text": "Sarkic Temple Profile +10，Sarkic Cult 的 Elder Influence +10，同时提高教派对我方的敌意。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 0\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "image": "base-clues.png"
+    },
+    {
+      "name": "Destroy Sarkic Temple",
+      "id": "ch-mek-sarkicdestroytemple",
+      "text": "摧毁 Sarkic Temple。",
+      "location": "Profile 达到 100 的 <CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Killing Blows 生效；Mekhanite，排除 Automaton。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 90\nMenace: 0\nDanger: 30\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "image": "base-war.png"
+    },
+    {
+      "name": "Production: Automatons",
+      "id": "ch-mek-productionautomaton",
+      "text": "切换为 Automatons；Production 每回合 +0.5，达到 100 后相应组装 Complexity 减半。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_orthodoxautomaton.png"
+    },
+    {
+      "name": "Production: Smelt Gold",
+      "id": "ch-mek-productionxp",
+      "text": "切换为 Smelt Gold；Production 每回合 +2，满额后持续支援 Council of Patriarchs。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_orthodoxgold.png"
+    },
+    {
+      "name": "Production: Automaton Repairs",
+      "id": "ch-mek-productionrepair",
+      "text": "切换为 Automaton Repairs；Production 每回合 +3，满额后为机械单位及 Legates 恢复 2 HP。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_orthodoxrepair.png"
+    },
+    {
+      "name": "Production: Smelt Metal",
+      "id": "ch-mek-productionsmelt",
+      "text": "切换为 Smelt Metal；Production 每回合 +1，满额后生产 1 Piece。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_orthodoxpiece.png"
+    },
+    {
+      "name": "Production: Cogwork Military",
+      "id": "ch-mek-productioncogwork",
+      "text": "切换为 Cogwork Military；Production 每回合 +1，满额后增加 Mekhanite Army 的 15 额外 HP 上限。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_orthodoxdanger.png"
+    },
+    {
+      "name": "Production: Idle",
+      "id": "ch-mek-productionstop",
+      "text": "切换为 Idle；Production 每回合 +1，满额后产生 1 Elder Influence。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_subforge.png"
+    },
+    {
+      "name": "Signal: Repeating",
+      "id": "ch-mek-signalbuff",
+      "text": "切换为 Repeating；每回合为 Noosphere 增加现存连接数量的强度。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_powermaxwellist.png"
+    },
+    {
+      "name": "Signal: Fractal",
+      "id": "ch-mek-signalprofile",
+      "text": "切换为 Fractal；Signal 每回合 +5，满额后连接地点的 Mekhanite Profile −20。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_powermaxwellist.png"
+    },
+    {
+      "name": "Stop the Signal",
+      "id": "ch-mek-signalstop",
+      "text": "停止当前 Signal。",
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的 <CrossReference name=\"Signal\" href=\"#entry-pr-mek-relaysignal\" />",
+      "limit": "Mekhanite；当前未处于该模式。",
+      "statLine": "Complexity: 1\nProfile: 0\nMenace: 0\nXP: 3",
+      "image": "icon_powermaxwellist.png"
+    },
+    {
+      "id": "ch-mek-signalrepeating",
+      "name": "Repeating Signal",
+      "text": "创建持续 30 回合的 Repeating Signal。",
+      "location": "<CrossReference name=\"Noosphere\" href=\"#entry-pr-mek-maxwellistwan\" />",
+      "limit": "Mekhanite；Noosphere 未达到上限。",
+      "statLine": "Complexity: 20\nProfile: 0\nMenace: 0\nXP: 36",
+      "image": "icon_powermaxwellist.png"
+    },
+    {
+      "id": "ch-mek-sacrificeself",
+      "name": "Throw Self In",
+      "image": "base-brutalAssassination.png",
+      "text": "执行者死亡，A Machine 的当前强度与强度上限各增加 100。",
+      "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
+      "limit": "我方可控 Agent 可以执行；带有 Machine Effect 的其他人物也可以执行，但 Chosen One 除外。",
+      "statLine": "Complexity: 10\nProfile: 200\nMenace: 0\nXP: 21"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-councilschema",
+      "name": "Centralized Knowledge",
+      "text": "花费 Gold 获得 1 Divine Schema。",
+      "image": "/locations/mod/God_MEKHANE.icon_orthodoxschema.png",
+      "meta": "固定进度",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "玩家人物，携带足够 Gold。",
+      "statLine": "Complexity: 5\nProfile: 40\nMenace: 5\nXP: 12"
+    }
+  ]
+},
+{
+  "id": "hero-tasks",
+  "title": "英雄任务",
+  "media": true,
+  "items": [
+    {
+      "name": "Destroy MEKHANE",
+      "id": "ch-mek-damagemek",
+      "meta": "Might",
+      "text": "神体完整度 −10；归零造成玩家失败。",
+      "location": "<CrossReference name=\"MEKHANE's Body\" href=\"#entry-pr-mek-body\" />",
+      "limit": "英雄可执行。",
+      "statLine": "Complexity: 30\nProfile: 世界恐慌百分点 + 神体完成度百分点\nMenace: 神体完成度百分点 ×2\nDanger: 神体驻守随从提供\nXP: 49",
+      "positiveTags": "Ambition",
+      "negativeTags": "Shadow、Discord、Mekhanites",
+      "image": "icon_powerfalseimage.png"
+    },
+    {
+      "name": "Investigate Mekhanites",
+      "id": "ch-mek-hero-investigatemekhanites",
+      "meta": "Command",
+      "text": "创建 Recent Investigations，持续提高 Congregation Profile。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "非 Mekhanite；个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
+      "statLine": "Complexity: 40；Sentinel Presence 生效时 80\nProfile: 40 + Congregation Profile\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 60；加强后为 102",
+      "positiveTags": "Danger",
+      "negativeTags": "Mekhanites、Shadow",
+      "image": "icon_powerhiddenworks.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Expose Mekhanites",
+      "id": "ch-mek-hero-exposecongregation",
+      "meta": "Command",
+      "text": "当前 Profile −20，最低 Profile +10。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "Awareness 100%，个人 Shadow 未满，对 Mekhanites 的偏好不高于 0。",
+      "statLine": "Complexity: 20；Sentinel Presence 生效时 40\nProfile: 20 + Congregation Profile\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 36；加强后为 60",
+      "positiveTags": "Cooperation",
+      "negativeTags": "Mekhanites",
+      "image": "icon_powerfalseimage.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Steal Relics",
+      "id": "ch-mek-hero-raidcongregation",
+      "meta": "Might",
+      "text": "偷走最多 3 件 Relic；对非 Relic 组件逐件进行 4/9 概率的销毁判定。Congregation Profile −15；当地 Armed Congregation 强度 −10。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "英雄有物品栏空位，满足任务的觉醒与 Shadow 限制。",
+      "statLine": "Complexity: 30；Sentinel Presence 生效时 60\nProfile: 50 + 已解封数 ×10\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 49；加强后为 82",
+      "positiveTags": "Danger",
+      "negativeTags": "Mekhanites、Shadow、Combat",
+      "image": "base-raid.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Destroy Components",
+      "id": "ch-mek-hero-raidcongregation-destroycomponents",
+      "meta": "Might",
+      "text": "尝试销毁最多 10 件组件，每件判定成功率 4/9；也会拿走可携带的 Relic。Congregation Profile −5。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "非 Mekhanite 英雄。",
+      "statLine": "Complexity: 20；Sentinel Presence 生效时 40\nProfile: 50 + 已解封数 ×10\nMenace: 0\nDanger: Armed Congregation +10；Augmented Population 达到 100 时 +5\nXP: 36；加强后为 60",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites、Shadow",
+      "image": "base-raid.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Destroy Relics",
+      "id": "ch-mek-hero-destroyrelic",
+      "meta": "Might",
+      "text": "对 Relic 逐件进行 4/9 概率的销毁判定，最多处理 3 件。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "Awareness 100%、个人 Shadow 未满、对 Mekhanites 偏好不高于 0 的英雄，或 Sarkic 人物。",
+      "statLine": "Complexity: 30；Sentinel Presence 生效时 60\nProfile: Congregation Profile\nMenace: 0\nXP: 49；加强后为 82",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites",
+      "image": "base-raid.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Convert",
+      "id": "ch-mek-hero-convert",
+      "meta": "Command",
+      "text": "使执行者成为 Mekhanite；人物继续自主行动。",
+      "location": "<CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Orcish Congregation\" href=\"#entry-sub-mek-congregationorc\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "尚未皈依且喜好 Mekhanites。",
+      "statLine": "Complexity: 20\nProfile: 50\nMenace: 0\nXP: 36",
+      "positiveTags": "Cooperation、Mekhanites、Religion",
+      "negativeTags": "无",
+      "image": "icon_subcongregation.png",
+      "locationGroup": "除Abyssal外通用"
+    },
+    {
+      "name": "Disperse Minor Sect",
+      "id": "ch-mek-hero-disperseminor",
+      "meta": "Command",
+      "text": "强度 −50；结果不大于 0 且英雄 Awareness 至少 50% 时移除教派。其他情况下教派强度变为 1，Profile 归零。Distractions 生效时，成功移除会令英雄 Disrupted 3 回合。",
+      "location": "<CrossReference name=\"Minor Sect\" href=\"#entry-pr-mek-minorsect\" />",
+      "limit": "非 Mekhanite 英雄。",
+      "statLine": "Complexity: 50 + Entrenched Doctrine 的有效等级 ×20\nProfile: Minor Sect Profile\nMenace: 世界恐慌百分点 ×0.4\nXP: 随 Complexity 计算",
+      "positiveTags": "Combat",
+      "negativeTags": "Mekhanites",
+      "image": "icon_minorsect.png"
+    },
+    {
+      "name": "Investigate Exiles",
+      "id": "ch-mek-hero-investigateexile",
+      "meta": "Intrigue",
+      "text": "Profile +25；有 5% 概率使英雄对 Mekhanites 的偏好降低。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "Awareness 超过 50%，设施 Profile 低于 50。",
+      "statLine": "Complexity: 25\nProfile: 50\nMenace: 0\nXP: 42",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites、Discord、Religion",
+      "image": "icon_minorsect.png"
+    },
+    {
+      "name": "Raid Exiles",
+      "id": "ch-mek-hero-raidexile",
+      "meta": "Intrigue",
+      "text": "Profile 超过 100 时进行摧毁判定，成功后移除设施并重置当地 Shadow 与 Infiltration；未摧毁时 Profile +25。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "个人 Shadow 未满，设施 Profile 至少 50。",
+      "statLine": "Complexity: 25\nProfile: 50\nMenace: 0\nXP: 42",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites、Discord、Religion",
+      "image": "icon_minorsect.png"
+    },
+    {
+      "name": "Raise Suspicion",
+      "id": "ch-mek-hero-raisesuspicion",
+      "meta": "Command",
+      "text": "降低统治者对 Mekhanites 的偏好 1 级。",
+      "location": "有人类统治者的聚居地",
+      "limit": "英雄厌恶 Mekhanites、个人 Shadow 未满；统治者 Awareness 100%。",
+      "statLine": "Complexity: 20\nProfile: 60 + 已解封数 ×20\nMenace: 0\nXP: 36",
+      "positiveTags": "Cooperation",
+      "negativeTags": "Mekhanites、Religion",
+      "image": "base-vendetta.png"
+    },
+    {
+      "name": "Sabotage Forge Production",
+      "id": "ch-mek-hero-sabotageproduction",
+      "meta": "Might",
+      "text": "Production 强度 −25。",
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 的 <CrossReference name=\"Production\" href=\"#entry-pr-mek-forgeproduction\" />",
+      "limit": "Awareness 100%，对 Mekhanites 偏好不高于 0。",
+      "statLine": "Complexity: 15\nProfile: 30 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 29",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Mekhanites",
+      "image": "icon_orthodoxdissaray.png"
+    },
+    {
+      "name": "Combat Global Rotbolt Spread",
+      "id": "ch-mek-hero-shrinkrotbolt",
+      "meta": "Lore",
+      "text": "持续施法期间，每回合使所有陆地 Rotbolt 减少施法者 Lore，同时消耗 2 Geomantic Locus，执行者 Profile +2。",
+      "location": "Geomantic Locus",
+      "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 2；当地 Locus 强度大于 0。",
+      "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "无",
+      "image": "icon_scprotbolt.png"
+    },
+    {
+      "name": "Combat Local Rotbolt Spread",
+      "id": "ch-mek-hero-shrinkrotboltlocal",
+      "meta": "Lore",
+      "text": "强度 −50。",
+      "location": "<CrossReference name=\"Rotbolt\" href=\"#entry-pr-mek-rotbolt\" />",
+      "limit": "非 Mekhanite、个人 Shadow 未满，Geomancy 至少 1。",
+      "statLine": "Complexity: 10\nProfile: 0\nMenace: 0\nXP: 21",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "无",
+      "image": "icon_scprotbolt.png"
+    },
+    {
+      "name": "Banish Clockwork Virus",
+      "id": "ch-mek-co-destroyclockworkvirus",
+      "meta": "Lore",
+      "text": "强度 −100；结果小于 0 时移除。",
+      "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
+      "limit": "仅 Chosen One。",
+      "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
+      "positiveTags": "无",
+      "negativeTags": "Disease、Mekhanites",
+      "image": "base-reforgeTheSeal.png"
+    },
+    {
+      "name": "Destroy A Machine",
+      "id": "ch-mek-co-destroymachine",
+      "meta": "Lore",
+      "text": "强度 −50；结果小于 0 时移除，并停用相关后续神力。",
+      "location": "<CrossReference name=\"A Machine\" href=\"#entry-pr-mek-machine\" />",
+      "limit": "仅 Chosen One。",
+      "statLine": "Complexity: 30\nProfile: 0\nMenace: 0\nXP: 49",
+      "positiveTags": "Combat、Danger",
+      "negativeTags": "Shadow、Madness、Mekhanites",
+      "image": "base-reforgeTheSeal.png"
+    },
+    {
+      "name": "Combat Clockwork Virus",
+      "id": "ch-mek-shrinkclockworkvirus",
+      "meta": "Lore",
+      "text": "强度 −15。",
+      "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" />",
+      "limit": "除 Chosen One 外的人物均可执行；英雄会自主选择。",
+      "statLine": "Complexity: 40\nProfile: 50\nMenace: 0\nXP: 60",
+      "positiveTags": "无",
+      "negativeTags": "Disease、Mekhanites",
+      "image": "icon_scpclockworkvirus.png"
+    },
+    {
+      "name": "Contain Relics",
+      "id": "ch-mek-vault-hero-storerelics",
+      "meta": "Other",
+      "text": "把携带的 Relics 放入 Vault，增加其研究速度。",
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "英雄携带可收容的 Relic。",
+      "statLine": "Complexity: 3\nProfile: 90 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 8",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites",
+      "image": "icon_vault.png"
+    },
+    {
+      "name": "Reforge Seals",
+      "id": "ch-mek-vaultseal",
+      "meta": "Lore",
+      "text": "重新封印 MEKHANE，玩家立即失败。",
+      "location": "<CrossReference name=\"Vault Research\" href=\"#entry-pr-mek-vault\" /> 至少 300 的 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "仅 Chosen One；Foundation 路线已开启。",
+      "statLine": "Complexity: 75\nProfile: 90 + 世界恐慌百分点 ×0.25\nMenace: 0\nXP: 97",
+      "positiveTags": "Cooperation",
+      "negativeTags": "Shadow",
+      "image": "base-reforgeTheSeal.png"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-sarkicheroinvestigate",
+      "name": "Investigate Sarkics",
+      "text": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> Profile +10，Sarkic Cult 的 Elder Influence +10，同时提高教派对我方的敌意。",
+      "image": "/locations/game/clues.png",
+      "meta": "Command",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "我方 Agent。",
+      "statLine": "Complexity: 10 + 当地 Security ×5\nProfile: 0\nMenace: 0\nXP: ⌊[6×(10 + 当地 Security ×5)]^0.75⌋",
+      "positiveTags": "Danger",
+      "negativeTags": "Disease、Sarkics"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-vault-hero-learn",
+      "name": "Study Enemy",
+      "text": "获得 Specialist: Mekhanite。",
+      "image": "/locations/mod/God_MEKHANE.icon_brokenchurchshadow.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "世界恐慌 ≥50%；执行者 Awareness ≥50%，不是 Mekhanite 或 Biomechanical，尚无该特质。",
+      "statLine": "Complexity: 3\nProfile: 90 + 世界恐慌 / 4\nMenace: 0\nXP: 8",
+      "positiveTags": "Co-Operation",
+      "negativeTags": "Shadow、Mekhanites"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-vault-hero-create",
+      "name": "Create Containment Vault",
+      "text": "使用携带的 Relic 建立 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />，并将它存入。",
+      "image": "/locations/mod/God_MEKHANE.icon_vault.png",
+      "meta": "Command",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />",
+      "limit": "世界恐慌 ≥25%，Alliance 存在；执行者携带 Relic。",
+      "statLine": "Complexity: 30\nProfile: 90 + 世界恐慌 / 4\nMenace: 0\nXP: 49",
+      "positiveTags": "无",
+      "negativeTags": "Shadow、Mekhanites"
+    }
+  ]
+},
+{
+  "id": "ruler-actions",
+  "title": "统治者行动",
+  "media": true,
+  "items": [
+    {
+      "name": "Study Mekhanite Texts",
+      "id": "act-mek-convertbasestudy",
+      "text": "消耗 30 Gold，获得 1 + 当地储存的三类 Relic 总数的 Divine Schema。",
+      "location": "Mekhanite 统治者的聚居地",
+      "limit": "统治者是 Mekhanite。",
+      "time": "5 回合",
+      "positiveTags": "Ambition",
+      "negativeTags": "无",
+      "image": "icon_schema.png"
+    },
+    {
+      "name": "Self-Augment",
+      "id": "act-mek-convertbaseaugment",
+      "text": "消耗 3 Divine Schema，使最低的一项基础属性 +1；平手时依次选择 Command、Intrigue、Might、Lore。记录一次 Augmentation。",
+      "location": "Mekhanite 统治者的聚居地",
+      "limit": "拥有足够图纸。",
+      "time": "5 回合",
+      "positiveTags": "Ambition",
+      "negativeTags": "Discord",
+      "image": "icon_augmentationadv.png"
+    },
+    {
+      "name": "Augment Military",
+      "id": "act-mek-convertarmy",
+      "text": "把现有军队转为 Mekhanite Army，或建立新军队。费用为 max(1, ⌊(100 − Augmented Population 强度) /10⌋) Divine Schema。原军队 HP 大于 1 时继承，否则以新军队一半 HP 开始。",
+      "location": "<CrossReference name=\"Augmented Population\" href=\"#entry-pr-mek-augmentpops\" />",
+      "limit": "Mekhanite 统治者；现有军队尚未机械化。",
+      "time": "5 回合",
+      "positiveTags": "Combat",
+      "negativeTags": "无",
+      "image": "icon_acolyte_zealot.png"
+    },
+    {
+      "name": "Augment Population",
+      "id": "act-mek-convertbasedarkactionaugmentpop",
+      "text": "消耗 3 Divine Schema，建立 Augmented Population，并使当地宗教归属 Church of the Broken God。",
+      "location": "Shadow 100% 的聚居地",
+      "limit": "尚无 Augmented Population。",
+      "time": "5 回合",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "Discord",
+      "image": "icon_augmentationadv.png"
+    },
+    {
+      "name": "Sterilize Land",
+      "id": "act-mek-convertbasedarkactiondestroyenviro",
+      "text": "实际扣除 100 Divine Schema 和 100 Gold，创建 Sterilized Land，并给本地地形增加 20 火山破坏。",
+      "location": "统治者的聚居地",
+      "limit": "尚无 Sterilized Land，资源足够。",
+      "time": "10 回合",
+      "positiveTags": "Mekhanites、Madness、Discord",
+      "negativeTags": "Cooperation、Gold",
+      "image": "icon_sterilizedland.png"
+    },
+    {
+      "name": "Reallocate Resources",
+      "id": "act-mek-convertbasedarkactiondonate",
+      "text": "消耗 3 Divine Schema，为一处 Congregation 增添 Piece，并创建 Reallocated Resources；优先选择 Priority。若当地属于其他教团，Unrest +30。",
+      "location": "统治者的聚居地",
+      "limit": "喜好 Mekhanites，存在可接受组件的 Congregation。",
+      "time": "5 回合",
+      "positiveTags": "Cooperation",
+      "negativeTags": "Discord"
+    },
+    {
+      "name": "Mekhanite Gold / Digital Gold / Synthesize Gold",
+      "id": "act-mek-convertbasegold",
+      "text": "消耗 3 Divine Schema，获得 ⌊Prosperity ×45×当地对应 Relic 数⌋ Gold。普通 Congregation 使用 Relic，Forge 使用 Cogwork Relic，Relay 使用 Arcane Relic。",
+      "location": "统治者的聚居地",
+      "limit": "统治者喜好 Mekhanites。",
+      "time": "5 回合",
+      "positiveTags": "Mekhanites、Gold",
+      "negativeTags": "无",
+      "image": "icon_powerorthodox.png"
+    },
+    {
+      "name": "Hide Mekhanites",
+      "id": "act-mek-convertbasehidecongregation",
+      "text": "消耗 3 Divine Schema，使 Congregation Profile −25。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "统治者喜好 Mekhanites，当前 Profile 高于最低值；不在 Mekhanite Kingdom 内。",
+      "time": "10 回合",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "Gold",
+      "image": "icon_powerhiddenworks.png"
+    },
+    {
+      "name": "Holy Transmission",
+      "id": "act-mek-convertbaseincreasepreference",
+      "text": "消耗 3 Divine Schema，随机使一个同国相邻统治者对 Mekhanites 的偏好 +1。",
+      "location": "Mekhanite 统治者的聚居地",
+      "limit": "邻近候选人的偏好不高于 0，Awareness 低于 50%。",
+      "time": "5 回合",
+      "positiveTags": "Shadow、Cooperation、Religion",
+      "negativeTags": "无",
+      "image": "icon_wordofmouth.png"
+    },
+    {
+      "name": "Instill Order",
+      "id": "act-mek-convertbaseunrest",
+      "text": "消耗 3 Divine Schema，Unrest −25、Devastation −25。",
+      "location": "有 Unrest 或 <CrossReference name=\"Devastation\" href=\"#entry-base-devastation\" /> 的聚居地",
+      "limit": "至少一个目标修正具有正强度。",
+      "time": "5 回合",
+      "positiveTags": "Mekhanites、Cooperation",
+      "negativeTags": "Discord",
+      "image": "icon_brokenchurchshadow.png"
+    },
+    {
+      "name": "Rush Clockwork Soldiers",
+      "id": "act-mek-convertbuildweakarmy",
+      "text": "消耗 100 Gold，组建 30 HP 的 Clockwork Army。",
+      "location": "战争中的 Mekhanite Kingdom 或 Dark Empire",
+      "limit": "统治者资源足够。",
+      "time": "2 回合",
+      "positiveTags": "Combat、Cooperation",
+      "negativeTags": "无",
+      "image": "icon_army_artificial.png"
+    },
+    {
+      "name": "Dismantle Congregation",
+      "id": "act-mek-awaredestroycongregation",
+      "text": "消耗 100 Gold，拆除 Congregation。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "Gold 超过 100，对 Mekhanites 的偏好不高于 0，Congregation Profile 至少 50。",
+      "time": "15 回合",
+      "positiveTags": "Combat",
+      "negativeTags": "Gold、Mekhanites",
+      "image": "icon_powerfalseimage.png"
+    },
+    {
+      "name": "Expose Congregation",
+      "id": "act-mek-awareexposecongregation",
+      "text": "消耗 150 Gold，当前 Profile −20，最低 Profile +10。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "Gold 超过 150，对 Mekhanites 的偏好不高于 0，当前 Profile 高于最低值。",
+      "time": "10 回合",
+      "positiveTags": "Combat",
+      "negativeTags": "Gold、Mekhanites、Shadow"
+    },
+    {
+      "name": "Investigate Congregation",
+      "id": "act-mek-awareinvestigatecongregation",
+      "text": "消耗 100 Gold，创建 Recent Investigations。",
+      "location": "拥有 <CrossReference name=\"Mekhanite Congregation\" href=\"#entry-sub-mek-congregation\" />、<CrossReference name=\"Citadel\" href=\"#entry-sub-mek-congregationtower\" />、<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" />、<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 的人类体系聚居地。",
+      "limit": "Gold 超过 100，世界恐慌至少 10%，Congregation Profile 至少 5，对 Mekhanites 的偏好不高于 0；没有正在进行的调查修正。",
+      "time": "10 回合",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites"
+    },
+    {
+      "name": "Construct Vault",
+      "id": "act-mek-awarevaultbuild",
+      "text": "消耗 200 Gold，建立 Containment Vault。",
+      "location": "Alliance 内的 City 或 Elven City",
+      "limit": "Awareness 100%，Gold 超过 200，对 Mekhanites 的偏好不高于 0；世界尚无 Vault。",
+      "time": "5 回合",
+      "positiveTags": "无",
+      "negativeTags": "Mekhanites、Shadow",
+      "image": "icon_vault.png"
+    },
+    {
+      "name": "Quarantine Clockwork Virus",
+      "id": "act-mek-awareclockworkviruspanic",
+      "text": "Clockwork Virus −90，最低 0；Clockwork Death +30，创建强度 30 的 Quarantine，并使世界恐慌临时增加 5 个百分点。",
+      "location": "<CrossReference name=\"Clockwork Virus\" href=\"#entry-pr-mek-clockworkvirus\" /> 至少 100 的聚居地",
+      "limit": "由当地统治者执行。",
+      "time": "5 回合",
+      "positiveTags": "Cruel",
+      "negativeTags": "Disease、Mekhanites",
+      "image": "icon_scpclockworkvirus.png"
+    },
+    {
+      "name": "Quarantine Red Death",
+      "id": "act-mek-awarereddeathpanic",
+      "text": "Red Death −90，增加 Death，并实施 Quarantine。",
+      "location": "<CrossReference name=\"Red Death\" href=\"#entry-pr-mek-sarkic-reddeath\" /> 至少 100 的聚居地",
+      "limit": "由当地统治者执行。",
+      "time": "5 回合",
+      "positiveTags": "Cruel",
+      "negativeTags": "Disease、Sarkics",
+      "image": "icon_sarkic_fleshthathates.png"
+    }
+  ]
+},
+{
+  "id": "religious-tasks",
+  "title": "宗教任务",
+  "media": true,
+  "items": [
+    {
+      "name": "Speaker's Sermon",
+      "id": "ch-mek-increasemekpreferencespeaker",
+      "meta": "Other",
+      "text": "创建 Speaker's Sermon，按当地人口获得最多 3 Divine Schema。",
+      "location": "有统治者的人类聚居地",
+      "limit": "仅 Speaker。",
+      "statLine": "Complexity: max(5, 30 − 统治者 Shadow 百分点 ×0.25)\nProfile: 50\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "无",
+      "image": "icon_orthodoxsermon.png"
+    },
+    {
+      "name": "Harvest Information",
+      "id": "ch-librarytopiece",
+      "meta": "Lore",
+      "text": "消耗连接强度 50，收集最多 3 Piece。",
+      "location": "<CrossReference name=\"Maxwellist Connection\" href=\"#entry-pr-mek-connection\" /> 至少 50 的地点",
+      "limit": "仅 Intelligence；物品栏有空位。",
+      "statLine": "Complexity: 15\nProfile: 100\nMenace: 0\nXP: 29",
+      "positiveTags": "Mekhanites",
+      "negativeTags": "无",
+      "image": "iconmekspell3.png"
+    },
+    {
+      "name": "Unorthodox Experiment",
+      "id": "ch-mek-exileexperiment",
+      "meta": "Lore",
+      "text": "尝试产生 Unorthodox Piece，供实验组装使用。",
+      "location": "<CrossReference name=\"Exile Community\" href=\"#entry-sub-mek-exiles\" />",
+      "limit": "仅 Mekhanite Exile。",
+      "statLine": "Complexity: 10\nProfile: 50\nMenace: 0\nXP: 21",
+      "positiveTags": "Shadow、Discord",
+      "negativeTags": "无",
+      "image": "icon_subexiles.png"
+    },
+    {
+      "name": "Gain Insight",
+      "id": "ch-mek-sarkic-study",
+      "meta": "Lore",
+      "text": "消耗知识地点修正，获得 Sarkic Insights。",
+      "location": "Arcane Secret 或 Sarkic Insight",
+      "limit": "Sarkic 人物，持有 Insights 少于 30。",
+      "statLine": "Complexity: 20\nProfile: 500\nMenace: 0\nXP: 36",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_secretsarkic.png"
+    },
+    {
+      "name": "Find Insights",
+      "id": "ch-mek-sarkictomb-gather",
+      "meta": "Lore",
+      "text": "取得 Sarkic Insights，执行期间墓穴每回合强度 −2。",
+      "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
+      "limit": "Sarkic 人物，持有 Insights 少于 30；墓穴未被亵渎。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_subsarkictomb.png"
+    },
+    {
+      "name": "Cleanse Klavigar's Tomb",
+      "id": "ch-mek-sarkictomb-cleanse",
+      "meta": "Lore",
+      "text": "消耗 25 Sarkic Insights，解除亵渎，恢复采集与增长。",
+      "location": "Desecrated 状态的 <CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
+      "limit": "Sarkic 人物。",
+      "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_subsarkictomb.png"
+    },
+    {
+      "name": "Unearth Klavigar's Tomb",
+      "id": "ch-mek-sarkictomb",
+      "meta": "Intrigue",
+      "text": "建立 Klavigar Tomb。基础费用为现存墓穴数 ×10 Insights，再加 ⌊当地 Infiltration 百分点 /20⌋。",
+      "location": "Ancient Ruins",
+      "limit": "Karcist；世界墓穴少于 4，地点尚未完全渗透且无冲突设施。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_subsarkictomb.png"
+    },
+    {
+      "name": "Mutate",
+      "id": "ch-mek-sarkicmutate",
+      "meta": "Lore",
+      "text": "消耗 2 Sarkic Insights，取得或升级一项 Sarkic Mutation。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Applied Mutations 生效，已有突变总等级低于人物等级。",
+      "statLine": "Complexity: 10\nProfile: 200\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicpop.png"
+    },
+    {
+      "name": "Karcist Ascension",
+      "id": "ch-mek-sarkickarcist",
+      "meta": "Lore",
+      "text": "使选定的 Sarkic Cultist 晋升为 Karcist；Temple Profile +10。消耗 Sarkic Insights：当前没有 Karcist 时为 1，否则为现存 Karcist 数 ×10。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Karcist Ascension 生效；仅教团选定的继任者，Insights 足够。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicKarcist.png"
+    },
+    {
+      "name": "Grand Karcist Ascension",
+      "id": "ch-mek-sarkicgrandkarcist",
+      "meta": "Command",
+      "text": "使 Karcist 晋升为 Grand Karcist。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist 教义生效，尚无已选定的最高领袖。需要至少 15 Sarkic Insights；完成函数没有扣除该资源。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "base-deepOnes.png"
+    },
+    {
+      "name": "Karcist's Sermon",
+      "id": "ch-mek-sarkicsermon",
+      "meta": "Command",
+      "text": "消耗 5 Sarkic Insights，创建 Karcist's Sermon。",
+      "location": "有统治者的人类聚居地",
+      "limit": "Karcist；目标不在 Alliance，且尚未完全渗透或完全 Enshadowed。",
+      "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicsermon.png"
+    },
+    {
+      "name": "Convert Ruler",
+      "id": "ch-mek-sarkicpreference",
+      "meta": "Command",
+      "text": "消耗 5 Sarkic Insights，使统治者皈依 Sarkic。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
+      "limit": "Sarkic 人物，目标符合转化条件。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicconvert.png"
+    },
+    {
+      "name": "Sarkic Initiation",
+      "id": "ch-mek-sarkicrecruit",
+      "meta": "Command",
+      "text": "消耗 5 Sarkic Insights，招募 Sarkic Cultist。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Karcist。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_acolyte1sf.png"
+    },
+    {
+      "name": "Recruit Sarkic Initiate Minion",
+      "id": "ch-mek-sarkic-recruitminion",
+      "meta": "Command",
+      "text": "消耗 3 Sarkic Insights，招募 Sarkic Initiate 随从。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Sarkic 人物。",
+      "statLine": "Complexity: 3\nProfile: 90\nMenace: 0\nXP: 8",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkic_cultist.png"
+    },
+    {
+      "name": "Root Out Infiltration",
+      "id": "ch-mek-sarkic-security",
+      "meta": "Intrigue",
+      "text": "消耗 10 Sarkic Insights，清除当地 Infiltration。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" /> 或 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
+      "limit": "Karcist；地点已有渗透。",
+      "statLine": "Complexity: 25\nProfile: 500\nMenace: 0\nXP: 42",
+      "positiveTags": "Sarkics",
+      "negativeTags": "Mekhanites",
+      "image": "icon_sarkicshadow.png"
+    },
+    {
+      "name": "Divert Attention",
+      "id": "ch-mek-sarkichidetemple",
+      "meta": "Intrigue",
+      "text": "消耗 3 Sarkic Insights，Temple Profile −15。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Sarkic 人物；Counter-Infiltration 会阻止降低 Profile。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkichide.png"
+    },
+    {
+      "name": "Form Deathless Empire",
+      "id": "ch-mek-sarkicempire",
+      "meta": "Command",
+      "text": "建立 Deathless Empire，吸纳 Sarkic 地区并可能引起内战。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist。",
+      "statLine": "Complexity: 50\nProfile: 50\nMenace: 0\nXP: 72",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicempire.png"
+    },
+    {
+      "name": "Raise Halkosts",
+      "id": "ch-mek-sarkicarmyundead",
+      "meta": "Lore",
+      "text": "消耗 5 Sarkic Insights，召唤 HP 为 ⌊Death ×1.5⌋ 的 Sarkic Halkost，并消耗一半 Death。",
+      "location": "有 Death 的 <CrossReference name=\"Sarkic Population\" href=\"#entry-pr-mek-sarkic-pops\" />",
+      "limit": "Karcist，Deathless Empire 已存在。",
+      "statLine": "Complexity: max(5, Death ×0.1)\nProfile: 50\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkic_halkost.png"
+    },
+    {
+      "name": "Unearth Adytom",
+      "id": "ch-mek-sarkicadytom",
+      "meta": "Other",
+      "text": "消耗 10 Sarkic Insights，寻找 Adytom。通常每次成功率 30%；此前失败次数达到现存墓穴数 −1 时必定成功，创建 Ascension Ritual 并触发 Adytom 事件。",
+      "location": "<CrossReference name=\"Klavigar Tomb\" href=\"#entry-pr-mek-sarkictomb\" />",
+      "limit": "Grand Karcist。",
+      "statLine": "Complexity: 10\nProfile: 500\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "base-deepOnes.png"
+    },
+    {
+      "name": "Sarkic Ascension",
+      "id": "ch-mek-sarkic-victory",
+      "meta": "Other",
+      "text": "启动时消耗 15 Sarkic Insights。持续执行时，每回合增加 Grand Karcist 的 Lore 的仪式强度；达到 100 后 Sarkics 获胜，玩家失败。",
+      "location": "<CrossReference name=\"Ascension Ritual\" href=\"#entry-pr-mek-sarkic-victory\" />",
+      "limit": "Grand Karcist；God-Eater 生效，Termination 未生效；启动需满足 15 Insights 的资源要求。",
+      "statLine": "Complexity: 10\nProfile: 1000\nMenace: 0\nXP: 21",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkicspell1.png"
+    },
+    {
+      "name": "Unleash the Red Death",
+      "id": "ch-mek-sarkicreddeath",
+      "meta": "Command",
+      "text": "消耗 20 Sarkic Insights，向世界释放 The Flesh That Hates 和 Red Death。",
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "Grand Karcist，Deathless Empire 已成立且此前没有释放。",
+      "statLine": "Complexity: max(5,10 + 统治者 Shadow 百分点 ×0.25)\nProfile: 200\nMenace: 0\nXP: 随 Complexity 计算",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无",
+      "image": "icon_sarkic_fleshthathates.png"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-sarkicconvertsecrets",
+      "name": "Imbue Knowledge",
+      "text": "消耗 Sarkic Insights，增加 Sarkic 教团的 Human Influence。",
+      "image": "/locations/mod/God_MEKHANE.icon_sarkic1.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Sarkic Temple\" href=\"#entry-sub-mek-sarkictemple\" />",
+      "limit": "执行者信奉 Sarkicism；影响力尚未达到修改教义所需数值，相关教义允许使用。",
+      "statLine": "Complexity: 15\nProfile: 50\nMenace: 0\nXP: 29",
+      "positiveTags": "Sarkics",
+      "negativeTags": "无"
+    }
+  ]
+},
+{
       "id": "spells",
       "title": "法术",
       "media": true,
@@ -3483,7 +4980,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -3502,7 +4999,8 @@ const config: GodConfig = {
               "name": "They pass through history.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "A Foundation",
@@ -3518,7 +5016,8 @@ const config: GodConfig = {
               "name": "They pass through history.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Adytom",
@@ -3530,11 +5029,12 @@ const config: GodConfig = {
               "name": "They are on the threshold of victory.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         }
       ]
     },
-    {
+{
       "id": "mechanics",
       "title": "相关机制",
       "media": false,
@@ -3585,8 +5085,108 @@ const config: GodConfig = {
           "text": "以下配置默认关闭。\nEstablished Faith：预先建立随机 Congregation。\nMEKHANE’s Forge：预置一处 Unearthed Fragments，并禁用继续揭示碎片。\nArtificial Power：停用自然神力恢复，转由制造 Relic 等方式补充。\nOne Tool：Agent 上限限制为 1。\nLingering Evidence：提高最低 Profile。"
         }
       ]
+    },
+{
+  "id": "common-actions",
+  "title": "共同行动",
+  "items": [
+    {
+      "id": "place-task-3591348120-ch-mek-councilhide",
+      "name": "Relocate Council",
+      "text": "消耗 Divine Schema，把 Council of Patriarchs 及其库存搬到这里。",
+      "image": "/locations/mod/God_MEKHANE.icon_orthodoxdistract.png",
+      "meta": "Command",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Orthodox Forge\" href=\"#entry-sub-mek-forge\" /> 所在地点。",
+      "limit": "玩家人物；Council 当前不在此地，且有足够 Divine Schema。",
+      "statLine": "Complexity: 30\nProfile: 40\nMenace: 5\nXP: 49"
+    },
+    {
+      "id": "place-task-3591348120-ch-transferarcanerelics",
+      "name": "Transfer Arcane Relics",
+      "text": "把其他 Congregation 库存中的 Arcane Relics 转移到此 Relay。",
+      "image": "/locations/mod/God_MEKHANE.icon_itemarcanerelic.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Maxwellist Relay\" href=\"#entry-sub-mek-relay\" /> 所在地点。",
+      "limit": "玩家控制的 Mekhanite。",
+      "statLine": "Complexity: 10\nProfile: 90\nMenace: 0\nXP: 21"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-vault-recoverarcanerelics",
+      "name": "Recover Arcane Relics",
+      "text": "从 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 中取走最多 3 件 Arcane Relics。",
+      "image": "/locations/mod/God_MEKHANE.icon_itemarcanerelic.png",
+      "meta": "Might",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Vault 已渗透且有对应库存，人物物品栏有空位；Mekhanite 身份，Automaton 中仅 Maxwellist Infiltrator 可使用。",
+      "statLine": "Complexity: 10 + 10 × Security\nProfile: 90\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-vault-recovercogworkrelics",
+      "name": "Recover Cogwork Relics",
+      "text": "从 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 中取走最多 3 件 Cogwork Relics。",
+      "image": "/locations/mod/God_MEKHANE.icon_itemcogworkrelic.png",
+      "meta": "Might",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Vault 已渗透且有对应库存，人物物品栏有空位；Mekhanite 身份，Automaton 中仅 Maxwellist Infiltrator 可使用。",
+      "statLine": "Complexity: 10 + 10 × Security\nProfile: 90\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-vault-recoverrelics",
+      "name": "Recover Relics",
+      "text": "从 <CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" /> 中取走最多 3 件 Basic Relics。",
+      "image": "/locations/mod/God_MEKHANE.icon_itembasicrelic.png",
+      "meta": "Might",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Containment Vault\" href=\"#entry-sub-mek-vault\" />",
+      "limit": "Vault 已渗透且有对应库存，人物物品栏有空位；Mekhanite 身份，Automaton 中仅 Maxwellist Infiltrator 可使用。",
+      "statLine": "Complexity: 10 + 10 × Security\nProfile: 90\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
     }
-  ],
+  ]
+},
+{
+  "id": "autonomous-tasks",
+  "title": "自主单位任务",
+  "items": [
+    {
+      "id": "place-task-3591348120-ch-mek-infiltrate",
+      "name": "Maxwellist Infiltration",
+      "text": "使当地一个兴趣点进入已渗透状态。",
+      "image": "/locations/game/infiltrate.png",
+      "meta": "Intrigue",
+      "baseGame": false,
+      "location": "使用 MEKHANE 时向已有聚居地加入。资源转化取决于对应教义及修正；Geomantic Locus 相关两项只在当地具有该修正时加入。实际执行还受每个行动限制。",
+      "limit": "仅 Maxwellist Infiltrator。",
+      "statLine": "Complexity: 50 + 25 × Security\nProfile: 200\nMenace: 20\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "place-task-3591348120-ch-mek-infiltrateawareness",
+      "name": "Maxwellist Disinformation",
+      "text": "将当地统治者 Awareness 设为 0%，持续 30 回合。",
+      "image": "/locations/game/infiltrate.png",
+      "meta": "Intrigue",
+      "baseGame": false,
+      "location": "使用 MEKHANE 时向已有聚居地加入。资源转化取决于对应教义及修正；Geomantic Locus 相关两项只在当地具有该修正时加入。实际执行还受每个行动限制。",
+      "limit": "仅 Maxwellist Infiltrator；当地渗透度 ≥50%。",
+      "statLine": "Complexity: 50 + 25 × Security；当地完全渗透时减半\nProfile: 200\nMenace: 20\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "ch-locitopiece",
+      "name": "Harvest Information",
+      "text": "消耗 30 Geomantic Locus，以 Piece 填满物品栏空位。",
+      "image": "/locations/mod/God_MEKHANE.iconmekspell3.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "Geomantic Locus 至少 30 的地点",
+      "limit": "仅 Intelligence。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21"
+    }
+  ]
+}
+],
   "relations": {
     "Reveal Fragments": {
       "effects": [

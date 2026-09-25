@@ -7,15 +7,17 @@ import { ArrowRight, X } from "lucide-react";
 
 type MobileReferenceDialogProps = {
   open: boolean;
+  originId?: string;
   onClose: () => void;
   name: string;
   meta: string;
   text: string;
   href: string;
   imageSrc?: string;
+  target?: "_blank";
 };
 
-export default function MobileReferenceDialog({ open, onClose, name, meta, text, href, imageSrc }: MobileReferenceDialogProps) {
+export default function MobileReferenceDialog({ open, onClose, name, meta, text, href, imageSrc, target, originId }: MobileReferenceDialogProps) {
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
@@ -44,7 +46,7 @@ export default function MobileReferenceDialog({ open, onClose, name, meta, text,
             {text && <p>{text}</p>}
           </div>
         </div>
-        <a className="mobile-reference-jump" href={href} onClick={onClose}>前往对应位置 <ArrowRight size={16} /></a>
+        <a className="mobile-reference-jump" data-jump-origin={originId} href={href} target={target} rel={target ? "noopener noreferrer" : undefined} onClick={onClose}>前往对应位置 <ArrowRight size={16} /></a>
       </section>
     </div>,
     document.body,

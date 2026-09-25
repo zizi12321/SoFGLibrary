@@ -1,0 +1,74 @@
+
+/* Overview, diagram and result cards remain peers in the four-column grid. */
+.events-theme .event-variant-grid, .events-theme .event-family-cards {
+ display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; min-width: 0; align-items: start;
+}
+@container records (min-width:600px) {
+ .events-theme .event-variant-grid, .events-theme .event-family-cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@container records (min-width:1000px) {
+ .events-theme .event-variant-grid, .events-theme .event-family-cards { grid-template-columns: repeat(4,minmax(0,1fr)); }
+}
+.events-theme .event-variant-grid > .expandable-table { grid-template-columns: minmax(0,1fr); min-width: 0; }
+.event-variant-family { grid-column: 1/-1; min-width: 0; border-top: 1px solid var(--line); padding-block: 24px 8px; scroll-margin-top: 64px; }
+.event-variant-family > h4 { margin: 0 0 20px; font-size: 22px; overflow-wrap: anywhere; }
+.event-family-overview, .event-family-flow { min-width: 0; }
+.event-family-results, .events-theme .event-family-results > .expandable-table { display: contents; }
+.events-theme .event-family-note { margin-top: 16px; }
+.event-decision { margin: 0; min-width: 0; font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.event-chart-expand { display: flex; gap: 8px; align-items: center; justify-content: center; width: 100%; min-height: 40px; margin-bottom: 20px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--ink-soft); color: var(--paper); cursor: pointer; font: inherit; }
+.event-chart-content { min-width: 0; }
+.event-chart-content p { margin: 8px 0 0; font-size: 13px; line-height: 1.8; white-space: pre-line; color: var(--muted); }
+.event-chart-content b { display: block; color: var(--paper); font-size: 13px; font-weight: 600; }
+.event-chart-content .event-chart-rule { margin: 0 0 20px; }
+.event-chart-routes { display: grid; gap: 36px; }
+.event-chart-node { padding: 12px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--ink-soft); min-width: 0; }
+.event-chart-start { border-radius: 20px; text-align: center; }
+.event-chart-dispatch { text-align: center; border-style: dashed; color: var(--muted); font-size: 12px; }
+.event-chart-condition ul { margin: 10px 0 0; padding-left: 16px; color: var(--muted); }
+.event-chart-condition li + li { margin-top: 8px; }
+.event-chart-selection { background: var(--ink); }
+.event-chart-result { border-color: var(--accent); text-align: center; }
+.event-chart-result .cross-reference { display: inline-block; max-width: 100%; font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.event-chart-arrow { width: 100%; height: 42px; }
+.event-chart-arrow > svg { display: block; width: 100%; height: 42px; overflow: visible; }
+.event-chart-arrow > svg > path, .event-chart-connections > path { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.event-chart-arrow marker path, .event-chart-connections marker path { fill: var(--line-strong); }
+.event-chart-arrow text { fill: var(--muted); font-size: 12px; }
+.event-chart-fork { position: relative; min-width: 0; padding: 44px 0 0 19px; }
+.event-chart-connections { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+.event-chart-fork-items { display: grid; grid-template-columns: minmax(0,1fr); gap: 48px 24px; align-items: start; min-width: 0; }
+.event-chart-branch { position: relative; min-width: 0; }
+.event-chart-branch-label { color: var(--paper); font-size: 12px; text-align: center; padding: 5px 4px 10px; }
+.event-chart-branch > .event-chart-fork { padding-left: 12px; }
+.event-chart-dialog {
+ --ink: #0c0c0b; --ink-soft: #141413; --paper: #efebe2; --muted: #b6b1a7; --line: #34342f; --line-strong: #777266; --accent: #c39c65;
+ width: min(1500px,calc(100vw - 40px)); max-width: calc(100vw - 40px); max-height: calc(100dvh - 40px); margin: auto;
+ padding: 0; border: 1px solid var(--line-strong); border-radius: 8px; color: var(--paper); background: var(--ink); overflow: hidden;
+}
+.event-chart-dialog::backdrop { background: #000b; backdrop-filter: blur(5px); }
+.event-chart-dialog > header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+.event-chart-dialog > header h3 { margin: 2px 0 0; font-size: 22px; }
+.event-chart-dialog > header small { color: var(--muted); font-size: 12px; }
+.event-chart-dialog > header button { flex: 0 0 42px; width: 42px; height: 42px; display: grid; place-items: center; color: var(--paper); background: var(--ink-soft); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+.event-chart-dialog-body { padding: 28px; overflow-y: auto; overflow-x: hidden; max-height: calc(100dvh - 160px); container-type: inline-size; container-name: event-chart; }
+.event-chart-dialog .event-chart-content { max-width: 1400px; margin: 0 auto; }
+.event-chart-dialog .event-chart-start, .event-chart-dialog .event-flow-route > .event-chart-condition, .event-chart-dialog .event-flow-route > .event-chart-dispatch { max-width: 640px; margin-inline: auto; }
+@container event-chart (min-width:600px) {
+ .event-chart-dialog .event-chart-fork-items { grid-template-columns: repeat(var(--chart-columns),minmax(0,1fr)); }
+}
+@container event-chart (min-width:900px) {
+ .event-chart-dialog .event-chart-fork-items { grid-template-columns: repeat(var(--chart-wide-columns),minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+ .event-chart-dialog { width: calc(100vw - 16px); max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+ .event-chart-dialog > header { padding: 12px; }
+ .event-chart-dialog-body { padding: 16px; max-height: calc(100dvh - 116px); }
+}
+
+
+.event-chart-result-group { border-color: var(--accent); }
+.event-chart-result-group > .event-chart-result { padding: 8px 0; text-align: left; }
+.event-chart-result-group > .event-chart-result + .event-chart-result { border-top: 1px solid var(--line); }
+.event-chart-dialog .event-chart-single-result { max-width: 640px; margin-inline: auto; }
+.event-chart-content .event-chart-probability-note { font-size: 12px; }

@@ -23,3 +23,6 @@
   .agents-theme .modifier-library-header { padding-top: 72px; }
   .agent-record-heading h2 { font-size: 27px; }
 }
+
+.agent-event-source { margin-top: 22px; min-width: 0; }
+.agent-event-source > h4 { margin: 0 0 14px; font-size: 14px; color: var(--accent); line-height: 1.6; overflow-wrap: anywhere; }

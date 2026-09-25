@@ -203,7 +203,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -236,7 +236,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -325,28 +325,194 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
+      "name": "Eternal City",
+      "text": "由 ruler 的 Constitute Eternal City 行动把人类聚居地转化而来；地点会获得 Eternal Palace 与 Crypt Depths，并可以建造城墙、传播 Shadow、提高周边温度和扩张危险。\n\n出现方式\n统治者完成 <CrossReference name=\"Constitute Eternal City\" href=\"#entry-constitute-eternal-city\" meta=\"统治者行动\" text=\"增加 Eternal City 计数，触发 Eternal City 模组事件，使原 聚居地陷入毁灭，并替换为 Eternal City。\" image=\"./ixthus/crypt_loc.png\" /> 后建立，增加 <CrossReference name=\"Eternal Palace\" href=\"#entry-eternal-palace\" />、<CrossReference name=\"Crypt Depths\" href=\"#entry-crypt-depths\" />，并接收旧地点的兴趣点。自身直接提供 Husk 招募与 <CrossReference name=\"Fund Eternal City\" href=\"#entry-fund-eternal-city\" />，不继承普通聚居地任务列表。\n\n可能配置的兴趣点\n<CrossReference name=\"Crypt Depths\" href=\"#entry-crypt-depths\" />、<CrossReference name=\"Eternal Palace\" href=\"#entry-eternal-palace\" />。\n固定、随机与改建来源见各兴趣点。",
+      "image": "crypt_loc.png",
+      "id": "eternal-city"
+    },
+    {
+      "name": "Fund Eternal City",
+      "text": "执行者用 Gold 为 Eternal City 的 ruler 提供资金，最多按一次 50 Gold 的交易处理；资金交给城主后可用于城市设施。",
+      "location": "Eternal City。",
+      "meta": "Command",
+      "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+      "limit": "执行者必须至少有 1 Gold。",
+      "image": "crypt_loc.png",
+      "id": "god-place-location-set-crypt--place-task-2866026291-ch-fundcrypt"
+    },
+    {
+      "id": "god-place-location-set-crypt--place-task-base-ch-recruitminion",
+      "name": "Recruit Minion",
+      "text": "招募当地配置的随从。不同地点实例提供不同种类，费用和 Command 需求取决于该随从。",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" />、<CrossReference name=\"City Palace\" href=\"?page=points-of-interest#entry-location-sub-city\" meta=\"兴趣点\" text=\"城市的政治中心。除 Infiltrate、Enshadow、招募与训练外，按国家首都、Alliance、政治不稳定等条件提供外交、Conclave、Dark Coronation 等任务。\n随从招募：Sellsword 供双方招募；Knight 通常属于英雄招募，Dark Empire 或 Ophanim Theocracy 中转为黑暗阵营招募。统治者 Shadow <50%、Awareness >90% 时，另加入英雄的 Paladin 招募。\n\n出现方式\nCity 创建时固定配置。\n\n可出现地点\nCity。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cityCentre.png\" target=\"_blank\" />、<CrossReference name=\"Vast Sewers\" href=\"?page=points-of-interest#entry-location-sub-sewers\" meta=\"兴趣点\" text=\"城市地下管网。渗透后可传播 Plague，并招募此处配置的 Vermin。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/sewers.png\" target=\"_blank\" />、<CrossReference name=\"Coven of Witches\" href=\"?page=points-of-interest#entry-location-sub-witchcoven\" meta=\"兴趣点\" text=\"可渗透的野外女巫据点，防御加成 50。渗透后可利用 Enshadow、Dark Worship 以及 Crow 招募；Menace 增长可能引来人类军队摧毁兴趣点。\n\n出现方式\n采用旧式女巫据点生成方式时放入野外兴趣点地点；宗教模式下的女巫 Temple 是另一种实现。\n\n可出现地点\n野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/coven.png\" target=\"_blank\" />、<CrossReference name=\"Eternal City\" href=\"#entry-eternal-city\" />、Demonic Nexus（兴趣点）、<CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />",
+      "limit": "满足随从的身份条件、有足够 Gold 与 Command；需要渗透的兴趣点或营地必须已完全渗透。Orc Upstart 对部分兴趣点渗透检查有豁免。",
+      "statLine": "Complexity: 由随从的招募时间决定\nProfile: 20\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "name": "Construct Eternal Palace",
+      "text": "花费 150 Gold，在 Eternal City 中建立 Eternal Palace。",
+      "location": "尚未有 Eternal Palace 的 Eternal City。",
+      "meta": "统治者行动",
+      "time": "8 回合",
+      "statLine": "消耗：150 Gold",
+      "limit": "ruler 必须拥有超过 149 Gold。",
+      "image": "crypt_palace.png",
+      "positiveTags": "无",
+      "negativeTags": "无",
+      "id": "god-place-location-set-crypt--ruler-construct-eternal-palace"
+    },
+    {
+      "name": "Eternal Dark Worship",
+      "text": "从 Eternal Palace 向最多 60% Shadow 的目标地点传播 Shadow，并使 Eternal Palace 的 menace 增加 15。",
+      "location": "有 Eternal Palace 的 Eternal City。",
+      "meta": "统治者行动",
+      "time": "10 回合",
+      "image": "crypt_0.jpg",
+      "positiveTags": "Shadow",
+      "negativeTags": "无",
+      "id": "god-place-location-set-crypt--ruler-eternal-dark-worship"
+    },
+    {
+      "name": "Dust to dust",
+      "text": "从 Eternal City 改变 climate 与 temperature，使 desert 扩张，并使 Eternal Palace 的 menace 增加 15。",
+      "location": "有 Eternal Palace 的 Eternal City。",
+      "meta": "统治者行动",
+      "time": "10 回合",
+      "image": "hourglass.png",
+      "positiveTags": "Cruelty",
+      "negativeTags": "无",
+      "id": "god-place-location-set-crypt--ruler-dust-to-dust"
+    },
+    {
+      "name": "Construct City Walls",
+      "text": "创建或强化 Eternal City Walls，消耗 ruler 一半 Gold。",
+      "location": "Eternal City。",
+      "meta": "统治者行动",
+      "time": "8 回合",
+      "limit": "ruler 必须拥有超过 99 Gold。",
+      "image": "walls_0.png",
+      "positiveTags": "Combat",
+      "negativeTags": "无",
+      "id": "god-place-location-set-crypt--ruler-construct-city-walls"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-crypt",
+      "name": "Eternal City",
+      "blocks": [
         {
-          "name": "Eternal City",
-          "text": "由 ruler 的 Constitute Eternal City 行动把人类聚居地转化而来；地点会获得 Eternal Palace 与 Crypt Depths，并可以建造城墙、传播 Shadow、提高周边温度和扩张危险。",
-          "image": "crypt_loc.png"
+          "title": "介绍",
+          "entryIds": [
+            "eternal-city"
+          ]
         },
         {
-          "name": "Eternal Palace",
-          "text": "Eternal City 的权力中心；Eternal Dark Worship 与 Dust to dust 会从这里向外影响地点，并各自增加其 menace 15。",
-          "image": "crypt_palace.png"
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-set-crypt--place-task-2866026291-ch-fundcrypt"
+          ]
         },
         {
-          "name": "Crypt Depths",
-          "text": "Eternal City 的地下设施；代码将其作为独立 Subsettlement 创建。",
-          "image": "crypt_small.jpg"
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-set-crypt--place-task-base-ch-recruitminion"
+          ]
+        },
+        {
+          "title": "统治者行动",
+          "entryIds": [
+            "god-place-location-set-crypt--ruler-construct-eternal-palace",
+            "god-place-location-set-crypt--ruler-eternal-dark-worship",
+            "god-place-location-set-crypt--ruler-dust-to-dust",
+            "god-place-location-set-crypt--ruler-construct-city-walls"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "name": "Crypt Depths",
+      "text": "Eternal City 的地下设施；代码将其作为独立 Subsettlement 创建。\n\n出现方式\n<CrossReference name=\"Eternal City\" href=\"#entry-eternal-city\" /> 创建时固定加入。自身不提供挑战；保留城主藏身的地下设施。\n\n可出现地点\n<CrossReference name=\"Eternal City\" href=\"#entry-eternal-city\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "crypt_small.jpg",
+      "id": "crypt-depths"
+    },
+    {
+      "name": "Eternal Palace",
+      "text": "Eternal City 的权力中心；Eternal Dark Worship 与 Dust to dust 会从这里向外影响地点，并各自增加其 menace 15。\n\n出现方式\n<CrossReference name=\"Eternal City\" href=\"#entry-eternal-city\" /> 创建时固定加入；符合条件的统治者也可通过建造行动添加。\n\n可出现地点\n<CrossReference name=\"Eternal City\" href=\"#entry-eternal-city\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "crypt_palace.png",
+      "id": "eternal-palace"
+    },
+    {
+      "name": "Eternal Dark Worship",
+      "text": "从 Eternal Palace 向最多 60% Shadow 的目标地点传播 Shadow，并使 Eternal Palace 的 menace 增加 15。",
+      "location": "有 Eternal Palace 的 Eternal City。",
+      "meta": "统治者行动",
+      "time": "10 回合",
+      "image": "crypt_0.jpg",
+      "positiveTags": "Shadow",
+      "negativeTags": "无",
+      "id": "god-place-location-sub-eternalpalace--ruler-eternal-dark-worship"
+    },
+    {
+      "name": "Dust to dust",
+      "text": "从 Eternal City 改变 climate 与 temperature，使 desert 扩张，并使 Eternal Palace 的 menace 增加 15。",
+      "location": "有 Eternal Palace 的 Eternal City。",
+      "meta": "统治者行动",
+      "time": "10 回合",
+      "image": "hourglass.png",
+      "positiveTags": "Cruelty",
+      "negativeTags": "无",
+      "id": "god-place-location-sub-eternalpalace--ruler-dust-to-dust"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-sub-cryptunderbelly",
+      "name": "Crypt Depths",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "crypt-depths"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-location-sub-eternalpalace",
+      "name": "Eternal Palace",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "eternal-palace"
+          ]
+        },
+        {
+          "title": "统治者行动",
+          "entryIds": [
+            "god-place-location-sub-eternalpalace--ruler-eternal-dark-worship",
+            "god-place-location-sub-eternalpalace--ruler-dust-to-dust"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "items": [
@@ -357,7 +523,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "minions",
       "title": "随从",
       "items": [
@@ -369,7 +535,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -446,7 +612,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -459,7 +625,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "items": [
@@ -477,7 +643,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -523,7 +689,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "items": [
@@ -592,7 +758,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religious-tasks",
       "title": "宗教任务",
       "items": [
@@ -607,7 +773,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "items": [
@@ -648,7 +814,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "items": [
@@ -657,18 +823,20 @@ const config: GodConfig = {
           "text": "模组事件；JSON 的 choices、effects 与 environment 均为空，实际城市转化机制来自 Constitute Eternal City 的 DLL 代码。",
           "meta": "模组事件 · other_become_eternal.json",
           "image": "city_collapse.png",
-          "id": "eternal-city-event"
+          "id": "eternal-city-event",
+          "eventCategory": "other"
         },
         {
           "name": "To Immortality!",
           "text": "模组事件；JSON 的 choices、effects 与 environment 均为空，实际效果由 To Eternal Life! 的 DLL 代码执行：移除 Holy Grail、赋予 Cursed Immortality。",
           "meta": "模组事件 · other_drink_grail_ruler.json",
           "image": "drinkGrailFull.png",
-          "id": "to-immortality-event"
+          "id": "to-immortality-event",
+          "eventCategory": "tasks"
         }
       ]
     }
-  ],
+],
   "relations": {
     "To Seek the Grail": {
       "effects": [

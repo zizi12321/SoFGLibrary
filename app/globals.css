@@ -1399,3 +1399,12 @@ footer { grid-template-columns: 1fr; text-align: left; }
   .mobile-sidebar-backdrop { display: block; position: fixed; z-index: 1400; inset: 0; border: 0; padding: 0; background: rgba(0,0,0,.5); touch-action: none; }
   .site-shell .section, .site-shell [id^="entry-"] { scroll-margin-top: 64px; }
 }
+
+/* Collapsed archives expose only their expand control, on every viewport. */
+.site-shell.sidebar-hidden .sidebar > :not(.sidebar-head) { display: none; }
+.site-shell.sidebar-hidden .sidebar-head > :not(.sidebar-toggle) { display: none; }
+.site-shell.sidebar-hidden .sidebar { overflow: hidden; }
+
+/* Native navigation keeps index tabs open; presentation matches existing controls. */
+a.god-index-card, a.modifier-library-link, a.sidebar-index-link { text-decoration: none; }
+a.sidebar-index-link { display: flex; align-items: center; justify-content: flex-start; box-sizing: border-box; line-height: 1.4; }

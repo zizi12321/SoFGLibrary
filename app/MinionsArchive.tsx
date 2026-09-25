@@ -9,13 +9,14 @@ import { useArchiveNavigation } from "./useArchiveNavigation";
 import { DetailGrid, RichText } from "./BaseGodArchive";
 import type { ArchiveRecordConfig } from "./GodArchiveTypes";
 import { minionSections } from "./MinionsData";
+import { minionCombatMechanics } from "./MinionCombatMechanics";
 import "./minions.css";
 
 const items = minionSections.flatMap(section => section.items);
-const allIds = items.map(item => "entry-" + item.id);
+const allIds = [...minionCombatMechanics, ...items].map(item => "entry-" + item.id);
 const config: ArchiveRecordConfig = {
   id: "minions", assetDir: "minions", autoLink: false, powers: [],
-  sections: [{ id: "minion-records", title: "随从", items }],
+  sections: [{ id: "minion-combat", title: "人物战斗机制", items: minionCombatMechanics }, { id: "minion-records", title: "随从", items }],
 };
 const baseCount = minionSections.filter(section => section.baseGame).reduce((n, section) => n + section.items.length, 0);
 
@@ -24,6 +25,7 @@ const modSections = minionSections.filter(section => !section.baseGame);
 const modNewCount = modSections.flatMap(section => section.items).filter(item => !item.baseGame).length;
 const modSharedCount = modSections.flatMap(section => section.items).filter(item => item.baseGame).length;
 const navGroups = [
+  { name: "人物战斗机制", entries: minionCombatMechanics.map(item => ({ href: "#entry-" + item.id, label: item.name })) },
   { name: "游戏本体", entries: baseSections.map(section => ({ href: "#" + section.id, label: section.title.replace(/^游戏本体 · /, "") })) },
   ...modSections.map(section => ({ name: section.title, entries: section.items.map(item => ({ href: "#entry-" + item.id, label: item.name })) })),
 ];
@@ -51,7 +53,7 @@ export default function MinionsArchive({ onReturn }: { onReturn: () => void }) {
           {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
         </button>
       </div>
-      <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
+      <a className="sidebar-index-link" href="./">← 返回索引页</a>
       <div className="sidebar-bulk">
         <button type="button" onClick={() => setOpenEntries(new Set(allIds))}>全部展开</button>
         <button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button>
@@ -64,6 +66,9 @@ export default function MinionsArchive({ onReturn }: { onReturn: () => void }) {
         <p>本体 {baseCount} 种，Mod 新增 {modNewCount} 种，另列 {modSharedCount} 项本体随从的 Mod 获取途径。收录不限定神祇的随从。</p>
         <p>数值依次为 HP、Attack、Defence、Command；HP 为生命上限，Command 为占用量。普通招募需要足够的 Command 容量；超过槽位或剩余容量时需更换现有随从，特殊规则在各条目中说明。</p>
       </header>
+      <section id="minion-combat" className="section minion-combat-mechanics"><h2>人物战斗机制</h2>
+        <DetailGrid config={config} items={minionCombatMechanics} openEntries={openEntries} onToggle={toggle} />
+      </section>
       {collections.map(collection => <div id={collection.id} className="minion-collection" key={collection.id}>
         {collection.sections.map(section => <section id={section.id} className="section records-section" key={section.id}>
           <div className="plain-heading"><p className="section-index">{String(minionSections.indexOf(section) + 1).padStart(2, "0")} / {section.baseGame ? "游戏本体" : "随从"} · {section.items.length} 项</p><h2>{section.title.replace(/^游戏本体 · /, "")}</h2></div>
@@ -71,7 +76,7 @@ export default function MinionsArchive({ onReturn }: { onReturn: () => void }) {
           <DetailGrid config={config} items={section.items} openEntries={openEntries} onToggle={toggle} />
         </section>)}
       </div>)}
-      <footer className="archive-footer"><button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button></footer>
+      <footer className="archive-footer"><a className="sidebar-index-link" href="./">← 返回索引页</a></footer>
     </div>
   </main>;
 }

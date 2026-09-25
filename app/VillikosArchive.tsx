@@ -257,7 +257,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "media": false,
@@ -274,7 +274,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -443,19 +443,70 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "media": true,
-      "items": [
+      "id": "occupied-settlement",
+      "name": "Villikos 占领的聚居地",
+      "text": "Empire of Villikos 接管人类类聚居地时，处决原统治者，清除继承人，并保留原地点名称、外观、人口、Shadow 和附属设施。该聚居地没有统治者或普通挑战；Defence 上限 50，每回合恢复 1。\nUnrest、Lingering Resentment、Political Agitation 每存在一项，每回合使该项强度 −5，并分别产生 Death +3、Devastation +0.5。\n\n出现方式\nEmpire of Villikos 接管人类体系聚居地时替换；保留原有兴趣点及其可执行任务，但地点自己的普通任务列表为空。"
+    },
+    {
+      "id": "place-hook-3647343379-0",
+      "name": "聚居地的 Villikos 应对",
+      "text": "使用 Villikos 时加入驱逐帝国统治者的任务。\n\n对应地点 / 兴趣点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "id": "god-place-place-hook-3647343379-0--place-task-3647343379-ch-fc-oustimperialruler",
+      "name": "Oust Imperial Ruler",
+      "text": "刺杀带 <CrossReference name=\"Imperial Blood\" href=\"#entry-t-fc-imperial\" /> 的地方统治者。没有该特质的继承人会被设为 100% Awareness；否则创建新的完全 Aware 统治者。",
+      "location": "尚未完全 Infiltrated、统治者带 <CrossReference name=\"Imperial Blood\" href=\"#entry-t-fc-imperial\" /> 的人类类聚居地。",
+      "limit": "执行者为 Alliance 的非受控英雄，Awareness 为 100%；目标不能是君主。",
+      "meta": "Intrigue",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "image": "base-brutalAssassination.png",
+      "positiveTags": "无",
+      "negativeTags": "无"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-fc-tower",
+      "name": "Villikos 占领的聚居地",
+      "blocks": [
         {
-          "id": "occupied-settlement",
-          "name": "Villikos 占领的聚居地",
-          "text": "Empire of Villikos 接管人类类聚居地时，处决原统治者，清除继承人，并保留原地点名称、外观、人口、Shadow 和附属设施。该聚居地没有统治者或普通挑战；Defence 上限 50，每回合恢复 1。\nUnrest、Lingering Resentment、Political Agitation 每存在一项，每回合使该项强度 −5，并分别产生 Death +3、Devastation +0.5。"
+          "title": "介绍",
+          "entryIds": [
+            "occupied-settlement"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-place-hook-3647343379-0",
+      "name": "聚居地的 Villikos 应对",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-3647343379-0"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-place-hook-3647343379-0--place-task-3647343379-ch-fc-oustimperialruler"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_city_prague.png"
+    }
+  ]
+},
+{
       "id": "armies",
       "title": "军队",
       "media": true,
@@ -535,7 +586,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教与教义",
       "media": false,
@@ -566,7 +617,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "media": true,
@@ -593,7 +644,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "media": true,
@@ -612,7 +663,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "media": true,
@@ -663,7 +714,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -682,7 +733,8 @@ const config: GodConfig = {
               "name": "Their feelings ease",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "event-p2p-villikos1",
@@ -699,7 +751,8 @@ const config: GodConfig = {
               "text": "消耗 1 神力，使当前城市叛乱。",
               "condition": "当前地点不是首都，神力大于 0。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "event-person-villikos1",
@@ -720,7 +773,8 @@ const config: GodConfig = {
               "name": "It is not %his to take.",
               "text": "人物死亡，神力 +1。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "event-person-villikos2",
@@ -737,7 +791,8 @@ const config: GodConfig = {
               "text": "消耗 1 神力，人物 Shadow 增加 50 个百分点。",
               "condition": "人物尚未完全 Enshadowed，神力大于 0。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "event-person-villikos3",
@@ -759,7 +814,8 @@ const config: GodConfig = {
               "text": "消耗 1 神力，所在地 Madness +50。",
               "condition": "神力大于 0。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "event-person-villikos4",
@@ -771,11 +827,12 @@ const config: GodConfig = {
               "name": "This will do nicely.",
               "text": "神力 +1。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
     },
-    {
+{
       "id": "mechanics",
       "title": "相关机制",
       "media": false,
@@ -792,7 +849,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "p-fc-claim": {
       "effects": [

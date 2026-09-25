@@ -217,7 +217,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "media": false,
@@ -242,7 +242,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -315,19 +315,220 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "media": true,
-      "items": [
+      "id": "location-set-memory-adolia",
+      "name": "[地点名] Adolia",
+      "text": "由 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" meta=\"地点修正\" text=\"强度至少 100 时 Security −1，至少 200 时改为 −2。强度达到 300 后，人类聚居地被吞没，统治者死亡，并按原设施数量生成自主 Adolia，留下 Subsumed Settlement。\n当地已有 Madness 时，强度达到 50、100、150 后分别每回合为 Madness 增加 1、2、3；已有 Deep One Cult 时，达到 50、150 后分别每回合增加 1、2。100–299 阶段会发生 Pareidolia Crises。\nSubsumed Settlement 内强度固定为 300；每回合对当地尚未感染、非玩家控制且不是 Chosen One 的英雄与侍僧分别进行 20% 感染判定。\" image=\"./adolia/icon_pareidolia.png\" /> 达到 300 后形成，以原地点名加 Adolia 命名。每回合设施 Menace +1，使每个相邻人类聚居地已有 Pareidolia +1，提供 Rest 与 Lay Low。可在此招募 <CrossReference name=\"An Adolia\" href=\"#entry-an-adolia\" meta=\"特殊人物与自主单位\" text=\"可从完全渗透的聚居地或 Subsumed Settlement 招募，占用正常 Agent 上限与招募次数。继承 Supplicant 开局所选的 Intrusive Thought、Mental Leech 或 Dark Memories。\" image=\"./adolia/icon_adolia.png\" />。\n\n出现方式\n<CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia\" meta=\"神力\" text=\"创建 Pareidolia，逐步侵蚀聚居地；达到 300 时转化为 Subsumed Settlement。\" image=\"./adolia/icon_pareidolia.png\" /> 达到 300 后替换聚居地，建立同名兴趣点。世界侵蚀另可生成没有该兴趣点的 Adolia 野地。\n\n可能配置的兴趣点\n<CrossReference name=\"Subsumed Settlement\" href=\"#entry-subsumed-settlement\" />。\n固定、随机与改建来源见各兴趣点。\n\n自身任务列表为空；当地修正、保留的兴趣点或特殊单位可能另提供行动。",
+      "image": "/locations/mod/God_FacelessMemory.set_adolia.png",
+      "baseGame": false
+    },
+    {
+      "id": "place-hook-2980692812-2",
+      "name": "城市的 Adolia Remedy",
+      "text": "使用 Adolia 时，<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" /> 与 <CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" /> 增加传播 Remedy 的任务。\n\n对应地点 / 兴趣点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "id": "god-place-place-hook-2980692812-2--place-task-2980692812-ch-memory-spreadremedy",
+      "name": "Distribute Arcane Remedy",
+      "text": "消耗持有的全部同类样本，创建 0 强度的 <CrossReference name=\"Arcane Remedy\" href=\"#entry-arcane-remedy-modifier\" meta=\"地点修正\" text=\"提供 Receive Arcane Remedy、Receive Arcane Remedy Sample 及对应统治者行动，疗法可以被 Corrupt Arcane Remedy 污染。\n未污染时每回合使当地 Pareidolia −5、相邻尚未被吞没地点的 Pareidolia −2。关闭模组设置 Arcane Remedy 后移除。\" image=\"./adolia/icon_arcaneremedy.png\" />；使用污染样本时创建污染版本。完成时 Profile +10。",
+      "image": "/locations/mod/God_FacelessMemory.icon_arcaneremedy.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />",
+      "limit": "携带 Arcane Remedy Sample，双方人物均可执行。",
+      "statLine": "Complexity: 25\nProfile: 90 + 50 × 世界恐慌\nMenace: 0\nXP: 42"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-memory-adolia",
+      "name": "[地点名] Adolia",
+      "blocks": [
         {
-          "name": "Subsumed Settlement",
-          "text": "由 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" /> 达到 300 后形成，以原地点名加 Adolia 命名。每回合设施 Menace +1，使每个相邻人类聚居地已有 Pareidolia +1，提供 Rest 与 Lay Low。可在此招募 <CrossReference name=\"An Adolia\" />。",
-          "image": "set_adolia.png"
+          "title": "介绍",
+          "entryIds": [
+            "location-set-memory-adolia"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-place-hook-2980692812-2",
+      "name": "城市的 Adolia Remedy",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-2980692812-2"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-place-hook-2980692812-2--place-task-2980692812-ch-memory-spreadremedy"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_city_prague.png"
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "name": "Subsumed Settlement",
+      "text": "由 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia-modifier\" /> 达到 300 后形成，以原地点名加 Adolia 命名。每回合设施 Menace +1，使每个相邻人类聚居地已有 Pareidolia +1，提供 Rest 与 Lay Low。可在此招募 <CrossReference name=\"An Adolia\" />。\n\n出现方式\n聚居地被 <CrossReference name=\"Pareidolia\" href=\"#entry-pareidolia\" meta=\"神力\" text=\"创建 Pareidolia，逐步侵蚀聚居地；达到 300 时转化为 Subsumed Settlement。\" image=\"./adolia/icon_pareidolia.png\" /> 吞没时加入。\n\n可出现地点\n<CrossReference name=\"[地点名] Adolia\" href=\"#entry-location-set-memory-adolia\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "set_adolia.png",
+      "id": "subsumed-settlement"
+    },
+    {
+      "id": "god-place-location-sub-memory-adolia--place-task-base-ch-rest",
+      "name": "Rest and Resupply",
+      "text": "恢复人物以及非 Undead、非 Orc 随从的 HP。",
+      "image": "/locations/game/restAndRearm.png",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、Living Settlement、<CrossReference name=\"Subsumed Settlement\" href=\"#entry-subsumed-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者不能带 Undead 或 Orc 标签；地点 Unrest <100、Famine <50。非玩家英雄在高 Ophanim’s Faith 地点另受限制。",
+      "statLine": "Complexity: 3\nProfile: 20\nMenace: 0\nXP: 8"
+    },
+    {
+      "id": "god-place-location-sub-memory-adolia--place-task-base-ch-laylow",
+      "name": "Lay Low（聚居地）",
+      "text": "首回合不减少数值；之后每回合降低 Profile、Menace 各 1，不低于人物下限。渗透度 ≥50%、Shadow ≥50%、信仰 Ophanim 的地点分别增加同量效果。",
+      "image": "/locations/game/layLow.png",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、Living Settlement、<CrossReference name=\"Subsumed Settlement\" href=\"#entry-subsumed-settlement\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />",
+      "limit": "Profile 或 Menace 高于人物下限。",
+      "statLine": "Complexity: 15\nProfile: 30\nMenace: 0\nXP: 29"
+    },
+    {
+      "id": "place-hook-2980692812-0",
+      "name": "Holy Site 的 Adolia 应对",
+      "text": "使用 Adolia 时，在拥有 Holy Site 的人类体系聚居地加入。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Holy Site / Desecrated Holy Site\" href=\"?page=points-of-interest#entry-location-sub-cathedral\" meta=\"兴趣点\" text=\"未被亵渎时提供 Consecrate、Desecrate Holy Site 与 Cleanse Own Soul；仍可提供适用的 Blasphemous Rituals。\n被亵渎后每回合增加当地 Shadow 1%，最高 100%。Dark Empire 会使其进入亵渎状态；Ophanim 控制会解除该状态；亵渎的圣所在 Alliance 中每回合增加 2 Menace。\n\n出现方式\n小型人类聚居地的随机候选；附近已有 Holy Site 时，不加入新地点的候选池。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cathedral.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/cathedral.png"
+    },
+    {
+      "name": "Cleansing Ritual",
+      "image": "cathedral.png",
+      "meta": "Other",
+      "statLine": "Complexity: 5　Profile: 50 + 50 × 世界恐慌　Menace: 0　XP: 12",
+      "location": "带 Cathedral 的人类聚居地。",
+      "limit": "已有 Faceless Memory，Awareness 至少 50%，对 Adolia 无正面偏好。",
+      "text": "感染强度减半；Cathedral 已 Desecrated 时改为翻倍。完成时 Profile +5。",
+      "positiveTags": "Religion、Cooperation",
+      "negativeTags": "Adolia、Gold",
+      "id": "god-place-place-hook-2980692812-0--place-task-2980692812-ch-memory-shrinktraitholy"
+    },
+    {
+      "id": "place-hook-2980692812-1",
+      "name": "Library 的 Adolia 应对",
+      "text": "使用 Adolia 时，<CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" /> 会加入两种应对入口。购买相关任务的注入代码也检查 <CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" />，而不是刚取得的 <CrossReference name=\"Market\" href=\"?page=points-of-interest#entry-location-sub-market\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，配置 3 个商品购买槽。商品由 Buy Item 的刷新逻辑决定，Prosperity 影响物品品质；渗透后可 Force Restock。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/market.png\" target=\"_blank\" /> 变量；单独拥有 <CrossReference name=\"Market\" href=\"?page=points-of-interest#entry-location-sub-market\" meta=\"兴趣点\" text=\"增加 0.2 Prosperity 影响值，配置 3 个商品购买槽。商品由 Buy Item 的刷新逻辑决定，Prosperity 影响物品品质；渗透后可 Force Restock。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/market.png\" target=\"_blank\" /> 不能保证出现此入口。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/library.png"
+    },
+    {
+      "name": "Clear Mind",
+      "image": "library.png",
+      "meta": "Lore",
+      "statLine": "Complexity: 40　Profile: 70 + 50 × 世界恐慌　Menace: 0　XP: 60",
+      "location": "带 Library 的人类聚居地。",
+      "limit": "已感染的英雄，Awareness 至少 50%，对 Adolia 无正面偏好；Lore 至少 4，或为 Mage、Elven Specialist。",
+      "text": "感染强度减半；当地完全渗透时改为获得 <CrossReference name=\"Placebo\" />。完成时 Profile +5。",
+      "positiveTags": "无",
+      "negativeTags": "Adolia",
+      "id": "god-place-place-hook-2980692812-1--place-task-2980692812-ch-memory-shrinktraitlibrary"
+    },
+    {
+      "name": "Buy Local Remedy",
+      "image": "market.png",
+      "meta": "Other",
+      "statLine": "Complexity: 5　Profile: 50 + 50 × 世界恐慌　Menace: 0　XP: 12",
+      "location": "同时带 Library 与 Market 的人类聚居地。",
+      "limit": "已感染，Gold 至少 30，Awareness 至少 50%，对 Adolia 无正面偏好。",
+      "text": "消耗 30 Gold，使感染强度减半；当地完全渗透时改为获得 <CrossReference name=\"Placebo\" />。完成时 Profile +5。",
+      "positiveTags": "无",
+      "negativeTags": "Adolia、Gold",
+      "id": "god-place-place-hook-2980692812-1--place-task-2980692812-ch-memory-shrinktraitmarket"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-sub-memory-adolia",
+      "name": "Subsumed Settlement",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "subsumed-settlement"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-sub-memory-adolia--place-task-base-ch-rest"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-memory-adolia--place-task-base-ch-laylow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-place-hook-2980692812-0",
+      "name": "Holy Site 的 Adolia 应对",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-2980692812-0"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-place-hook-2980692812-0--place-task-2980692812-ch-memory-shrinktraitholy"
+          ]
+        }
+      ],
+      "image": "/locations/game/cathedral.png"
+    },
+    {
+      "id": "god-place-place-hook-2980692812-1",
+      "name": "Library 的 Adolia 应对",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-2980692812-1"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-place-hook-2980692812-1--place-task-2980692812-ch-memory-shrinktraitlibrary",
+            "god-place-place-hook-2980692812-1--place-task-2980692812-ch-memory-shrinktraitmarket"
+          ]
+        }
+      ],
+      "image": "/locations/game/library.png"
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "media": true,
@@ -344,7 +545,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "media": true,
@@ -378,7 +579,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "media": true,
@@ -394,7 +595,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "media": true,
@@ -478,7 +679,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "shared-tasks",
       "title": "双方可执行的任务",
       "media": true,
@@ -530,7 +731,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "media": true,
@@ -600,7 +801,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "national-actions",
       "title": "国家行动",
       "media": true,
@@ -617,7 +818,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "media": true,
@@ -636,7 +837,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "media": false,
@@ -655,7 +856,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -677,7 +878,8 @@ const config: GodConfig = {
               "name": "Rob them",
               "text": "Gold +50；Menace +8；任务进度 −10。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         },
         {
           "name": "Social Decay",
@@ -700,7 +902,8 @@ const config: GodConfig = {
               "name": "Hide in the chaos",
               "text": "Menace −10；Profile −10；任务进度 −10。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         },
         {
           "name": "Confused Vendor",
@@ -724,7 +927,8 @@ const config: GodConfig = {
               "text": "66.67%：Gold −30；获得普通物品。\n33.33%：Gold −30；获得稀有物品。",
               "condition": "至少 30 Gold。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         },
         {
           "name": "Aftermath",
@@ -743,7 +947,8 @@ const config: GodConfig = {
               "name": "Keep moving",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "A Sighting",
@@ -762,7 +967,8 @@ const config: GodConfig = {
               "name": "Turn to face them",
               "text": "当地 Madness +100；Menace +10；Profile +15。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Two Silent Ghosts",
@@ -773,7 +979,8 @@ const config: GodConfig = {
               "name": "Far from civilization their presence fades",
               "text": "Menace −10；Profile −15。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Bewildered Bandits",
@@ -792,7 +999,8 @@ const config: GodConfig = {
               "name": "Try to run",
               "text": "50%：HP −3。\n50%：无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Something Familiar",
@@ -813,7 +1021,8 @@ const config: GodConfig = {
               "text": "个人 Shadow +100 个百分点；变为极端喜欢 Adolia；Power −1。",
               "condition": "个人 Shadow >99%。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Faceless Form",
@@ -828,16 +1037,35 @@ const config: GodConfig = {
               "name": "...Until there is nothing left",
               "text": "该人物死亡；Power +2。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Pareidolia Crises",
           "image": "icon_pareidolia.png",
-          "text": "模组代码触发。强度为 100–299 的人类聚居地需有统治者；距离上次判定超过 25 回合时，每回合有 5% 概率尝试一次危机。\n可能中断统治者行动并改为 Political Gridlock；已有 Unrest 低于 200 时增加 50；人口至少 4 且 Madness 低于 100 时增加 25 Madness；尚无 Banditry 时创建强度 15。\n饥荒分支使人口减少其 1/4（整数除法），再按减少后人口的 1/4 增加 Death。失金分支要求统治者至少 20 Gold，先移除约半数 Gold，再把剩余 Gold 的一半存入新 Item Cache。"
+          "text": "模组代码触发。强度为 100–299 的人类聚居地需有统治者；距离上次判定超过 25 回合时，每回合有 5% 概率尝试一次危机。\n可能中断统治者行动并改为 Political Gridlock；已有 Unrest 低于 200 时增加 50；人口至少 4 且 Madness 低于 100 时增加 25 Madness；尚无 Banditry 时创建强度 15。\n饥荒分支使人口减少其 1/4（整数除法），再按减少后人口的 1/4 增加 Death。失金分支要求统治者至少 20 Gold，先移除约半数 Gold，再把剩余 Gold 的一半存入新 Item Cache。",
+          "eventCategory": "other"
         }
       ]
+    },
+{
+  "id": "common-actions",
+  "title": "共同行动",
+  "items": [
+    {
+      "id": "place-task-2980692812-ch-memory-spreadremedy",
+      "name": "Distribute Arcane Remedy",
+      "text": "消耗持有的全部同类样本，创建 0 强度的 <CrossReference name=\"Arcane Remedy\" href=\"?god=adolia#entry-arcane-remedy-modifier\" meta=\"地点修正\" text=\"提供 Receive Arcane Remedy、Receive Arcane Remedy Sample 及对应统治者行动，疗法可以被 Corrupt Arcane Remedy 污染。\n未污染时每回合使当地 Pareidolia −5、相邻尚未被吞没地点的 Pareidolia −2。关闭模组设置 Arcane Remedy 后移除。\" image=\"./adolia/icon_arcaneremedy.png\" />；使用污染样本时创建污染版本。完成时 Profile +10。",
+      "image": "/locations/mod/God_FacelessMemory.icon_arcaneremedy.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />",
+      "limit": "携带 Arcane Remedy Sample，双方人物均可执行。",
+      "statLine": "Complexity: 25\nProfile: 90 + 50 × 世界恐慌\nMenace: 0\nXP: 42"
     }
-  ],
+  ]
+}
+],
   "relations": {
     "pareidolia-modifier": {
       "sources": [

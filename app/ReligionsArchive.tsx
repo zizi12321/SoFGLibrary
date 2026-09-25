@@ -50,22 +50,22 @@ export default function ReligionsArchive({ onReturn }: { onReturn: () => void })
         <div className="sidebar-head">
           <div className="sidebar-brand">
             <span className="brand-mark"><Landmark size={17} /></span>
-            <span><b>宗教与教义</b><small>其他信息</small></span>
+            <span><b>教义</b><small>其他信息</small></span>
           </div>
           <button className="sidebar-toggle" type="button" aria-expanded={!sidebarHidden} aria-label={sidebarHidden ? "展开侧边栏" : "收起侧边栏"} onClick={() => setSidebarHidden(value => !value)}>
             {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
         </div>
-        <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
+        <a className="sidebar-index-link" href="./">← 返回索引页</a>
         <div className="sidebar-bulk">
           <button type="button" onClick={() => setOpenEntries(new Set(entryIds))}>全部展开</button>
           <button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button>
         </div>
-        <CatalogueNavigation groups={navGroups} label="宗教与教义导航" />
+        <CatalogueNavigation groups={navGroups} label="教义导航" />
       </aside>
       <div className="content-shell">
         <header id="top" className="modifier-library-header">
-          <h1>宗教与教义</h1>
+          <h1>教义</h1>
           <p>游戏本体与 Mod 中不限定神祇的教义，按适用教团与加入条件分栏。共收录 {tenets.length} 项。</p>
           <p>每项标明完整等级范围，分段列出有效等级。负等级代表 Elder Influence 方向，正等级代表 Human Influence 方向；实际可调范围还受 Alignment Status 限制。</p>
         </header>
@@ -75,7 +75,7 @@ export default function ReligionsArchive({ onReturn }: { onReturn: () => void })
           <p className="religion-group-description"><RichText config={config} text={group.description} /></p>
           <DetailGrid config={config} items={group.items} openEntries={openEntries} onToggle={toggle} />
         </section>)}
-        <footer className="archive-footer"><button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button></footer>
+        <footer className="archive-footer"><a className="sidebar-index-link" href="./">← 返回索引页</a></footer>
       </div>
     </main>
   );

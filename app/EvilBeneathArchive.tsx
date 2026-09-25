@@ -22,13 +22,13 @@ const config: GodConfig = {
   "powerCapacity": "神力上限＝已破封印数 + 1。",
   "powerRecovery": "每回合恢复＝0.035 × max(3，神力上限)。苏醒时神力补满。",
   "core": [
-    "开局在地下寻找没有 Society、没有 Settlement、非海洋且靠近人类聚居地的位置，建立 <CrossReference name=\"the Elder Tomb\" />；那里生成 <CrossReference name=\"The Creature's Heart\" />（最大 HP 1000，开局 HP 1）、Supplicant，并从周边地下位置随机生成最多四条初始触手。",
-    "用 <CrossReference name=\"Grow\" /> 从心脏向新的地下地点延伸触手；路径上的每个触手段都是 <CrossReference name=\"Tentacle Segment\" />，终点会留下 <CrossReference name=\"Evidence\" />。",
-    "让地表产生 Death，再用 <CrossReference name=\"Bring the Food\" /> 或 <CrossReference name=\"Drag Bodies Under\" /> 把尸体转成 <CrossReference name=\"Feast for the God-Thing\" />，送到触手或心脏旁。",
-    "用 <CrossReference name=\"Retract Tentacle\" /> 收回一条触手；沿线的 Tentacle Segment 会吞食 Feast，食物恢复心脏 HP，并按完整点数累计吞噬进度。",
-    "吞噬进度达到对应封印阈值后解锁下一阶段。<CrossReference name=\"Devour Knowledge\" /> 和 <CrossReference name=\"Devour Worshipper\" /> 会直接推进吞噬进度；破封后 Grow 的最大距离随已破封印数增加。",
-    "达到最终阈值后苏醒：Awareness of the Underground 变为 100%，心脏和触手每回合增加 Menace，地表军队会主动向地下进攻；必须在心脏被摧毁前清除围剿。"
-  ],
+  "开局在地下寻找没有 Society、没有 Settlement、非海洋且靠近人类聚居地的位置，建立 <CrossReference name=\"the Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" />；那里生成 <CrossReference name=\"The Creature's Heart\" />（最大 HP 1000，开局 HP 1）、Supplicant，并从周边地下位置随机生成最多四条初始触手。",
+  "用 <CrossReference name=\"Grow\" /> 从心脏向新的地下地点延伸触手；路径上的每个触手段都是 <CrossReference name=\"Tentacle Segment\" />，终点会留下 <CrossReference name=\"Evidence\" />。",
+  "让地表产生 Death，再用 <CrossReference name=\"Bring the Food\" /> 或 <CrossReference name=\"Drag Bodies Under\" /> 把尸体转成 <CrossReference name=\"Feast for the God-Thing\" />，送到触手或心脏旁。",
+  "用 <CrossReference name=\"Retract Tentacle\" /> 收回一条触手；沿线的 Tentacle Segment 会吞食 Feast，食物恢复心脏 HP，并按完整点数累计吞噬进度。",
+  "吞噬进度达到对应封印阈值后解锁下一阶段。<CrossReference name=\"Devour Knowledge\" /> 和 <CrossReference name=\"Devour Worshipper\" /> 会直接推进吞噬进度；破封后 Grow 的最大距离随已破封印数增加。",
+  "达到最终阈值后苏醒：Awareness of the Underground 变为 100%，心脏和触手每回合增加 Menace，地表军队会主动向地下进攻；必须在心脏被摧毁前清除围剿。"
+],
   "overviewExtra": {
     "title": "地下意识",
     "text": "Awareness of the Underground 是 0%–100% 的地下发现度。Bring the Food、Drag Bodies Under、Devastate、Sinkholes、Grab Ship、Withdraw Agent 与 Drag Down City 会直接提高它；Report Findings 提高 15%。苏醒时提高到 100%。",
@@ -242,7 +242,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "world-mechanics",
       "title": "世界机制",
       "items": [
@@ -258,7 +258,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -303,20 +303,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "the Elder Tomb",
-          "text": "开局在地下建立的本体墓穴地点。它是 The Creature's Heart、Supplicant 和初始触手的生成点。",
-          "image": "elder-tomb.png",
-          "baseGame": true,
-          "id": "elder-tomb-location"
-        }
-      ]
-    },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -334,7 +321,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -351,7 +338,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "automatic-tasks",
       "title": "自动任务",
       "items": [
@@ -365,7 +352,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "Feast for the God-Thing": {
       "sources": [

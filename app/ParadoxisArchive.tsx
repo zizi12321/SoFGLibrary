@@ -148,7 +148,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -158,18 +158,52 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "Temporal Rift Site",
-          "image": "loc_evil_tomb.png",
-          "text": "初始位置，替代 the Elder Tomb，Shadow 为 0；提供 Close Loop。地点的摧毁回调为空，因此不会被普通摧毁操作改为废墟。"
-        }
-      ]
+      "name": "Temporal Rift Site",
+      "image": "loc_evil_tomb.png",
+      "text": "初始位置，替代 the Elder Tomb，Shadow 为 0；提供 Close Loop。地点的摧毁回调为空，因此不会被普通摧毁操作改为废墟。\n\n出现方式\nParadoxis 开局替换 <CrossReference name=\"The Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" />。",
+      "id": "temporal-rift-site"
     },
     {
+      "id": "god-place-location-set-timerift--place-task-3232578780-ch-backintime",
+      "name": "Close the Loop",
+      "text": "触发 Paradoxis 的时间回溯，进入下一轮时间循环。",
+      "image": "/locations/game/theProphecy.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Temporal Rift Site\" href=\"#entry-temporal-rift-site\" />",
+      "limit": "仅 Chosen One；游戏正式开始、世界恐慌与预言进度满足条件，特殊行动冷却已结束。",
+      "statLine": "Complexity: 50\nProfile: 1000\nMenace: 0\nXP: 72",
+      "positiveTags": "Ambition",
+      "negativeTags": "无"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-timerift",
+      "name": "Temporal Rift Site",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "temporal-rift-site"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-set-timerift--place-task-3232578780-ch-backintime"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -188,24 +222,24 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "hero-tasks",
+  "title": "英雄任务",
+  "items": [
     {
-      "id": "hero-tasks",
-      "title": "英雄任务",
-      "items": [
-        {
-          "name": "Close Loop",
-          "meta": "Lore",
-          "text": "Chosen One 完成后立即触发特殊胜利。引导期间风险为 50。世界恐慌与常规胜利进度越高，执行意愿越强。",
-          "image": "theProphecy.png",
-          "location": "Temporal Rift Site",
-          "statLine": "Complexity: 50 / Profile: 1000 / Menace: 0 / XP: 72",
-          "positiveTags": "Ambition",
-          "negativeTags": "无",
-          "limit": "仅 Chosen One；世界恐慌至少 80%，地图历史生成已结束。距上次终极任务完成超过 40 回合、距上次尝试超过 27 回合；已经在执行该任务时可继续。"
-        }
-      ]
-    },
-    {
+      "name": "Close Loop",
+      "meta": "Lore",
+      "text": "Chosen One 完成后立即触发特殊胜利。引导期间风险为 50。世界恐慌与常规胜利进度越高，执行意愿越强。",
+      "image": "theProphecy.png",
+      "location": "Temporal Rift Site",
+      "statLine": "Complexity: 50 / Profile: 1000 / Menace: 0 / XP: 72",
+      "positiveTags": "Ambition",
+      "negativeTags": "无",
+      "limit": "仅 Chosen One；世界恐慌至少 80%，地图历史生成已结束。距上次终极任务完成超过 40 回合、距上次尝试超过 27 回合；已经在执行该任务时可继续。"
+    }
+  ]
+},
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -218,7 +252,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "mechanics",
       "title": "相关机制",
       "items": [
@@ -229,7 +263,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "Temporal Blueshift 3: Hasten": {
       "effects": [

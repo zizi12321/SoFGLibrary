@@ -1,0 +1,43 @@
+.magic-theme .magic-school .plain-heading h2 {
+  font-size: clamp(28px, 3.2vw, 48px);
+  overflow-wrap: anywhere;
+}
+.magic-theme .magic-introduction {
+  max-width: calc((100% - 20px) / 2);
+  line-height: 1.9;
+  margin: 0 0 36px;
+}
+.magic-theme .magic-introduction h3 {
+  font-size: 14px;
+  margin: 22px 0 8px;
+}
+.magic-theme .magic-introduction p {
+  white-space: pre-line;
+  color: var(--muted);
+}
+.magic-theme .magic-level { scroll-margin-top: 28px; margin-top: 32px; }
+.magic-theme .magic-level > h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 21px;
+  margin: 0 0 18px;
+}
+.magic-theme .magic-level > h3 small { font-size: 12px; color: var(--muted); font-weight: 400; }
+.magic-theme .magic-source {
+  display: flex; gap: 12px; align-items: baseline;
+  margin-bottom: 14px; font-size: 12px;
+}
+.magic-theme .magic-source b { flex-shrink: 0; color: var(--accent); font-weight: 500; }
+.magic-theme .magic-source span { overflow-wrap: anywhere; }
+.magic-theme .expanded-section p,
+.magic-theme .task-stat-line,
+.magic-theme .magic-progress,
+.magic-theme .magic-casting { white-space: pre-line; overflow-wrap: anywhere; }
+.magic-theme .magic-portrait-note { color: var(--muted); display: block; margin-top: 20px; line-height: 1.8; }
+@media (max-width: 1200px) {
+  .magic-theme .magic-introduction { max-width: 100%; }
+}
+@media (max-width: 760px) {
+  .magic-theme .modifier-library-header { padding-top: 76px; }
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import LivingVoidArchive from "./LivingVoidArchive";
 import ChandalorArchive from "./ChandalorArchive";
 import SheWhoWillFeastArchive from "./SheWhoWillFeastArchive";
@@ -26,9 +26,9 @@ import AlaiArchive from "./AlaiArchive";
 import MekhaneArchive from "./MekhaneArchive";
 import VillikosArchive from "./VillikosArchive";
 import AberrantMetalArchive from "./AberrantMetalArchive";
+import { ArchiveJumpReturnProvider } from "./ArchiveJumpReturn";
 import GodIndex from "./GodIndex";
 import BaseLocationModifiersArchive from "./BaseLocationModifiersArchive";
-import AgentsArchive from "./AgentsArchive";
 import ReligionsArchive from "./ReligionsArchive";
 import NonPlayerUnitsArchive from "./NonPlayerUnitsArchive";
 import ArmiesArchive from "./ArmiesArchive";
@@ -36,13 +36,20 @@ import BaseItemsArchive from "./BaseItemsArchive";
 import MinionsArchive from "./MinionsArchive";
 import type { ArchivePageChoice } from "./GodArchiveTypes";
 
+const MagicArchive = lazy(() => import("./MagicArchive"));
+const CharacterModifiersArchive = lazy(() => import("./CharacterModifiersArchive"));
+const AgentsArchive = lazy(() => import("./AgentsArchive"));
+const LocationsArchive = lazy(() => import("./LocationsArchive"));
+const PointsOfInterestArchive = lazy(() => import("./PointsOfInterestArchive"));
+const EventsArchive = lazy(() => import("./EventsArchive"));
+
 type GodChoice = ArchivePageChoice;
 
-export default function GodArchive() {
+function ArchivePage() {
   const [god, setGod] = useState<GodChoice>("index");
   useEffect(() => {
     const requestedPage = new URLSearchParams(window.location.search).get("page");
-    if (requestedPage === "base-location-modifiers" || requestedPage === "base-items" || requestedPage === "agents" || requestedPage === "religions" || requestedPage === "non-player-units" || requestedPage === "minions" || requestedPage === "armies") {
+    if (requestedPage === "base-location-modifiers" || requestedPage === "base-items" || requestedPage === "agents" || requestedPage === "religions" || requestedPage === "magic" || requestedPage === "non-player-units" || requestedPage === "minions" || requestedPage === "armies" || requestedPage === "events" || requestedPage === "locations" || requestedPage === "character-modifiers" || requestedPage === "points-of-interest") {
       setGod(requestedPage);
       return;
     }
@@ -51,15 +58,20 @@ export default function GodArchive() {
   }, []);
   const switchGod = (nextGod: GodChoice) => {
     setGod(nextGod);
-    const url = nextGod === "index" ? window.location.pathname : (nextGod === "base-location-modifiers" || nextGod === "base-items" || nextGod === "agents" || nextGod === "religions" || nextGod === "non-player-units" || nextGod === "minions" || nextGod === "armies") ? `${window.location.pathname}?page=${nextGod}` : `${window.location.pathname}?god=${nextGod}`;
+    const url = nextGod === "index" ? window.location.pathname : (nextGod === "base-location-modifiers" || nextGod === "base-items" || nextGod === "agents" || nextGod === "religions" || nextGod === "magic" || nextGod === "non-player-units" || nextGod === "minions" || nextGod === "armies" || nextGod === "events" || nextGod === "locations" || nextGod === "character-modifiers" || nextGod === "points-of-interest") ? `${window.location.pathname}?page=${nextGod}` : `${window.location.pathname}?god=${nextGod}`;
     window.history.replaceState(null, "", url);
     window.scrollTo({ top: 0, behavior: "instant" });
   };
-  if (god === "index") return <GodIndex onSelect={switchGod} />;
+  if (god === "index") return <GodIndex />;
+  if (god === "character-modifiers") return <Suspense fallback={<main className="archive-index"><p>正在载入角色特质…</p></main>}><CharacterModifiersArchive /></Suspense>;
+  if (god === "locations") return <Suspense fallback={<main className="archive-index"><p>正在载入地点…</p></main>}><LocationsArchive onReturn={() => switchGod("index")} /></Suspense>;
+  if (god === "points-of-interest") return <Suspense fallback={<main className="archive-index"><p>正在载入兴趣点…</p></main>}><PointsOfInterestArchive onReturn={() => switchGod("index")} /></Suspense>;
+  if (god === "events") return <Suspense fallback={<main className="archive-index"><p>正在载入事件…</p></main>}><EventsArchive onReturn={() => switchGod("index")} /></Suspense>;
   if (god === "armies") return <ArmiesArchive onReturn={() => switchGod("index")} />;
   if (god === "non-player-units") return <NonPlayerUnitsArchive onReturn={() => switchGod("index")} />;
+  if (god === "magic") return <Suspense fallback={<main className="archive-index"><p>正在载入魔法…</p></main>}><MagicArchive /></Suspense>;
   if (god === "religions") return <ReligionsArchive onReturn={() => switchGod("index")} />;
-  if (god === "agents") return <AgentsArchive onReturn={() => switchGod("index")} />;
+  if (god === "agents") return <Suspense fallback={<main className="archive-index"><p>正在载入 Agent…</p></main>}><AgentsArchive onReturn={() => switchGod("index")} /></Suspense>;
   if (god === "minions") return <MinionsArchive onReturn={() => switchGod("index")} />;
   if (god === "base-items") return <BaseItemsArchive onReturn={() => switchGod("index")} />;
   if (god === "base-location-modifiers") return <BaseLocationModifiersArchive onReturn={() => switchGod("index")} />;
@@ -88,5 +100,9 @@ export default function GodArchive() {
   if (god === "alai") return <AlaiArchive onGodChange={switchGod} />;
   if (god === "aberrant-metal") return <AberrantMetalArchive onGodChange={switchGod} />;
   if (god === "lotus-egregore") return <LotusEgregoreArchive onGodChange={switchGod} />;
-  return <GodIndex onSelect={switchGod} />;
+  return <GodIndex />;
+}
+
+export default function GodArchive() {
+  return <ArchiveJumpReturnProvider><ArchivePage /></ArchiveJumpReturnProvider>;
 }

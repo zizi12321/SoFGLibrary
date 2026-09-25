@@ -197,7 +197,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "spells",
       "title": "法术",
       "media": true,
@@ -303,7 +303,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "media": false,
@@ -387,7 +387,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -561,49 +561,670 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "media": true,
-      "items": [
+      "name": "Living Settlement",
+      "image": "flesh_city.png",
+      "text": "初始完全 Enshadowed，此后每回合恢复 10% Shadow；人口上限 250。城防尚未归零时，每回合恢复最大城防的 10%，最多 20。对当地实施夷平、掠夺或占领的非驻军，每回合受到向下取整的“人口 × 5%”伤害。\n苏醒后加入 Escamrak 的独立社会，每回合 Unrest、Political Agitation、Political Instability 各减少 25。清除 Banditry、Deep One Cult；统治者可 Study Living Settlement。\n\n出现方式\nFleshcrafters 或 Living Terrain 转化人类聚居地时建立，并保留原有兴趣点；Escamrak 的改造选项也可直接创建带 Farming Community 的新聚居地。\n\n可能配置的兴趣点\n<CrossReference name=\"Twisted Library\" href=\"#entry-twisted-library\" />。\n固定、随机与改建来源见各兴趣点。",
+      "id": "living-settlement"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-rest",
+      "name": "Rest and Resupply",
+      "text": "恢复人物以及非 Undead、非 Orc 随从的 HP。",
+      "image": "/locations/game/restAndRearm.png",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Subsumed Settlement、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者不能带 Undead 或 Orc 标签；地点 Unrest <100、Famine <50。非玩家英雄在高 Ophanim’s Faith 地点另受限制。",
+      "statLine": "Complexity: 3\nProfile: 20\nMenace: 0\nXP: 8"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-poisonhero",
+      "name": "Poison Hero",
+      "text": "目标英雄下一次休息时中毒，先被打断 5 回合，再保留中毒削弱 25 回合。",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "目标以这里为故乡；地点渗透度 >0%，目标没有 Poisoned。",
+      "statLine": "Complexity: 25\nProfile: 50\nMenace: 40\nXP: 42"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-ransackpossessions",
+      "name": "Ransack Possessions",
+      "text": "打开目标人物的物品与 Gold 转移界面，可拿取或塞入物品；目标会对执行者结怨。",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "目标以这里为故乡；地点渗透度 ≥50%，距离上次使用至少 100 回合。",
+      "statLine": "Complexity: 25\nProfile: 50\nMenace: 40\nXP: 42"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-wellofshadows",
+      "name": "Well of Shadows",
+      "text": "建立或增强 Well of Shadows，向相邻 Shadow 更低的人类聚居地传播黑暗。",
+      "image": "/locations/game/wellOfShadows.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地 Shadow ≥10%，Well of Shadows <100。",
+      "statLine": "Complexity: 40\nProfile: 40\nMenace: 30 × 相邻合格人类地点的正向 Shadow 差值之和 / 100；差值为 0 时 -50\nXP: 60"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-bribeguards",
+      "name": "Bribe Guards",
+      "text": "消耗 25 Gold，建立 Bribed Guards，使 Security 降低 2，持续 25 回合。",
+      "image": "/locations/game/bribe.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "没有 Bribed Guards，且执行者有足够 Gold。",
+      "statLine": "Complexity: 2\nProfile: 60\nMenace: 0\nXP: 6"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-assassinatesilent",
+      "name": "Silent Assassination",
+      "text": "暗杀当地统治者，由继承人接替；相较 <CrossReference name=\"Brutal Assassination\" href=\"?page=locations#entry-place-task-base-ch-assassinatebrutal\" meta=\"挑战\" text=\"杀死当地统治者，由继承人接替；提高执行者的 Profile 与 Menace。\n执行地点：City、Dwarven City、Dwarven Outpost、Elven City、小型人类聚居地、Living Settlement、Aberrant Factory、Mobile Factory（驻地）\nMight\nComplexity: 50 + 5 × Security\nProfile: 50\nMenace: （继承人 Shadow − 统治者 Shadow）/ 2；没有合格继承人时 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋\n执行条件：当地有统治者。\" image=\"/locations/game/brutalAssassination.png\" target=\"_blank\" />，暴露更低。",
+      "image": "/locations/game/silentAssassin.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地有统治者，渗透度为 100%。",
+      "statLine": "Complexity: 30 + 5 × Security\nProfile: 50\nMenace: （继承人 Shadow − 统治者 Shadow）/ 2；没有合格继承人时 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-assassinatebrutal",
+      "name": "Brutal Assassination",
+      "text": "杀死当地统治者，由继承人接替；提高执行者的 Profile 与 Menace。",
+      "image": "/locations/game/brutalAssassination.png",
+      "meta": "Might",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地有统治者。",
+      "statLine": "Complexity: 50 + 5 × Security\nProfile: 50\nMenace: （继承人 Shadow − 统治者 Shadow）/ 2；没有合格继承人时 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-accessvault",
+      "name": "Access Vault",
+      "text": "打开统治者的物品与 Gold 转移界面，可拿取财物或放入物品。",
+      "image": "/locations/game/accessVault.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地有统治者且渗透度为 100%；Dark Empire 或 Ophanim Theocracy 走专门放行分支。",
+      "statLine": "Complexity: 20 + 8 × Security；Dark Empire / Ophanim Theocracy 为 1\nProfile: 50\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-accessvaultlimited",
+      "name": "Subtle Thievery",
+      "text": "打开统治者财物界面，本次最多取得 35 Gold。",
+      "image": "/locations/game/accessVault.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地有统治者，渗透度为 100%。",
+      "statLine": "Complexity: 10 + 4 × Security\nProfile: 50\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-organisedissent",
+      "name": "Organise Dissent",
+      "text": "建立 Organised Dissent，持续降低 Security、增加 Unrest，直到其持续期结束或统治者更换。",
+      "image": "/locations/game/organisedDissent.png",
+      "meta": "Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地有统治者、没有 Organised Dissent，并且有 Lingering Resentment，或 Unrest ≥100。",
+      "statLine": "Complexity: 25\nProfile: 40\nMenace: 50\nXP: 42"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-laylow",
+      "name": "Lay Low（聚居地）",
+      "text": "首回合不减少数值；之后每回合降低 Profile、Menace 各 1，不低于人物下限。渗透度 ≥50%、Shadow ≥50%、信仰 Ophanim 的地点分别增加同量效果。",
+      "image": "/locations/game/layLow.png",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Subsumed Settlement、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />",
+      "limit": "Profile 或 Menace 高于人物下限。",
+      "statLine": "Complexity: 15\nProfile: 30\nMenace: 0\nXP: 29"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-savehero",
+      "name": "Save Hero",
+      "text": "减少目标英雄的 Shadow。",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "目标为当地故乡英雄，Shadow >20% 且 <100%，仍存活且未被玩家控制；执行者不能是目标本人，Shadow ≤80%。",
+      "statLine": "Complexity: 20\nProfile: 70\nMenace: 0\nXP: 36",
+      "positiveTags": "无",
+      "negativeTags": "Shadow、Gold、Cruelty"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-elf-giveruleelfstone",
+      "name": "Gift Ruler an Elfstone",
+      "text": "把携带的 Elfstone 交给当地统治者。",
+      "image": "/locations/game/i_elfstone.png",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "仅 Elven Artificer，且携带 Elfstone。",
+      "statLine": "Complexity: 1\nProfile: 100\nMenace: 0\nXP: 3",
+      "positiveTags": "Religion、Co-Operation",
+      "negativeTags": "Shadow"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-sabotageruler",
+      "name": "Sabotage Ruler",
+      "text": "随机破坏当地统治者的事务。",
+      "image": "/locations/game/vendetta.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "地点属于国家，且存在统治者。",
+      "statLine": "Complexity: 30\nProfile: 30\nMenace: 0\nXP: 49",
+      "positiveTags": "Cruelty",
+      "negativeTags": "Co-Operation"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-assassinateenshadowedruler",
+      "name": "Assassinate Enshadowed Ruler",
+      "text": "Alliance 英雄刺杀受 Shadow 侵蚀的统治者。",
+      "image": "/locations/game/silentAssassin.png",
+      "meta": "Intrigue",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于 Alliance；目标 Shadow >20%，且目标国家不是 Dark Empire 或 Ophanim Theocracy。",
+      "statLine": "Complexity: 30\nProfile: 50\nMenace: 0\nXP: 49",
+      "positiveTags": "Cruelty、Danger",
+      "negativeTags": "Co-Operation、Shadow"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-redeemruler",
+      "name": "Redeem Ruler",
+      "text": "当地统治者 Shadow 减半。",
+      "image": "/locations/game/consacrate.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "当地属于 Alliance 且有统治者；执行者 Shadow <95%。",
+      "statLine": "Complexity: 50\nProfile: 40\nMenace: 200 × 统治者 Shadow / 100\nXP: 72",
+      "positiveTags": "无",
+      "negativeTags": "Shadow"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-redeemsovereign",
+      "name": "Redeem Sovereign",
+      "text": "清空君主 Shadow，建立 Ward，并驱散周边 Shadow。",
+      "image": "/locations/game/crown.png",
+      "meta": "Lore + Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "由 Chosen One 在合格国家首都执行；君主 Shadow >50%，国家不是 Dark Empire 或 Ophanim Theocracy，并且特殊行动冷却已结束。",
+      "statLine": "Complexity: 100\nProfile: 100\nMenace: 40 × 当地 Shadow / 100\nXP: 121",
+      "positiveTags": "无",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-preach",
+      "name": "Holy: Preach Faith",
+      "text": "将当地信仰改为执行者所属教团。",
+      "image": "/locations/game/temple.png",
+      "meta": "Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于 Holy Order，与当地信仰不同；教团允许传教，并有足够传教资金。Ophanim 教团要求当地 Faith 达到门槛；其他教团不能覆盖其接管地。不得在其他教团的权力中心传教。",
+      "statLine": "Complexity: 10\nProfile: 40\nMenace: 0\nXP: 21",
+      "positiveTags": "Religion、Co-Operation",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-buildtemple",
+      "name": "Holy: Build Temple",
+      "text": "在本教团信仰覆盖的聚居地建立 <CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />；可替换其他教团的 <CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />。",
+      "image": "/locations/game/temple.png",
+      "meta": "Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于当地教团；教团资金加玩家控制人物可支付的 Gold 足以支付建殿费用。不能已有本教团 <CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />；新增时还要有兴趣点容量。",
+      "statLine": "Complexity: 20\nProfile: 60\nMenace: 0\nXP: 36",
+      "positiveTags": "Religion、Cooperation",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-preachtoruler",
+      "name": "Holy: Preach to Ruler",
+      "text": "消耗 100 Gold，使统治者更喜欢本教团或 Religion，并降低对其他教团的偏好。",
+      "image": "/locations/game/temple.png",
+      "meta": "Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于教团，统治者的相关偏好仍有提高空间。",
+      "statLine": "Complexity: 10\nProfile: 40\nMenace: 0\nXP: 21",
+      "positiveTags": "Religion、Ambition",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-ward",
+      "name": "Holy: Ward",
+      "text": "当地 Ward +100。",
+      "image": "/locations/game/driveBackShadow.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于当地教团，Candle Circles >0，Ward <100。",
+      "statLine": "Complexity: 20\nProfile: 40\nMenace: 0\nXP: 36",
+      "positiveTags": "Religion",
+      "negativeTags": "Shadow"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-removeward",
+      "name": "Holy: Remove Ward",
+      "text": "当地 Ward −100。",
+      "image": "/locations/game/driveBackShadow.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于当地教团，Candle Circles <0，当地 Ward >0。",
+      "statLine": "Complexity: 30\nProfile: 40\nMenace: 0\nXP: 49",
+      "positiveTags": "Religion、Shadow",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-abyssalfaith",
+      "name": "Holy: Abyssal Faith",
+      "text": "按 Abyssal Faith 的倾向，使当地统治者更喜欢或更厌恶 Deep Ones。",
+      "image": "/locations/game/deepOnes.png",
+      "meta": "Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于当地教团；Abyssal Faith 非中立，统治者的对应偏好仍可改变。",
+      "statLine": "Complexity: 20\nProfile: 40\nMenace: 0\nXP: 36",
+      "positiveTags": "Religion",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-aware",
+      "name": "Holy: Aware",
+      "text": "按 Aware of Elder Powers 的倾向，提高或降低当地统治者 Awareness。",
+      "image": "/locations/game/warnTheWorld.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "仅 Acolyte；属于当地教团，教义非中立，统治者 Awareness 仍有对应变化空间。",
+      "statLine": "Complexity: 20\nProfile: 60\nMenace: 0\nXP: 36",
+      "positiveTags": "Religion",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-doomsay",
+      "name": "Holy: Prophesy Doom",
+      "text": "当地 Madness +50。",
+      "image": "/locations/game/madness.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "仅本地教团的 Acolyte，Prophets of Doom <0，Madness <200。",
+      "statLine": "Complexity: 25\nProfile: 40\nMenace: 0\nXP: 42",
+      "positiveTags": "Religion、Madness",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-livingsettlement--place-task-base-ch-h-militaryfervour",
+      "name": "Holy: Military Fervour",
+      "text": "当地 Military Fervour +50，增强军队。",
+      "image": "/locations/game/war.png",
+      "meta": "Command",
+      "baseGame": true,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />、Aberrant Factory、Mobile Factory（驻地）",
+      "limit": "执行者属于当地教团，Crusader Faith >0；仅限 <CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />，且 Military Fervour <100。",
+      "statLine": "Complexity: 40\nProfile: 40\nMenace: 0\nXP: 60",
+      "positiveTags": "Religion、Combat",
+      "negativeTags": "无"
+    },
+    {
+      "name": "Study Living Settlement",
+      "image": "flesh_secret.png",
+      "time": "3 回合",
+      "positiveTags": "Ambition、Fleshcrafting、Cruelty",
+      "negativeTags": "Disease",
+      "text": "Fleshcrafting Knowledge +1，个人 Shadow +2%。",
+      "location": "Living Settlement。",
+      "limit": "Fleshcrafting Knowledge 少于 6 层。",
+      "id": "god-place-location-set-livingsettlement--ruler-study-living-settlement"
+    },
+    {
+      "name": "Scorched Earth",
+      "image": "flesh_fire_ruler.png",
+      "time": "1 回合",
+      "positiveTags": "无",
+      "negativeTags": "Fleshcrafting",
+      "text": "移除 Living Terrain，当地 Devastation +100；中心地块火山损伤 +30，其余无地点的领土地块增加 26–30。损伤消退前阻止活体地形再次扩散。",
+      "location": "Living Terrain 强度低于 300，且尚未成为 Living Settlement 的人类聚居地。",
+      "limit": "",
+      "id": "god-place-location-set-livingsettlement--ruler-scorched-earth"
+    },
+    {
+      "name": "Twisted Landscape",
+      "image": "flesh_creepland0_sub.png",
+      "text": "Living Terrain 侵蚀空地或废墟后形成，可由 Escamrak 改造成下列形态。被夷平时清除 Living Terrain，并留下火山损伤，暂缓再次侵蚀。\n\n出现方式\nLiving Terrain 侵蚀空地或废墟时建立，固定带一个随地形形态变化的兴趣点。\n\n可能配置的兴趣点\n<CrossReference name=\"Twisted Landscape（兴趣点）\" href=\"#entry-location-sub-livingterrain\" />。\n固定、随机与改建来源见各兴趣点。",
+      "id": "twisted-landscape"
+    },
+    {
+      "id": "place-hook-2900259087-0",
+      "name": "人类聚居地的 Fleshcrafting 行动",
+      "text": "使用 Escamrak 时增加；寄生体行动还绑定于以当地为故乡的合格英雄。\n\n对应地点 / 兴趣点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "id": "god-place-place-hook-2900259087-0--place-task-2900259087-ch-teachfleshcrafting",
+      "name": "Teach Fleshcrafting",
+      "text": "玩家 Agent 与自主人物均可执行。创建一级 Fleshcrafters，当地 Shadow +2%，人口计入封印积分。完成时增加 5 Profile。",
+      "image": "/locations/mod/flesh.fleshcraft_teach.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "limit": "掌握 Fleshcrafting。",
+      "statLine": "Complexity: 40\nProfile: 70\nMenace: 0\nXP: 60"
+    },
+    {
+      "id": "god-place-place-hook-2900259087-0--place-task-2900259087-ch-parasiteinfests",
+      "name": "Infest Home Location",
+      "text": "在目标英雄故乡留下寄生影响；该英雄下次休息时学会 Fleshcrafting，并对其产生痴迷。",
+      "image": "/locations/mod/flesh.flesh_abom_minion_3.png",
+      "meta": "Intrigue",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "limit": "仅 Abominized 产生的寄生体，在对应英雄的故乡执行；目标尚未带有该寄生效果。",
+      "statLine": "Complexity: 45\nProfile: 0\nMenace: 0\nXP: 66"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-livingsettlement",
+      "name": "Living Settlement",
+      "blocks": [
         {
-          "name": "Living Settlement",
-          "image": "flesh_city.png",
-          "text": "初始完全 Enshadowed，此后每回合恢复 10% Shadow；人口上限 250。城防尚未归零时，每回合恢复最大城防的 10%，最多 20。对当地实施夷平、掠夺或占领的非驻军，每回合受到向下取整的“人口 × 5%”伤害。\n苏醒后加入 Escamrak 的独立社会，每回合 Unrest、Political Agitation、Political Instability 各减少 25。清除 Banditry、Deep One Cult；统治者可 Study Living Settlement。"
+          "title": "介绍",
+          "entryIds": [
+            "living-settlement"
+          ]
         },
         {
-          "name": "Twisted Library",
-          "image": "flesh_library.png",
-          "text": "由 Twist Library 转化普通 Library。每回合有 20% 概率在当地没有 Escamrak Secret 时创建一个；提供 Propagate Knowledge。"
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-set-livingsettlement--place-task-base-ch-rest"
+          ]
         },
         {
-          "name": "Twisted Landscape",
-          "image": "flesh_creepland0_sub.png",
-          "text": "Living Terrain 侵蚀空地或废墟后形成，可由 Escamrak 改造成下列形态。被夷平时清除 Living Terrain，并留下火山损伤，暂缓再次侵蚀。"
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-set-livingsettlement--place-task-base-ch-poisonhero",
+            "god-place-location-set-livingsettlement--place-task-base-ch-ransackpossessions",
+            "god-place-location-set-livingsettlement--place-task-base-ch-wellofshadows",
+            "god-place-location-set-livingsettlement--place-task-base-ch-bribeguards",
+            "god-place-location-set-livingsettlement--place-task-base-ch-assassinatesilent",
+            "god-place-location-set-livingsettlement--place-task-base-ch-assassinatebrutal",
+            "god-place-location-set-livingsettlement--place-task-base-ch-accessvault",
+            "god-place-location-set-livingsettlement--place-task-base-ch-accessvaultlimited",
+            "god-place-location-set-livingsettlement--place-task-base-ch-organisedissent",
+            "god-place-location-set-livingsettlement--place-task-base-ch-laylow"
+          ]
         },
         {
-          "name": "Spawning Grounds",
-          "image": "flesh_creepland1_sub.png",
-          "text": "首次经过 5 回合后生成 Maddened Spawn，设施 Menace +35。之后间隔从 20 开始，每次额外累加 0–4 回合；该间隔由所有同类地点共享。"
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-set-livingsettlement--place-task-base-ch-savehero",
+            "god-place-location-set-livingsettlement--place-task-base-ch-elf-giveruleelfstone",
+            "god-place-location-set-livingsettlement--place-task-base-ch-sabotageruler",
+            "god-place-location-set-livingsettlement--place-task-base-ch-assassinateenshadowedruler",
+            "god-place-location-set-livingsettlement--place-task-base-ch-redeemruler",
+            "god-place-location-set-livingsettlement--place-task-base-ch-redeemsovereign"
+          ]
         },
         {
-          "name": "Impassible Nets",
-          "image": "flesh_creepland2_sub.png",
-          "text": "每回合对当地军队造成其当前 HP 的 25% 伤害，向下取整且至少 1；Horrid Titan 与 Escamrak 免疫。每次作用使设施 Menace +5。"
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-preach",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-buildtemple",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-preachtoruler",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-ward",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-removeward",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-abyssalfaith",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-aware",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-doomsay",
+            "god-place-location-set-livingsettlement--place-task-base-ch-h-militaryfervour"
+          ]
         },
         {
-          "name": "Growing Cocoon",
-          "image": "flesh_creepland3_sub.png",
-          "text": "每回合创建或强化 Arcane Fortress，强度增加 15；已有强度至少 100 时停止增加。"
-        },
-        {
-          "name": "Bone Libraries",
-          "image": "flesh_creepland4_sub.png",
-          "text": "提供 Delve into Library，可将人物的 Fleshcrafting Knowledge 补至 6。"
+          "title": "统治者行动",
+          "entryIds": [
+            "god-place-location-set-livingsettlement--ruler-study-living-settlement",
+            "god-place-location-set-livingsettlement--ruler-scorched-earth"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-location-set-livingterrain",
+      "name": "Twisted Landscape",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "twisted-landscape"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-place-hook-2900259087-0",
+      "name": "人类聚居地的 Fleshcrafting 行动",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-2900259087-0"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-2900259087-0--place-task-2900259087-ch-teachfleshcrafting"
+          ]
+        },
+        {
+          "title": "自主单位任务",
+          "entryIds": [
+            "god-place-place-hook-2900259087-0--place-task-2900259087-ch-parasiteinfests"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_city_prague.png"
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "name": "Twisted Library",
+      "image": "flesh_library.png",
+      "text": "由 Twist Library 转化普通 Library。每回合有 20% 概率在当地没有 Escamrak Secret 时创建一个；提供 Propagate Knowledge。\n\n出现方式\n<CrossReference name=\"Twist Library\" href=\"#entry-twist-library\" /> 替换原 <CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" />。新兴趣点已渗透，实际返回列表仅包含 <CrossReference name=\"Propagate Knowledge\" href=\"#entry-propagate-knowledge\" />。\n\n可出现地点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Living Settlement\" href=\"#entry-living-settlement\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "id": "twisted-library"
+    },
+    {
+      "name": "Twist Library",
+      "image": "flesh_library_corrupt.png",
+      "meta": "Lore",
+      "statLine": "Complexity: 30　Profile: 70　Menace: 0　XP: 49",
+      "text": "将普通 Library 替换为 Twisted Library；完成时增加 5 Profile、6 Menace。",
+      "location": "已渗透的 Library。",
+      "limit": "掌握 Fleshcrafting。",
+      "id": "god-place-location-sub-fleshlibrary--place-task-2900259087-ch-corruptlibrary"
+    },
+    {
+      "name": "Propagate Knowledge",
+      "image": "flesh_library_corrupt.png",
+      "meta": "Lore",
+      "statLine": "Complexity: 40　Profile: 0　Menace: 0　XP: 60",
+      "text": "支付 40 Gold，创建最多等于 Fleshcrafting 等级数量的 Escamrak Secret；优先放在本地，再逐个放入尚无该修正的相邻地点。完成时增加 2 Profile、5 Menace。",
+      "location": "Twisted Library 所在地点。",
+      "limit": "掌握 Fleshcrafting，至少有 40 Gold。",
+      "id": "god-place-location-sub-fleshlibrary--place-task-2900259087-ch-spreadlibrary"
+    },
+    {
+      "id": "location-sub-livingterrain",
+      "name": "Twisted Landscape（兴趣点）",
+      "text": "随所在 <CrossReference name=\"Twisted Landscape\" href=\"#entry-twisted-landscape\" /> 一同切换形态。\nSpawning Grounds 生成 Maddened Spawn；Impassible Nets 损伤军队；Growing Cocoon 增加 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />；Bone Libraries 提供 <CrossReference name=\"Delve into Library\" href=\"#entry-place-task-2900259087-ch-bonelibrarylearn\" />。\n这些是同一兴趣点的不同状态。代码还定义 Oozing Pustules 的名称与图像，但未找到它的独立每回合效果或任务。\n\n出现方式\n<CrossReference name=\"Twisted Landscape\" href=\"#entry-twisted-landscape\" /> 地点创建时固定加入，后由 Escamrak 的改造选择改变形态。\n\n可出现地点\n<CrossReference name=\"Twisted Landscape\" href=\"#entry-twisted-landscape\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "/locations/mod/flesh.flesh_creepland0_sub.png",
+      "baseGame": false
+    },
+    {
+      "name": "Spawning Grounds",
+      "image": "flesh_creepland1_sub.png",
+      "text": "首次经过 5 回合后生成 Maddened Spawn，设施 Menace +35。之后间隔从 20 开始，每次额外累加 0–4 回合；该间隔由所有同类地点共享。",
+      "id": "spawning-grounds"
+    },
+    {
+      "name": "Impassible Nets",
+      "image": "flesh_creepland2_sub.png",
+      "text": "每回合对当地军队造成其当前 HP 的 25% 伤害，向下取整且至少 1；Horrid Titan 与 Escamrak 免疫。每次作用使设施 Menace +5。",
+      "id": "impassible-nets"
+    },
+    {
+      "name": "Growing Cocoon",
+      "image": "flesh_creepland3_sub.png",
+      "text": "每回合创建或强化 Arcane Fortress，强度增加 15；已有强度至少 100 时停止增加。",
+      "id": "growing-cocoon"
+    },
+    {
+      "name": "Bone Libraries",
+      "image": "flesh_creepland4_sub.png",
+      "text": "提供 Delve into Library，可将人物的 Fleshcrafting Knowledge 补至 6。",
+      "id": "bone-libraries"
+    },
+    {
+      "id": "god-place-location-sub-livingterrain--place-task-2900259087-ch-bonelibrarylearn",
+      "name": "Delve into Library",
+      "text": "玩家 Agent 与自主人物均可执行。将 Fleshcrafting Knowledge 补至 6，并知晓 Fleshcrafting；非玩家控制者每补充一级知识，个人 Shadow +2%。",
+      "image": "/locations/mod/flesh.flesh_secret.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Twisted Landscape（兴趣点）\" href=\"#entry-location-sub-livingterrain\" />",
+      "limit": "知识少于 6 层。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21"
+    },
+    {
+      "id": "location-sub-orcspawningpit",
+      "name": "Flesh Pit",
+      "text": "每回合储存 1.25 Flesh，上限 25。Fleshweaving 保持完全向玩家倾斜且部落处于战争中时，储满后生成 25 HP 的 Maddened Spawn，清空储量并使兴趣点 Menace +10。\nFleshweaving 不再符合条件时移除此兴趣点。自身没有新增挑战，不能渗透。\n\n出现方式\nGift of Flesh 在已专精、Fleshweaving 为 −2 且尚无 Flesh Pit 的 <CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" /> 添加；需要 Escamrak 联动。\n\n可出现地点\n<CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。\n\n自身任务列表为空；当地修正、保留的兴趣点或特殊单位可能另提供行动。",
+      "image": "/locations/mod/OrcsPlus.Icon_Escamrak_SpawningPit.png",
+      "baseGame": false
+    },
+    {
+      "id": "place-hook-2900259087-1",
+      "name": "Library 的转化",
+      "text": "使用 Escamrak 时，普通 <CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" /> 提供转化入口；已经变为 <CrossReference name=\"Twisted Library\" href=\"#entry-twisted-library\" /> 后移除此入口。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/library.png"
+    },
+    {
+      "name": "Twist Library",
+      "image": "flesh_library_corrupt.png",
+      "meta": "Lore",
+      "statLine": "Complexity: 30　Profile: 70　Menace: 0　XP: 49",
+      "text": "将普通 Library 替换为 Twisted Library；完成时增加 5 Profile、6 Menace。",
+      "location": "已渗透的 Library。",
+      "limit": "掌握 Fleshcrafting。",
+      "id": "god-place-place-hook-2900259087-1--place-task-2900259087-ch-corruptlibrary"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-sub-fleshlibrary",
+      "name": "Twisted Library",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "twisted-library"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-fleshlibrary--place-task-2900259087-ch-corruptlibrary",
+            "god-place-location-sub-fleshlibrary--place-task-2900259087-ch-spreadlibrary"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-livingterrain",
+      "name": "Twisted Landscape（兴趣点）",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "location-sub-livingterrain"
+          ]
+        },
+        {
+          "title": "形态",
+          "entryIds": [
+            "spawning-grounds",
+            "impassible-nets",
+            "growing-cocoon",
+            "bone-libraries"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-sub-livingterrain--place-task-2900259087-ch-bonelibrarylearn"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-sub-orcspawningpit",
+      "name": "Flesh Pit",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "location-sub-orcspawningpit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-place-hook-2900259087-1",
+      "name": "Library 的转化",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-2900259087-1"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-2900259087-1--place-task-2900259087-ch-corruptlibrary"
+          ]
+        }
+      ],
+      "image": "/locations/game/library.png"
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "media": true,
@@ -635,7 +1256,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "minions",
       "title": "随从",
       "media": true,
@@ -672,7 +1293,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "media": true,
@@ -722,41 +1343,52 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "challenges",
+  "title": "挑战",
+  "media": true,
+  "items": [
     {
-      "id": "challenges",
-      "title": "挑战",
-      "media": true,
-      "items": [
-        {
-          "name": "Twist Library",
-          "image": "flesh_library_corrupt.png",
-          "meta": "Lore",
-          "statLine": "Complexity: 30　Profile: 70　Menace: 0　XP: 49",
-          "text": "将普通 Library 替换为 Twisted Library；完成时增加 5 Profile、6 Menace。",
-          "location": "已渗透的 Library。",
-          "limit": "掌握 Fleshcrafting。"
-        },
-        {
-          "name": "Propagate Knowledge",
-          "image": "flesh_library_corrupt.png",
-          "meta": "Lore",
-          "statLine": "Complexity: 40　Profile: 0　Menace: 0　XP: 60",
-          "text": "支付 40 Gold，创建最多等于 Fleshcrafting 等级数量的 Escamrak Secret；优先放在本地，再逐个放入尚无该修正的相邻地点。完成时增加 2 Profile、5 Menace。",
-          "location": "Twisted Library 所在地点。",
-          "limit": "掌握 Fleshcrafting，至少有 40 Gold。"
-        },
-        {
-          "name": "Camouflage",
-          "image": "Supp_Hide.png",
-          "meta": "Other",
-          "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
-          "text": "取消追击或干扰此 Agent 的任务并进入隐藏状态；保持隐藏时每回合 Profile、Menace 各减少 1，移动或执行其他行动时结束。",
-          "location": "Agent 所在地点。",
-          "limit": "具有 Chameleon Skin。"
-        }
-      ]
+      "name": "Twist Library",
+      "image": "flesh_library_corrupt.png",
+      "meta": "Lore",
+      "statLine": "Complexity: 30　Profile: 70　Menace: 0　XP: 49",
+      "text": "将普通 Library 替换为 Twisted Library；完成时增加 5 Profile、6 Menace。",
+      "location": "已渗透的 Library。",
+      "limit": "掌握 Fleshcrafting。"
     },
     {
+      "name": "Propagate Knowledge",
+      "image": "flesh_library_corrupt.png",
+      "meta": "Lore",
+      "statLine": "Complexity: 40　Profile: 0　Menace: 0　XP: 60",
+      "text": "支付 40 Gold，创建最多等于 Fleshcrafting 等级数量的 Escamrak Secret；优先放在本地，再逐个放入尚无该修正的相邻地点。完成时增加 2 Profile、5 Menace。",
+      "location": "Twisted Library 所在地点。",
+      "limit": "掌握 Fleshcrafting，至少有 40 Gold。"
+    },
+    {
+      "name": "Camouflage",
+      "image": "Supp_Hide.png",
+      "meta": "Other",
+      "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+      "text": "取消追击或干扰此 Agent 的任务并进入隐藏状态；保持隐藏时每回合 Profile、Menace 各减少 1，移动或执行其他行动时结束。",
+      "location": "Agent 所在地点。",
+      "limit": "具有 Chameleon Skin。"
+    },
+    {
+      "id": "place-task-2900259087-ch-teachfleshcrafting",
+      "name": "Teach Fleshcrafting",
+      "text": "玩家 Agent 与自主人物均可执行。创建一级 Fleshcrafters，当地 Shadow +2%，人口计入封印积分。完成时增加 5 Profile。",
+      "image": "/locations/mod/flesh.fleshcraft_teach.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "limit": "掌握 Fleshcrafting。",
+      "statLine": "Complexity: 40\nProfile: 70\nMenace: 0\nXP: 60"
+    }
+  ]
+},
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "media": true,
@@ -807,7 +1439,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "shared-tasks",
       "title": "人物学习与仪式",
       "media": true,
@@ -869,7 +1501,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "media": true,
@@ -1009,7 +1641,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "media": true,
@@ -1074,7 +1706,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "media": false,
@@ -1092,7 +1724,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religious-tasks",
       "title": "宗教任务",
       "media": true,
@@ -1110,7 +1742,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -1125,7 +1757,9 @@ const config: GodConfig = {
               "name": "Our flesh never dies.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Third Awakening",
@@ -1137,7 +1771,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Fourth Awakening",
@@ -1149,7 +1785,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Fifth Awakening",
@@ -1161,7 +1799,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Sixth Awakening",
@@ -1173,7 +1813,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Seventh Awakening",
@@ -1185,7 +1827,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Eighth Awakening",
@@ -1197,7 +1841,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Ninth Awakening",
@@ -1209,7 +1855,9 @@ const config: GodConfig = {
               "name": "We are inevitable.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Last Awakening",
@@ -1221,7 +1869,9 @@ const config: GodConfig = {
               "name": "We never end.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Final Awakening",
@@ -1233,7 +1883,9 @@ const config: GodConfig = {
               "name": "Our will be done.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Ultimate Awakening",
@@ -1245,7 +1897,9 @@ const config: GodConfig = {
               "name": "All will be us.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "The Truly Last Awakening",
@@ -1257,7 +1911,9 @@ const config: GodConfig = {
               "name": "Another assault.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "Yet Another Awakening",
@@ -1269,7 +1925,9 @@ const config: GodConfig = {
               "name": "Another assault.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"flesh-awakening","name":"Escamrak · Awakening","description":"按神体重建次数推进；每次建成神体只显示对应阶段。第 14 次及以后重复最后一段。"}
         },
         {
           "name": "Living Settlement",
@@ -1285,7 +1943,8 @@ const config: GodConfig = {
               "name": "Witness our flesh. [PAN TO LOCATION]",
               "text": "将视角移到目标地点。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Revelry of the Body",
@@ -1297,7 +1956,8 @@ const config: GodConfig = {
               "name": "What new horrors will we birth?",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Living Settlement",
@@ -1313,11 +1973,46 @@ const config: GodConfig = {
               "name": "The city grows eyes. [PAN TO LOCATION]",
               "text": "将视角移到目标地点。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
+    },
+{
+  "id": "common-actions",
+  "title": "共同行动",
+  "items": [
+    {
+      "id": "place-task-2900259087-ch-bonelibrarylearn",
+      "name": "Delve into Library",
+      "text": "玩家 Agent 与自主人物均可执行。将 Fleshcrafting Knowledge 补至 6，并知晓 Fleshcrafting；非玩家控制者每补充一级知识，个人 Shadow +2%。",
+      "image": "/locations/mod/flesh.flesh_secret.png",
+      "meta": "Lore",
+      "baseGame": false,
+      "location": "<CrossReference name=\"Twisted Landscape（兴趣点）\" href=\"#entry-location-sub-livingterrain\" />",
+      "limit": "知识少于 6 层。",
+      "statLine": "Complexity: 10\nProfile: 100\nMenace: 0\nXP: 21"
     }
-  ],
+  ]
+},
+{
+  "id": "autonomous-tasks",
+  "title": "自主单位任务",
+  "items": [
+    {
+      "id": "place-task-2900259087-ch-parasiteinfests",
+      "name": "Infest Home Location",
+      "text": "在目标英雄故乡留下寄生影响；该英雄下次休息时学会 Fleshcrafting，并对其产生痴迷。",
+      "image": "/locations/mod/flesh.flesh_abom_minion_3.png",
+      "meta": "Intrigue",
+      "baseGame": false,
+      "location": "<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "limit": "仅 Abominized 产生的寄生体，在对应英雄的故乡执行；目标尚未带有该寄生效果。",
+      "statLine": "Complexity: 45\nProfile: 0\nMenace: 0\nXP: 66"
+    }
+  ]
+}
+],
   "relations": {
     "Fleshcrafting: Enhancement": {
       "sources": [

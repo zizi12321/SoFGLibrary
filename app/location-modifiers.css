@@ -1,0 +1,19 @@
+
+.modifier-catalogue .modifier-library-header p + p { margin-top: 12px; }
+.modifier-legacy-anchor { display: block; scroll-margin-top: 24px; }
+.modifier-source-heading { padding: 54px 5vw 0; margin-bottom: 28px; border-top: 1px solid var(--line); }
+.modifier-source-heading > p:not(.section-index) { max-width: 76ch; color: var(--muted); line-height: 1.75; }
+.modifier-location-group { padding: 54px 5vw; scroll-margin-top: 20px; }
+.modifier-catalogue .modifier-applicability { color: var(--muted); line-height: 1.7; margin-bottom: 16px; white-space: pre-line; }
+.modifier-catalogue .modifier-applicability b { display: block; color: var(--accent); font-size: 12px; margin-bottom: 6px; }
+.modifier-catalogue .modifier-source-text p { white-space: pre-line; }
+@media (max-width: 700px) {
+  .modifier-source-heading { padding: 32px 20px 0; }
+  .modifier-location-group { padding: 32px 20px; }
+}
+
+.modifier-catalogue .plain-heading { grid-template-columns: minmax(0, 1fr); }
+.modifier-catalogue .plain-heading h2 { overflow-wrap: anywhere; }
+
+.modifier-development-results { margin-top: 28px; }
+.modifier-development-results > h3 { font-size: 18px; font-weight: 500; margin-bottom: 18px; }

@@ -8,10 +8,13 @@ import { useArchiveNavigation } from "./useArchiveNavigation";
 import { DetailGrid, RichText } from "./BaseGodArchive";
 import type { ArchiveRecordConfig } from "./GodArchiveTypes";
 import { agents } from "./AgentsData";
+import { getAgentEvents, agentEventNotes } from "./AgentEventsModel";
 import "./agents.css";
 
 const groups = [...new Set(agents.map(agent => agent.group))];
-const entryIds = agents.flatMap(agent => [...agent.skills, ...agent.challenges].map(item => "entry-" + item.id));
+const eventsByAgent = Object.fromEntries(agents.map(agent => [agent.id, getAgentEvents(agent.id)]));
+const eventItems = agents.flatMap(agent => eventsByAgent[agent.id].flatMap(source => source.items));
+const entryIds = [...agents.flatMap(agent => [...agent.skills, ...agent.challenges]), ...eventItems].map(item => "entry-" + item.id);
 const config: ArchiveRecordConfig = {
   id: "agents",
   assetDir: "agents",
@@ -24,6 +27,7 @@ const config: ArchiveRecordConfig = {
     })) },
     { id: "agent-skills", title: "技能", items: agents.flatMap(agent => agent.skills) },
     { id: "agent-challenges", title: "挑战", items: agents.flatMap(agent => agent.challenges) },
+    { id: "agent-events", title: "特有事件与分支", items: eventItems },
   ],
 };
 
@@ -48,7 +52,7 @@ export default function AgentsArchive({ onReturn }: { onReturn: () => void }) {
             {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
         </div>
-        <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
+        <a className="sidebar-index-link" href="./">← 返回索引页</a>
         <div className="sidebar-bulk">
           <button type="button" onClick={() => setOpenEntries(new Set(entryIds))}>全部展开</button>
           <button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button>
@@ -63,7 +67,8 @@ export default function AgentsArchive({ onReturn }: { onReturn: () => void }) {
       <div className="content-shell">
         <header id="top" className="modifier-library-header">
           <h1>Agent</h1>
-          <p>游戏本体与 Mod 中不限定神祇的玩家可控 Agent；不收录 Supplicant。每栏列出基础属性、技能、招募条件与专有挑战。</p>
+          <p>游戏本体与 Mod 中不限定神祇的玩家可控 Agent；不收录 Supplicant。每栏列出基础属性、技能、招募条件、专有挑战及特有事件与分支。</p>
+          <p>事件按实际来源分栏；“专属选项”也包括该身份可替代属性要求的选项。仅排除此 Agent 的通用事件不列入；代码中存在但无法正常触发的分支会明确标注。</p>
           <p>本体常规招募需要空闲 Agent 名额和 1 招募点。属性为招募完成后的基础值；继承型角色按转化前状态记录。Mod 采用 2.0 版本，没有版本文件夹时采用根目录。</p>
         </header>
         {agents.map((agent, index) => <section id={"entry-agent-" + agent.id} className="section agent-record" key={agent.id}>
@@ -82,8 +87,15 @@ export default function AgentsArchive({ onReturn }: { onReturn: () => void }) {
           <div className="agent-subsection"><h3>专有挑战</h3>
             {agent.challenges.length ? <DetailGrid config={config} items={agent.challenges} openEntries={openEntries} onToggle={toggle} /> : <p className="agent-empty">无。</p>}
           </div>
+          <div className="agent-subsection agent-events"><h3>特有事件与分支</h3>
+            {agentEventNotes[agent.id] && <p className="agent-empty">{agentEventNotes[agent.id]}</p>}
+            {eventsByAgent[agent.id].map(source => <div className="agent-event-source" key={source.id}>
+              <h4>{source.name}</h4>
+              <DetailGrid config={config} items={source.items} openEntries={openEntries} onToggle={toggle} />
+            </div>)}
+          </div>
         </section>)}
-        <footer className="archive-footer"><button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button></footer>
+        <footer className="archive-footer"><a className="sidebar-index-link" href="./">← 返回索引页</a></footer>
       </div>
     </main>
   );

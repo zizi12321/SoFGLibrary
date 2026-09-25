@@ -10,6 +10,10 @@ export function getReferenceCategory(
   if (href && !href.startsWith("#")) return undefined;
   if (config.supplicant && (href === "#entry-supplicant" || href === "#agent")) return "初始 Agent";
   if (entry) {
+    if ("eventCategory" in entry && entry.eventCategory) return { tasks: "任务中事件", other: "其他事件", ruins: "遗迹事件", chains: "事件链" }[entry.eventCategory];
+    if (config.id === "base-location-modifiers") return "地点修正";
+    if (config.id === "magic") return "魔法";
+    if (config.id === "character-modifiers") return "角色特质";
     if (config.id === "base-items") return "物品";
     if (config.powers.includes(entry as PowerItem)) return "神力";
     if (config.drawPowers?.includes(entry as PowerItem)) return "卡牌神力";
@@ -18,7 +22,10 @@ export function getReferenceCategory(
     if (config.supplicant?.abilities.includes(entry as DetailItem)) return "初始 Agent 能力";
     if (config.drawCards?.items.includes(entry as DetailItem)) return categoryTitle(config.drawCards.title);
     for (const section of config.sections) {
-      if (section.items.includes(entry as DetailItem)) return categoryTitle(section.title);
+      if (section.items.includes(entry as DetailItem)) {
+        const block = section.placeArticles?.flatMap(article => article.blocks).find(block => block.entryIds.includes((entry as DetailItem).id ?? ""));
+        return categoryTitle(block && !["介绍", "形态"].includes(block.title) ? block.title : section.title);
+      }
       if (section.items.some(item => item.abilities?.includes(entry as DetailItem))) {
         return categoryTitle(section.title) + " · 能力";
       }

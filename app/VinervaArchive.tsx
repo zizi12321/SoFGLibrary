@@ -247,7 +247,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "media": false,
@@ -258,7 +258,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -388,27 +388,109 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "media": true,
-      "items": [
+      "name": "Heart of the Forest",
+      "id": "heart-location",
+      "image": "heart-location.png",
+      "text": "神力的施放中心，是可依附现有聚居地的设施。提供 Harvest Seed，防御加成 50，不能被渗透；Menace 增长可能引来国家军队摧毁设施。\n每回合以自身为起点随机行走最多 3 步陆地相邻地点，再将选中地点领地内的每个地块独立以 25% 概率设为森林。\n\n出现方式\n<CrossReference name=\"Heart of the Forest\" href=\"#entry-heart-of-the-forest\" meta=\"神力\" text=\"建立 Heart of the Forest；空地点会先生成容纳设施的据点。首次消耗 0，之后消耗 min(4, max(1, floor(N/2))) Power，N 为此前未消耗种子的施放次数。不用种子时依次为 0、1、1、1、2、2、3、3、4，此后为 4。\n当地任一人物携有 Vinerva Seed 时会消耗找到的第一枚种子，并且该次不增加 N；即使地点本来就在范围内也会消耗种子。已有 5 个设施的地点可以被选中，但实际不会加入新的 Heart。\" image=\"./vinerva/heart-of-forest.png\" /> 神力在空地点建立。\n\n可能配置的兴趣点\n<CrossReference name=\"Heart of the Forest\" href=\"#entry-location-sub-vinerva-heartofforest\" />。\n固定、随机与改建来源见各兴趣点。"
+    },
+    {
+      "name": "Harvest Seed",
+      "image": "seed.png",
+      "location": "<CrossReference name=\"Heart of the Forest\" href=\"#entry-heart-location\" /> 所在地点。",
+      "meta": "Other",
+      "statLine": "Complexity: 1　Profile: 20　Menace: 0　XP: 3",
+      "text": "完成后获得一枚 Vinerva Seed。没有额外的执行者限制。",
+      "id": "god-place-location-set-minorvinerva--place-task-base-ch-harvestseed"
+    },
+    {
+      "name": "Manifestation",
+      "id": "manifestation-location",
+      "image": "manifestation-location.png",
+      "seal": 7,
+      "text": "由神力替换原人类聚居地形成，不属于任何国家，自带 Heart of the Forest。每个额外贡献 3 点胜利分。\n自身与 Heart 各自执行一次最多 3 步的随机森林扩展。普通毁灭处理只移除无法在废墟幸存的设施，不把 Manifestation 本身替换为废墟。\n\n出现方式\nVinerva 的 <CrossReference name=\"Manifestation\" href=\"#entry-manifestation\" meta=\"神力\" text=\"清空当地 Vinerva's Gift，摧毁原人类聚居地并替换为 Manifestation；保留原废墟中幸存的设施，新增 Heart of the Forest，并清除地点所属国家。除摧毁聚居地的分数外，每个 Manifestation 额外计 3 点胜利分。\" image=\"./vinerva/manifestation.png\" /> 神力建立。\n\n可能配置的兴趣点\n<CrossReference name=\"Heart of the Forest\" href=\"#entry-location-sub-vinerva-heartofforest\" />。\n固定、随机与改建来源见各兴趣点。"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-minorvinerva",
+      "name": "Heart of the Forest 所在野地",
+      "blocks": [
         {
-          "name": "Heart of the Forest",
-          "id": "heart-location",
-          "image": "heart-location.png",
-          "text": "神力的施放中心，是可依附现有聚居地的设施。提供 Harvest Seed，防御加成 50，不能被渗透；Menace 增长可能引来国家军队摧毁设施。\n每回合以自身为起点随机行走最多 3 步陆地相邻地点，再将选中地点领地内的每个地块独立以 25% 概率设为森林。"
+          "title": "介绍",
+          "entryIds": [
+            "heart-location"
+          ]
         },
         {
-          "name": "Manifestation",
-          "id": "manifestation-location",
-          "image": "manifestation-location.png",
-          "seal": 7,
-          "text": "由神力替换原人类聚居地形成，不属于任何国家，自带 Heart of the Forest。每个额外贡献 3 点胜利分。\n自身与 Heart 各自执行一次最多 3 步的随机森林扩展。普通毁灭处理只移除无法在废墟幸存的设施，不把 Manifestation 本身替换为废墟。"
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-set-minorvinerva--place-task-base-ch-harvestseed"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-location-set-vinervamanifestation",
+      "name": "Manifestation",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "manifestation-location"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "id": "location-sub-vinerva-heartofforest",
+      "name": "Heart of the Forest",
+      "text": "Vinerva 神力的范围支点，增加 50 防御上限，不能渗透。提供 <CrossReference name=\"Harvest Seed\" href=\"#entry-harvest-seed\" />；使用相关神力积累 Menace，可能引来国家军队摧毁它。\n\n出现方式\n<CrossReference name=\"Heart of the Forest\" href=\"#entry-heart-of-the-forest\" meta=\"神力\" text=\"建立 Heart of the Forest；空地点会先生成容纳设施的据点。首次消耗 0，之后消耗 min(4, max(1, floor(N/2))) Power，N 为此前未消耗种子的施放次数。不用种子时依次为 0、1、1、1、2、2、3、3、4，此后为 4。\n当地任一人物携有 Vinerva Seed 时会消耗找到的第一枚种子，并且该次不增加 N；即使地点本来就在范围内也会消耗种子。已有 5 个设施的地点可以被选中，但实际不会加入新的 Heart。\" image=\"./vinerva/heart-of-forest.png\" /> 神力可在合格既有地点增加兴趣点，空地点则先建立其野地载体；<CrossReference name=\"Manifestation\" href=\"#entry-manifestation\" meta=\"神力\" text=\"清空当地 Vinerva's Gift，摧毁原人类聚居地并替换为 Manifestation；保留原废墟中幸存的设施，新增 Heart of the Forest，并清除地点所属国家。除摧毁聚居地的分数外，每个 Manifestation 额外计 3 点胜利分。\" image=\"./vinerva/manifestation.png\" /> 也会添加。\n\n可出现地点\n<CrossReference name=\"Heart of the Forest 所在野地\" href=\"#entry-heart-location\" />、<CrossReference name=\"Manifestation\" href=\"#entry-manifestation-location\" />、<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"野外兴趣点地点\" href=\"?page=locations#entry-location-set-minorother\" meta=\"地点\" text=\"用于承载遗迹、奇观与女巫据点。普通构造时带 Ancient Ruins；若用于生成奇观或女巫据点，生成器会清除这份默认遗迹后放入实际兴趣点。\n\n出现方式\n未占用的非海洋地点可生成 Ancient Ruins；地图生成器另选址安放奇观与女巫据点。\n\n可能配置的兴趣点\nAncient Ruins、Temple、Heart of the Forest、Coven of Witches、Brother of Sleep、The Entrance、Primal Font。\n固定、随机与改建来源见各兴趣点。\n\n自身任务列表为空；当地修正、保留的兴趣点或特殊单位可能另提供行动。\" image=\"/locations/game/loc_minor_castle.png\" target=\"_blank\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "/locations/game/forest.png",
+      "baseGame": false
+    },
+    {
+      "name": "Harvest Seed",
+      "image": "seed.png",
+      "location": "<CrossReference name=\"Heart of the Forest\" href=\"#entry-heart-location\" /> 所在地点。",
+      "meta": "Other",
+      "statLine": "Complexity: 1　Profile: 20　Menace: 0　XP: 3",
+      "text": "完成后获得一枚 Vinerva Seed。没有额外的执行者限制。",
+      "id": "god-place-location-sub-vinerva-heartofforest--place-task-base-ch-harvestseed"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-sub-vinerva-heartofforest",
+      "name": "Heart of the Forest",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "location-sub-vinerva-heartofforest"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-vinerva-heartofforest--place-task-base-ch-harvestseed"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "media": true,
@@ -420,7 +502,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "media": true,
@@ -434,7 +516,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "media": true,
@@ -449,7 +531,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "media": true,
@@ -476,7 +558,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "media": true,
@@ -523,7 +605,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "media": false,
@@ -546,7 +628,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religious-tasks",
       "title": "宗教任务",
       "media": true,
@@ -563,7 +645,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -581,11 +663,12 @@ const config: GodConfig = {
               "name": "Let us see [CENTRE VIEW ON TARGET].",
               "text": "将视角移到目标地点。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
     }
-  ],
+],
   "relations": {
     "Vinerva's Gift": {
       "sources": [

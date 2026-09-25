@@ -1,0 +1,1 @@
+import{v as e}from"./index-CsHgxvvY.js";import t from"./LocationsArchive-C0Fv-bl4.js";var n=e();function r({onReturn:e}){return(0,n.jsx)(t,{kind:`points-of-interest`,onReturn:e})}export{r as default};

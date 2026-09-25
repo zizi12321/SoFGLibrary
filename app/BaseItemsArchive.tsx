@@ -45,12 +45,12 @@ export default function BaseItemsArchive({ onReturn }: { onReturn: () => void })
             {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </button>
         </div>
-        <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
+        <a className="sidebar-index-link" href="./">← 返回索引页</a>
         <div className="sidebar-bulk"><button type="button" onClick={() => setOpenEntries(new Set(allIds))}>全部展开</button><button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button></div>
         <CatalogueNavigation groups={navGroups} label="物品导航" />
       </aside>
       <div className="content-shell">
-        <header id="top" className="modifier-library-header"><h1>游戏本体与 Mod 物品</h1><p>本体 {baseConfig.sections.reduce((sum, section) => sum + section.items.length, 0)} 项，Mod {modItemSections.reduce((sum, section) => sum + section.items.length, 0)} 项；分别列出功能与获取方式。Mod 按文件夹分组，采用当前 2.0 版本；没有版本文件夹时采用根目录内容。</p></header>
+        <header id="top" className="modifier-library-header"><h1>物品</h1><p>本体 {baseConfig.sections.reduce((sum, section) => sum + section.items.length, 0)} 项，Mod {modItemSections.reduce((sum, section) => sum + section.items.length, 0)} 项；分别列出功能与获取方式。Mod 按文件夹分组，采用当前 2.0 版本；没有版本文件夹时采用根目录内容。</p></header>
         <div id="items">
           {config.sections.map((section, index) => (
             <section id={section.id} className="section records-section" key={section.id}>
@@ -63,7 +63,7 @@ export default function BaseItemsArchive({ onReturn }: { onReturn: () => void })
             </section>
           ))}
         </div>
-        <footer className="archive-footer"><button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button></footer>
+        <footer className="archive-footer"><a className="sidebar-index-link" href="./">← 返回索引页</a></footer>
       </div>
     </main>
   );

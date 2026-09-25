@@ -231,7 +231,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -243,7 +243,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -291,25 +291,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "Temple",
-          "text": "Holy: Build Temple 建立的教团设施。Ophanimic Faith 的 Temple 为 Paranoid Society 提供两步范围的预警，并承受其 Prosperity 代价；Sap Life Force 也在该设施的回合处理中选择一地扣除人口。Temple 本身不会自动创建 Ophanim's Faith 地点修正。",
-          "image": "temple.png",
-          "baseGame": true
-        },
-        {
-          "name": "Ancient Ruins",
-          "text": "提供 Explore Ruins 的本体设施。Ophanim 的专属圣地探索链可在满足其入口条件的遗迹中出现；通常探索深度 0–5，对应 0–100%。",
-          "image": "ancient-ruins.png",
-          "baseGame": true
-        }
-      ]
-    },
-    {
+{
       "id": "states",
       "title": "国家与城市",
       "items": [
@@ -327,7 +309,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "items",
       "title": "物品",
       "items": [
@@ -338,7 +320,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -367,7 +349,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -380,7 +362,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教与教义",
       "items": [
@@ -430,7 +412,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "religious-tasks",
       "title": "宗教任务",
       "items": [
@@ -457,38 +439,38 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "challenges",
+  "title": "挑战",
+  "items": [
     {
-      "id": "challenges",
-      "title": "挑战",
-      "items": [
-        {
-          "name": "Root out Doubters",
-          "text": "清除 X＝min(60，当地 Doubt)。若是人类聚居地，损失 floor(X/5) 人口，增加 X Death；人口低于 0 时毁灭聚居地。完成时 Menace +5。",
-          "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在的人类国家地点，国家为 Ophanim Theocracy 或 Dark Empire。",
-          "meta": "Command",
-          "statLine": "Complexity: 25　Profile: 50　Menace: 50　XP: 42",
-          "image": "excise-doubt.png"
-        },
-        {
-          "name": "Sectarian Violence",
-          "text": "清除 X＝min(40，当地 Doubt)，同时 Faith −X、Unrest +X/3。若是人类聚居地，再损失 floor(X/5) 人口、增加 X Death；人口归零则毁灭聚居地。完成时 Menace +15、Profile +10。",
-          "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在的人类国家地点，国家既不是 Ophanim Theocracy 也不是 Dark Empire，且 Faith ≥Doubt。",
-          "meta": "Intrigue",
-          "statLine": "Complexity: 50　Profile: 50　Menace: 50　XP: 72",
-          "image": "theocracy.png"
-        },
-        {
-          "name": "Explore Ruins",
-          "text": "本体中立挑战，玩家 Agent 与符合条件的英雄均可执行。玩家完成后按条件选择探索事件；Ophanim 的圣地事件链从这里进入。非玩家英雄使用通用探索结果。",
-          "baseGame": true,
-          "image": "explore-ruins.png",
-          "location": "<CrossReference name=\"Ancient Ruins\" /> 所在地点。",
-          "meta": "Other · 中立挑战",
-          "statLine": "Complexity: 7　Profile: 50　Menace: 0　XP: 16"
-        }
-      ]
+      "name": "Root out Doubters",
+      "text": "清除 X＝min(60，当地 Doubt)。若是人类聚居地，损失 floor(X/5) 人口，增加 X Death；人口低于 0 时毁灭聚居地。完成时 Menace +5。",
+      "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在的人类国家地点，国家为 Ophanim Theocracy 或 Dark Empire。",
+      "meta": "Command",
+      "statLine": "Complexity: 25　Profile: 50　Menace: 50　XP: 42",
+      "image": "excise-doubt.png"
     },
     {
+      "name": "Sectarian Violence",
+      "text": "清除 X＝min(40，当地 Doubt)，同时 Faith −X、Unrest +X/3。若是人类聚居地，再损失 floor(X/5) 人口、增加 X Death；人口归零则毁灭聚居地。完成时 Menace +15、Profile +10。",
+      "location": "<CrossReference name=\"Ophanim's Doubt\" /> 所在的人类国家地点，国家既不是 Ophanim Theocracy 也不是 Dark Empire，且 Faith ≥Doubt。",
+      "meta": "Intrigue",
+      "statLine": "Complexity: 50　Profile: 50　Menace: 50　XP: 72",
+      "image": "theocracy.png"
+    },
+    {
+      "name": "Explore Ruins",
+      "text": "本体中立挑战，玩家 Agent 与符合条件的英雄均可执行。玩家完成后按条件选择探索事件；Ophanim 的圣地事件链从这里进入。非玩家英雄使用通用探索结果。",
+      "baseGame": true,
+      "image": "explore-ruins.png",
+      "location": "<CrossReference name=\"Ancient Ruins\" href=\"?page=points-of-interest#entry-location-sub-ancientruins\" meta=\"兴趣点\" text=\"可供探索的古代遗迹，默认最多探索 5 次。探索带来遗迹事件、物品或危险；同时提供 Hero’s Journey、Guard Ruins、Wait to Explore Ruins 和野外 Lay Low。不能渗透，所在聚居地毁灭后仍可存续。\n\n出现方式\n地图在合格野地随机生成；不是所有名为 Ruins 的地点都拥有此兴趣点。\n\n可出现地点\n野外兴趣点地点、Ruins。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/ancientRuins.png\" target=\"_blank\" /> 所在地点。",
+      "meta": "Other · 中立挑战",
+      "statLine": "Complexity: 7　Profile: 50　Menace: 0　XP: 16"
+    }
+  ]
+},
+{
       "id": "events",
       "title": "事件",
       "items": [
@@ -505,7 +487,8 @@ const config: GodConfig = {
               "name": "View the perfection [PAN TO LOCATION]",
               "text": "将视角移到目标地点；建立 Perfect City 状态。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Holy site discovered in %HEX_NAME",
@@ -516,7 +499,9 @@ const config: GodConfig = {
               "name": "Begin the dig",
               "text": "探索深度 +1；当地 Faith +10；此地继续使用圣地探索事件链。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"ruins-faith","name":"The Holy Site","description":"通过 Explore Ruins 持续探索；每阶段的探索深度、额外条件与分支分别列在卡片内。"}
         },
         {
           "name": "Holy site of %HEX_NAME",
@@ -533,7 +518,9 @@ const config: GodConfig = {
               "text": "探索深度 +1；已有 Doubt −5；当地 Faith +10；Gold −25；此地继续使用圣地探索事件链。",
               "condition": "至少 25 Gold。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"ruins-faith","name":"The Holy Site","description":"通过 Explore Ruins 持续探索；每阶段的探索深度、额外条件与分支分别列在卡片内。"}
         },
         {
           "name": "Holy site of %HEX_NAME",
@@ -545,7 +532,9 @@ const config: GodConfig = {
               "name": "The excavation proceeds",
               "text": "探索深度 +1；当地 Faith +10。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"ruins-faith","name":"The Holy Site","description":"通过 Explore Ruins 持续探索；每阶段的探索深度、额外条件与分支分别列在卡片内。"}
         },
         {
           "name": "Holy site of %HEX_NAME",
@@ -557,7 +546,9 @@ const config: GodConfig = {
               "name": "They shall all see",
               "text": "探索深度 +1；已有 Doubt −20；当地 Faith +30。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"ruins-faith","name":"The Holy Site","description":"通过 Explore Ruins 持续探索；每阶段的探索深度、额外条件与分支分别列在卡片内。"}
         },
         {
           "name": "The holy relic of %HEX_NAME",
@@ -568,7 +559,9 @@ const config: GodConfig = {
               "name": "Brought to light",
               "text": "探索深度 +1；获得 Ophanimic Totem；已有 Doubt −25；当地 Faith +50。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"ruins-faith","name":"The Holy Site","description":"通过 Explore Ruins 持续探索；每阶段的探索深度、额外条件与分支分别列在卡片内。"}
         },
         {
           "name": "The doubtful swarm the holy site",
@@ -588,7 +581,9 @@ const config: GodConfig = {
               "text": "探索深度 +1；已有 Doubt −25；Power −1；记录本事件已处理；此地继续使用圣地探索事件链。",
               "condition": "当前 Power >0。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"ruins-faith","name":"The Holy Site","description":"通过 Explore Ruins 持续探索；每阶段的探索深度、额外条件与分支分别列在卡片内。"}
         },
         {
           "name": "A peaceful village shaken by a senseless tragedy",
@@ -604,543 +599,548 @@ const config: GodConfig = {
               "name": "They need to believe",
               "text": "当地 Faith +75；记录当前回合，阻止后续通常再次触发。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
     }
-  ],
+],
   "relations": {
-    "Shadow": {
-      "sources": [
-        {
-          "name": "Duality（shadow / faith）",
-          "href": "#entry-duality-shadow-faith"
-        },
-        {
-          "name": "A peaceful village shaken by a senseless tragedy",
-          "href": "#entry-a-peaceful-village-shaken-by-a-senseless-tragedy"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "Ophanim's Faith": {
-      "sources": [
-        {
-          "name": "Start Faith",
-          "href": "#entry-start-faith"
-        },
-        {
-          "name": "Peace and Order",
-          "href": "#entry-peace-and-order"
-        },
-        {
-          "name": "Duality（shadow / faith）",
-          "href": "#entry-duality-shadow-faith"
-        },
-        {
-          "name": "Leader of the Faith",
-          "href": "#entry-leader-of-the-faith"
-        },
-        {
-          "name": "Ophanimic Totem",
-          "href": "#entry-ophanimic-totem"
-        },
-        {
-          "name": "Ophanim Theocracy",
-          "href": "#entry-ophanim-theocracy"
-        },
-        {
-          "name": "Holy site discovered in %HEX_NAME",
-          "href": "#entry-holy-site-discovered-in-hex-name"
-        },
-        {
-          "name": "Holy site of %HEX_NAME",
-          "href": "#entry-holy-site-depth-1"
-        },
-        {
-          "name": "Holy site of %HEX_NAME",
-          "href": "#entry-holy-site-depth-2"
-        },
-        {
-          "name": "Holy site of %HEX_NAME",
-          "href": "#entry-holy-site-depth-3"
-        },
-        {
-          "name": "The holy relic of %HEX_NAME",
-          "href": "#entry-the-holy-relic-of-hex-name"
-        },
-        {
-          "name": "A peaceful village shaken by a senseless tragedy",
-          "href": "#entry-a-peaceful-village-shaken-by-a-senseless-tragedy"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Shadow",
-          "href": "#entry-shadow-modifier"
-        },
-        {
-          "name": "Theocracy",
-          "href": "#entry-theocracy"
-        },
-        {
-          "name": "Perfection Achieved",
-          "href": "#entry-perfection-achieved"
-        },
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "Ophanim's Doubt": {
-      "sources": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        },
-        {
-          "name": "Festering Doubt",
-          "href": "#entry-festering-doubt"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Root out Doubters",
-          "href": "#entry-root-out-doubters"
-        },
-        {
-          "name": "Sectarian Violence",
-          "href": "#entry-sectarian-violence"
-        },
-        {
-          "name": "Holy: Inquisition",
-          "href": "#entry-holy-inquisition"
-        },
-        {
-          "name": "Excise Doubt",
-          "href": "#entry-excise-doubt"
-        }
-      ]
-    },
-    "Festering Doubt": {
-      "sources": [
-        {
-          "name": "Paranoid Society",
-          "href": "#entry-paranoid-society"
-        },
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "Perfect City": {
-      "sources": [
-        {
-          "name": "Perfection Achieved",
-          "href": "#entry-perfection-achieved"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Empower Slaves",
-          "href": "#entry-empower-slaves"
-        },
-        {
-          "name": "Perfect Servant",
-          "href": "#entry-perfect-servant"
-        }
-      ]
-    },
-    "Ophanim Theocracy": {
-      "sources": [
-        {
-          "name": "Theocracy",
-          "href": "#entry-theocracy"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Crusade",
-          "href": "#entry-crusade"
-        },
-        {
-          "name": "Ophanim Army",
-          "href": "#entry-ophanim-army"
-        },
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "Ophanim Army": {
-      "sources": [
-        {
-          "name": "Ophanim Theocracy",
-          "href": "#entry-ophanim-theocracy"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Empower Slaves",
-          "href": "#entry-empower-slaves"
-        },
-        {
-          "name": "Excise Doubt",
-          "href": "#entry-excise-doubt"
-        }
-      ]
-    },
-    "Ophanite Acolyte": {
-      "sources": [
-        {
-          "name": "Call to Serve",
-          "href": "#entry-call-to-serve"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Holy: Build Temple",
-          "href": "#entry-holy-build-temple"
-        },
-        {
-          "name": "Holy: Inquisition",
-          "href": "#entry-holy-inquisition"
-        }
-      ]
-    },
-    "perfect-servant-unit": {
-      "sources": [
-        {
-          "name": "Perfect Servant",
-          "href": "#entry-perfect-servant"
-        }
-      ],
-      "effects": []
-    },
-    "Ophanimic Totem": {
-      "sources": [
-        {
-          "name": "The holy relic of %HEX_NAME",
-          "href": "#entry-the-holy-relic-of-hex-name"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "Temple": {
-      "sources": [
-        {
-          "name": "Holy: Build Temple",
-          "href": "#entry-holy-build-temple"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Paranoid Society",
-          "href": "#entry-paranoid-society"
-        },
-        {
-          "name": "Sap Life Force",
-          "href": "#entry-sap-life-force"
-        }
-      ]
-    },
-    "Ancient Ruins": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ]
-    },
-    "Inquisitors": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Holy: Inquisition",
-          "href": "#entry-holy-inquisition"
-        }
-      ]
-    },
-    "Paranoid Society": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Festering Doubt",
-          "href": "#entry-festering-doubt"
-        }
-      ]
-    },
-    "Start Faith": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "Peace and Order": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "Theocracy": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Ophanim Theocracy",
-          "href": "#entry-ophanim-theocracy"
-        }
-      ]
-    },
-    "Call to Serve": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Ophanite Acolyte",
-          "href": "#entry-ophanite-acolyte"
-        }
-      ]
-    },
-    "Perfect Servant": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Perfect Servant",
-          "href": "#entry-perfect-servant-unit"
-        }
-      ]
-    },
-    "Declare Heretic": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Infamous",
-          "href": "#entry-infamous"
-        },
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "Excise Doubt": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Ophanim Army",
-          "href": "#entry-ophanim-army"
-        }
-      ]
-    },
-    "Empower Slaves": {
-      "sources": [],
-      "effects": [
-        {
-          "name": "Ophanim Army",
-          "href": "#entry-ophanim-army"
-        }
-      ]
-    },
-    "Root out Doubters": {
-      "sources": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "Sectarian Violence": {
-      "sources": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        },
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "Holy: Inquisition": {
-      "sources": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "Holy: Build Temple": {
-      "sources": [
-        {
-          "name": "Ophanite Acolyte",
-          "href": "#entry-ophanite-acolyte"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Temple",
-          "href": "#entry-temple"
-        }
-      ]
-    },
-    "Perfection Achieved": {
-      "sources": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Perfect City",
-          "href": "#entry-perfect-city"
-        }
-      ]
-    },
-    "Holy site discovered in %HEX_NAME": {
-      "sources": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "The holy relic of %HEX_NAME": {
-      "sources": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        },
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        },
-        {
-          "name": "Ophanimic Totem",
-          "href": "#entry-ophanimic-totem"
-        }
-      ]
-    },
-    "The doubtful swarm the holy site": {
-      "sources": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "holy-site-depth-1": {
-      "sources": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        },
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    },
-    "holy-site-depth-2": {
-      "sources": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        }
-      ]
-    },
-    "holy-site-depth-3": {
-      "sources": [
-        {
-          "name": "Explore Ruins",
-          "href": "#entry-explore-ruins"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Ophanim's Faith",
-          "href": "#entry-ophanim-s-faith"
-        },
-        {
-          "name": "Ophanim's Doubt",
-          "href": "#entry-ophanim-s-doubt"
-        }
-      ]
-    }
+  "Shadow": {
+    "sources": [
+      {
+        "name": "Duality（shadow / faith）",
+        "href": "#entry-duality-shadow-faith"
+      },
+      {
+        "name": "A peaceful village shaken by a senseless tragedy",
+        "href": "#entry-a-peaceful-village-shaken-by-a-senseless-tragedy"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "Ophanim's Faith": {
+    "sources": [
+      {
+        "name": "Start Faith",
+        "href": "#entry-start-faith"
+      },
+      {
+        "name": "Peace and Order",
+        "href": "#entry-peace-and-order"
+      },
+      {
+        "name": "Duality（shadow / faith）",
+        "href": "#entry-duality-shadow-faith"
+      },
+      {
+        "name": "Leader of the Faith",
+        "href": "#entry-leader-of-the-faith"
+      },
+      {
+        "name": "Ophanimic Totem",
+        "href": "#entry-ophanimic-totem"
+      },
+      {
+        "name": "Ophanim Theocracy",
+        "href": "#entry-ophanim-theocracy"
+      },
+      {
+        "name": "Holy site discovered in %HEX_NAME",
+        "href": "#entry-holy-site-discovered-in-hex-name"
+      },
+      {
+        "name": "Holy site of %HEX_NAME",
+        "href": "#entry-holy-site-depth-1"
+      },
+      {
+        "name": "Holy site of %HEX_NAME",
+        "href": "#entry-holy-site-depth-2"
+      },
+      {
+        "name": "Holy site of %HEX_NAME",
+        "href": "#entry-holy-site-depth-3"
+      },
+      {
+        "name": "The holy relic of %HEX_NAME",
+        "href": "#entry-the-holy-relic-of-hex-name"
+      },
+      {
+        "name": "A peaceful village shaken by a senseless tragedy",
+        "href": "#entry-a-peaceful-village-shaken-by-a-senseless-tragedy"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Shadow",
+        "href": "#entry-shadow-modifier"
+      },
+      {
+        "name": "Theocracy",
+        "href": "#entry-theocracy"
+      },
+      {
+        "name": "Perfection Achieved",
+        "href": "#entry-perfection-achieved"
+      },
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "Ophanim's Doubt": {
+    "sources": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      },
+      {
+        "name": "Festering Doubt",
+        "href": "#entry-festering-doubt"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Root out Doubters",
+        "href": "#entry-root-out-doubters"
+      },
+      {
+        "name": "Sectarian Violence",
+        "href": "#entry-sectarian-violence"
+      },
+      {
+        "name": "Holy: Inquisition",
+        "href": "#entry-holy-inquisition"
+      },
+      {
+        "name": "Excise Doubt",
+        "href": "#entry-excise-doubt"
+      }
+    ]
+  },
+  "Festering Doubt": {
+    "sources": [
+      {
+        "name": "Paranoid Society",
+        "href": "#entry-paranoid-society"
+      },
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "Perfect City": {
+    "sources": [
+      {
+        "name": "Perfection Achieved",
+        "href": "#entry-perfection-achieved"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Empower Slaves",
+        "href": "#entry-empower-slaves"
+      },
+      {
+        "name": "Perfect Servant",
+        "href": "#entry-perfect-servant"
+      }
+    ]
+  },
+  "Ophanim Theocracy": {
+    "sources": [
+      {
+        "name": "Theocracy",
+        "href": "#entry-theocracy"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Crusade",
+        "href": "#entry-crusade"
+      },
+      {
+        "name": "Ophanim Army",
+        "href": "#entry-ophanim-army"
+      },
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "Ophanim Army": {
+    "sources": [
+      {
+        "name": "Ophanim Theocracy",
+        "href": "#entry-ophanim-theocracy"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Empower Slaves",
+        "href": "#entry-empower-slaves"
+      },
+      {
+        "name": "Excise Doubt",
+        "href": "#entry-excise-doubt"
+      }
+    ]
+  },
+  "Ophanite Acolyte": {
+    "sources": [
+      {
+        "name": "Call to Serve",
+        "href": "#entry-call-to-serve"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Holy: Build Temple",
+        "href": "#entry-holy-build-temple"
+      },
+      {
+        "name": "Holy: Inquisition",
+        "href": "#entry-holy-inquisition"
+      }
+    ]
+  },
+  "perfect-servant-unit": {
+    "sources": [
+      {
+        "name": "Perfect Servant",
+        "href": "#entry-perfect-servant"
+      }
+    ],
+    "effects": []
+  },
+  "Ophanimic Totem": {
+    "sources": [
+      {
+        "name": "The holy relic of %HEX_NAME",
+        "href": "#entry-the-holy-relic-of-hex-name"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "Temple": {
+    "sources": [
+      {
+        "name": "Holy: Build Temple",
+        "href": "#entry-holy-build-temple"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Paranoid Society",
+        "href": "#entry-paranoid-society"
+      },
+      {
+        "name": "Sap Life Force",
+        "href": "#entry-sap-life-force"
+      }
+    ]
+  },
+  "Ancient Ruins": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ]
+  },
+  "Inquisitors": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Holy: Inquisition",
+        "href": "#entry-holy-inquisition"
+      }
+    ]
+  },
+  "Paranoid Society": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Festering Doubt",
+        "href": "#entry-festering-doubt"
+      }
+    ]
+  },
+  "Start Faith": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "Peace and Order": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "Theocracy": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Ophanim Theocracy",
+        "href": "#entry-ophanim-theocracy"
+      }
+    ]
+  },
+  "Call to Serve": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Ophanite Acolyte",
+        "href": "#entry-ophanite-acolyte"
+      }
+    ]
+  },
+  "Perfect Servant": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Perfect Servant",
+        "href": "#entry-perfect-servant-unit"
+      }
+    ]
+  },
+  "Declare Heretic": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Infamous",
+        "href": "#entry-infamous"
+      },
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "Excise Doubt": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Ophanim Army",
+        "href": "#entry-ophanim-army"
+      }
+    ]
+  },
+  "Empower Slaves": {
+    "sources": [],
+    "effects": [
+      {
+        "name": "Ophanim Army",
+        "href": "#entry-ophanim-army"
+      }
+    ]
+  },
+  "Root out Doubters": {
+    "sources": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "Sectarian Violence": {
+    "sources": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      },
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "Holy: Inquisition": {
+    "sources": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "Holy: Build Temple": {
+    "sources": [
+      {
+        "name": "Ophanite Acolyte",
+        "href": "#entry-ophanite-acolyte"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Temple",
+        "href": "?page=points-of-interest#entry-location-sub-temple",
+        "meta": "兴趣点",
+        "text": "所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。",
+        "image": "/locations/game/temple.png",
+        "target": "_blank"
+      }
+    ]
+  },
+  "Perfection Achieved": {
+    "sources": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Perfect City",
+        "href": "#entry-perfect-city"
+      }
+    ]
+  },
+  "Holy site discovered in %HEX_NAME": {
+    "sources": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "The holy relic of %HEX_NAME": {
+    "sources": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      },
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      },
+      {
+        "name": "Ophanimic Totem",
+        "href": "#entry-ophanimic-totem"
+      }
+    ]
+  },
+  "The doubtful swarm the holy site": {
+    "sources": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "holy-site-depth-1": {
+    "sources": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      },
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
+  },
+  "holy-site-depth-2": {
+    "sources": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      }
+    ]
+  },
+  "holy-site-depth-3": {
+    "sources": [
+      {
+        "name": "Explore Ruins",
+        "href": "#entry-explore-ruins"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Ophanim's Faith",
+        "href": "#entry-ophanim-s-faith"
+      },
+      {
+        "name": "Ophanim's Doubt",
+        "href": "#entry-ophanim-s-doubt"
+      }
+    ]
   }
+}
 };
 
 const preparedConfig = prepareGodConfig(config);

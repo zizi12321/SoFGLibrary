@@ -1,0 +1,8 @@
+.character-modifiers-theme .character-category { margin-top: 38px; scroll-margin-top: 24px; }
+.character-modifiers-theme .character-category h3 { display: flex; align-items: baseline; gap: 14px; margin: 0 0 22px; font-size: 24px; font-weight: 500; }
+.character-modifiers-theme .character-category h3 small { color: var(--muted); font-size: 12px; font-weight: 400; }
+.character-modifiers-theme .expanded-section p { overflow-wrap: anywhere; }
+.character-modifiers-theme .character-source > .plain-heading { margin-bottom: 30px; }
+@media (max-width: 760px) {
+  .character-modifiers-theme .character-category h3 { font-size: 21px; }
+}

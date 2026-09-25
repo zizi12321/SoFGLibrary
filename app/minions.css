@@ -7,3 +7,5 @@
 @media (max-width: 760px) {
   .minions-theme .modifier-library-header { padding-top: 72px; }
 }
+
+.minion-combat-mechanics > h2 { margin: 0 0 24px; font-size: 26px; }

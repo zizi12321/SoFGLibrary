@@ -182,7 +182,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -214,7 +214,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -511,18 +511,80 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "Accident Site",
-          "image": "loc_minor_ruins.png",
-          "text": "替代初始 the Elder Tomb，地点 Shadow 设为 0，并放置一份 Greater Rift。提供 Reforge The Seal、Fulfil the Prophecy 与本体 Arcane Fortress 法术；普通摧毁回调为空。"
-        }
-      ]
+      "name": "Accident Site",
+      "image": "loc_minor_ruins.png",
+      "text": "替代初始 the Elder Tomb，地点 Shadow 设为 0，并放置一份 Greater Rift。提供 Reforge The Seal、Fulfil the Prophecy 与本体 Arcane Fortress 法术；普通摧毁回调为空。\n\n出现方式\nThe Thing From Beyond 开局替换 <CrossReference name=\"The Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" />。",
+      "id": "accident-site"
     },
     {
+      "name": "Reforge The Seal",
+      "meta": "Lore",
+      "text": "完成后使玩家失败。引导风险为 50。",
+      "image": "reforgeTheSeal.png",
+      "location": "Accident Site",
+      "statLine": "Complexity: 170 / Profile: 1000 / Menace: 0 / XP: 180",
+      "baseGame": true,
+      "positiveTags": "Co-Operation",
+      "negativeTags": "无",
+      "limit": "法师英雄，个人 Awareness 超过 50%；世界恐慌至少 75%，游戏尚未结束。",
+      "id": "god-place-location-set-accidentsite--place-task-base-ch-reforgetheseals"
+    },
+    {
+      "name": "Fulfil the Prophecy",
+      "meta": "Lore",
+      "text": "Chosen One 完成后使玩家失败。引导风险为 50。",
+      "image": "theProphecy.png",
+      "location": "Accident Site",
+      "statLine": "Complexity: 50 / Profile: 1000 / Menace: 0 / XP: 72",
+      "baseGame": true,
+      "positiveTags": "Ambition",
+      "negativeTags": "无",
+      "limit": "仅 Chosen One，世界恐慌至少 80%；距上次终极任务完成超过 40 回合、距上次尝试超过 27 回合。",
+      "id": "god-place-location-set-accidentsite--place-task-base-ch-fulfilltheprophecy"
+    },
+    {
+      "id": "god-place-location-set-accidentsite--place-task-base-mg-aranefortresstomb",
+      "name": "Geomancy: Arcane Fortress",
+      "text": "利用墓穴的力量建立 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />，无需 Geomantic Locus。",
+      "image": "/locations/game/arcaneFortress.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Accident Site\" href=\"#entry-accident-site\" />。",
+      "limit": "当地 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" /> <100；Geomancy ≥1，或执行者为 Chosen One。",
+      "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
+      "positiveTags": "无",
+      "negativeTags": "无"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-accidentsite",
+      "name": "Accident Site",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "accident-site"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-set-accidentsite--place-task-base-ch-reforgetheseals",
+            "god-place-location-set-accidentsite--place-task-base-ch-fulfilltheprophecy",
+            "god-place-location-set-accidentsite--place-task-base-mg-aranefortresstomb"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "items": [
@@ -534,7 +596,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "minions",
       "title": "随从",
       "items": [
@@ -547,7 +609,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -611,7 +673,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "items": [
@@ -631,7 +693,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -661,7 +723,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "items": [
@@ -677,7 +739,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "spells",
       "title": "法术",
       "items": [
@@ -707,7 +769,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -726,7 +788,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "Manifest Virus": {
       "effects": [

@@ -114,7 +114,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -132,7 +132,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -232,18 +232,79 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "Destroyed Coven",
-          "image": "loc_evil_coven.png",
-          "text": "开局选择邻近人类聚居地的空地建立，并清除该处其他修正，放置 The Curse。提供 Weaken The Curse、Fulfil the Prophecy 与 Arcane Fortress；普通摧毁回调为空。"
-        }
-      ]
+      "name": "Destroyed Coven",
+      "image": "loc_evil_coven.png",
+      "text": "开局选择邻近人类聚居地的空地建立，并清除该处其他修正，放置 The Curse。提供 Weaken The Curse、Fulfil the Prophecy 与 Arcane Fortress；普通摧毁回调为空。\n\n出现方式\nThe Shadow Counsel 开局在选定的邻近人类聚居地的空地点建立。",
+      "id": "destroyed-coven"
     },
     {
+      "name": "Weaken The Curse",
+      "meta": "Lore",
+      "text": "使 The Curse 强度 −150。引导风险为 50；施法者的 Awareness 与世界恐慌越高，通常越愿意执行。",
+      "image": "reforgeTheSeal.png",
+      "location": "Destroyed Coven",
+      "statLine": "Complexity: 170 / Profile: 1000 / Menace: 0 / XP: 180",
+      "positiveTags": "Co-Operation",
+      "negativeTags": "无",
+      "limit": "法师英雄，个人 Awareness 超过 50%；世界恐慌至少 75%，游戏尚未结束。",
+      "id": "god-place-location-set-fallencoven--place-task-3232578780-ch-weakencurse"
+    },
+    {
+      "name": "Fulfil the Prophecy",
+      "meta": "Lore",
+      "text": "Chosen One 完成后使玩家失败。",
+      "image": "theProphecy.png",
+      "location": "Destroyed Coven",
+      "statLine": "Complexity: 50 / Profile: 1000 / Menace: 0 / XP: 72",
+      "baseGame": true,
+      "positiveTags": "Ambition",
+      "negativeTags": "无",
+      "limit": "仅 Chosen One，世界恐慌至少 80%；沿用本体终极任务的冷却与引导要求。",
+      "id": "god-place-location-set-fallencoven--place-task-base-ch-fulfilltheprophecy"
+    },
+    {
+      "id": "god-place-location-set-fallencoven--place-task-base-mg-aranefortresstomb",
+      "name": "Geomancy: Arcane Fortress",
+      "text": "利用墓穴的力量建立 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />，无需 Geomantic Locus。",
+      "image": "/locations/game/arcaneFortress.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Destroyed Coven\" href=\"#entry-destroyed-coven\" />。",
+      "limit": "当地 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" /> <100；Geomancy ≥1，或执行者为 Chosen One。",
+      "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
+      "positiveTags": "无",
+      "negativeTags": "无"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-fallencoven",
+      "name": "Destroyed Coven",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "destroyed-coven"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-set-fallencoven--place-task-3232578780-ch-weakencurse",
+            "god-place-location-set-fallencoven--place-task-base-ch-fulfilltheprophecy",
+            "god-place-location-set-fallencoven--place-task-base-mg-aranefortresstomb"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -299,7 +360,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -328,7 +389,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "items": [
@@ -383,7 +444,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "national-actions",
       "title": "国家行动",
       "items": [
@@ -408,7 +469,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -421,7 +482,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "Choose New Pawn": {
       "effects": [

@@ -231,7 +231,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -319,18 +319,50 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "The Mountain",
-          "text": "Mammon 开局建立的山脉据点，使用它专属的山脉外观，承载 The Mountain's Wealth 与 Raid Mountain。优先选择邻接人类聚居地、便于接入贸易网络的地点；Supplicant 在此出现。",
-          "image": "mammon-mountain.png"
-        }
-      ]
+      "name": "The Mountain",
+      "text": "Mammon 开局建立的山脉据点，使用它专属的山脉外观，承载 The Mountain's Wealth 与 Raid Mountain。优先选择邻接人类聚居地、便于接入贸易网络的地点；Supplicant 在此出现。\n\n通用资料：<CrossReference name=\"The Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" />",
+      "image": "mammon-mountain.png",
+      "id": "the-mountain"
     },
     {
+      "name": "Raid Mountain",
+      "text": "山中财富 −10 个百分点、Menace −10，执行者获得 100 Gold、Profile +3；财富归零立即击败 Mammon。\nDanger 初始 3，可由 Danger in The Mountain 提高，伤害结算时可能逐点减少。英雄对 Mammon 的 Awareness 还会增加执行倾向。",
+      "location": "<CrossReference name=\"The Mountain\" />。",
+      "meta": "Might",
+      "statLine": "Complexity: 15　Profile: 山中财富的 Profile　Menace: 山中财富的 Menace　Danger: 当前附加危险（初始 3）　XP: 29",
+      "positiveTags": "Danger、Gold",
+      "negativeTags": "无",
+      "image": "mammon-influence-icon.png",
+      "id": "god-place-mammon-the-mountain--raid-mountain"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-mammon-the-mountain",
+      "name": "The Mountain",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "the-mountain"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-mammon-the-mountain--raid-mountain"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -350,7 +382,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -396,7 +428,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "items": [
@@ -411,7 +443,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "items": [
@@ -457,7 +489,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "The Mountain's Wealth": {
       "sources": [

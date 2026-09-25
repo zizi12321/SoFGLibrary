@@ -1,0 +1,28 @@
+.events-theme { --accent: #b7a68c; }
+.event-source, .event-category, .event-chain { min-width: 0; scroll-margin-top: 64px; }
+.event-source-heading { display: flex; gap: 20px; justify-content: space-between; align-items: baseline; margin-bottom: 36px; }
+.event-source-heading h2 { margin: 0; font-size: clamp(26px, 3.2vw, 44px); line-height: 1.3; overflow-wrap: anywhere; min-width: 0; }
+.event-source-heading > span { flex-shrink: 0; color: var(--muted); font-size: 13px; }
+.event-category + .event-category { margin-top: 48px; }
+.event-category > h3 { font-size: 24px; margin: 0 0 24px; }
+.event-chain { border-top: 1px solid var(--line); padding-top: 24px; margin-bottom: 36px; }
+.event-chain > h4 { margin: 0 0 12px; font-size: 21px; overflow-wrap: anywhere; }
+.event-chain > p, .event-reading-guide p { line-height: 1.9; color: var(--muted); }
+.event-chain-nodes { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 20px 0 24px; min-width: 0; }
+.event-chain-nodes > a { max-width: 100%; overflow-wrap: anywhere; }
+.events-theme .expandable-inner > p, .events-theme .event-options p { white-space: pre-line; overflow-wrap: anywhere; }
+.events-theme .expanded-meta { white-space: normal; overflow-wrap: anywhere; }
+.event-reading-guide { margin-top: 24px; max-width: 920px; border-block: 1px solid var(--line); padding-block: 16px; }
+.event-reading-guide summary { cursor: pointer; font-size: 14px; }
+.event-reading-guide p { font-size: 14px; margin-block: 14px 0; }
+.events-theme .sidebar-nav b { white-space: normal; overflow-wrap: anywhere; }
+@media(max-width: 760px) {
+ .events-theme .modifier-library-header { padding-top: 76px; }
+ .event-source-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
+ .event-chain-nodes { flex-direction: column; align-items: flex-start; gap: 12px; }
+ .event-source-heading h2 { font-size: 28px; }
+}
+
+.event-category-notes { margin-block: 0 28px; max-width: 100%; }
+.event-category-notes p { margin: 0 0 20px; line-height: 1.9; white-space: pre-line; overflow-wrap: anywhere; }
+.events-theme .event-category > .expandable-table + .event-chain { margin-top: 32px; }

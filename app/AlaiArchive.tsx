@@ -1170,7 +1170,8 @@ const config: GodConfig = {
               "name": "Glory in the victory",
               "text": "进攻者 Profile +20、Menace +35；尚无 Infamous 时获得该特质；防守者死亡。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "web-devour-defending",
@@ -1195,7 +1196,8 @@ const config: GodConfig = {
               "name": "Glory in the victory",
               "text": "败方进攻者 Profile +25、Menace +25；尚无 Infamous 时获得该特质，随后死亡。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "web-devour-noncontrolled",
@@ -1208,7 +1210,8 @@ const config: GodConfig = {
               "name": "The brood grows",
               "text": "受害者满血复活并加入 Devoured，双方互相提高一级好感；退回一次英雄战死的恐慌累计量，默认 5 个百分点。若凶手所属社会是教团且受害者为教士，受害者改属该教团。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "web-undevour-noncontrolled",
@@ -1221,7 +1224,8 @@ const config: GodConfig = {
               "name": "Why do They fight?",
               "text": "受害者满血复活、解除控制，个人 Shadow 清零，退出 Devoured 并恢复原家族；原家族不可用时归入黑暗势力的首个家族。受控 Agent 转为自主英雄。退回一次英雄战死的恐慌累计量，默认 5 个百分点。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "web-madness",
@@ -1239,7 +1243,8 @@ const config: GodConfig = {
               "text": "当地发动内战，反抗所属国家。",
               "condition": "当地为非首都，Infiltration 为 100%，并属于人类类聚居地及其国家。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "id": "web-spoiler-1",
@@ -1252,7 +1257,9 @@ const config: GodConfig = {
               "name": "A corpse?",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-2",
@@ -1265,7 +1272,9 @@ const config: GodConfig = {
               "name": "It still lives?",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-3",
@@ -1282,7 +1291,9 @@ const config: GodConfig = {
               "name": "A sibling?",
               "text": "进入 An Exchange。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-4",
@@ -1295,7 +1306,9 @@ const config: GodConfig = {
               "name": "Incompatible natures?",
               "text": "推进特殊路线，使至多三位合格战士英雄加入 Remade，获得 Remade 与 Accelerated Prophecy。他们须为未受控、非 Devoured、非当前 Chosen One 的人物。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-5",
@@ -1308,7 +1321,9 @@ const config: GodConfig = {
               "name": "It is in sight",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-6",
@@ -1325,7 +1340,9 @@ const config: GodConfig = {
               "name": "Reach out once more",
               "text": "进入 An Intermingling，随后可达成特殊胜利。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-7",
@@ -1338,7 +1355,9 @@ const config: GodConfig = {
               "name": "The world is open",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         },
         {
           "id": "web-spoiler-8",
@@ -1351,7 +1370,9 @@ const config: GodConfig = {
               "name": "They spiral out...",
               "text": "立即达成特殊胜利。两位神共同利用彼此在世界留下的联系，互相改变，把人类、大地与物理法则化为持续变化的共同创作。"
             }
-          ]
+          ],
+          "eventCategory": "chains",
+          "eventChain": {"id":"web-other","name":"Alai · The Other","description":"多次吞噬 Chosen One 后接触 The Other，再由 Remade 路线与 Pierce the Other 决定结局。"}
         }
       ],
       "media": true

@@ -59,7 +59,7 @@ export default function ArmiesArchive({ onReturn }: { onReturn: () => void }) {
           {sidebarHidden ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
         </button>
       </div>
-      <button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button>
+      <a className="sidebar-index-link" href="./">← 返回索引页</a>
       <div className="sidebar-bulk">
         <button type="button" onClick={() => setOpenEntries(new Set(entryIds))}>全部展开</button>
         <button type="button" onClick={() => setOpenEntries(new Set())}>全部收起</button>
@@ -93,7 +93,7 @@ export default function ArmiesArchive({ onReturn }: { onReturn: () => void }) {
           </section>)}
         </div>)}
       </div>)}
-      <footer className="archive-footer"><button className="sidebar-index-link" type="button" onClick={onReturn}>← 返回索引页</button></footer>
+      <footer className="archive-footer"><a className="sidebar-index-link" href="./">← 返回索引页</a></footer>
     </div>
   </main>;
 }

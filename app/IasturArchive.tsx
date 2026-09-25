@@ -228,7 +228,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "items",
       "title": "物品",
       "media": true,
@@ -245,7 +245,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -319,7 +319,94 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
+      "id": "place-hook-base-0",
+      "name": "Iastur · The Elder Tomb",
+      "text": "使用 Iastur 时，开局额外向 <CrossReference name=\"The Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" /> 加入 <CrossReference name=\"Summon Tome\" href=\"#entry-summon-tome\" />。\n\n对应地点 / 兴趣点\n<CrossReference name=\"The Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" />",
+      "baseGame": true,
+      "image": "/locations/game/loc_evil_tomb.png"
+    },
+    {
+      "name": "Summon Tome",
+      "image": "laughing-tome.png",
+      "location": "Elder Tomb。",
+      "meta": "Other",
+      "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+      "text": "召回遗失、休眠或被非玩家人物持有的未封印书。有人正在 Bind Tome 时不能开始；若非玩家英雄或统治者持有封印书，召回会失败，需要夺回或等待其使用、离手。完成取回时 Profile +3、Menace +10。",
+      "id": "god-place-place-hook-base-0--place-task-base-ch-summonlaughingtome"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-place-hook-base-0",
+      "name": "Iastur · The Elder Tomb",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-base-0"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-base-0--place-task-base-ch-summonlaughingtome"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_evil_tomb.png"
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "id": "iastur-library",
+      "name": "Library",
+      "text": "携带封印后的 Laughing Tome 时，可在 Library 执行 Weaken Iastur。\n\n通用资料：<CrossReference name=\"Library\" href=\"?page=points-of-interest#entry-location-sub-library\" meta=\"兴趣点\" text=\"每回合有 2% 概率生成 Arcane Secret；当地已有 Arcane Secret 时不重复建立。生成的秘密初始强度为 50。提供 Research Arcane Secret；Iastur 存在且 Library 未被渗透时，额外提供 Weaken Iastur。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/library.png\" target=\"_blank\" />",
+      "image": "/locations/game/library.png",
+      "baseGame": true
+    },
+    {
+      "name": "Weaken Iastur",
+      "image": "bound-tome.png",
+      "location": "尚未渗透的 Library。",
+      "meta": "Lore",
+      "statLine": "Complexity: 5　Profile: 1000　Menace: 150　XP: 12",
+      "positiveTags": "无",
+      "negativeTags": "Madness",
+      "text": "消耗封印书。若当前神力 >floor(神力上限÷2)，则神力清零；否则我方所有可控人物单位各增加 Profile 5、Menace 5。之后在执行者所在地留下 Laughing King's Tome (Asleep)。上限为奇数时，比较阈值先向下取整。",
+      "id": "god-place-iastur-library--place-task-base-ch-weakeniastur"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-iastur-library",
+      "name": "Library",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "iastur-library"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-iastur-library--place-task-base-ch-weakeniastur"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "madness-effects",
       "title": "疯狂危机效果",
       "media": true,
@@ -362,7 +449,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "media": true,
@@ -418,7 +505,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "media": true,
@@ -455,7 +542,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "items": [
@@ -473,7 +560,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -482,7 +569,8 @@ const config: GodConfig = {
           "name": "Madness Crisis",
           "image": "madness.png",
           "baseGame": true,
-          "text": "任一人类聚居地的 Madness 达到 300 时触发。Madness 立即降回 150，并在 Catatonia、Masochism、Fascination、Psychotics、Hypochondria、Paranoid Delusions 中等概率选择一种长期地点效果；同一地点已经有 Madness Effect 时不会再次生成。"
+          "text": "任一人类聚居地的 Madness 达到 300 时触发。Madness 立即降回 150，并在 Catatonia、Masochism、Fascination、Psychotics、Hypochondria、Paranoid Delusions 中等概率选择一种长期地点效果；同一地点已经有 Madness Effect 时不会再次生成。",
+          "eventCategory": "other"
         },
         {
           "name": "Story time",
@@ -500,7 +588,8 @@ const config: GodConfig = {
               "name": "Leave %him2 to %his2 quest",
               "text": "重置途中事件计时。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         },
         {
           "name": "A peaceful village shaken by a senseless tragedy",
@@ -516,11 +605,12 @@ const config: GodConfig = {
               "name": "It all makes sense...",
               "text": "当地 Madness +75；记录当前回合，阻止后续通常再次触发。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
     }
-  ],
+],
   "relations": {
     "Laughing King's Tome": {
       "sources": [

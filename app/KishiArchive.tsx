@@ -237,7 +237,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -266,7 +266,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -325,19 +325,94 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
+      "seal": 9,
+      "name": "Demonic Nexus",
+      "image": "location_demon_stronghold.png",
+      "text": "地点保持完全 Shadow，每回合产生 5 Demonic Energy，可招募 Firehusk，也可通过 Distill Demonic Horde 生成恶魔军团。初始防御为 100，但最大防御值为 50。\n\n出现方式\n<CrossReference name=\"Engulfing Tide\" href=\"#entry-engulfing-tide\" meta=\"神力\" text=\"消耗人物合计 4 层 Bloodstain 与 Soul-Scar，将其转化为 Demon of the Tide，摧毁聚居地、建立 Demonic Nexus，并生成 150 HP 的 Rampaging Demons。\" image=\"./kishi/power_engulfing_tide.png\" /> 在目标恶魔所在地创建，固定加入同名兴趣点。\n\n可能配置的兴趣点\n<CrossReference name=\"Demonic Nexus（兴趣点）\" href=\"#entry-location-sub-bloodshed-fortress\" />。\n固定、随机与改建来源见各兴趣点。",
+      "id": "demonic-nexus"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-bloodshed-fortress",
+      "name": "Demonic Nexus",
+      "blocks": [
         {
-          "seal": 9,
-          "name": "Demonic Nexus",
-          "image": "location_demon_stronghold.png",
-          "text": "地点保持完全 Shadow，每回合产生 5 Demonic Energy，可招募 Firehusk，也可通过 Distill Demonic Horde 生成恶魔军团。初始防御为 100，但最大防御值为 50。"
+          "title": "介绍",
+          "entryIds": [
+            "demonic-nexus"
+          ]
         }
       ]
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "id": "location-sub-bloodshed-fortress",
+      "name": "Demonic Nexus（兴趣点）",
+      "text": "Kishi 的据点设施。提供野外 Lay Low 和 Firehusk 招募；Demonic Energy 修正另提供军队生产相关挑战。\n\n出现方式\n<CrossReference name=\"Demonic Nexus\" href=\"#entry-demonic-nexus\" /> 地点创建时固定加入。\n\n可出现地点\n<CrossReference name=\"Demonic Nexus\" href=\"#entry-demonic-nexus\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "/locations/mod/bloodshed.power_engulfing_tide.png",
+      "baseGame": false
     },
     {
+      "id": "god-place-location-sub-bloodshed-fortress--place-task-base-ch-laylowwilderness",
+      "name": "Lay Low（野外）",
+      "text": "首回合不减少数值；之后每回合降低 Profile、Menace 各 2，不低于人物下限。地点完全渗透时效果翻倍。",
+      "image": "/locations/game/layLow.png",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" />、<CrossReference name=\"Ancient Ruins\" href=\"?page=points-of-interest#entry-location-sub-ancientruins\" meta=\"兴趣点\" text=\"可供探索的古代遗迹，默认最多探索 5 次。探索带来遗迹事件、物品或危险；同时提供 Hero’s Journey、Guard Ruins、Wait to Explore Ruins 和野外 Lay Low。不能渗透，所在聚居地毁灭后仍可存续。\n\n出现方式\n地图在合格野地随机生成；不是所有名为 Ruins 的地点都拥有此兴趣点。\n\n可出现地点\n野外兴趣点地点、Ruins。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/ancientRuins.png\" target=\"_blank\" />、<CrossReference name=\"Abyssal City\" href=\"?page=points-of-interest#entry-location-sub-deep-city\" meta=\"兴趣点\" text=\"地下海洋人口的载体，提供野外 Lay Low 与 Flee Beneath。不能渗透。\n\n出现方式\n普通 Abyssal City 创建时配置。\n\n可出现地点\nAbyssal City。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/deepOneCity.png\" target=\"_blank\" />、<CrossReference name=\"Sanctum\" href=\"?page=points-of-interest#entry-location-sub-deep-sanctum\" meta=\"兴趣点\" text=\"Deep One Sanctum 固定带有的兴趣点。已经处于渗透状态，不可再渗透；提供野外 Lay Low 与 Propagation。\n\n出现方式\nDeep One Sanctum 创建时配置。\n\n可出现地点\nDeep One Sanctum。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/deepOneSanctum.png\" target=\"_blank\" />、<CrossReference name=\"Coven of Witches\" href=\"?page=points-of-interest#entry-location-sub-witchcoven\" meta=\"兴趣点\" text=\"可渗透的野外女巫据点，防御加成 50。渗透后可利用 Enshadow、Dark Worship 以及 Crow 招募；Menace 增长可能引来人类军队摧毁兴趣点。\n\n出现方式\n采用旧式女巫据点生成方式时放入野外兴趣点地点；宗教模式下的女巫 Temple 是另一种实现。\n\n可出现地点\n野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/coven.png\" target=\"_blank\" />、<CrossReference name=\"Demonic Nexus（兴趣点）\" href=\"#entry-location-sub-bloodshed-fortress\" />、<CrossReference name=\"Abyssal Tower\" href=\"?page=points-of-interest#entry-location-sub-drownedprophet-abyssaltower\" meta=\"兴趣点\" text=\"向周边传播 Shadow 的 Drowned Prophet 据点，允许其强力 Hymn 仪式，并提供拆除塔楼的行动。\n\n出现方式\nBreathless 完成 Build Abyssal Tower 后，在合格人类聚居地增加。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/mod/Wonderblunder_DeepOnes.iconAbyssalTower.png\" target=\"_blank\" />、<CrossReference name=\"Werewolf Run（兴趣点）\" href=\"?page=points-of-interest#entry-location-sub-nature-wolfrun\" meta=\"兴趣点\" text=\"Blood Moon 期间使相邻地点已有 Werewolf Population 加速增长；提供野外 Lay Low。\n\n出现方式\nWerewolf Run 创建时固定加入。\n\n可出现地点\nWerewolf Run。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/mod/nature.property_werewolfpack.png\" target=\"_blank\" />、<CrossReference name=\"Wreck\" href=\"?page=points-of-interest#entry-location-sub-shipwreck\" meta=\"兴趣点\" text=\"初始 Integrity 为 40 + 两次独立的 0–10 随机整数。未加固时每回合减少 1，降至 0 后移除；若它是 Shipwreck 地点的唯一兴趣点，地点也一并移除。可劫掠财物、修复或摧毁，也提供野外 Lay Low。重复沉船可以增加现有残骸的 Integrity。\n\n出现方式\n海上舰船损失等调用沉船生成入口；地点为空时创建 Shipwreck，否则附加到现有聚居地。\n\n可出现地点\nShipwreck、City、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/mod/CLib.Icon_Shipwreck.png\" target=\"_blank\" />、<CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />",
+      "limit": "Profile 或 Menace 高于人物下限。",
+      "statLine": "Complexity: 7\nProfile: 30\nMenace: 0\nXP: 16"
+    },
+    {
+      "id": "god-place-location-sub-bloodshed-fortress--place-task-base-ch-recruitminion",
+      "name": "Recruit Minion",
+      "text": "招募当地配置的随从。不同地点实例提供不同种类，费用和 Command 需求取决于该随从。",
+      "meta": "固定进度",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Orc Camp\" href=\"?page=locations#entry-location-set-orccamp\" meta=\"地点\" text=\"Orc 营地用专精区分普通 Camp、Fortress、Mage Camp、Menagerie、Empty Shipyard、Shipyard 与 Mines。这些是营地状态，不是附加兴趣点。\n普通营地可建设专精；Mage Camp 增加 Spelltwister 招募；Menagerie 增加特殊随从。Fortress、Mage Camp 能重建常备军，Mines 允许部落进入地下。\n随从招募：普通营地提供 Orc Warrior、Goblin；Mage Camp 另有 Spelltwister；Menagerie 另有 Goblin Infiltrator、Webspinner、Razor Rat、Giggler、Changeling。\n\n出现方式\n地图生成或 Orc 扩张建立。新营地加入 5 强度 Orcish Industry。基础防御上限为 50 + Orcish Defences / 2，每回合恢复 2 防御，不超过上限。\" image=\"/locations/game/loc_evil_orc.png\" target=\"_blank\" />、<CrossReference name=\"City Palace\" href=\"?page=points-of-interest#entry-location-sub-city\" meta=\"兴趣点\" text=\"城市的政治中心。除 Infiltrate、Enshadow、招募与训练外，按国家首都、Alliance、政治不稳定等条件提供外交、Conclave、Dark Coronation 等任务。\n随从招募：Sellsword 供双方招募；Knight 通常属于英雄招募，Dark Empire 或 Ophanim Theocracy 中转为黑暗阵营招募。统治者 Shadow <50%、Awareness >90% 时，另加入英雄的 Paladin 招募。\n\n出现方式\nCity 创建时固定配置。\n\n可出现地点\nCity。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/cityCentre.png\" target=\"_blank\" />、<CrossReference name=\"Vast Sewers\" href=\"?page=points-of-interest#entry-location-sub-sewers\" meta=\"兴趣点\" text=\"城市地下管网。渗透后可传播 Plague，并招募此处配置的 Vermin。\n\n出现方式\n城市与矮人据点的随机候选。\n\n可出现地点\nCity、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/sewers.png\" target=\"_blank\" />、<CrossReference name=\"Coven of Witches\" href=\"?page=points-of-interest#entry-location-sub-witchcoven\" meta=\"兴趣点\" text=\"可渗透的野外女巫据点，防御加成 50。渗透后可利用 Enshadow、Dark Worship 以及 Crow 招募；Menace 增长可能引来人类军队摧毁兴趣点。\n\n出现方式\n采用旧式女巫据点生成方式时放入野外兴趣点地点；宗教模式下的女巫 Temple 是另一种实现。\n\n可出现地点\n野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/coven.png\" target=\"_blank\" />、Eternal City、<CrossReference name=\"Demonic Nexus（兴趣点）\" href=\"#entry-location-sub-bloodshed-fortress\" />、<CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />",
+      "limit": "满足随从的身份条件、有足够 Gold 与 Command；需要渗透的兴趣点或营地必须已完全渗透。Orc Upstart 对部分兴趣点渗透检查有豁免。",
+      "statLine": "Complexity: 由随从的招募时间决定\nProfile: 20\nMenace: 0\nXP: ⌊max(1, 6 × Complexity)^0.75⌋"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-sub-bloodshed-fortress",
+      "name": "Demonic Nexus（兴趣点）",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "location-sub-bloodshed-fortress"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-sub-bloodshed-fortress--place-task-base-ch-laylowwilderness"
+          ]
+        },
+        {
+          "title": "共同行动",
+          "entryIds": [
+            "god-place-location-sub-bloodshed-fortress--place-task-base-ch-recruitminion"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "minions",
       "title": "随从",
       "items": [
@@ -358,7 +433,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -377,7 +452,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -390,7 +465,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "items": [
@@ -409,7 +484,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -425,7 +500,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "items": [
@@ -440,7 +515,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "related-mechanics",
       "title": "相关机制",
       "items": [
@@ -461,7 +536,7 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
     "Bloodstained": {
       "sources": [

@@ -22,13 +22,13 @@ const config: GodConfig = {
   "powerCapacity": "神力上限＝已破封印数 + 1。",
   "powerRecovery": "每回合恢复＝0.035 × 神力上限。\nEternity 重置本世封印进度与已破封印数。",
   "core": [
-    "开局没有初始 Agent。对有家族的单位施加 <CrossReference name=\"Maker's Curse: Sword\" />、<CrossReference name=\"Maker's Curse: Eye\" />、<CrossReference name=\"Maker's Curse: Midnight\" /> 或 <CrossReference name=\"Maker's Curse: Traitor\" />，为其整个 House 留下诅咒。",
-    "培养 Sword、Eye 与 Midnight，再用 <CrossReference name=\"Create Agent\" /> 或 <CrossReference name=\"Create Agent Masterfully\" /> 将现有英雄、宗教人物转为 <CrossReference name=\"Cursed Agent\" />，获得属性和对应 Blessing。",
-    "用 <CrossReference name=\"Twist Flesh\" /> 调整 Agent 的基础属性，用 <CrossReference name=\"Venom in the veins\" /> 中断带家族诅咒的人物任务。",
-    "用 <CrossReference name=\"Cultists in Waiting\" /> 留下 <CrossReference name=\"Cult in Waiting\" />，或用 <CrossReference name=\"Bury Power\" /> 留下 <CrossReference name=\"Buried Power\" />，为当前与后续世代储备条件。",
-    "使用 <CrossReference name=\"Eternity\" /> 推进世代，在目标地点建立 <CrossReference name=\"the Elder Tomb\" href=\"#entry-elder-tomb-location\" />，重新开放本世已用的家族诅咒神力，并获得 <CrossReference name=\"Borrowed Powers\" />。胜利后睡眠会累积 <CrossReference name=\"Humanity's Adaptation\" />。",
-    "第 300 回合打开第 6 封印，苏醒并解锁 <CrossReference name=\"Intrinsic Lifespan\" />。游戏开局启用无尽模式，可在结束一世后继续世代更替。"
-  ],
+  "开局没有初始 Agent。对有家族的单位施加 <CrossReference name=\"Maker's Curse: Sword\" />、<CrossReference name=\"Maker's Curse: Eye\" />、<CrossReference name=\"Maker's Curse: Midnight\" /> 或 <CrossReference name=\"Maker's Curse: Traitor\" />，为其整个 House 留下诅咒。",
+  "培养 Sword、Eye 与 Midnight，再用 <CrossReference name=\"Create Agent\" /> 或 <CrossReference name=\"Create Agent Masterfully\" /> 将现有英雄、宗教人物转为 <CrossReference name=\"Cursed Agent\" />，获得属性和对应 Blessing。",
+  "用 <CrossReference name=\"Twist Flesh\" /> 调整 Agent 的基础属性，用 <CrossReference name=\"Venom in the veins\" /> 中断带家族诅咒的人物任务。",
+  "用 <CrossReference name=\"Cultists in Waiting\" /> 留下 <CrossReference name=\"Cult in Waiting\" />，或用 <CrossReference name=\"Bury Power\" /> 留下 <CrossReference name=\"Buried Power\" />，为当前与后续世代储备条件。",
+  "使用 <CrossReference name=\"Eternity\" /> 推进世代，在目标地点建立 <CrossReference name=\"the Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" />，重新开放本世已用的家族诅咒神力，并获得 <CrossReference name=\"Borrowed Powers\" />。胜利后睡眠会累积 <CrossReference name=\"Humanity's Adaptation\" />。",
+  "第 300 回合打开第 6 封印，苏醒并解锁 <CrossReference name=\"Intrinsic Lifespan\" />。游戏开局启用无尽模式，可在结束一世后继续世代更替。"
+],
   "overviewExtra": {
     "title": "Eternity 的世代更替",
     "text": "四种家族诅咒分别每世可施放一次，Create Agent Masterfully 每世可使用一次；House 及其剩余诅咒可延续到后代。Eternity 以 50 轮年度模拟推进世界：每轮人物年龄 +1，地图回合计数额外 +52，并执行一次正常回合更新。结束后重新开始计算本世封印进度。\n睡眠清理可控制单位和邪恶 Agent、旧 Elder Tomb，并恢复多种社会与地点状态。Buried Power 保留；Cult in Waiting 随其所绑定的聚居地存续。已招募的独特 Agent 会休整一世，在再下一世返回招募池。",
@@ -205,7 +205,7 @@ const config: GodConfig = {
     }
   ],
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "items": [
@@ -234,7 +234,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "house-blessings",
       "title": "家族祝福",
       "items": [
@@ -252,7 +252,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -278,20 +278,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
-        {
-          "name": "the Elder Tomb",
-          "text": "Eternity 在选定地点建立的古墓。睡眠开始时移除上一世的古墓，结束时在新地点重新建立。",
-          "id": "elder-tomb-location",
-          "image": "elder-tomb.png",
-          "baseGame": true
-        }
-      ]
-    },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -314,7 +301,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "related-mechanics",
       "title": "其他机制",
       "items": [
@@ -328,7 +315,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "items": [
@@ -342,285 +329,289 @@ const config: GodConfig = {
         }
       ]
     }
-  ],
+],
   "relations": {
-    "Create Agent": {
-      "effects": [
-        {
-          "name": "Cursed Agent",
-          "href": "#entry-cursed-agent"
-        },
-        {
-          "name": "Warrior",
-          "href": "#entry-ruler-warrior"
-        },
-        {
-          "name": "Blessing of the Sword",
-          "href": "#entry-blessing-of-the-sword"
-        },
-        {
-          "name": "Blessing of the Eye",
-          "href": "#entry-blessing-of-the-eye"
-        },
-        {
-          "name": "Blessing of Midnight",
-          "href": "#entry-blessing-of-midnight"
-        },
-        {
-          "name": "Blessing of the Traitor",
-          "href": "#entry-blessing-of-the-traitor"
-        }
-      ]
-    },
-    "Create Agent Masterfully": {
-      "effects": [
-        {
-          "name": "Cursed Agent",
-          "href": "#entry-cursed-agent"
-        },
-        {
-          "name": "Warrior",
-          "href": "#entry-ruler-warrior"
-        },
-        {
-          "name": "Blessing of the Sword",
-          "href": "#entry-blessing-of-the-sword"
-        },
-        {
-          "name": "Blessing of the Eye",
-          "href": "#entry-blessing-of-the-eye"
-        },
-        {
-          "name": "Blessing of Midnight",
-          "href": "#entry-blessing-of-midnight"
-        },
-        {
-          "name": "Blessing of the Traitor",
-          "href": "#entry-blessing-of-the-traitor"
-        }
-      ]
-    },
-    "Maker's Curse: Sword": {
-      "effects": [
-        {
-          "name": "Blessing of the Sword",
-          "href": "#entry-blessing-of-the-sword"
-        }
-      ]
-    },
-    "Maker's Curse: Eye": {
-      "effects": [
-        {
-          "name": "Blessing of the Eye",
-          "href": "#entry-blessing-of-the-eye"
-        }
-      ]
-    },
-    "Maker's Curse: Midnight": {
-      "effects": [
-        {
-          "name": "Blessing of Midnight",
-          "href": "#entry-blessing-of-midnight"
-        }
-      ]
-    },
-    "Maker's Curse: Traitor": {
-      "effects": [
-        {
-          "name": "Blessing of the Traitor",
-          "href": "#entry-blessing-of-the-traitor"
-        }
-      ]
-    },
-    "Cultists in Waiting": {
-      "effects": [
-        {
-          "name": "Cult in Waiting",
-          "href": "#entry-cult-in-waiting"
-        }
-      ]
-    },
-    "Bury Power": {
-      "effects": [
-        {
-          "name": "Buried Power",
-          "href": "#entry-buried-power"
-        }
-      ]
-    },
-    "Eternity": {
-      "effects": [
-        {
-          "name": "the Elder Tomb",
-          "href": "#entry-elder-tomb-location"
-        },
-        {
-          "name": "Humanity's Adaptation",
-          "href": "#entry-humanity-s-adaptation"
-        },
-        {
-          "name": "Borrowed Powers",
-          "href": "#entry-borrowed-powers"
-        }
-      ]
-    },
-    "Intrinsic Lifespan": {
-      "effects": [
-        {
-          "name": "Intrinsic Lifespan",
-          "href": "#entry-intrinsic-lifespan-trait"
-        }
-      ]
-    },
-    "Cult in Waiting": {
-      "sources": [
-        {
-          "name": "Cultists in Waiting",
-          "href": "#entry-cultists-in-waiting"
-        }
-      ]
-    },
-    "Buried Power": {
-      "sources": [
-        {
-          "name": "Bury Power",
-          "href": "#entry-bury-power"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Release Buried Power",
-          "href": "#entry-release-buried-power"
-        }
-      ]
-    },
-    "Humanity's Adaptation": {
-      "sources": [
-        {
-          "name": "Eternity",
-          "href": "#entry-eternity"
-        }
-      ],
-      "effects": [
-        {
-          "name": "Blessing: Iron Willed",
-          "href": "#entry-blessing-iron-willed"
-        },
-        {
-          "name": "Blessing: Silvertongued",
-          "href": "#entry-blessing-silvertongued"
-        },
-        {
-          "name": "Blessing: Healers",
-          "href": "#entry-blessing-healers"
-        }
-      ]
-    },
-    "Borrowed Powers": {
-      "sources": [
-        {
-          "name": "Eternity",
-          "href": "#entry-eternity"
-        }
-      ]
-    },
-    "Blessing of the Sword": {
-      "sources": [
-        {
-          "name": "Maker's Curse: Sword",
-          "href": "#entry-maker-s-curse-sword"
-        }
-      ]
-    },
-    "Blessing of the Eye": {
-      "sources": [
-        {
-          "name": "Maker's Curse: Eye",
-          "href": "#entry-maker-s-curse-eye"
-        }
-      ]
-    },
-    "Blessing of Midnight": {
-      "sources": [
-        {
-          "name": "Maker's Curse: Midnight",
-          "href": "#entry-maker-s-curse-midnight"
-        }
-      ]
-    },
-    "Blessing of the Traitor": {
-      "sources": [
-        {
-          "name": "Maker's Curse: Traitor",
-          "href": "#entry-maker-s-curse-traitor"
-        }
-      ]
-    },
-    "Cursed Agent": {
-      "sources": [
-        {
-          "name": "Create Agent",
-          "href": "#entry-create-agent"
-        },
-        {
-          "name": "Create Agent Masterfully",
-          "href": "#entry-create-agent-masterfully"
-        }
-      ]
-    },
-    "elder-tomb-location": {
-      "sources": [
-        {
-          "name": "Eternity",
-          "href": "#entry-eternity"
-        }
-      ]
-    },
-    "ruler-warrior": {
-      "sources": [
-        {
-          "name": "Create Agent",
-          "href": "#entry-create-agent"
-        },
-        {
-          "name": "Create Agent Masterfully",
-          "href": "#entry-create-agent-masterfully"
-        }
-      ]
-    },
-    "intrinsic-lifespan-trait": {
-      "sources": [
-        {
-          "name": "Intrinsic Lifespan",
-          "href": "#entry-intrinsic-lifespan"
-        }
-      ]
-    },
-    "Blessing: Iron Willed": {
-      "sources": [
-        {
-          "name": "Humanity's Adaptation",
-          "href": "#entry-humanity-s-adaptation"
-        }
-      ]
-    },
-    "Blessing: Silvertongued": {
-      "sources": [
-        {
-          "name": "Humanity's Adaptation",
-          "href": "#entry-humanity-s-adaptation"
-        }
-      ]
-    },
-    "Blessing: Healers": {
-      "sources": [
-        {
-          "name": "Humanity's Adaptation",
-          "href": "#entry-humanity-s-adaptation"
-        }
-      ]
-    }
+  "Create Agent": {
+    "effects": [
+      {
+        "name": "Cursed Agent",
+        "href": "#entry-cursed-agent"
+      },
+      {
+        "name": "Warrior",
+        "href": "#entry-ruler-warrior"
+      },
+      {
+        "name": "Blessing of the Sword",
+        "href": "#entry-blessing-of-the-sword"
+      },
+      {
+        "name": "Blessing of the Eye",
+        "href": "#entry-blessing-of-the-eye"
+      },
+      {
+        "name": "Blessing of Midnight",
+        "href": "#entry-blessing-of-midnight"
+      },
+      {
+        "name": "Blessing of the Traitor",
+        "href": "#entry-blessing-of-the-traitor"
+      }
+    ]
+  },
+  "Create Agent Masterfully": {
+    "effects": [
+      {
+        "name": "Cursed Agent",
+        "href": "#entry-cursed-agent"
+      },
+      {
+        "name": "Warrior",
+        "href": "#entry-ruler-warrior"
+      },
+      {
+        "name": "Blessing of the Sword",
+        "href": "#entry-blessing-of-the-sword"
+      },
+      {
+        "name": "Blessing of the Eye",
+        "href": "#entry-blessing-of-the-eye"
+      },
+      {
+        "name": "Blessing of Midnight",
+        "href": "#entry-blessing-of-midnight"
+      },
+      {
+        "name": "Blessing of the Traitor",
+        "href": "#entry-blessing-of-the-traitor"
+      }
+    ]
+  },
+  "Maker's Curse: Sword": {
+    "effects": [
+      {
+        "name": "Blessing of the Sword",
+        "href": "#entry-blessing-of-the-sword"
+      }
+    ]
+  },
+  "Maker's Curse: Eye": {
+    "effects": [
+      {
+        "name": "Blessing of the Eye",
+        "href": "#entry-blessing-of-the-eye"
+      }
+    ]
+  },
+  "Maker's Curse: Midnight": {
+    "effects": [
+      {
+        "name": "Blessing of Midnight",
+        "href": "#entry-blessing-of-midnight"
+      }
+    ]
+  },
+  "Maker's Curse: Traitor": {
+    "effects": [
+      {
+        "name": "Blessing of the Traitor",
+        "href": "#entry-blessing-of-the-traitor"
+      }
+    ]
+  },
+  "Cultists in Waiting": {
+    "effects": [
+      {
+        "name": "Cult in Waiting",
+        "href": "#entry-cult-in-waiting"
+      }
+    ]
+  },
+  "Bury Power": {
+    "effects": [
+      {
+        "name": "Buried Power",
+        "href": "#entry-buried-power"
+      }
+    ]
+  },
+  "Eternity": {
+    "effects": [
+      {
+        "name": "the Elder Tomb",
+        "href": "?page=locations#entry-location-set-tombofgods",
+        "meta": "地点",
+        "text": "玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。",
+        "image": "/locations/game/loc_evil_tomb.png",
+        "target": "_blank"
+      },
+      {
+        "name": "Humanity's Adaptation",
+        "href": "#entry-humanity-s-adaptation"
+      },
+      {
+        "name": "Borrowed Powers",
+        "href": "#entry-borrowed-powers"
+      }
+    ]
+  },
+  "Intrinsic Lifespan": {
+    "effects": [
+      {
+        "name": "Intrinsic Lifespan",
+        "href": "#entry-intrinsic-lifespan-trait"
+      }
+    ]
+  },
+  "Cult in Waiting": {
+    "sources": [
+      {
+        "name": "Cultists in Waiting",
+        "href": "#entry-cultists-in-waiting"
+      }
+    ]
+  },
+  "Buried Power": {
+    "sources": [
+      {
+        "name": "Bury Power",
+        "href": "#entry-bury-power"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Release Buried Power",
+        "href": "#entry-release-buried-power"
+      }
+    ]
+  },
+  "Humanity's Adaptation": {
+    "sources": [
+      {
+        "name": "Eternity",
+        "href": "#entry-eternity"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Blessing: Iron Willed",
+        "href": "#entry-blessing-iron-willed"
+      },
+      {
+        "name": "Blessing: Silvertongued",
+        "href": "#entry-blessing-silvertongued"
+      },
+      {
+        "name": "Blessing: Healers",
+        "href": "#entry-blessing-healers"
+      }
+    ]
+  },
+  "Borrowed Powers": {
+    "sources": [
+      {
+        "name": "Eternity",
+        "href": "#entry-eternity"
+      }
+    ]
+  },
+  "Blessing of the Sword": {
+    "sources": [
+      {
+        "name": "Maker's Curse: Sword",
+        "href": "#entry-maker-s-curse-sword"
+      }
+    ]
+  },
+  "Blessing of the Eye": {
+    "sources": [
+      {
+        "name": "Maker's Curse: Eye",
+        "href": "#entry-maker-s-curse-eye"
+      }
+    ]
+  },
+  "Blessing of Midnight": {
+    "sources": [
+      {
+        "name": "Maker's Curse: Midnight",
+        "href": "#entry-maker-s-curse-midnight"
+      }
+    ]
+  },
+  "Blessing of the Traitor": {
+    "sources": [
+      {
+        "name": "Maker's Curse: Traitor",
+        "href": "#entry-maker-s-curse-traitor"
+      }
+    ]
+  },
+  "Cursed Agent": {
+    "sources": [
+      {
+        "name": "Create Agent",
+        "href": "#entry-create-agent"
+      },
+      {
+        "name": "Create Agent Masterfully",
+        "href": "#entry-create-agent-masterfully"
+      }
+    ]
+  },
+  "elder-tomb-location": {
+    "sources": [
+      {
+        "name": "Eternity",
+        "href": "#entry-eternity"
+      }
+    ]
+  },
+  "ruler-warrior": {
+    "sources": [
+      {
+        "name": "Create Agent",
+        "href": "#entry-create-agent"
+      },
+      {
+        "name": "Create Agent Masterfully",
+        "href": "#entry-create-agent-masterfully"
+      }
+    ]
+  },
+  "intrinsic-lifespan-trait": {
+    "sources": [
+      {
+        "name": "Intrinsic Lifespan",
+        "href": "#entry-intrinsic-lifespan"
+      }
+    ]
+  },
+  "Blessing: Iron Willed": {
+    "sources": [
+      {
+        "name": "Humanity's Adaptation",
+        "href": "#entry-humanity-s-adaptation"
+      }
+    ]
+  },
+  "Blessing: Silvertongued": {
+    "sources": [
+      {
+        "name": "Humanity's Adaptation",
+        "href": "#entry-humanity-s-adaptation"
+      }
+    ]
+  },
+  "Blessing: Healers": {
+    "sources": [
+      {
+        "name": "Humanity's Adaptation",
+        "href": "#entry-humanity-s-adaptation"
+      }
+    ]
   }
+}
 };
 
 const preparedConfig = prepareGodConfig(config);

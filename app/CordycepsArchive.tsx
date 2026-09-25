@@ -238,7 +238,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "items": [
@@ -317,23 +317,121 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "items": [
+      "name": "Hive",
+      "text": "由 Start Hive 建立的虫巢聚居地。保留当地原有 Shadow，并处于已渗透状态；内含 Hive Spire 与 Larval Mass。Drone 和 Arthropodic Drone 在这里卸下猎物并重新出发。Airborne Spores 可永久开启巢内感染和两格范围内的人口感染传播，地图图标随之变红。\n\n出现方式\n<CrossReference name=\"Start Hive\" href=\"#entry-start-hive\" meta=\"神力\" text=\"杀死目标，在当地建立 Hive、Hive Spire 和 Larval Mass，并生成一只 Arthropodic Drone。\" image=\"./cordyceps/fungalHive.png\" /> 神力创建。固定带 <CrossReference name=\"Hive Spire\" href=\"#entry-hive-spire\" />，并在地点创建 Larval Mass。Hive 本身及 <CrossReference name=\"Hive Spire\" href=\"#entry-hive-spire\" /> 的任务列表为空；相关生产挑战由 Larval Mass 提供。\n\n可能配置的兴趣点\n<CrossReference name=\"Hive Spire\" href=\"#entry-hive-spire\" />。\n固定、随机与改建来源见各兴趣点。",
+      "image": "loc_minor_fungus.png",
+      "id": "hive"
+    },
+    {
+      "id": "place-hook-cordyceps-0",
+      "name": "人类聚居地的感染行动",
+      "text": "使用 Cordyceps 时向人类体系聚居地增加感染与清除感染源的行动。\n\n对应地点 / 兴趣点\n<CrossReference name=\"City\" href=\"?page=locations#entry-location-set-city\" meta=\"地点\" text=\"城市的名称与规模随人口、所属文化及现有兴趣点变化；Town、City 等显示名并非各自独立的地点类型。常规防御上限为人口 × Prosperity，再加各兴趣点的防御加成。\n\n出现方式\n地图生成或人类殖民完成时建立。固定带有 City Palace；沿海城市另带 Docks，并进行 1 次随机兴趣点抽取；内陆城市抽取 2 次。每次从 Vast Sewers、Market、Library 等概率选择，重复结果直接舍弃。\n\n可能配置的兴趣点\nCity Palace、Docks、Seat of Holy Order、Library、Market、Vast Sewers、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_city_prague.png\" target=\"_blank\" />、<CrossReference name=\"小型人类聚居地\" href=\"?page=locations#entry-location-set-minorhuman\" meta=\"地点\" text=\"农庄、堡垒、教堂等地点共用此类型；首个能定义名称与地图图像的兴趣点决定其外观。提供 Raid Periphery，并保留适用的人类聚居地任务。\n\n出现方式\n地图生成或人类殖民完成时建立。Farming Community、Fortress 是候选；相邻地点没有 Holy Site 时，Holy Site 也加入等概率候选池。选中 Holy Site 后另有 50% 概率附带 Catacombs。\n\n可能配置的兴趣点\nCatacombs、Holy Site / Desecrated Holy Site、Farming Community / Mushroom Farm、Fortress、Seat of Holy Order、Temple、Cave Fortress、Heart of the Forest。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_farm.png\" target=\"_blank\" />、<CrossReference name=\"Elven City\" href=\"?page=locations#entry-location-set-elvencity\" meta=\"地点\" text=\"精灵聚居地，固定带有同名兴趣点，并建立强度 150 的 Elven Arrogance。精灵社会的统治者产生、族群关系与对外援助任务在这里执行。\n随从招募：Elven Warbear。\n\n出现方式\n地图生成，或精灵扩张行动建立。扩张接收的地点还可能保留原有兴趣点。\n\n可能配置的兴趣点\nElven City、Seat of Holy Order、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_elves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven City\" href=\"?page=locations#entry-location-set-dwarvencity\" meta=\"地点\" text=\"矮人城市。人口上限按继承公式翻倍，防御上限比通常人类体系聚居地额外增加 20。保留一组经过删减的人类聚居地任务，另提供 Gold like the Sun。\n\n出现方式\n地图生成的矮人主要据点。反复从 Vast Sewers、Market、Library、Gold Mine 抽取，直至拥有 3 个不同兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_major_dwarves.png\" target=\"_blank\" />、<CrossReference name=\"Dwarven Outpost\" href=\"?page=locations#entry-location-set-dwarvenoutpost\" meta=\"地点\" text=\"矮人小型据点。防御上限额外增加 20；提供 Gold like the Sun 与 Raid Periphery。\n\n出现方式\n地图生成的矮人次要据点，从 Vast Sewers、Market、Library、Gold Mine 中随机配置 1 个兴趣点。\n\n可能配置的兴趣点\nGold Mine、Seat of Holy Order、Library、Market、Vast Sewers、Temple。\n固定、随机与改建来源见各兴趣点。\" image=\"/locations/game/loc_minor_dwarves.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/loc_city_prague.png"
+    },
+    {
+      "name": "Infect Ruler",
+      "text": "给当地统治者添加 Cordyceps Infection；不检查其 Awareness。完成时自身 Menace +10、Profile +2。",
+      "location": "渗透率达到 100%、且有未感染统治者的人类聚居地。",
+      "meta": "Lore + Intrigue",
+      "statLine": "Complexity: 20　Profile: 50　Menace: 50　XP: 36",
+      "image": "insect-infected-populace.png",
+      "id": "god-place-place-hook-cordyceps-0--place-task-cordyceps-ch-infectruler"
+    },
+    {
+      "name": "Targeted Infection",
+      "text": "感染以当地为家乡的所有英雄与教徒，不要求他们此刻在场；Chosen One 除外。完成时自身 Menace +10、Profile +2。",
+      "location": "Infected Populace 强度大于 99% 的人类聚居地，且至少有一名以此为家乡的存活未感染人物。",
+      "meta": "Lore + Intrigue",
+      "statLine": "Complexity: 20　Profile: 50　Menace: 50　XP: 36",
+      "image": "agent-insect-late-stage.png",
+      "id": "god-place-place-hook-cordyceps-0--place-task-cordyceps-ch-targettedinfection"
+    },
+    {
+      "name": "Remove Vector",
+      "text": "杀死感染的统治者，让继任机制接手。执行者 Awareness 必须大于 90%；世界恐慌越高，英雄越倾向采取这项极端措施。完成时自身 Menace +10、Profile +20。",
+      "location": "统治者具有 Cordyceps Infection，且有未感染继承人的人类聚居地；不要求渗透。",
+      "meta": "Lore + Intrigue",
+      "statLine": "Complexity: 20　Profile: 50　Menace: 0　XP: 36",
+      "positiveTags": "Cruel、Danger、Discord",
+      "negativeTags": "Cordyceps、Disease、Cooperation",
+      "image": "agent-insect-late-stage.png",
+      "id": "god-place-place-hook-cordyceps-0--place-task-cordyceps-ch-removevector"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-hive",
+      "name": "Hive",
+      "blocks": [
         {
-          "name": "Hive",
-          "text": "由 Start Hive 建立的虫巢聚居地。保留当地原有 Shadow，并处于已渗透状态；内含 Hive Spire 与 Larval Mass。Drone 和 Arthropodic Drone 在这里卸下猎物并重新出发。Airborne Spores 可永久开启巢内感染和两格范围内的人口感染传播，地图图标随之变红。",
-          "image": "loc_minor_fungus.png"
-        },
-        {
-          "name": "Hive Spire",
-          "text": "Hive 内的设施。开启 Airborne Spores 后每回合 Menace +1；未开启时没有这项增加。",
-          "image": "fungalHive.png"
+          "title": "介绍",
+          "entryIds": [
+            "hive"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-place-hook-cordyceps-0",
+      "name": "人类聚居地的感染行动",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-cordyceps-0"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-place-hook-cordyceps-0--place-task-cordyceps-ch-infectruler",
+            "god-place-place-hook-cordyceps-0--place-task-cordyceps-ch-targettedinfection"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-place-hook-cordyceps-0--place-task-cordyceps-ch-removevector"
+          ]
+        }
+      ],
+      "image": "/locations/game/loc_city_prague.png"
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "name": "Hive Spire",
+      "text": "Hive 内的设施。开启 Airborne Spores 后每回合 Menace +1；未开启时没有这项增加。\n\n出现方式\n<CrossReference name=\"Hive\" href=\"#entry-hive\" /> 创建时固定加入。\n\n可出现地点\n<CrossReference name=\"Hive\" href=\"#entry-hive\" />。\n改建或覆灭后是否保留，还受对应流程限制。",
+      "image": "fungalHive.png",
+      "id": "hive-spire"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-sub-hivespire",
+      "name": "Hive Spire",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "hive-spire"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
       "id": "minions",
       "title": "随从",
       "items": [
@@ -351,7 +449,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "units",
       "title": "特殊人物与自主单位",
       "items": [
@@ -445,7 +543,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "items": [
@@ -475,7 +573,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "items": [
@@ -511,7 +609,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "armies",
       "title": "军队",
       "items": [
@@ -531,7 +629,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "items": [
@@ -553,7 +651,7 @@ const config: GodConfig = {
       ],
       "media": false
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "items": [
@@ -567,12 +665,14 @@ const config: GodConfig = {
               "name": "The whine of monsterous wings...",
               "text": "记录为已触发，阻止再次发生。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Fear and Paranoia",
           "text": "模组在世界恐慌首次超过 20% 时，于 the Elder Tomb 发出一次提示：有 Awareness 的人物更不愿前往外部势力的地点。提示本身没有选项或额外数值效果；相关行动意愿惩罚随 Awareness 与世界恐慌增加。",
-          "meta": "模组全局提示"
+          "meta": "模组全局提示",
+          "eventCategory": "other"
         },
         {
           "name": "Combat with Drone",
@@ -584,11 +684,12 @@ const config: GodConfig = {
               "name": "They are Irrelevant",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
     }
-  ],
+],
   "relations": {
     "Start Hive": {
       "effects": [

@@ -208,7 +208,7 @@ const config: GodConfig = {
     ]
   },
   "sections": [
-    {
+{
       "id": "traits",
       "title": "人物特质",
       "media": false,
@@ -225,7 +225,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "location-modifiers",
       "title": "地点修正",
       "media": true,
@@ -279,31 +279,210 @@ const config: GodConfig = {
         }
       ]
     },
+{
+  "id": "locations",
+  "title": "地点",
+  "items": [
     {
-      "id": "locations",
-      "title": "地点与设施",
-      "media": true,
-      "items": [
+      "name": "Great Wound",
+      "image": "void_eldertomb.png",
+      "text": "Living Void 的特殊 Elder Tomb，保持 100% Shadow 且不能被摧毁。提供 Nothing from Something，用 Agent 的 2 HP 换取 Voidstone；也是 Vacuum Collapse 的固定扩散起点。\n\n出现方式\n选择 <CrossReference name=\"Living Void\" href=\"#entry-living-void\" /> 后，地图初始化将 <CrossReference name=\"The Elder Tomb\" href=\"?page=locations#entry-location-set-tombofgods\" meta=\"地点\" text=\"玩家神祇的起始据点，初始 Shadow 为 100%，并向外传播。提供 Reforge The Seal、Fulfil the Prophecy 与 Geomancy: Arcane Fortress；实际能否执行取决于执行者及苏醒状态。\" image=\"/locations/game/loc_evil_tomb.png\" target=\"_blank\" /> 替换为此地点。",
+      "id": "great-wound"
+    },
+    {
+      "name": "Nothing from Something",
+      "image": "void_stone_get.png",
+      "location": "Great Wound 或 World Rupture。",
+      "meta": "Other",
+      "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+      "text": "在 Great Wound 或 World Rupture 牺牲 2 HP，获得一枚 Voidstone。只有当前 HP 大于 2 时才可执行。",
+      "id": "god-place-location-set-customtomb--place-task-2879249746-ch-getvoidstone"
+    },
+    {
+      "id": "god-place-location-set-customtomb--place-task-base-ch-reforgetheseals",
+      "name": "Reforge The Seal",
+      "text": "重新封印玩家神祇，触发玩家失败。",
+      "image": "/locations/game/reforgeTheSeal.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Great Wound\" href=\"#entry-great-wound\" />。",
+      "limit": "世界恐慌 ≥75%，游戏尚未结束；执行者为 Awareness >50% 的英雄法师。",
+      "statLine": "Complexity: 170\nProfile: 1000\nMenace: 0\nXP: 180",
+      "positiveTags": "Co-Operation",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-customtomb--place-task-base-ch-fulfilltheprophecy",
+      "name": "Fulfil the Prophecy",
+      "text": "Chosen One 完成预言，触发玩家失败。",
+      "image": "/locations/game/theProphecy.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Great Wound\" href=\"#entry-great-wound\" />。",
+      "limit": "世界恐慌 ≥80%，游戏尚未结束；执行者为 Chosen One，特殊行动冷却已结束。",
+      "statLine": "Complexity: 50\nProfile: 1000\nMenace: 0\nXP: 72",
+      "positiveTags": "Ambition",
+      "negativeTags": "无"
+    },
+    {
+      "id": "god-place-location-set-customtomb--place-task-base-mg-aranefortresstomb",
+      "name": "Geomancy: Arcane Fortress",
+      "text": "利用墓穴的力量建立 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" />，无需 Geomantic Locus。",
+      "image": "/locations/game/arcaneFortress.png",
+      "meta": "Lore",
+      "baseGame": true,
+      "location": "<CrossReference name=\"Great Wound\" href=\"#entry-great-wound\" />。",
+      "limit": "当地 Arcane <CrossReference name=\"Fortress\" href=\"?page=points-of-interest#entry-location-sub-fort\" meta=\"兴趣点\" text=\"为所在地点增加 200 防御上限，延长敌军攻占或摧毁地点所需时间。\n\n出现方式\n小型人类聚居地的随机候选。\n\n可出现地点\n小型人类聚居地。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/fort.png\" target=\"_blank\" /> <100；Geomancy ≥1，或执行者为 Chosen One。",
+      "statLine": "Complexity: 50\nProfile: 100\nMenace: 0\nXP: 72",
+      "positiveTags": "无",
+      "negativeTags": "无"
+    },
+    {
+      "seal": 9,
+      "name": "Living Void",
+      "image": "void_livingvoid.png",
+      "text": "Vacuum Collapse 留下的永久地形。原聚居地被摧毁且修正被清空；进入其中的非玩家单位通常会被直接杀死。\n\n出现方式\n<CrossReference name=\"Vacuum Collapse\" href=\"#entry-vacuum-collapse\" meta=\"神力\" text=\"以 Great Wound 和所有 World Rupture 为中心，把半径内地形永久转化为 Living Void。首次范围半径为 2，此后每次施放增加 2。聚居地会被摧毁，绝大多数非玩家单位会死亡；施放后神力先归零，再按 Great Wound 与 World Rupture 的总数返还，每处 1 点。 范围按水平坐标距离计算，同时覆盖地表与地下。\" image=\"./living-void/void_vacuumcollapse.png\" /> 从 <CrossReference name=\"Great Wound\" href=\"#entry-great-wound\" /> 或 <CrossReference name=\"World Rupture\" href=\"#entry-world-rupture\" /> 向外扩展时形成。",
+      "id": "living-void"
+    },
+    {
+      "seal": 4,
+      "name": "World Rupture",
+      "image": "void_worldrupture.png",
+      "text": "Hungry Rift 达到 300% 后形成的永久入口，保持 100% Shadow 但不向外传播。它提供 Nothing from Something，也是 Devour Warmth 与 Vacuum Collapse 的目标；Chosen One 可以尝试 Seal Rupture 将其彻底关闭。\n\n出现方式\nHungry Rift 到达危机阈值后替换原地点，并清除该处修正。",
+      "id": "world-rupture"
+    },
+    {
+      "name": "Nothing from Something",
+      "image": "void_stone_get.png",
+      "location": "Great Wound 或 World Rupture。",
+      "meta": "Other",
+      "statLine": "Complexity: 1　Profile: 0　Menace: 0　XP: 3",
+      "text": "在 Great Wound 或 World Rupture 牺牲 2 HP，获得一枚 Voidstone。只有当前 HP 大于 2 时才可执行。",
+      "id": "god-place-location-set-worldrupture--place-task-2879249746-ch-getvoidstone"
+    },
+    {
+      "name": "Seal Rupture",
+      "image": "void_CO_CloseRupture.png",
+      "location": "有 World Rupture 的地点。",
+      "meta": "Lore",
+      "statLine": "Complexity: 50　Profile: 100　Menace: 0　Danger: 50　XP: 72",
+      "positiveTags": "无",
+      "negativeTags": "无",
+      "text": "Chosen One 进行的引导任务，完成后彻底关闭 World Rupture，并移除其 Draining Warmth 等裂口附属修正。引导期间可通过远程地术攻击、直接攻击或迫使其撤退来打断。",
+      "id": "god-place-location-set-worldrupture--place-task-2879249746-ch-closerupture"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-location-set-customtomb",
+      "name": "Great Wound",
+      "blocks": [
         {
-          "name": "Great Wound",
-          "image": "void_eldertomb.png",
-          "text": "Living Void 的特殊 Elder Tomb，保持 100% Shadow 且不能被摧毁。提供 Nothing from Something，用 Agent 的 2 HP 换取 Voidstone；也是 Vacuum Collapse 的固定扩散起点。"
+          "title": "介绍",
+          "entryIds": [
+            "great-wound"
+          ]
         },
         {
-          "seal": 4,
-          "name": "World Rupture",
-          "image": "void_worldrupture.png",
-          "text": "Hungry Rift 达到 300% 后形成的永久入口，保持 100% Shadow 但不向外传播。它提供 Nothing from Something，也是 Devour Warmth 与 Vacuum Collapse 的目标；Chosen One 可以尝试 Seal Rupture 将其彻底关闭。"
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-set-customtomb--place-task-2879249746-ch-getvoidstone"
+          ]
         },
         {
-          "seal": 9,
-          "name": "Living Void",
-          "image": "void_livingvoid.png",
-          "text": "Vacuum Collapse 留下的永久地形。原聚居地被摧毁且修正被清空；进入其中的非玩家单位通常会被直接杀死。"
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-set-customtomb--place-task-base-ch-reforgetheseals",
+            "god-place-location-set-customtomb--place-task-base-ch-fulfilltheprophecy",
+            "god-place-location-set-customtomb--place-task-base-mg-aranefortresstomb"
+          ]
         }
       ]
     },
     {
+      "id": "god-place-location-set-livingvoid",
+      "name": "Living Void",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "living-void"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "god-place-location-set-worldrupture",
+      "name": "World Rupture",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "world-rupture"
+          ]
+        },
+        {
+          "title": "挑战",
+          "entryIds": [
+            "god-place-location-set-worldrupture--place-task-2879249746-ch-getvoidstone"
+          ]
+        },
+        {
+          "title": "英雄任务",
+          "entryIds": [
+            "god-place-location-set-worldrupture--place-task-2879249746-ch-closerupture"
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "points-of-interest",
+  "title": "兴趣点",
+  "items": [
+    {
+      "id": "place-hook-2879249746-0",
+      "name": "Temple 的裂隙仪式",
+      "text": "使用 <CrossReference name=\"Living Void\" href=\"#entry-living-void\" /> 时，<CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" /> 增加宗教裂隙仪式。\n\n对应地点 / 兴趣点\n<CrossReference name=\"Temple\" href=\"?page=points-of-interest#entry-location-sub-temple\" meta=\"兴趣点\" text=\"所属教团的神殿，实际名称由教团决定。提供影响教团、捐款、False Miracle、Undermine Religion 及教义允许的宗教任务；每回合执行该教团教义对神殿的效果，Prosperity 影响也由教团计算。\n\n出现方式\nHoly: Build Temple 在信奉本教团的聚居地建立；女巫宗教模式也可能在野外地点直接生成。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost、野外兴趣点地点。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/temple.png\" target=\"_blank\" />、<CrossReference name=\"Seat of Holy Order\" href=\"?page=points-of-interest#entry-location-sub-holyordercapital\" meta=\"兴趣点\" text=\"教团的权力中心。继承 Temple 的任务，额外提供 Enshadow 与满足教义条件的 The Hunger’s Promise。为当地提供 2 Security 加成。\n\n出现方式\n地图生成教团时安放，通常替换所在地第一个兴趣点；该地点也成为教团的政治据点。\n\n可出现地点\nCity、小型人类聚居地、Elven City、Dwarven City、Dwarven Outpost。\n改建或覆灭后是否保留，还受对应流程限制。\" image=\"/locations/game/holyOrderSeat.png\" target=\"_blank\" />",
+      "baseGame": false,
+      "image": "/locations/game/temple.png"
+    },
+    {
+      "name": "Holy: Open Rift",
+      "image": "void_riftmodifier.png",
+      "location": "对应 Holy Order 的 Temple 所在地点。",
+      "meta": "Lore",
+      "statLine": "Complexity: 40　Profile: 40　Menace: 0　XP: 60",
+      "positiveTags": "Religion",
+      "negativeTags": "无",
+      "text": "教团侍僧在本教神庙所在地建立 50% Hungry Rift；若当地已有 Hidden Voidstone，则消耗它并把初始强度提高到 100%。完成时增加 10 Profile 与 10 Menace。只有对应 Holy Order 的侍僧可执行，且教义必须处于 Elder 影响状态。",
+      "id": "god-place-place-hook-2879249746-0--place-task-2879249746-ch-h-makerift"
+    }
+  ],
+  "placeArticles": [
+    {
+      "id": "god-place-place-hook-2879249746-0",
+      "name": "Temple 的裂隙仪式",
+      "blocks": [
+        {
+          "title": "介绍",
+          "entryIds": [
+            "place-hook-2879249746-0"
+          ]
+        },
+        {
+          "title": "宗教任务",
+          "entryIds": [
+            "god-place-place-hook-2879249746-0--place-task-2879249746-ch-h-makerift"
+          ]
+        }
+      ],
+      "image": "/locations/game/temple.png"
+    }
+  ]
+},
+{
       "id": "items",
       "title": "物品",
       "media": true,
@@ -315,7 +494,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religion",
       "title": "宗教教义",
       "media": false,
@@ -337,7 +516,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "religious-tasks",
       "title": "宗教任务",
       "media": true,
@@ -354,7 +533,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "hero-tasks",
       "title": "英雄任务",
       "media": true,
@@ -392,7 +571,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "challenges",
       "title": "挑战",
       "media": true,
@@ -440,7 +619,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "ruler-actions",
       "title": "统治者行动",
       "media": true,
@@ -466,7 +645,7 @@ const config: GodConfig = {
         }
       ]
     },
-    {
+{
       "id": "events",
       "title": "事件",
       "media": true,
@@ -480,7 +659,8 @@ const config: GodConfig = {
               "name": "A foothold has been lost.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         },
         {
           "name": "Matured Rift",
@@ -491,7 +671,8 @@ const config: GodConfig = {
               "name": "A foothold has been established.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         },
         {
           "name": "Seekers of the New World",
@@ -503,7 +684,8 @@ const config: GodConfig = {
               "name": "They usher Us in",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "tasks"
         },
         {
           "name": "Vacuum Collapse",
@@ -515,11 +697,12 @@ const config: GodConfig = {
               "name": "They were the first. But they will not be the last.",
               "text": "无效果。"
             }
-          ]
+          ],
+          "eventCategory": "other"
         }
       ]
     }
-  ],
+],
   "relations": {
     "Warped Light": {
       "sources": [

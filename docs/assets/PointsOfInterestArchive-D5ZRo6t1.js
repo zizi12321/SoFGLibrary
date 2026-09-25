@@ -1,0 +1,1 @@
+import{v as e}from"./index-Y2irRJdB.js";import t from"./LocationsArchive-Crmqldl4.js";var n=e();function r({onReturn:e}){return(0,n.jsx)(t,{kind:`points-of-interest`,onReturn:e})}export{r as default};
