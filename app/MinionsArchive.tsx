@@ -65,6 +65,7 @@ export default function MinionsArchive({ onReturn }: { onReturn: () => void }) {
         <h1>游戏本体与 Mod 随从</h1>
         <p>本体 {baseCount} 种，Mod 新增 {modNewCount} 种，另列 {modSharedCount} 项本体随从的 Mod 获取途径。收录不限定神祇的随从。</p>
         <p>数值依次为 HP、Attack、Defence、Command；HP 为生命上限，Command 为占用量。普通招募需要足够的 Command 容量；超过槽位或剩余容量时需更换现有随从，特殊规则在各条目中说明。</p>
+        <p><RichText config={config} text={'The Whisperer Mod：取得 <CrossReference name="Enchanting Words" href="?page=agents#entry-whisperer-enchanting-words" meta="技能" text="为当地玩家可用、Gold 价格大于 0 的随从招募提供免费版本；仍需满足渗透、随从自身限制与 Command。" /> 后，可通过 <CrossReference name="Enthrall [Minion]" href="?page=agents#entry-whisperer-enthrall-minion" meta="挑战" text="免除 Gold 消耗；随从本身、招募进度与时间沿用原种类。" /> 免费招募当地合格的本体或 Mod 随从。'} /></p>
       </header>
       <section id="minion-combat" className="section minion-combat-mechanics"><h2>人物战斗机制</h2>
         <DetailGrid config={config} items={minionCombatMechanics} openEntries={openEntries} onToggle={toggle} />

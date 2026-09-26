@@ -342,3 +342,14 @@ export const minionSections: MinionSection[] = [
     ]
   }
 ];
+
+minionSections.push({
+  id: "mod-robber-baron", title: "The Robber Baron", baseGame: false,
+  items: [{
+    id: "robber-baron-sellsword", name: "Sellsword", baseGame: true,
+    image: "/minions/game/minion_sellsword.png",
+    stats: "HP: 2 · Attack: 2 · Defence: 2 · Command: 1",
+    text: "与本体 <CrossReference name=\"Sellsword\" href=\"#entry-sellsword\" /> 相同。",
+    acquisition: "Robber Baron 取得 <CrossReference name=\"Ex-Mercenary\" href=\"?page=agents#entry-robber-baron-ex-mercenary\" meta=\"技能\" text=\"取得时获得 75 Gold 和 3 名 Sellsword。\" /> 时，立即获得 3 名，同时获得 75 Gold。",
+  }],
+});

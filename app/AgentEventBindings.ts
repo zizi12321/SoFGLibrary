@@ -1356,10 +1356,32 @@ export const agentEventBindings: Readonly<Record<string, AgentEventBinding[]>> =
       ]
     }
   ],
-  "surveyor": []
+  "surveyor": [],
+  "whisperer": [
+    { "id": "event-3236518418-whisperer-whisperer-lured", "kind": "专属事件" },
+    { "id": "event-3261852980-maeredux-midch-arobedfiguret1", "kind": "专属选项", "choices": [3] },
+    { "id": "event-3261852980-maeredux-mid-404pagesnotfound", "kind": "专属选项", "choices": [1] },
+    { "id": "event-3261852980-maeredux-midch-unfair", "kind": "专属选项", "choices": [2] },
+    { "id": "event-3261852980-maeredux-mid-stainedshirt", "kind": "身份相关事件" },
+    { "id": "event-3261852980-maeredux-midchp2p-barteringforaccess3", "kind": "专属选项", "choices": [3] },
+    { "id": "event-3261852980-maeredux-midchp2p-barteringforaccess1", "kind": "专属选项", "choices": [3], "note": "通常无法触发：选项虽点名 Whisperer，事件入口却只允许 Human、Elf 或 Orc；Whisperer 为 Undead，不满足外层条件。" },
+    { "id": "event-3261852980-maeredux-midch-banker-witness", "kind": "专属选项", "choices": [2], "note": "通常无法触发：事件入口要求 Human 或 Elf 种族，Whisperer 为 Undead；仅有专属选项不代表能进入事件。" },
+    { "id": "event-3261852980-maeredux-midch-rowdytavern", "kind": "专属选项", "choices": [2], "note": "通常无法触发：事件入口要求 Human、Elf 或 Orc 种族，Whisperer 为 Undead。" }
+  ],
+  "courtesan": [
+    { "id": "event-3237303618-kat-scandalousarrival", "kind": "专属事件" },
+    { "id": "event-3261852980-maeredux-midch-graveyardshift", "kind": "专属选项", "choices": [3], "note": "Unsuited for this kind of hardship 的选项描述写有 Profile +3，但实际效果列表为空；只进入同系列的等待期。" },
+    { "id": "event-3261852980-maeredux-mid-lightbringing", "kind": "专属选项", "choices": [2] },
+    { "id": "event-3261852980-maeredux-mid-stainedshirt", "kind": "身份相关事件" },
+    { "id": "event-3261852980-maeredux-midchp2p-noble-friendship", "kind": "身份相关事件" },
+    { "id": "event-3261852980-maeredux-midchp2p-noble-friendship-mourn", "kind": "剧情后续" },
+    { "id": "event-3261852980-maeredux-midchp2p-noble-friendship-betray", "kind": "剧情后续" }
+  ],
+  "robber-baron": []
 };
 
 export const agentEventNotes: Readonly<Record<string,string>> = {
+  "robber-baron": "无专属事件。走私、贿赂与佣兵分裂由行动或军队逻辑直接结算。",
   "corrupted-acolyte": "未找到仅供被腐化的 Acolyte 使用的事件或分支。",
   "werewolf": "未找到仅供玩家控制的 Werewolf 使用的事件或分支。Werewolf Run 是狼人地点修正成熟时的通知，不要求玩家控制的 Werewolf 在场。",
   "surveyor": "未找到 The Surveyor 的专属事件或分支。当前 Mod 的奖励和赞助结算由技能、挑战及地点修正处理。"

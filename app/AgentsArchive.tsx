@@ -23,7 +23,7 @@ const config: ArchiveRecordConfig = {
   sections: [
     { id: "agent-records", title: "Agent", items: agents.map(agent => ({
       id: "agent-" + agent.id, name: agent.name, image: agent.image,
-      stats: agent.stats, text: agent.recruitment + (agent.note ? "\n" + agent.note : ""),
+      stats: agent.stats, text: [agent.recruitment, agent.note, agent.identity].filter(Boolean).join("\n"),
     })) },
     { id: "agent-skills", title: "技能", items: agents.flatMap(agent => agent.skills) },
     { id: "agent-challenges", title: "挑战", items: agents.flatMap(agent => agent.challenges) },
@@ -79,7 +79,7 @@ export default function AgentsArchive({ onReturn }: { onReturn: () => void }) {
           <div className="agent-basics">
             <div><h3>基础属性</h3><p>{agent.stats}</p></div>
             <div><h3>招募条件</h3><p><RichText config={config} text={agent.recruitment} /></p></div>
-            {agent.note && <p className="agent-note"><RichText config={config} text={agent.note} /></p>}
+            {(agent.note || agent.identity) && <p className="agent-note"><RichText config={config} text={[agent.note, agent.identity].filter(Boolean).join("\n")} /></p>}
           </div>
           <div className="agent-subsection"><h3>技能</h3>
             {agent.skills.length ? <DetailGrid config={config} items={agent.skills} openEntries={openEntries} onToggle={toggle} /> : <p className="agent-empty">无独有的固定能力或可选特质。</p>}

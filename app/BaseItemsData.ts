@@ -160,7 +160,7 @@ export const items: DetailItem[] = [
   {
     "name": "Personal Item of [Person]",
     "text": "物品与原主人绑定，名称显示其姓名。可用于针对该人物的阴谋与仪式。\n持有者拥有 Blood Magic 时，可通过物品使用 Blood Magic: Agony、Blood Magic: Wasting Soul、Blood Magic: Through their Eyes、Blood Magic: Possession、Blood Magic: The Hunger；各法术仍需满足各自的掌握等级等条件。\n也可用于制造丑闻、伪造线索等需要原主人私人物品的行动。",
-    "acquisition": "Courtier 的 Steal Ruler's Item：在已有渗透且有统治者的聚居地，取得当地统治者的私人物品。\nCourtier 或 Trickster 的 Steal Hero's Item：在已有渗透、且作为英雄家乡的聚居地，随机取得一位当地出身人物的私人物品。\n英雄完成 Purge Taunting Lure 后会把自己的私人物品留在当地 Item Cache，可执行取出缓存物品的挑战获得。\n随从 Monkey 的 Thief 在撤退战斗结束时也可能取得对手的私人物品。",
+    "acquisition": "Courtier 的 Steal Ruler's Item：在已有渗透且有统治者的聚居地，取得当地统治者的私人物品。\nCourtier 或 Trickster 的 Steal Hero's Item：在已有渗透、且作为英雄家乡的聚居地，随机取得一位当地出身人物的私人物品。\n英雄完成 Purge Taunting Lure 后会把自己的私人物品留在当地 Item Cache，可执行取出缓存物品的挑战获得。\n随从 Monkey 的 Thief 在撤退战斗结束时也可能取得对手的私人物品。\nThe Courtesan Mod：完成 <CrossReference name=\"Beguile [Person]\" href=\"?page=agents#entry-courtesan-beguile\" meta=\"挑战\" text=\"陪同喜欢或爱慕 Courtesan 的人物，完成后取得其 Personal Item，Menace +1。\" image=\"./agents/game/i_personalItem.png\" /> 取得目标的私人物品；可供 <CrossReference name=\"Cause Advanced Scandal\" href=\"?page=agents#entry-courtesan-advanced-scandal\" meta=\"挑战\" text=\"在目标家乡消耗 Personal Item，布置下一次 Rest 时触发的丑闻。\" image=\"./agents/game/i_personalItem.png\" /> 使用。",
     "image": "i_personalItem.png",
     "baseGame": true
   },

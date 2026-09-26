@@ -1,4 +1,5 @@
 import type { EventSourceGroup } from "./EventTypes";
+import { agentExpansionEvents } from "./AgentExpansionRelatedData";
 
 export const eventGroups: EventSourceGroup[] = [
   {
@@ -20160,6 +20161,8 @@ export const eventGroups: EventSourceGroup[] = [
     ]
   }
 ];
+
+eventGroups.push(...agentExpansionEvents);
 
 export const eventAliases: Readonly<Record<string, string>> = {
   "entry-event-2968835416-foge-exploreruins-deadarmy0": "events-2968835416-ruins",

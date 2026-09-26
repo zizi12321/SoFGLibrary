@@ -1,4 +1,5 @@
 import type { AgentRecord } from "./AgentCatalogTypes";
+import { additionalAgents } from "./AgentExpansionData";
 
 export const agents: AgentRecord[] = [
   {
@@ -67,7 +68,8 @@ export const agents: AgentRecord[] = [
       }
     ],
     "challenges": [],
-    "note": "使用对应学派的通用法术；没有独立于这些学派的专有挑战。",
+    "note": "通过 Geomancy、Death Magic 与 Blood Magic 执行通用法术，可按所选学派培养施法能力。",
+    "identity": "在国家或教团领地招募时，使用该势力的家族；若沿用当地闲置人物，则保留其家族。",
     "image": "./agents/game/agent_warlock.png"
   },
   {
@@ -116,6 +118,7 @@ export const agents: AgentRecord[] = [
       }
     ],
     "note": "可扩张 Orc Horde、夺船、组织 <CrossReference name=\"Raiding Party\" href=\"#entry-warlord-challenge-raiding-party\" />，并向 Dark Empire 筹资。",
+    "identity": "种族为 Orc。",
     "image": "./agents/game/agent_warlord.png"
   },
   {
@@ -126,7 +129,7 @@ export const agents: AgentRecord[] = [
     "recruitment": "关闭 Orcs 时替代 Warlord；可重复招募。在人类聚居地以外的陆地招募。",
     "skills": [],
     "challenges": [],
-    "note": "没有独有的固定能力、可选特质或专有挑战。",
+    "note": "凭较高的 Might 与 Command 参与人物战斗，带领随从并执行对应属性的通用行动。",
     "image": "./agents/game/agent_banditKing.png"
   },
   {
@@ -182,7 +185,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/restAndRearm.png"
       }
     ],
-    "note": "属于 Undead。可在家乡补充 Skeleton Warrior 或恢复自身及 Undead 随从。在已渗透的 Seat of the Holy Order，可直接满足 The Hunger's Promise 的执行者条件，为尚无 The Feast 的教团加入该教义。",
+    "note": "可在家乡补充 Skeleton Warrior 或恢复自身及 Undead 随从。在已渗透的 Seat of the Holy Order，可直接满足 The Hunger's Promise 的执行者条件，为尚无 The Feast 的教团加入该教义。",
+    "identity": "种族为 Undead。",
     "image": "./agents/game/agent_baroness.png"
   },
   {
@@ -240,7 +244,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/i_ruinedPotionOfHealing.png"
       }
     ],
-    "note": "",
+    "note": "利用 Monkey 随从偷窃或协助战斗，并通过私人物品、误导线索与 Snake Oil 扰乱英雄。",
+    "identity": "在国家或教团领地招募时，使用该势力的家族；若沿用当地闲置人物，则保留其家族。",
     "image": "./agents/game/agent_trickster.png"
   },
   {
@@ -276,7 +281,8 @@ export const agents: AgentRecord[] = [
       }
     ],
     "challenges": [],
-    "note": "使用通用 Geomancy 法术，没有专有挑战。",
+    "note": "以较高 HP 与 Might 应付战斗，配合 Geomancy 施法，并可通过特质强化随从或施法防护。",
+    "identity": "种族为 Monster。",
     "image": "./agents/game/agent_survivor.png"
   },
   {
@@ -334,7 +340,7 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/medicalExperimentation.png"
       }
     ],
-    "note": "",
+    "note": "制造与治疗 Plague，通过医疗实验创建 Arcane Secret，并利用特质加剧疫病、死亡或提高应对 Disease 的能力。",
     "image": "./agents/game/agent_plagueDoctor.png"
   },
   {
@@ -401,7 +407,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/vendetta.png"
       }
     ],
-    "note": "",
+    "note": "依靠 Intrigue 窃取私人物品、制造丑闻与扩大仇杀，操纵统治者、英雄及其家族关系。",
+    "identity": "在国家或教团领地招募时，使用该势力的家族；若沿用当地闲置人物，则保留其家族。",
     "image": "./agents/game/agent_courtier.png"
   },
   {
@@ -468,7 +475,7 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/brutalJustice.png"
       }
     ],
-    "note": "",
+    "note": "建立 Dark Empire、发动 Dark Crusade，并通过处决与煽动失败影响战争和国家秩序。",
     "image": "./agents/game/agent_monarch.png"
   },
   {
@@ -492,7 +499,7 @@ export const agents: AgentRecord[] = [
       }
     ],
     "challenges": [],
-    "note": "",
+    "note": "围绕复仇目标成长；完成誓愿后强化四项属性，并可用 Petrifying Gaze 压制战斗对手。",
     "image": "./agents/game/agent_cursed.png"
   },
   {
@@ -532,7 +539,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/harvest.png"
       }
     ],
-    "note": "属于 Undead。",
+    "note": "收割人口，利用 Howl 传播疯狂或改变偏好；Death Curse 会在被杀时诅咒杀手及其家族。",
+    "identity": "种族为 Undead。",
     "image": "./agents/game/agent_reaper.png"
   },
   {
@@ -581,7 +589,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/raidPort.png"
       }
     ],
-    "note": "招募后的 Lore 为 1、Intrigue 为 2。",
+    "note": "劫掠航线与港口，利用航海特质提高海上机动或战斗能力。",
+    "identity": "种族为 Orc。",
     "image": "./agents/game/agent_buccaneer.png"
   },
   {
@@ -630,7 +639,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/separatistSentiments.png"
       }
     ],
-    "note": "",
+    "note": "通过 A Better Choice 更换统治者，以 Separatism 挑动分裂，并利用特质推动社会动荡。",
+    "identity": "种族为 Elf。",
     "image": "./agents/game/agent_dissident.png"
   },
   {
@@ -676,7 +686,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/geomanticLocus.png"
       }
     ],
-    "note": "",
+    "note": "兼修 Geomancy 与 Death Magic，能够建立 Geomantic Locus，并可通过特质治疗 Orc Army 或从 Orc Camp 的地脉获得 Gold。",
+    "identity": "种族为 Orc。",
     "image": "./agents/game/agent_shaman.png"
   },
   {
@@ -719,7 +730,7 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/famine.png"
       }
     ],
-    "note": "",
+    "note": "通过 Crisis Vote 利用 Plague 与 Famine 改变局势和统治者关系；也可缓解当地 Famine、Unrest，同时降低自身 Menace。",
     "image": "./agents/game/agent_aristocrat.png"
   },
   {
@@ -777,7 +788,7 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/lashTrap.png"
       }
     ],
-    "note": "",
+    "note": "以 Twisted Space、Lash Trap 阻碍或伤害英雄，用 Infuse Power 加快己方挑战；Arcane Prison 可延长敌人的 Disrupted。",
     "image": "./agents/game/agent_spellbinder.png"
   },
   {
@@ -830,6 +841,7 @@ export const agents: AgentRecord[] = [
       }
     ],
     "note": "招募界面名称为 The Exile。捕获祭品后，可在家乡献祭。",
+    "identity": "种族为 Elf。",
     "image": "./agents/game/agent_exiled.png"
   },
   {
@@ -920,7 +932,7 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/shoggoth.png"
       }
     ],
-    "note": "",
+    "note": "收集 Arcane、Soul、Death、Madness、Deep 五种 Secret，集齐后诞生 Abomination；可通过特质从取得 Secret 中获得额外收益。",
     "image": "./agents/game/agent_seeker.png"
   },
   {
@@ -930,6 +942,7 @@ export const agents: AgentRecord[] = [
     "stats": "Might: 继承　Lore: 继承　Intrigue: 继承　Command: 继承　HP: 继承",
     "recruitment": "非 Chosen One、尚未由玩家控制且仍存活的英雄，个人 Shadow 至少 98% 或已陷入 Insanity 时，可消耗 1 招募点转为玩家 Agent，并占用一个名额。",
     "note": "保留原人物的等级、属性、特质、物品与随从。新生成的 Warrior 在原人物基础上 Might +1、Command +1、最大 HP +1；Mage 则 Lore +2，并获得 Arcane Knowledge 与 Mastery of Geomancy。这些是英雄生成时的职业加成，招募时不会重复增加。",
+    "identity": "保留原人物的种族和家族。",
     "skills": [
       {
         "name": "继承原人物能力",
@@ -947,6 +960,7 @@ export const agents: AgentRecord[] = [
     "stats": "Might: 继承　Lore: 继承　Intrigue: 继承　Command: 继承　HP: 继承",
     "recruitment": "非 Chosen One、尚未由玩家控制且仍存活的 Acolyte，个人 Shadow 至少 98% 或已陷入 Insanity 时，可消耗 1 招募点转为玩家 Agent，并占用一个名额。",
     "note": "保留原人物和教团归属。普通新生 Acolyte 的基础范围为 Might 1–3、Lore 2–3、Intrigue 1–3、Command 2–3；实际招募时继承已经成长后的数值。",
+    "identity": "保留原人物的种族和家族。",
     "skills": [
       {
         "name": "继承教团与人物能力",
@@ -1055,7 +1069,7 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/deepOneSanctum.png"
       }
     ],
-    "note": "",
+    "note": "积累 Haul，将渔获用于建立或壮大 Deep One Cult、喂养海怪，也可通过特质获取 Abyssal 物品。",
     "image": "./agents/mod/Wonderblunder_DeepOnes.iconFisherman.png"
   },
   {
@@ -1144,7 +1158,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/war.png"
       }
     ],
-    "note": "各 Hymn 的等级条件来自其专有教团；该角色本身不要求玩家选择某一位神祇。",
+    "note": "领导深海势力，召集 Breathless，并通过 Hymn 扩张领土、转化人口和发动战争。各 Hymn 的等级条件来自其专有教团。",
+    "identity": "种族为 Deep One。新生人物使用其深海国家或教团的家族；Direct Control 保留原有家族。",
     "image": "./agents/mod/Wonderblunder_DeepOnes.iconDrownedProphet.png"
   },
   {
@@ -1196,7 +1211,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/mod/nature.property_werewolfpack_active.png"
       }
     ],
-    "note": "此栏记录可控人物的感染形态；野生自主 Werewolf 不作为可招募 Agent 收录。",
+    "note": "在 Blood Moon 进入兽形，带领 Wolf 战斗、传播 Lycanthropy，并通过狩猎扩散 Werewolf Population。",
+    "identity": "属于 Lycanthropy 感染后的狼人形态；保留原人物的种族和家族。",
     "image": "./agents/mod/nature.unit_werewolf_m.png"
   },
   {
@@ -1243,7 +1259,8 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/restAndRearm.png"
       }
     ],
-    "note": "",
+    "note": "通过战斗与 Nightmarish Rest 活动；现任 Chosen One 死亡后，可能继任并脱离玩家控制。",
+    "identity": "在国家或教团领地招募时，使用该势力的家族；继任 Chosen One 后保留原人物及其家族。",
     "image": "./agents/mod/redeemer.Redeemer_Icon.png"
   },
   {
@@ -1317,7 +1334,9 @@ export const agents: AgentRecord[] = [
         "image": "./agents/game/accessVault.png"
       }
     ],
-    "note": "",
+    "note": "向统治者争取 Sponsorship，建立 Surveyor Outpost 骗取资金，在取款收益与骗局崩溃之间控制节奏。",
+    "identity": "招募时属于首都所在国家的一个家族；后续更换 Sponsorship 时保留原有家族。",
     "image": "./agents/mod/surveyor.thesurveyor.png"
-  }
+  },
+  ...additionalAgents
 ];

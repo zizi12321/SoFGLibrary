@@ -8,6 +8,7 @@ export type AgentRecord = {
   stats: string;
   recruitment: string;
   note: string;
+  identity?: string;
   skills: DetailItem[];
   challenges: DetailItem[];
 };

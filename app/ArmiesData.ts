@@ -1,4 +1,5 @@
 import type { ArmyRecord } from "./ArmyTypes";
+import { robberBaronArmy } from "./AgentExpansionRelatedData";
 import type { DetailItem } from "./GodArchiveTypes";
 
 export const armies: ArmyRecord[] = [
@@ -693,6 +694,8 @@ export const armies: ArmyRecord[] = [
     "skills": []
   }
 ];
+
+armies.push(robberBaronArmy);
 
 export const armyMechanics: DetailItem[] = [
   {

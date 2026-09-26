@@ -1,4 +1,5 @@
 import type { ArchiveRecordConfig, SectionConfig } from "./GodArchiveTypes";
+import { robberBaronModifiers } from "./AgentExpansionRelatedData";
 
 export type ModifierSourceGroup = { id: string; name: string; baseGame: boolean; description?: string; sections: SectionConfig[] };
 
@@ -1577,6 +1578,8 @@ export const modifierGroups: ModifierSourceGroup[] = [
     ]
   }
 ];
+
+modifierGroups.push(robberBaronModifiers);
 
 export const config: ArchiveRecordConfig = {
   id: "base-location-modifiers", assetDir: "location-modifiers", powers: [],

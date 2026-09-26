@@ -1,4 +1,5 @@
 // Source audit: CHARACTER_MODIFIERS_SOURCE_AUDIT.md
+import { agentExpansionTraits } from "./AgentExpansionRelatedData";
 export type CharacterModifier = {
  id: string; source: string; sourceName: string; name: string;
  category: string; eligible: string; text: string; acquisition: string;
@@ -218,7 +219,7 @@ export const characterModifiers: CharacterModifier[] = [
     "category": "common",
     "eligible": "英雄、统治者、Vampire 等人物",
     "text": "饥饿强度每回合 +3，推动人物执行 Feed。\n单位完成 Feed 时强度归零，恢复全部 HP，个人与当地 Shadow 各 +50 个百分点，Menace +8；消耗当地人口。Vampire 的进食还可能将饥饿传给合格的当地英雄或统治者。\n统治者的 Feed 消耗 1 回合，强度归零，个人与当地 Shadow 各 +50 个百分点，Unrest +50。",
-    "acquisition": "The Hunger 血魔法、Vampire 与 Feed 的传播及通用事件。",
+    "acquisition": "The Hunger 血魔法、Vampire 与 Feed 的传播及通用事件。\nThe Whisperer 的 <CrossReference name=\"Ensnared Prey\" href=\"?page=events#entry-event-3236518418-whisperer-whisperer-lured\" meta=\"其他事件\" text=\"Make %Him Kin 额外消耗 50 Psychic Whispers，使猎物感染 The Hunger；Devour %Him 则先施加 The Hunger，再杀死猎物。\" image=\"./agents/mod/whisperer/event_lured.jpg\" /> 也可施加此状态。",
     "duration": "<CrossReference name=\"Chosen One\" href=\"#entry-character-base-t-chosenone\" meta=\"角色特质\" text=\"Command +2 +2×等级，Attack +1，Defence +2；不因衰老死亡。每回合清零 Shadow 与 Menace，第 10 回合后将 Awareness 设为 100%。清除 Call of the Abyss、Vampiric Curse 与 The Hunger。\" /> 会清除此状态。进食将强度清零，特质保留并继续积累饥饿。"
   },
   {
@@ -1500,3 +1501,5 @@ export const characterModifiers: CharacterModifier[] = [
     "acquisition": "Noble Connections 事件选择 Hand the social climber the ladder。事件要求当地有对该人物持正面态度的统治者、Agent 的 Menace <20，且本局尚未通过此事件获得。"
   }
 ];
+
+characterModifiers.push(...agentExpansionTraits);

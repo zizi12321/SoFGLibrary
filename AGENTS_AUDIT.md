@@ -102,3 +102,15 @@ Orc Elder、Spirit Caller、Spirit 等没有找到不限定神祇的实际招募
 - tsc --noEmit --incremental false 和 pnpm run build:pages 通过，构建产物同步至 docs。
 - 浏览器验证320、390、760、1024、1440宽度：26个导航目标、133张折叠卡，图片正常、无横向溢出、无运行时异常。
 - 手机侧栏浮层、先预览后跳转、跳转后展开卡片、直接带锚点进入页面均通过。
+
+## 2026-09-26：玩法、种族与家族说明
+
+- 当前共 29 个 Agent。统一补齐或整理浅色玩法概述；18 项另有特殊种族、变身类型或家族规则，放在玩法之后换行显示，链接预览也包含身份资料。
+- 固定特殊种族：Warlord、Buccaneer、Shaman 为 Orc；Baroness、Harvester、Whisperer 为 Undead；Survivor 为 Monster；Dissident、Exiled 为 Elf；Drowned Prophet 为 Deep One。按各构造函数的 person.species 赋值核对。
+- Warlock、Trickster、Courtier 的 UAE_Abstraction.createAgent 使用招募地点的 Society；无可用 Society 时回落到 soc_dark。UA 构造优先使用该势力无单位、无领地的闲置人物，否则 new Person(society)；新人物由 Person 构造从势力家族中分配，沿用人物则保留其家族。
+- Redeemer 的 UAE_Abs_Redeemer 使用城市所属 Society；Surveyor 的 UAE_Abs_Surveyor 强制使用招募首都所属 Society。更换 Sponsorship 不重设 house；Redeemer 继任沿用原 Person。
+- 被腐化的英雄、Acolyte 只是改变控制状态，保留原种族、家族。Werewolf 感染形态沿用原 Person，未重写 species 或 house；因此介绍狼人形态并注明继承，不写成统一的 Monster 种族。
+- Drowned Prophet 出生时 new Person(深海国家或教团)，使用该势力家族；Direct Control 不重新创建人物。
+- SG_AgentDark 同样继承 Society 的家族初始化，所以不能把其内部家族记录误写成完全没有 house。页面只额外强调上述真实当地势力/继承关系，不为普通黑暗 Agent 重复列内部默认分配。
+- 删除 Agent 介绍中的“具有灵魂”，去除 9 处“可选特质 · 1 级”；能力正文中的掌握等级、等级条件与实际数值不变。
+- 本次核对基于 sofglibrary-analysis/base-dlc、deep-ones、living-wilds、redeemer、surveyor、whisperer、courtesan、baron-v2 的源码；新增三项的其余资料见 AUDIT-2026-09-26-agents.md。
